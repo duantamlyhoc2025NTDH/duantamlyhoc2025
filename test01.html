@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Giới tính - BSRI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffcccc, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #cc0000;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff5f5;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #cc0000;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #ffe6e6;
+      border: 1px solid #cc0000;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #cc0000;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #990000;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Giới tính theo BSRI</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>Trả lời các câu hỏi sau:</h2>
+
+      <div class="question">
+        <p>1. Tôi thường được xem là người quyết đoán.</p>
+        <label><input type="radio" name="q1" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q1" value="4"> Đúng</label>
+        <label><input type="radio" name="q1" value="3"> Bình thường</label>
+        <label><input type="radio" name="q1" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q1" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>2. Tôi thích chăm sóc người khác.</p>
+        <label><input type="radio" name="q2" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q2" value="4"> Đúng</label>
+        <label><input type="radio" name="q2" value="3"> Bình thường</label>
+        <label><input type="radio" name="q2" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q2" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>3. Tôi cảm thấy thoải mái khi thể hiện cảm xúc.</p>
+        <label><input type="radio" name="q3" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q3" value="4"> Đúng</label>
+        <label><input type="radio" name="q3" value="3"> Bình thường</label>
+        <label><input type="radio" name="q3" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q3" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>4. Tôi thích cạnh tranh và chiến thắng.</p>
+        <label><input type="radio" name="q4" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q4" value="4"> Đúng</label>
+        <label><input type="radio" name="q4" value="3"> Bình thường</label>
+        <label><input type="radio" name="q4" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q4" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>5. Tôi thường nhường nhịn trong các mối quan hệ.</p>
+        <label><input type="radio" name="q5" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q5" value="4"> Đúng</label>
+        <label><input type="radio" name="q5" value="3"> Bình thường</label>
+        <label><input type="radio" name="q5" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q5" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>6. Tôi thích đưa ra quyết định nhanh chóng.</p>
+        <label><input type="radio" name="q6" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q6" value="4"> Đúng</label>
+        <label><input type="radio" name="q6" value="3"> Bình thường</label>
+        <label><input type="radio" name="q6" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q6" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>7. Tôi thường lắng nghe và thấu hiểu người khác.</p>
+        <label><input type="radio" name="q7" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q7" value="4"> Đúng</label>
+        <label><input type="radio" name="q7" value="3"> Bình thường</label>
+        <label><input type="radio" name="q7" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q7" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>8. Tôi thích kiểm soát tình huống.</p>
+        <label><input type="radio" name="q8" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q8" value="4"> Đúng</label>
+        <label><input type="radio" name="q8" value="3"> Bình thường</label>
+        <label><input type="radio" name="q8" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q8" value="1"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>9. Tôi dễ xúc động trước hoàn cảnh của người khác.</p>
+        <label><input type="radio" name="q9" value="5"> Rất đúng</label>
+        <label><input type="radio" name="q9" value="4"> Đúng</label>
+        <label><input type="radio" name="q9" value="3"> Bình thường</label>
+        <label><input type="radio" name="q9" value="2"> Không đúng lắm</label>
+        <label><input type="radio" name="q9" value="1"> Không đúng</label>
+      </div>
+
+     <div class="question">
+  <p>10. Tôi thường chủ động trong các tình huống xã hội.</p>
+  <label><input type="radio" name="q10" value="5"> Rất đúng</label>
+  <label><input type="radio" name="q10" value="4"> Đúng</label>
+  <label><input type="radio" name="q10" value="3"> Bình thường</label>
+  <label><input type="radio" name="q10" value="2"> Không đúng lắm</label>
+  <label><input type="radio" name="q10" value="1"> Không đúng</label>
+</div>
+
+<button type="button" onclick="calculateResult()">Xem kết quả</button>
+<div id="result" class="result" style="display:none;"></div>
+      <script>
+function calculateResult() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+
+  if (!name || !age || !gender) {
+    alert("Vui lòng điền đầy đủ thông tin trước khi làm bài test.");
+    return;
+  }
+
+  let masculine = 0;
+  let feminine = 0;
+
+  // Câu 1, 4, 6, 8, 10 → nhóm nam tính
+  ["q1", "q4", "q6", "q8", "q10"].forEach(q => {
+    const val = parseInt(document.querySelector(`input[name="${q}"]:checked`)?.value || 0);
+    masculine += val;
+  });
+
+  // Câu 2, 3, 5, 7, 9 → nhóm nữ tính
+  ["q2", "q3", "q5", "q7", "q9"].forEach(q => {
+    const val = parseInt(document.querySelector(`input[name="${q}"]:checked`)?.value || 0);
+    feminine += val;
+  });
+
+  let resultText = "";
+  if (masculine > feminine + 5) {
+    resultText = "Bạn có xu hướng vai trò giới NAM TÍNH.";
+  } else if (feminine > masculine + 5) {
+    resultText = "Bạn có xu hướng vai trò giới NỮ TÍNH.";
+  } else {
+    resultText = "Bạn có xu hướng vai trò giới TRUNG TÍNH (Androgynous).";
+  }
+
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").innerHTML = `
+    <h3>Kết quả dành cho ${name} (${gender}, ${age} tuổi):</h3>
+    <p><strong>Điểm nam tính:</strong> ${masculine}</p>
+    <p><strong>Điểm nữ tính:</strong> ${feminine}</p>
+    <p><strong>Kết luận:</strong> ${resultText}</p>
+  `;
+}
+</script>
+    </form>
+  </main>
+</body>
+</html>
