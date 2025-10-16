@@ -1,1 +1,64 @@
+/* Font nhẹ nhàng, hiện đại */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #ff0000, #ffffff); /* đỏ trắng */
+  color: #333;
+}
+
+/* Header */
+header {
+  background-color: #b30000;
+  color: white;
+  padding: 20px 40px; /* tăng khoảng cách để header cao hơn */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Logo */
+.logo {
+  height: 80px; /* tăng kích thước logo */
+  transition: transform 0.3s ease;
+}
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navigation */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+nav ul li a:hover {
+  opacity: 0.8;
+}
+
+/* Nội dung chính */
+main {
+  padding: 40px 20px;
+  background-color: #fff5f5;
+  min-height: 400px;
+}
+
+/* Footer */
+footer {
+  background-color: #b30000;
+  color: white;
+  text-align: center;
+  padding: 10px 0; /* gọn lại */
+  font-size: 14px;
+}
 
