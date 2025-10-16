@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Xu Hướng Tính Dục</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #cc3399;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff5fa;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #cc3399;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #ffe6f0;
+      border: 1px solid #cc3399;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #cc3399;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #aa0066;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Xu Hướng Tính Dục (Kinsey Scale)</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>Trả lời các câu hỏi sau:</h2>
+
+      <!-- 10 câu hỏi -->
+      <div class="question">
+        <p>1. Bạn thường bị thu hút bởi người khác giới?</p>
+        <label><input type="radio" name="q1" value="0"> Luôn luôn</label>
+        <label><input type="radio" name="q1" value="1"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q1" value="2"> Hiếm khi</label>
+        <label><input type="radio" name="q1" value="3"> Chưa từng</label>
+      </div>
+
+      <div class="question">
+        <p>2. Bạn từng có cảm xúc lãng mạn với người cùng giới?</p>
+        <label><input type="radio" name="q2" value="3"> Luôn luôn</label>
+        <label><input type="radio" name="q2" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q2" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q2" value="0"> Chưa từng</label>
+      </div>
+
+      <div class="question">
+        <p>3. Bạn có tưởng tượng về mối quan hệ với người cùng giới?</p>
+        <label><input type="radio" name="q3" value="3"> Luôn luôn</label>
+        <label><input type="radio" name="q3" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q3" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q3" value="0"> Chưa từng</label>
+      </div>
+
+      <div class="question">
+        <p>4. Bạn cảm thấy thoải mái khi nghĩ đến việc hẹn hò với người cùng giới?</p>
+        <label><input type="radio" name="q4" value="3"> Rất thoải mái</label>
+        <label><input type="radio" name="q4" value="2"> Có thể chấp nhận</label>
+        <label><input type="radio" name="q4" value="1"> Không thoải mái</label>
+        <label><input type="radio" name="q4" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p>5. Bạn từng có trải nghiệm tình cảm với người cùng giới?</p>
+        <label><input type="radio" name="q5" value="3"> Có</label>
+        <label><input type="radio" name="q5" value="2"> Gần như có</label>
+        <label><input type="radio" name="q5" value="1"> Không rõ</label>
+        <label><input type="radio" name="q5" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p>6. Bạn có cảm xúc lãng mạn với cả hai giới?</p>
+        <label><input type="radio" name="q6" value="3"> Có</label>
+        <label><input type="radio" name="q6" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q6" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q6" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p>7. Bạn cảm thấy giới tính không ảnh hưởng đến việc bạn yêu ai?</p>
+        <label><input type="radio" name="q7" value="3"> Hoàn toàn đúng</label>
+        <label><input type="radio" name="q7" value="2"> Đúng phần nào</label>
+        <label><input type="radio" name="q7" value="1"> Không đúng lắm</label>
+        <label><input type="radio" name="q7" value="0"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p>8. Bạn từng có cảm xúc với người không thuộc giới nhị phân (non-binary)?</p>
+        <label><input type="radio" name="q8" value="3"> Có</label>
+        <label><input type="radio" name="q8" value="2"> Có thể</label>
+        <label><input type="radio" name="q8" value="1"> Không chắc</label>
+        <label><input type="radio" name="q8" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p>9. Bạn có từng nghi ngờ hoặc khám phá xu hướng tính dục của mình?</p>
+        <label><input type="radio" name="q9" value="3"> Có</label>
+        <label><input type="radio" name="q9" value="2"> Đang khám phá</label>
+        <label><input type="radio" name="q9" value="1"> Đã từng</label>
+        <label><input type="radio" name="q9" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p>10. Bạn có cảm thấy xu hướng tính dục của mình thay đổi theo thời gian?</p>
+        <label><input type="radio" name="q10" value="3"> Có</label>
+        <label><input type="radio" name="q10" value="2"> Có thể</label>
+        <label><input type="radio" name="q10" value="1"> Không rõ</label>
+        <label><input type="radio" name="q10" value="0"> Không</label>
+      </div>
+
+      <button type="button" onclick="calculateResult()">Xem kết quả</button>
+      <div id="result" class="result" style="display:none;"></div>
+    </form>
+  </main>
+
+  <script>
+    <script>
+function calculateResult() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const gender = document.getElementById("gender").value;
+
+  if (!name || !age || !gender) {
+    alert("Vui lòng điền đầy đủ thông tin trước khi làm bài test.");
+    return;
+  }
+
+  let total = 0;
+  for (let i = 1; i <= 10; i++) {
+    const val = parseInt(document.querySelector(`input[name="q${i}"]:checked`)?.value || 0);
+    total += val;
+  }
+
+  let resultText = "";
+  if (total <= 5) {
+    resultText = "🏳️‍🌈 Bạn có xu hướng dị tính (heterosexual).";
+  } else if (total <= 12) {
+    resultText = "🌈 Bạn có xu hướng song tính (bisexual) hoặc đang khám phá.";
+  } else if (total <= 20) {
+    resultText = "💜 Bạn có xu hướng đồng tính (homosexual).";
+  } else {
+    resultText = "✨ Bạn có xu hướng linh hoạt hoặc không xác định rõ (fluid / queer / pansexual).";
+  }
+
+  document.getElementById("result").style.display = "block";
+  document.getElementById("result").innerHTML = `
+    <h3>Kết quả dành cho ${name} (${gender}, ${age} tuổi):</h3>
+    <p><strong>Tổng điểm:</strong> ${total} / 30</p>
+    <p><strong>Kết luận:</strong> ${resultText}</p>
+  `;
+}
+</script>
+</body>
+</html>
