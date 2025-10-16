@@ -182,6 +182,7 @@ nav > ul > li > a:hover {
   color: #fff;
   padding: 40px 0 10px;
   font-size: 15px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .footer-container {
@@ -191,14 +192,17 @@ nav > ul > li > a:hover {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
+  align-items: flex-start;
 }
 
 .footer-column h3 {
   font-size: 18px;
+  font-weight: 600;
   margin-bottom: 12px;
   border-bottom: 2px solid #fff;
   display: inline-block;
   padding-bottom: 4px;
+  color: #fff;
 }
 
 .footer-column ul {
@@ -211,44 +215,75 @@ nav > ul > li > a:hover {
   margin: 8px 0;
 }
 
-.footer-column a {
+.footer-column a,
+.footer-column p {
   color: #fff;
   text-decoration: none;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .footer-column a:hover {
-  text-decoration: underline;
+  color: #FFD700;
+  text-decoration: none;
 }
 
 /* Logo */
 .footer-logo {
   width: 100px;
   margin-bottom: 10px;
+  display: block;
 }
 
-/* Social icons */
+/* ==== Social icons (căn giữa) ==== */
 .social-links {
   display: flex;
-  gap: 12px;
-  margin-bottom: 10px;
+  justify-content: center; /* căn giữa ngang */
+  align-items: center;      /* căn giữa dọc */
+  gap: 15px;
+  margin-top: 10px;
 }
 
 .social-links a {
-  font-size: 22px;
+  font-size: 26px;
   color: #fff;
-  transition: transform 0.3s, color 0.3s;
+  transition: color 0.3s, transform 0.3s;
 }
 
 .social-links a:hover {
   color: #FFD700;
-  transform: scale(1.1);
+  transform: scale(1.15);
 }
 
-/* Dòng cuối footer */
+/* ==== Liên kết phụ (Giới thiệu, Chính sách, ...) ==== */
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin: 6px 0;
+}
+
+.footer-links a {
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #FFD700;
+}
+
+/* ==== Dòng cuối footer ==== */
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
   font-size: 14px;
   border-top: 1px solid rgba(255,255,255,0.3);
   padding-top: 10px;
+  opacity: 0.9;
 }
+
