@@ -61,4 +61,66 @@ footer {
   padding: 10px 0; /* gọn lại */
   font-size: 14px;
 }
+/* --- Navigation cấp 1 --- */
+nav > ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+nav > ul > li {
+  position: relative;
+}
+
+nav > ul > li > a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 6px;
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+nav > ul > li > a:hover {
+  opacity: 0.8;
+}
+
+/* --- Dropdown menu --- */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #b30000;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  flex-direction: column;
+  padding: 0;
+  z-index: 1000;
+}
+
+.dropdown-content li {
+  list-style: none;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 10px 16px;
+  color: white;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.dropdown-content li a:hover {
+  background-color: #cc0000;
+}
+
+/* --- Hover để xổ xuống --- */
+.dropdown:hover .dropdown-content {
+  display: flex;
+}
 
