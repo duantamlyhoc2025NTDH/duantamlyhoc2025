@@ -357,7 +357,7 @@ nav > ul > li > a:hover {
     justify-content: center;
   }
 }
-/* ===== HAMBURGER MENU ===== */
+  /* ===== HAMBURGER MENU CHUẨN HOẠT ĐỘNG ===== */
 
 /* Nút hamburger */
 .menu-toggle {
@@ -367,7 +367,9 @@ nav > ul > li > a:hover {
   width: 28px;
   height: 20px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1001;
+  background: none;
+  border: none;
 }
 
 .menu-toggle span {
@@ -383,16 +385,14 @@ nav > ul > li > a:hover {
 .menu-toggle.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
-
 .menu-toggle.active span:nth-child(2) {
   opacity: 0;
 }
-
 .menu-toggle.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Responsive: hiển thị menu toggle */
+/* --- Responsive --- */
 @media (max-width: 768px) {
   nav ul {
     display: none;
@@ -400,10 +400,12 @@ nav > ul > li > a:hover {
     background-color: #b30000;
     position: absolute;
     top: 70px;
-    right: 0;
+    left: 0;
     width: 100%;
     text-align: center;
     padding: 15px 0;
+    margin: 0;
+    z-index: 1000;
   }
 
   nav ul.show {
@@ -416,46 +418,8 @@ nav > ul > li > a:hover {
 
   header {
     flex-wrap: wrap;
-  }
-}
-/* ===== HEADER RESPONSIVE ===== */
-.header-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* Mobile layout */
-@media (max-width: 768px) {
-  nav ul {
-    display: none;
-    flex-direction: column;
-    background-color: #b30000;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
-
-  nav ul.active {
-    display: flex;
-  }
-
-  nav ul li {
-    margin: 10px 0;
-  }
-
-  .menu-toggle {
-    display: block;
+    justify-content: space-between;
+    position: relative;
   }
 
   /* Dropdown trong mobile */
@@ -471,6 +435,7 @@ nav > ul > li > a:hover {
 
   .dropdown-content li a {
     display: block;
-    padding: 5px 20px;
+    padding: 8px 0;
   }
 }
+
