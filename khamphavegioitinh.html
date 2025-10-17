@@ -1,4 +1,15 @@
-<main style="font-family: Arial, sans-serif; padding: 40px; max-width: 900px; margin: auto; background-color: #f0f9ff; border-radius: 10px;">
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tâm Lý Học Giới Tính</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main style="font-family: Arial, sans-serif; padding: 40px; max-width: 900px; margin: auto; background-color: #f0f9ff; border-radius: 10px;">
 
   <h2 style="color: #0077b6;">🔍 Khám phá về Giới tính</h2>
   <p style="font-size: 18px; line-height: 1.6; color: #333;">
@@ -46,5 +57,21 @@
       <li>Tham gia hoạt động tương tác: <a href="trochoigioitinh.html">Kéo thả khái niệm giới</a>.</li>
     </ul>
   </section>
-
 </main>
+   <div id="footer"></div>
+
+  <script>
+    // Tự động tải header + footer vào mỗi trang
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+<!-- Thêm link font-awesome để hiển thị icon mạng xã hội -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</body>
+</html>
