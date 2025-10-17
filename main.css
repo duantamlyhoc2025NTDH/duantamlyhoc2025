@@ -418,3 +418,59 @@ nav > ul > li > a:hover {
     flex-wrap: wrap;
   }
 }
+/* ===== HEADER RESPONSIVE ===== */
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    background-color: #b30000;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Dropdown trong mobile */
+  .dropdown-content {
+    position: static;
+    display: none;
+    background-color: #a00000;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content li a {
+    display: block;
+    padding: 5px 20px;
+  }
+}
