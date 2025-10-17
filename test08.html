@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Tư duy Logic</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #cceeff, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0077cc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f0faff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0077cc;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #e0f7ff;
+      border: 1px solid #0077cc;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Tư duy Logic</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+
+      <!-- Câu hỏi sẽ được tạo bằng JavaScript -->
+      <div id="questions"></div>
+
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Tư duy logic là gì?",
+        options: ["Khả năng ghi nhớ thông tin", "Khả năng cảm nhận âm thanh", "Khả năng suy luận và phân tích", "Khả năng học ngôn ngữ"],
+        correct: 2,
+        explain: "Tư duy logic là khả năng suy luận, phân tích và giải quyết vấn đề một cách hợp lý."
+      },
+      {
+        q: "Dãy số nào có quy luật tăng gấp đôi?",
+        options: ["2, 4, 6, 8", "1, 2, 4, 8", "3, 6, 9, 12", "5, 10, 15, 20"],
+        correct: 1,
+        explain: "Dãy 1, 2, 4, 8 tăng gấp đôi qua mỗi số."
+      },
+      {
+        q: "Nếu tất cả A là B, và tất cả B là C, thì A là gì?",
+        options: ["Là A", "Là B", "Là C", "Không xác định"],
+        correct: 2,
+        explain: "Theo suy luận logic, nếu A là B và B là C thì A là C."
+      },
+      {
+        q: "Một người có 4 con trai, mỗi con trai có 1 chị gái. Vậy người đó có bao nhiêu người con?",
+        options: ["4", "5", "8", "9"],
+        correct: 1,
+        explain: "Cả 4 con trai đều có chung 1 chị gái, nên tổng là 5 người con."
+      },
+      {
+        q: "Nếu hôm qua là ngày mai của ngày kia, thì hôm nay là thứ mấy?",
+        options: ["Thứ Hai", "Thứ Tư", "Thứ Sáu", "Chủ Nhật"],
+        correct: 1,
+        explain: "Suy luận ngược lại cho thấy hôm nay là thứ Tư."
+      },
+      {
+        q: "Số tiếp theo trong dãy: 3, 6, 12, 24, ... là?",
+        options: ["36", "48", "50", "60"],
+        correct: 1,
+        explain: "Dãy số nhân đôi, nên số tiếp theo là 48."
+      },
+      {
+        q: "Nếu xe đạp có 2 bánh, xe máy có 2 bánh, ô tô có 4 bánh, thì tổng số bánh của 2 xe máy và 1 ô tô là?",
+        options: ["6", "8", "10", "12"],
+        correct: 1,
+        explain: "2 xe máy = 4 bánh, 1 ô tô = 4 bánh, tổng cộng là 8 bánh."
+      },
+      {
+        q: "Chọn hình ảnh phản chiếu đúng của từ 'LOGIC' khi soi gương.",
+        options: ["CIGOL", "LOGIC", "COGIL", "LIGOC"],
+        correct: 0,
+        explain: "Phản chiếu gương của 'LOGIC' là 'CIGOL'."
+      },
+      {
+        q: "Nếu 5 người mất 5 phút để làm 5 sản phẩm, thì 1 người mất bao lâu để làm 1 sản phẩm?",
+        options: ["1 phút", "5 phút", "10 phút", "25 phút"],
+        correct: 1,
+        explain: "Tốc độ làm là 1 sản phẩm mỗi 5 phút cho mỗi người."
+      },
+      {
+        q: "Nếu bạn đi từ A đến B mất 30 phút, và từ B đến C mất gấp đôi thời gian, thì tổng thời gian là?",
+        options: ["30 phút", "60 phút", "90 phút", "120 phút"],
+        correct: 2,
+        explain: "Từ A đến B là 30 phút, B đến C là 60 phút, tổng là 90 phút."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    <script>
+  function calculateScore() {
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value.trim();
+    const gender = document.getElementById("gender").value.trim();
+    if (!name || !age || !gender) {
+      alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+      return;
+    }
+
+    let score = 0;
+    let feedback = "";
+    questions.forEach((item, index) => {
+      const answer = document.querySelector(`input[name="q${index}"]:checked`);
+      if (answer) {
+        const val = parseInt(answer.value);
+        if (val === item.correct) {
+          score++;
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+        }
+      } else {
+        feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+      }
+    });
+
+    let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+    resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+    if (score <= 3) {
+      resultText += "<p>📘 <strong>Tư duy logic chưa rõ ràng:</strong> Bạn cần rèn luyện thêm khả năng suy luận và phân tích.</p>";
+    } else if (score <= 7) {
+      resultText += "<p>📗 <strong>Tư duy logic ở mức cơ bản:</strong> Bạn đã có nền tảng nhưng cần luyện tập thêm để phản xạ tốt hơn.</p>";
+    } else {
+      resultText += "<p>📕 <strong>Tư duy logic tốt:</strong> Bạn có khả năng suy luận và xử lý thông tin hiệu quả. Hãy phát huy nhé!</p>";
+    }
+
+    document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+  }
+</script>
+</body>
+</html>
