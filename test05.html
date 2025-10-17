@@ -1,0 +1,88 @@
+<main style="font-family: 'Segoe UI', sans-serif; padding: 40px; max-width: 800px; margin: auto; background-color: #fff8e1; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+  <h2 style="color: #e65100; text-align: center;">🌱 Trắc nghiệm Tâm lý Tuổi Dậy thì</h2>
+  <p style="font-size: 18px; line-height: 1.6; color: #333; text-align: center;">
+    Bài trắc nghiệm này giúp bạn nhận diện mức độ hiểu biết và cảm xúc của mình trong giai đoạn dậy thì. Mỗi câu chỉ có một đáp án đúng. Sau khi hoàn thành, bạn sẽ nhận được kết quả đánh giá tổng quan.
+  </p>
+
+  <form id="quizForm" style="margin-top: 30px;">
+    <fieldset style="border: 1px solid #ffcc80; padding: 20px; border-radius: 8px; background-color: #fff3e0;">
+      <legend style="font-weight: bold; color: #e65100;">Thông tin người làm bài</legend>
+      <label>👤 Họ tên: <input type="text" id="username" required style="margin-left: 10px; padding: 5px;"></label><br><br>
+      <label>🎂 Tuổi: <input type="number" id="age" min="12" required style="margin-left: 10px; padding: 5px;"></label>
+    </fieldset>
+
+    <div class="question" style="margin-top: 30px;">
+      <p><strong>1. Tuổi dậy thì thường bắt đầu từ khoảng bao nhiêu tuổi?</strong></p>
+      <label><input type="radio" name="q1" value="0"> 6–8 tuổi</label><br>
+      <label><input type="radio" name="q1" value="1"> 9–12 tuổi</label><br>
+      <label><input type="radio" name="q1" value="0"> 13–15 tuổi</label><br>
+      <label><input type="radio" name="q1" value="0"> Trên 16 tuổi</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>2. Dấu hiệu nào sau đây là đặc trưng của dậy thì ở nam?</strong></p>
+      <label><input type="radio" name="q2" value="0"> Phát triển ngực</label><br>
+      <label><input type="radio" name="q2" value="1"> Vỡ giọng</label><br>
+      <label><input type="radio" name="q2" value="0"> Có kinh nguyệt</label><br>
+      <label><input type="radio" name="q2" value="0"> Tăng mỡ cơ thể</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>3. Tâm lý tuổi dậy thì thường có đặc điểm nào?</strong></p>
+      <label><input type="radio" name="q3" value="0"> Ổn định cảm xúc</label><br>
+      <label><input type="radio" name="q3" value="1"> Dễ cáu gắt và nhạy cảm</label><br>
+      <label><input type="radio" name="q3" value="0"> Không thay đổi gì</label><br>
+      <label><input type="radio" name="q3" value="0"> Luôn vui vẻ</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>4. Dậy thì sớm có thể gây ra điều gì ở học sinh?</strong></p>
+      <label><input type="radio" name="q4" value="0"> Tăng sự tự tin</label><br>
+      <label><input type="radio" name="q4" value="1"> Mặc cảm và lo âu</label><br>
+      <label><input type="radio" name="q4" value="0"> Không ảnh hưởng gì</label><br>
+      <label><input type="radio" name="q4" value="0"> Phát triển trí tuệ vượt trội</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>5. Cách tốt nhất để hỗ trợ học sinh tuổi dậy thì là gì?</strong></p>
+      <label><input type="radio" name="q5" value="0"> Phớt lờ cảm xúc</label><br>
+      <label><input type="radio" name="q5" value="1"> Lắng nghe và tôn trọng</label><br>
+      <label><input type="radio" name="q5" value="0"> So sánh với người khác</label><br>
+      <label><input type="radio" name="q5" value="0"> Ép buộc thay đổi</label>
+    </div>
+
+    <button type="button" onclick="calculateScore()" style="margin-top: 30px; padding: 12px 24px; background-color: #ff9800; color: white; border: none; border-radius: 6px; font-size: 16px;">🔍 Xem kết quả</button>
+  </form>
+
+  <div id="result" style="margin-top: 40px; font-size: 18px; color: #333; background-color: #fff3e0; padding: 20px; border-radius: 8px;"></div>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username").value.trim();
+      const age = document.getElementById("age").value.trim();
+      if (!name || !age) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi)</p>`;
+      if (score <= 1) {
+        resultText += "<p>📘 <strong>Nhận thức chưa đầy đủ:</strong> Bạn cần tìm hiểu thêm về những thay đổi thể chất và tâm lý trong tuổi dậy thì.</p>";
+      } else if (score <= 3) {
+        resultText += "<p>📗 <strong>Nhận thức cơ bản:</strong> Bạn đã có một số hiểu biết nhưng vẫn còn lúng túng. Hãy tiếp tục học hỏi và chia sẻ.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn hiểu rõ về tuổi dậy thì và biết cách chăm sóc bản thân. Tiếp tục phát triển nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</main>
+</body>
+</html>
