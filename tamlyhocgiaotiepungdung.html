@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tâm Lý Học Giới Tính</title>
+  <link rel="stylesheet" href="main.css">
+  <style>
+    </style>
+</head>
+<body>
+  <div id="header"></div>
+<main style="font-family: Arial, sans-serif; padding: 40px; max-width: 900px; margin: auto; background-color: #e0f7fa; border-radius: 10px;">
+  <h2 style="color: #00796b;">Tâm Lý Học Ứng Dụng / Phát Triển Bản Thân</h2>
+  <p style="font-size: 18px; line-height: 1.6; color: #333;">
+    Tâm lý học ứng dụng giúp con người hiểu rõ bản thân, phát triển kỹ năng sống và xây dựng mối quan hệ lành mạnh. Đây là nền tảng để sống tích cực, làm việc hiệu quả và kết nối sâu sắc với cộng đồng.
+  </p>
+
+  <section style="margin-top: 40px;">
+    <h3 style="color: #004d40;">1️⃣ Hiểu rõ tư duy tích cực</h3>
+    <p style="font-size: 17px; line-height: 1.6; color: #444;">
+      Tư duy tích cực không phải là phủ nhận khó khăn, mà là cách nhìn nhận vấn đề với sự chủ động và hy vọng. Khi rèn luyện tư duy tích cực, bạn sẽ:
+      <ul style="margin-top: 10px;">
+        <li>Biết cách chuyển hóa thất bại thành bài học</li>
+        <li>Giữ thái độ lạc quan trong hoàn cảnh khó khăn</li>
+        <li>Nuôi dưỡng lòng biết ơn và sự kiên nhẫn</li>
+        <li>Giảm căng thẳng và tăng khả năng phục hồi tâm lý</li>
+      </ul>
+    </p>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <h3 style="color: #004d40;">2️⃣ Kỹ năng sống cần thiết</h3>
+    <p style="font-size: 17px; line-height: 1.6; color: #444;">
+      Kỹ năng sống là tập hợp những năng lực giúp bạn thích nghi, giải quyết vấn đề và phát triển trong môi trường xã hội. Một số kỹ năng quan trọng:
+      <ul style="margin-top: 10px;">
+        <li>Kỹ năng giao tiếp và lắng nghe</li>
+        <li>Kỹ năng quản lý thời gian và mục tiêu</li>
+        <li>Kỹ năng ra quyết định và giải quyết xung đột</li>
+        <li>Kỹ năng tự nhận thức và kiểm soát cảm xúc</li>
+      </ul>
+    </p>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <h3 style="color: #004d40;">3️⃣ Tâm lý trong công việc</h3>
+    <p style="font-size: 17px; line-height: 1.6; color: #444;">
+      Tâm lý học ứng dụng trong công việc giúp bạn hiểu rõ động lực, hành vi và cách ứng xử trong môi trường nghề nghiệp:
+      <ul style="margin-top: 10px;">
+        <li>Hiểu rõ giá trị cá nhân và định hướng nghề nghiệp</li>
+        <li>Quản lý áp lực và cân bằng công việc – cuộc sống</li>
+        <li>Phát triển kỹ năng hợp tác và làm việc nhóm</li>
+        <li>Thúc đẩy sự sáng tạo và hiệu suất làm việc</li>
+      </ul>
+    </p>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <h3 style="color: #004d40;">4️⃣ Xây dựng kết nối lành mạnh giữa người với người</h3>
+    <p style="font-size: 17px; line-height: 1.6; color: #444;">
+      Mối quan hệ lành mạnh là nền tảng của sự phát triển cá nhân và xã hội. Tâm lý học giúp bạn:
+      <ul style="margin-top: 10px;">
+        <li>Hiểu và tôn trọng ranh giới cá nhân</li>
+        <li>Thực hành sự đồng cảm và thấu hiểu</li>
+        <li>Giao tiếp chân thành và không phán xét</li>
+        <li>Xây dựng niềm tin và sự gắn kết bền vững</li>
+      </ul>
+    </p>
+  </section>
+</main>
+  <div id="footer"></div>
+
+  <script>
+    // Tự động tải header + footer vào mỗi trang
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
+
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
+
+<!-- Thêm link font-awesome để hiển thị icon mạng xã hội -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</body>
+</html>
