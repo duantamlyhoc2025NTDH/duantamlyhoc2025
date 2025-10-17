@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Tư duy Phản biện</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #ffe0b2, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ef6c00;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff3e0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #ef6c00;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #ffe0b2;
+      border: 1px solid #ef6c00;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #ef6c00;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #e65100;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Tư duy Phản biện</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+      <div id="questions"></div>
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Tư duy phản biện là gì?",
+        options: ["Phản bác mọi ý kiến", "Đánh giá thông tin một cách logic", "Tin vào trực giác", "Làm theo số đông"],
+        correct: 1,
+        explain: "Tư duy phản biện là khả năng đánh giá thông tin một cách logic và có cơ sở."
+      },
+      {
+        q: "Câu nào sau đây là lỗi lập luận phổ biến?",
+        options: ["Sử dụng bằng chứng", "Tấn công cá nhân", "Phân tích dữ liệu", "Trình bày khách quan"],
+        correct: 1,
+        explain: "Tấn công cá nhân là một lỗi lập luận phổ biến, không phản biện nội dung mà công kích người nói."
+      },
+      {
+        q: "Khi đọc một bài viết, bạn nên làm gì để phản biện hiệu quả?",
+        options: ["Chỉ đọc tiêu đề", "Tìm lỗi chính tả", "Xác định luận điểm và bằng chứng", "Tìm người viết là ai"],
+        correct: 2,
+        explain: "Phân tích luận điểm và bằng chứng là bước quan trọng trong tư duy phản biện."
+      },
+      {
+        q: "Câu nào sau đây là một ví dụ của suy luận sai?",
+        options: ["Tôi ăn táo nên tôi khỏe", "Táo chứa vitamin nên tốt cho sức khỏe", "Tôi khỏe vì tôi tập thể dục", "Táo là một loại trái cây"],
+        correct: 0,
+        explain: "Câu 'Tôi ăn táo nên tôi khỏe' là suy luận thiếu bằng chứng rõ ràng."
+      },
+      {
+        q: "Tư duy phản biện giúp bạn làm gì?",
+        options: ["Tin vào mọi thứ", "Ra quyết định dựa trên cảm xúc", "Đánh giá và chọn lọc thông tin", "Tránh đặt câu hỏi"],
+        correct: 2,
+        explain: "Tư duy phản biện giúp bạn đánh giá và chọn lọc thông tin một cách hợp lý."
+      },
+      {
+        q: "Khi gặp thông tin gây tranh cãi, bạn nên?",
+        options: ["Chia sẻ ngay", "Phân tích nguồn và độ tin cậy", "Tin theo bạn bè", "Bỏ qua"],
+        correct: 1,
+        explain: "Phân tích nguồn và độ tin cậy là bước đầu tiên trong phản biện thông tin."
+      },
+      {
+        q: "Câu nào sau đây thể hiện tư duy phản biện?",
+        options: ["Tôi không thích nên nó sai", "Tôi cần thêm bằng chứng để tin", "Mọi người đều nói vậy", "Tôi thấy hợp lý nên đúng"],
+        correct: 1,
+        explain: "Người có tư duy phản biện sẽ yêu cầu thêm bằng chứng trước khi tin."
+      },
+      {
+        q: "Một người có tư duy phản biện thường?",
+        options: ["Tránh tranh luận", "Chấp nhận mọi ý kiến", "Đặt câu hỏi và kiểm chứng", "Tin vào cảm xúc"],
+        correct: 2,
+        explain: "Người có tư duy phản biện thường đặt câu hỏi và kiểm chứng thông tin."
+      },
+      {
+        q: "Khi bạn phản biện một ý kiến, điều quan trọng là?",
+        options: ["Giữ thái độ tôn trọng", "Cố gắng thắng tranh luận", "Làm người khác bối rối", "Phủ nhận mọi thứ"],
+        correct: 0,
+        explain: "Phản biện hiệu quả cần giữ thái độ tôn trọng và tập trung vào nội dung."
+      },
+      {
+        q: "Tư duy phản biện có thể rèn luyện bằng cách?",
+        options: ["Đọc nhiều nguồn khác nhau", "Tránh tiếp xúc thông tin", "Chỉ tin vào một người", "Không đặt câu hỏi"],
+        correct: 0,
+        explain: "Đọc nhiều nguồn và so sánh là cách rèn luyện tư duy phản biện."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function calculateScore() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      let feedback = "";
+      questions.forEach((item, index) => {
+        const answer = document.querySelector(`input[name="q${index}"]:checked`);
+        if (answer) {
+          const val = parseInt(answer.value);
+          if (val === item.correct) {
+            score++;
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+          } else {
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+          }
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+        }
+      });
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+      resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+            if (score <= 3) {
+        resultText += "<p>📘 <strong>Tư duy phản biện chưa rõ ràng:</strong> Bạn cần luyện tập thêm khả năng phân tích và đánh giá thông tin.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Tư duy phản biện ở mức cơ bản:</strong> Bạn đã có nền tảng nhưng cần rèn luyện thêm để phản biện hiệu quả hơn.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Tư duy phản biện tốt:</strong> Bạn có khả năng phân tích, đặt câu hỏi và đánh giá thông tin một cách logic. Tuyệt vời!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+    }
+  </script>
+</body>
+</html>
