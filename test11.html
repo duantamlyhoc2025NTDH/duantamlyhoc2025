@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Ra Quyết Định</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #c8e6c9, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #e8f5e9;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2e7d32;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #dcedc8;
+      border: 1px solid #2e7d32;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Ra Quyết Định</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+      <div id="questions"></div>
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Khi phải chọn giữa hai cơ hội tốt, bạn nên?",
+        options: ["Chọn ngẫu nhiên", "Phân tích ưu – nhược điểm", "Hỏi người khác chọn giúp", "Trì hoãn quyết định"],
+        correct: 1,
+        explain: "Phân tích ưu – nhược điểm giúp bạn đưa ra lựa chọn có cơ sở."
+      },
+      {
+        q: "Khi bị áp lực thời gian, bạn thường?",
+        options: ["Quyết định vội vàng", "Không quyết định gì", "Tập trung vào thông tin quan trọng", "Chọn theo cảm xúc"],
+        correct: 2,
+        explain: "Tập trung vào thông tin quan trọng giúp bạn ra quyết định hiệu quả dưới áp lực."
+      },
+      {
+        q: "Yếu tố nào ảnh hưởng lớn đến quyết định cá nhân?",
+        options: ["Cảm xúc", "Thời tiết", "Màu sắc", "Thức ăn"],
+        correct: 0,
+        explain: "Cảm xúc có thể làm lệch hướng đánh giá và lựa chọn."
+      },
+      {
+        q: "Khi có quá nhiều lựa chọn, bạn nên?",
+        options: ["Chọn đại một cái", "Lo lắng và bỏ qua", "Thu hẹp tiêu chí", "Chờ người khác quyết định"],
+        correct: 2,
+        explain: "Thu hẹp tiêu chí giúp bạn dễ dàng so sánh và chọn lựa."
+      },
+      {
+        q: "Quyết định tốt thường dựa trên?",
+        options: ["Sự phân tích và dữ liệu", "Ý kiến số đông", "Cảm giác cá nhân", "Sự may mắn"],
+        correct: 0,
+        explain: "Phân tích và dữ liệu là nền tảng của quyết định hợp lý."
+      },
+      {
+        q: "Khi bạn sai lầm trong quyết định, bạn nên?",
+        options: ["Đổ lỗi cho người khác", "Tự trách bản thân", "Phân tích nguyên nhân và học hỏi", "Giấu đi và không nhắc lại"],
+        correct: 2,
+        explain: "Phân tích sai lầm giúp bạn cải thiện kỹ năng ra quyết định."
+      },
+      {
+        q: "Bạn nên ra quyết định khi?",
+        options: ["Thiếu thông tin", "Đang tức giận", "Có đủ dữ liệu và thời gian suy nghĩ", "Bị ép buộc"],
+        correct: 2,
+        explain: "Quyết định nên được đưa ra khi bạn có đủ thông tin và tâm lý ổn định."
+      },
+      {
+        q: "Khi người khác không đồng ý với quyết định của bạn, bạn nên?",
+        options: ["Tranh cãi đến cùng", "Lắng nghe và cân nhắc lại", "Bỏ qua ý kiến họ", "Thay đổi ngay lập tức"],
+        correct: 1,
+        explain: "Lắng nghe giúp bạn mở rộng góc nhìn và điều chỉnh nếu cần."
+      },
+      {
+        q: "Quyết định nhóm hiệu quả cần?",
+        options: ["Một người ra lệnh", "Thảo luận và đồng thuận", "Bỏ phiếu ngẫu nhiên", "Tránh tranh luận"],
+        correct: 1,
+        explain: "Thảo luận và đồng thuận giúp nhóm ra quyết định hợp lý và gắn kết."
+      },
+      {
+        q: "Ra quyết định tốt giúp bạn?",
+        options: ["Tránh mọi rủi ro", "Không bao giờ sai", "Phát triển bản thân và trách nhiệm", "Không cần suy nghĩ"],
+        correct: 2,
+        explain: "Ra quyết định tốt giúp bạn trưởng thành và có trách nhiệm hơn."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function calculateScore() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      let feedback = "";
+      questions.forEach((item, index) => {
+        const answer = document.querySelector(`input[name="q${index}"]:checked`);
+        if (answer) {
+          const val = parseInt(answer.value);
+          if (val === item.correct) {
+            score++;
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+          } else {
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+          }
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+        }
+      });
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+      resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+         if (score <= 3) {
+        resultText += "<p>📘 <strong>Kỹ năng ra quyết định chưa rõ ràng:</strong> Bạn cần luyện tập thêm khả năng phân tích và lựa chọn trong các tình huống thực tế.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Kỹ năng ra quyết định ở mức cơ bản:</strong> Bạn đã có nền tảng nhưng cần rèn luyện thêm để đưa ra lựa chọn hiệu quả hơn.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Kỹ năng ra quyết định tốt:</strong> Bạn có khả năng phân tích, cân nhắc và lựa chọn hợp lý. Hãy phát huy nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+    }
+  </script>
+</body>
+</html>
