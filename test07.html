@@ -1,0 +1,86 @@
+<main style="font-family: 'Segoe UI', sans-serif; padding: 40px; max-width: 800px; margin: auto; background-color: #fce4ec; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+  <h2 style="color: #ad1457; text-align: center;">💞 Trắc nghiệm Tình yêu tuổi học trò</h2>
+  <p style="font-size: 18px; line-height: 1.6; color: #333; text-align: center;">
+    Bài trắc nghiệm giúp bạn nhận diện cảm xúc, phân biệt tình bạn – tình yêu – sự hấp dẫn giới tính và hiểu đúng về mối quan hệ lành mạnh. Mỗi câu chỉ có một đáp án đúng. Sau khi hoàn thành, bạn sẽ nhận được kết quả đánh giá tổng quan.
+  </p>
+
+  <form id="quizForm" style="margin-top: 30px;">
+    <fieldset style="border: 1px solid #f8bbd0; padding: 20px; border-radius: 8px; background-color: #fce4ec;">
+      <legend style="font-weight: bold; color: #ad1457;">Thông tin người làm bài</legend>
+      <label>👤 Họ tên: <input type="text" id="username" required style="margin-left: 10px; padding: 5px;"></label><br><br>
+      <label>🎂 Tuổi: <input type="number" id="age" min="12" required style="margin-left: 10px; padding: 5px;"></label>
+    </fieldset>
+
+    <div class="question" style="margin-top: 30px;">
+      <p><strong>1. Tình bạn khác tình yêu ở điểm nào?</strong></p>
+      <label><input type="radio" name="q1" value="0"> Không có sự gắn bó</label><br>
+      <label><input type="radio" name="q1" value="1"> Không có cảm xúc lãng mạn</label><br>
+      <label><input type="radio" name="q1" value="0"> Không có sự quan tâm</label><br>
+      <label><input type="radio" name="q1" value="0"> Không có sự chia sẻ</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>2. Dấu hiệu nào cho thấy bạn đang bị hấp dẫn giới tính?</strong></p>
+      <label><input type="radio" name="q2" value="0"> Muốn chia sẻ tâm sự</label><br>
+      <label><input type="radio" name="q2" value="0"> Cảm thấy thân thiết như anh em</label><br>
+      <label><input type="radio" name="q2" value="1"> Bị thu hút về mặt thể chất</label><br>
+      <label><input type="radio" name="q2" value="0"> Thường giúp đỡ nhau trong học tập</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>3. Trong mối quan hệ lành mạnh, điều nào sau đây là quan trọng nhất?</strong></p>
+      <label><input type="radio" name="q3" value="0"> Ép buộc người kia thay đổi</label><br>
+      <label><input type="radio" name="q3" value="1"> Tôn trọng ranh giới cá nhân</label><br>
+      <label><input type="radio" name="q3" value="0"> Luôn đồng ý mọi yêu cầu</label><br>
+      <label><input type="radio" name="q3" value="0"> Giữ bí mật mọi cảm xúc</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>4. Tình dục an toàn bao gồm điều nào sau đây?</strong></p>
+      <label><input type="radio" name="q4" value="0"> Không cần dùng biện pháp tránh thai</label><br>
+      <label><input type="radio" name="q4" value="0"> Chỉ cần yêu là đủ</label><br>
+      <label><input type="radio" name="q4" value="1"> Sử dụng bao cao su đúng cách</label><br>
+      <label><input type="radio" name="q4" value="0"> Giấu kín mọi hành vi tình dục</label>
+    </div>
+
+    <div class="question" style="margin-top: 20px;">
+      <p><strong>5. Khi chưa sẵn sàng cho mối quan hệ tình cảm, bạn nên làm gì?</strong></p>
+      <label><input type="radio" name="q5" value="0"> Im lặng và chịu đựng</label><br>
+      <label><input type="radio" name="q5" value="1"> Nói rõ cảm xúc và từ chối</label><br>
+      <label><input type="radio" name="q5" value="0"> Chấp nhận để không mất bạn</label><br>
+      <label><input type="radio" name="q5" value="0"> Giả vờ đồng ý</label>
+    </div>
+
+    <button type="button" onclick="calculateScore()" style="margin-top: 30px; padding: 12px 24px; background-color: #e91e63; color: white; border: none; border-radius: 6px; font-size: 16px;">🔍 Xem kết quả</button>
+  </form>
+
+  <div id="result" style="margin-top: 40px; font-size: 18px; color: #333; background-color: #fce4ec; padding: 20px; border-radius: 8px;"></div>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username").value.trim();
+      const age = document.getElementById("age").value.trim();
+      if (!name || !age) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      for (let i = 1; i <= 5; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi)</p>`;
+      if (score <= 1) {
+        resultText += "<p>📘 <strong>Nhận thức chưa đầy đủ:</strong> Bạn cần tìm hiểu thêm về cảm xúc, giới tính và cách xây dựng mối quan hệ lành mạnh.</p>";
+      } else if (score <= 3) {
+        resultText += "<p>📗 <strong>Nhận thức cơ bản:</strong> Bạn đã có một số hiểu biết nhưng vẫn còn lúng túng. Hãy tiếp tục học hỏi và chia sẻ với người thân, bạn bè.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn hiểu rõ về tình cảm tuổi học trò và biết cách tôn trọng bản thân cũng như người khác. Tiếp tục phát triển nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+</main>
