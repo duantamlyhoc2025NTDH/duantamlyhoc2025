@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Phong cách học</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #bbdefb, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1976d2;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #e3f2fd;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #1976d2;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #bbdefb;
+      border: 1px solid #1976d2;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Phong cách học</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+      <div id="questions"></div>
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Bạn học tốt nhất khi?",
+        options: ["Nghe giảng", "Xem hình ảnh", "Thực hành", "Đọc sách"],
+        correct: 2,
+        explain: "Người học vận động thường tiếp thu tốt qua thực hành."
+      },
+      {
+        q: "Bạn nhớ bài giảng khi?",
+        options: ["Giáo viên kể chuyện", "Có sơ đồ minh họa", "Được làm thử", "Có âm nhạc nền"],
+        correct: 1,
+        explain: "Người học hình ảnh ghi nhớ tốt qua sơ đồ, biểu đồ."
+      },
+      {
+        q: "Bạn thích học bằng cách nào?",
+        options: ["Nghe podcast", "Xem video", "Làm mô hình", "Đọc tài liệu"],
+        correct: 0,
+        explain: "Người học thính giác thích nghe để tiếp thu thông tin."
+      },
+      {
+        q: "Khi ôn bài, bạn thường?",
+        options: ["Vẽ sơ đồ", "Đọc to thành tiếng", "Di chuyển khi học", "Ghi chú bằng tay"],
+        correct: 0,
+        explain: "Vẽ sơ đồ là cách học của người thiên về hình ảnh."
+      },
+      {
+        q: "Bạn dễ hiểu bài khi?",
+        options: ["Có ví dụ thực tế", "Có hình minh họa", "Nghe giảng kỹ", "Tự làm bài tập"],
+        correct: 3,
+        explain: "Người học vận động hiểu bài qua trải nghiệm thực tế."
+      },
+      {
+        q: "Bạn ghi nhớ từ mới bằng cách?",
+        options: ["Nghe phát âm", "Viết ra giấy", "Nhìn hình ảnh", "Dùng trong câu"],
+        correct: 0,
+        explain: "Người học thính giác ghi nhớ tốt qua âm thanh."
+      },
+      {
+        q: "Bạn thấy hứng thú khi học?",
+        options: ["Có hoạt động nhóm", "Có hình ảnh sinh động", "Có âm thanh", "Được tự làm"],
+        correct: 3,
+        explain: "Người học vận động thích tham gia trực tiếp vào quá trình học."
+      },
+      {
+        q: "Bạn thường ghi nhớ thông tin khi?",
+        options: ["Nghe người khác nói", "Tự đọc và tưởng tượng", "Vẽ lại bằng hình ảnh", "Thử làm nhiều lần"],
+        correct: 2,
+        explain: "Người học hình ảnh ghi nhớ tốt qua minh họa trực quan."
+      },
+      {
+        q: "Bạn học hiệu quả nhất khi?",
+        options: ["Nghe giảng", "Xem video", "Thực hành", "Đọc sách"],
+        correct: 2,
+        explain: "Thực hành giúp người học vận động tiếp thu nhanh và sâu."
+      },
+      {
+        q: "Bạn thích học nhóm khi?",
+        options: ["Được thảo luận", "Được trình bày", "Được làm thử", "Được nghe người khác nói"],
+        correct: 0,
+        explain: "Thảo luận là cách học hiệu quả với người thiên về giao tiếp và vận động."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function calculateScore() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      let feedback = "";
+      questions.forEach((item, index) => {
+        const answer = document.querySelector(`input[name="q${index}"]:checked`);
+        if (answer) {
+          const val = parseInt(answer.value);
+          if (val === item.correct) {
+            score++;
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+          } else {
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+          }
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+        }
+      });
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+      resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+      if (score <= 3) {
+        resultText += "<p>📘 <strong>Phong cách học chưa rõ ràng:</strong> Bạn cần thử nhiều phương pháp học khác nhau để khám phá cách phù hợp nhất.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Phong cách học đang hình thành:</strong> Bạn đã có xu hướng học riêng, hãy tiếp tục thử nghiệm để tối ưu hóa.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Phong cách học rõ ràng:</strong> Bạn đã hiểu cách học phù hợp với mình. Hãy áp dụng thường xuyên để đạt hiệu quả cao!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+    }
+  </script>
+</body>
+</html>
