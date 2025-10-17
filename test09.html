@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Trí nhớ làm việc</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e1bee7, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #6a1b9a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f3e5f5;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #6a1b9a;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #ede7f6;
+      border: 1px solid #6a1b9a;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #4a148c;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Trí nhớ làm việc</h1>
+  </header>
+  <main>
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+      <div id="questions"></div>
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Bạn đọc dãy số: 7 – 2 – 9 – 4. Sau 10 giây, số thứ 3 là gì?",
+        options: ["2", "9", "4", "7"],
+        correct: 1,
+        explain: "Số thứ 3 trong dãy là 9."
+      },
+      {
+        q: "Bạn nghe: 'Mèo – Bút – Cửa – Xe'. Sau 5 giây, từ thứ hai là gì?",
+        options: ["Xe", "Cửa", "Bút", "Mèo"],
+        correct: 2,
+        explain: "Từ thứ hai là 'Bút'."
+      },
+      {
+        q: "Bạn nhìn thấy: 🔺🔵🟢⭐. Sau 8 giây, hình thứ tư là gì?",
+        options: ["⭐", "🔺", "🟢", "🔵"],
+        correct: 0,
+        explain: "Hình thứ tư là ⭐."
+      },
+      {
+        q: "Bạn đọc: 'Thứ Hai – Thứ Tư – Thứ Sáu – Chủ Nhật'. Sau 6 giây, ngày thứ ba là?",
+        options: ["Thứ Sáu", "Thứ Tư", "Thứ Hai", "Thứ Bảy"],
+        correct: 0,
+        explain: "Ngày thứ ba là Thứ Sáu."
+      },
+      {
+        q: "Bạn nghe: 'Xanh – Đỏ – Vàng – Tím'. Sau 7 giây, màu thứ nhất là?",
+        options: ["Đỏ", "Xanh", "Tím", "Vàng"],
+        correct: 1,
+        explain: "Màu đầu tiên là Xanh."
+      },
+      {
+        q: "Bạn đọc: 'Cá – Chim – Chó – Mèo'. Sau 10 giây, từ thứ tư là?",
+        options: ["Mèo", "Chó", "Cá", "Chim"],
+        correct: 0,
+        explain: "Từ thứ tư là Mèo."
+      },
+      {
+        q: "Bạn nhìn thấy: 3 – 6 – 9 – 12 – 15. Sau 5 giây, số thứ hai là?",
+        options: ["6", "9", "3", "12"],
+        correct: 0,
+        explain: "Số thứ hai là 6."
+      },
+      {
+        q: "Bạn nghe: 'Bánh – Sữa – Trứng – Nước'. Sau 6 giây, từ thứ ba là?",
+        options: ["Sữa", "Trứng", "Nước", "Bánh"],
+        correct: 1,
+        explain: "Từ thứ ba là Trứng."
+      },
+      {
+        q: "Bạn đọc: 'A – B – C – D – E'. Sau 4 giây, chữ thứ tư là?",
+        options: ["C", "D", "E", "B"],
+        correct: 1,
+        explain: "Chữ thứ tư là D."
+      },
+      {
+        q: "Bạn nhìn thấy: 🐶🐱🐭🐹. Sau 6 giây, hình thứ hai là?",
+        options: ["🐱", "🐶", "🐭", "🐹"],
+        correct: 0,
+        explain: "Hình thứ hai là 🐱."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function calculateScore() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      let feedback = "";
+      questions.forEach((item, index) => {
+        const answer = document.querySelector(`input[name="q${index}"]:checked`);
+        if (answer) {
+          const val = parseInt(answer.value);
+          if (val === item.correct) {
+            score++;
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+          } else {
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+          }
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+        }
+      });
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+      resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+      if (score <= 3) {
+        resultText += "<p>📘 <strong>Trí nhớ làm việc yếu:</strong> Bạn cần luyện tập thêm khả năng ghi nhớ và xử lý thông tin.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Trí nhớ làm việc trung bình:</strong> Bạn có nền tảng ổn, nên luyện thêm để tăng hiệu quả.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Trí nhớ làm việc tốt:</strong> Bạn có khả năng ghi nhớ và xử lý thông tin nhanh nhạy. Tuyệt vời!</p>";
+      }
+
+      document.getElementById("resultText += "<p>📕 <strong>Trí nhớ làm việc tốt:</strong> Bạn có khả năng ghi nhớ và xử lý thông tin nhanh nhạy. Tuyệt vời!</p>";
+
+      document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+    }
+  </script>
+</body>
+</html>
