@@ -8,61 +8,24 @@
       </style>
 </head>
 <body>
-  <header>
-    <img src="logo.png" alt="Logo" class="logo">
-     <nav>
-      <ul>
-        <li><a href="index.html">Trang Chủ</a></li>
-        <li><a href="about.html">Về Chúng Tôi</a></li>
-        <li><a href="test.html">Các Bài Test</a></li>
-        <li><a href="tamlyhocgioitinh.html">TLH Giới Tính</a></li>
-        <li><a href="tamlyhocnhanthuc.html">TLH Nhận Thức</a></li>
-        <li><a href="tamlyhocgiadinh.html">TLH Gia Đình</a></li>
-        <li><a href="tamlyhocxahoi.html">TLH Xã Hội</a></li>
-         <li><a href="tamlyhoccamxuc.html">TLH Cảm Xúc</a></li>
-         <li><a href="tamlyhocgiaotiepungdung.html">TLH Ứng Dụng</a></li>
-        <li><a href="contact.html">Liên Hệ</a></li>
-      </ul>
-    </nav>
-  </header>
+<div id="header"></div>
   <main>
      <h1>Tâm Lý Học Nhận Thức</h1>
   <p>Khám phá cách con người suy nghĩ, ghi nhớ và học hỏi.</p>
   </main>
 
-  <footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <img src="logo.png" alt="Logo" class="footer-logo">
-      <p>Website Tâm Lý Học cung cấp kiến thức, bài viết và các bài test giúp bạn hiểu sâu hơn về tâm lý con người và bản thân.</p>
-    </div>
+<div id="footer"></div>
 
-    <div class="footer-column">
-      <h3>Liên hệ</h3>
-      <p>Email: duantamlyhoc2025@gmail.com</p>
-      <p>Điện thoại: 0938 602 642</p>
-      <p>Địa chỉ: TP.HCM</p>
-    </div>
+  <script>
+    // Tự động tải header + footer vào mỗi trang
+    fetch('header.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('header').innerHTML = data);
 
-    <div class="footer-column">
-      <h3>Kết nối với chúng tôi</h3>
-      <div class="social-links">
-       <a href="https://www.facebook.com/profile.php?id=61581740106901" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://www.instagram.com/duantamlyhoc2025/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.youtube.com/@duantamlyhoc" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/@duantamlyhoc2025" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-      </div>
-    </div>
-
-    <div class="footer-column">
-      <ul class="footer-links">
-        <li><a href="about.html">Giới thiệu</a></li>
-        <li><a href="contact.html">Liên hệ</a></li>
-        <li><a href="privacy.html">Chính sách bảo mật</a></li>
-      </ul>
-    </div>
-  </div>
-</footer>
+    fetch('footer.html')
+      .then(res => res.text())
+      .then(data => document.getElementById('footer').innerHTML = data);
+  </script>
 
 <!-- Thêm link font-awesome để hiển thị icon mạng xã hội -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
