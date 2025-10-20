@@ -9,7 +9,7 @@ body {
 
 /* Header */
 header {
-  background-color: #b30000;
+  background-color: #A3282D;
   color: white;
   padding: 20px 40px; /* tăng khoảng cách để header cao hơn */
   display: flex;
@@ -468,102 +468,37 @@ nav > ul > li > a:hover {
   .menu-toggle {
     display: block;
   }
-}
 .banner {
-  background-image: url('2222.jpg');
+  background-image: url('https://cdn.pixabay.com/photo/2023/04/01/09/02/pastel-background-7893764_1280.png');
   background-size: cover;
   background-position: center;
-  height: 300px;
+  height: 380px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  color: #fff;
+  color: #4A148C; /* tím nhẹ dịu */
   font-size: 2.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-}
-
-
-.banner h1 {
-  font-size: 2.5rem;
-  margin: 0;
-  padding: 0 20px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
-
-/* Nền toàn site */
-body {
-  background-image: url('1111.jpg');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  background-opacity: 0.15; /* một số trình duyệt không hỗ trợ, có thể dùng overlay */
-}
-
-/* Đảm bảo menu mobile hoạt động */
-.navbar ul {
-  display: flex;
-  gap: 20px;
-}
-
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-    font-size: 28px;
-    cursor: pointer;
-    color: #fff;
-    position: absolute;
-    right: 20px;
-    top: 20px;
-  }
-
-  .navbar ul {
-    display: none;
-    flex-direction: column;
-    background-color: #7E57C2; /* tím lavender */
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    padding: 10px 0;
-  }
-
-  .navbar ul.active {
-    display: flex;
-  }
-
-  .navbar ul li {
-    margin: 8px 0;
-    text-align: center;
-  }
-}
-.banner {
+  font-weight: 600;
   position: relative;
-  background-image: url('images/2222.jpg');
-  background-size: cover;
-  background-position: center;
-  height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #fff;
-  font-size: 2.5rem;
-  font-weight: 700;
-  overflow: hidden;
 }
 
-.banner::after {
+/* lớp mờ phủ nhẹ để chữ nổi bật hơn */
+.banner::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.3); /* lớp phủ mờ nhẹ */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(3px);
 }
 
 .banner h1 {
   position: relative;
   z-index: 1;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
+
 
