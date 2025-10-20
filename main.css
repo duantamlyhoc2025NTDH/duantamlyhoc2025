@@ -4,7 +4,6 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(to bottom, #ff0000, #ffffff); /* đỏ trắng */
   color: #333;
 }
 
@@ -538,5 +537,33 @@ body {
     margin: 8px 0;
     text-align: center;
   }
+}
+.banner {
+  position: relative;
+  background-image: url('images/2222.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* lớp phủ mờ nhẹ */
+}
+
+.banner h1 {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
 }
 
