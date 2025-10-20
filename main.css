@@ -21,7 +21,7 @@ header {
 
 /* Logo */
 .logo {
-  height: 80px; /* tăng kích thước logo */
+  height: 150px; /* tăng kích thước logo */
   transition: transform 0.3s ease;
 }
 .logo:hover {
