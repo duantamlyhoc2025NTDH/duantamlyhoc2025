@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   async function loadLayout() {
     try {
       const [headerRes, footerRes] = await Promise.all([
-        fetch("/duantamlyhoc2025/header.html"),
-        fetch("/duantamlyhoc2025/footer.html")
+        fetch("header.html"),
+        fetch("footer.html")
       ]);
       if (!headerRes.ok || !footerRes.ok) throw new Error("Không tìm thấy layout");
 
