@@ -13,7 +13,7 @@ body {
 }
 /* Header */
 header {
-  background-color: #CAFOF8;
+  background-color: #CDB4DB;
   color: white;
   padding: 20px 40px;
   display: flex;
@@ -59,7 +59,7 @@ main {
 
 /* Footer */
 footer {
-  background-color: #0077B6;
+  background-color: #CDB4DB;
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -236,7 +236,7 @@ nav > ul > li > a:hover {
 
 /* Logo */
 .footer-logo {
-  width: 100px;
+  width: 150px;
   margin-bottom: 10px;
   display: block;
 }
