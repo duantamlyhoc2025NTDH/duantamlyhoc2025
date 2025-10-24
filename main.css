@@ -98,7 +98,7 @@ nav > ul > li > a:hover {
 /* ====== BANNER ====== */
 .banner {
   position: relative;
-  height: 50px;
+  height: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +120,7 @@ nav > ul > li > a:hover {
 }
 .banner {
   position: relative;
-  height: 50px !important;
+  height: 20px !important;
   background: linear-gradient(to right, #f7b6c8, #f9d0db) !important;
 }
 .banner h1 {
