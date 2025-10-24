@@ -476,3 +476,55 @@ nav > ul > li > a:hover {
     display: flex;
   }
 }
+/* Menu chính */
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar li {
+  position: relative;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  padding: 8px 12px;
+}
+
+/* Menu con */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #b22222; /* màu đỏ tone với header */
+  min-width: 200px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.dropdown-content li a {
+  display: block;
+  padding: 10px 16px;
+  color: white;
+  white-space: nowrap;
+}
+
+.dropdown-content li a:hover {
+  background-color: #a11c1c;
+}
+
+/* Hiển thị khi hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Cho mobile toggle */
+.navbar ul.show {
+  display: block;
+  flex-direction: column;
+}
