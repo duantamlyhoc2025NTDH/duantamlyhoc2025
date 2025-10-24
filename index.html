@@ -49,18 +49,8 @@
   <!-- FOOTER -->
   <div id="footer"></div>
 
-  <!-- SCRIPT LOAD HEADER + FOOTER -->
-  <script>
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data);
+ <script src="loadLayout.js"></script>
 
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
-  </script>
-
-  <!-- MENU TOGGLE -->
  
 </body>
 </html>
