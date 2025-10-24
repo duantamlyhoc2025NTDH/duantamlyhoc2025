@@ -577,3 +577,43 @@ nav > ul > li > a:hover {
 .special-btn:hover {
   background-color: #b32d6f;
 }
+/* ====== BỐ CỤC TRANG CHỦ ====== */
+.home-boxes {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: wrap; /* cho phép tự xuống hàng */
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.home-boxes .box {
+  flex: 1 1 30%; /* mỗi box chiếm 30% chiều rộng, tự co lại */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.home-boxes .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Box đặc biệt (VD: TLH Giới tính) */
+.home-boxes .box.special {
+  background: linear-gradient(135deg, #f48fb1, #ce93d8);
+  color: white;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .home-boxes {
+    flex-direction: column; /* xếp dọc khi màn hình nhỏ */
+  }
+
+  .home-boxes .box {
+    flex: 1 1 100%; /* full chiều rộng */
+  }
+}
