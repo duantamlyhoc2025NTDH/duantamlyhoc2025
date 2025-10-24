@@ -1,31 +1,22 @@
-// ===== LOAD HEADER + FOOTER CHỈ 1 LẦN =====
 document.addEventListener("DOMContentLoaded", () => {
-  // Hàm load layout
   async function loadLayout() {
     try {
-      // Load header + footer song song
       const [headerRes, footerRes] = await Promise.all([
-        fetch("header.html"),
-        fetch("footer.html")
+        fetch("/duantamlyhoc2025/header.html"),
+        fetch("/duantamlyhoc2025/footer.html")
       ]);
+      if (!headerRes.ok || !footerRes.ok) throw new Error("Không tìm thấy layout");
 
-      // Nếu fetch lỗi thì dừng
-      if (!headerRes.ok || !footerRes.ok) throw new Error("Không tìm thấy file layout");
-
-      // Gán nội dung
       const headerHTML = await headerRes.text();
       const footerHTML = await footerRes.text();
 
       const headerEl = document.getElementById("header");
       const footerEl = document.getElementById("footer");
-
       if (headerEl) headerEl.innerHTML = headerHTML;
       if (footerEl) footerEl.innerHTML = footerHTML;
 
-      // Sau khi header đã load, bind event menu
       const toggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".navbar ul");
-
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           menu.classList.toggle("show");
@@ -45,7 +36,5 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("❌ Lỗi khi load header/footer:", err);
     }
   }
-
-  // Gọi hàm
   loadLayout();
 });
