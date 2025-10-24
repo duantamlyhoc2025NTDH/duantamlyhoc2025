@@ -7,12 +7,20 @@
         <li><a href="index.html">Trang Chủ</a></li>
         <li><a href="about.html">Về Chúng Tôi</a></li>
         <li><a href="test.html">Các Bài Test</a></li>
-        <li><a href="tamlyhocgioitinh.html">TLH Giới Tính</a></li>
-        <li><a href="tamlyhocnhanthuc.html">TLH Nhận Thức</a></li>
-        <li><a href="tamlyhocgiadinh.html">TLH Gia Đình</a></li>
-        <li><a href="tamlyhocxahoi.html">TLH Xã Hội</a></li>
-        <li><a href="tamlyhoccamxuc.html">TLH Cảm Xúc</a></li>
-        <li><a href="tamlyhocgiaotiepungdung.html">TLH Ứng Dụng</a></li>
+
+        <!-- Gộp nhóm TLH vào menu xổ xuống -->
+        <li class="dropdown">
+          <a href="#">Các Loại Hình TLH ▾</a>
+          <ul class="dropdown-content">
+            <li><a href="tamlyhocgioitinh.html">TLH Giới Tính</a></li>
+            <li><a href="tamlyhocnhanthuc.html">TLH Nhận Thức</a></li>
+            <li><a href="tamlyhocgiadinh.html">TLH Gia Đình</a></li>
+            <li><a href="tamlyhocxahoi.html">TLH Xã Hội</a></li>
+            <li><a href="tamlyhoccamxuc.html">TLH Cảm Xúc</a></li>
+            <li><a href="tamlyhocgiaotiepungdung.html">TLH Ứng Dụng</a></li>
+          </ul>
+        </li>
+
         <li><a href="contact.html">Liên Hệ</a></li>
       </ul>
     </nav>
@@ -23,14 +31,13 @@
 <section class="banner">
   <h1>Hiểu tâm lý – hiểu chính mình</h1>
 </section>
+
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     const toggle = document.querySelector(".menu-toggle");
     const menu = document.querySelector(".navbar ul");
-
     toggle.addEventListener("click", function() {
       menu.classList.toggle("show");
     });
   });
 </script>
-
