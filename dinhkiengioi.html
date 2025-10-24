@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Tình Yêu Tuổi Học Trò</title>
+  <title>Định Kiến Giới </title>
   <link rel="stylesheet" href="main.css">
   <style>
     </style>
@@ -71,29 +71,8 @@
 </main>
  <div id="footer"></div>
 
-  <script>
-    // Tự động tải header + footer vào mỗi trang
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data);
+  <script src="loadLayout.js"></script>
 
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
-  </script>
-
-<!-- Thêm link font-awesome để hiển thị icon mạng xã hội -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.querySelector(".menu-toggle");
-    const menu = document.querySelector(".navbar ul");
-
-    toggle.addEventListener("click", function() {
-      menu.classList.toggle("show");
-    });
-  });
-</script>
 
 </body>
 </html>
