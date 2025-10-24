@@ -41,25 +41,8 @@
   </p>
 </main>
   <div id="footer"></div>
-  <script>
-    // Tự động tải header + footer vào mỗi trang
-    fetch('header.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('header').innerHTML = data);
-
-    fetch('footer.html')
-      .then(res => res.text())
-      .then(data => document.getElementById('footer').innerHTML = data);
-  </script>
-
-  
-<!-- Thêm link font-awesome để hiển thị icon mạng xã hội -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script>
-function toggleMenu() {
-  document.querySelector("nav ul").classList.toggle("active");
-}
-</script>
+  <script src="loadLayout.js"></script>
+   
 
 </body>
 </html>
