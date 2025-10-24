@@ -1,7 +1,11 @@
 <header>
   <div class="header-container">
     <img src="logo.png" alt="Logo" class="logo">
-    <div class="menu-toggle">☰</div>
+  <div class="menu-toggle" id="menuToggle">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
     <nav class="navbar">
       <ul>
         <li><a href="index.html">Trang Chủ</a></li>
@@ -33,11 +37,14 @@
 </section>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const toggle = document.querySelector(".menu-toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector("#menuToggle");
     const menu = document.querySelector(".navbar ul");
-    toggle.addEventListener("click", function() {
+
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("active");
       menu.classList.toggle("show");
     });
   });
 </script>
+
