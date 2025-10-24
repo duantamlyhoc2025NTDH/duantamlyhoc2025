@@ -1,12 +1,28 @@
 // ===== LOAD HEADER + FOOTER CHỈ 1 LẦN =====
 document.addEventListener("DOMContentLoaded", () => {
-  // Load header
-  fetch("header.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("header").innerHTML = data;
+  // Hàm load layout
+  async function loadLayout() {
+    try {
+      // Load header + footer song song
+      const [headerRes, footerRes] = await Promise.all([
+        fetch("header.html"),
+        fetch("footer.html")
+      ]);
 
-      // ✅ Sau khi header được load xong, gắn sự kiện menu toggle
+      // Nếu fetch lỗi thì dừng
+      if (!headerRes.ok || !footerRes.ok) throw new Error("Không tìm thấy file layout");
+
+      // Gán nội dung
+      const headerHTML = await headerRes.text();
+      const footerHTML = await footerRes.text();
+
+      const headerEl = document.getElementById("header");
+      const footerEl = document.getElementById("footer");
+
+      if (headerEl) headerEl.innerHTML = headerHTML;
+      if (footerEl) footerEl.innerHTML = footerHTML;
+
+      // Sau khi header đã load, bind event menu
       const toggle = document.querySelector(".menu-toggle");
       const menu = document.querySelector(".navbar ul");
 
@@ -17,7 +33,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // ✅ Dropdown cấp 2 (TLH)
       const dropdown = document.querySelector(".dropdown > a");
       const dropdownContent = document.querySelector(".dropdown-content");
       if (dropdown && dropdownContent) {
@@ -26,10 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
           dropdownContent.classList.toggle("show");
         });
       }
-    });
+    } catch (err) {
+      console.error("❌ Lỗi khi load header/footer:", err);
+    }
+  }
 
-  // Load footer
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => document.getElementById("footer").innerHTML = data);
+  // Gọi hàm
+  loadLayout();
 });
