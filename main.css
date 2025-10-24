@@ -116,6 +116,14 @@ nav > ul > li > a:hover {
   border-radius: 12px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
+.banner {
+  position: relative;
+  height: 90px !important;
+  background: linear-gradient(to right, #f7b6c8, #f9d0db) !important;
+}
+.banner h1 {
+  font-size: 2rem !important;
+}
 
 
 /* ====== PHẦN TEST ====== */
