@@ -1,5 +1,9 @@
 /* Font nhẹ nhàng, hiện đại */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+html, body {
+  background-color: #A3282D; /* hoặc màu nền header/banner của chị */
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -568,9 +572,10 @@ nav > ul > li > a:hover {
 }
 body {
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.4s ease-in-out;
 }
 
 body.loaded {
   opacity: 1;
 }
+
