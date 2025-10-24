@@ -108,16 +108,15 @@ nav > ul > li > a:hover {
 }
 
 .banner h1 {
-  position: relative;
-  z-index: 1;
-  font-size: 2.4rem;
+  font-size: 2rem; /* nhỏ nhẹ lại 1 chút */
   font-weight: 600;
   color: #6A1B9A;
-  background: rgba(255, 255, 255, 0.8);
-  padding: 16px 30px;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+  padding: 10px 24px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
+
 
 /* ====== PHẦN TEST ====== */
 .tests {
