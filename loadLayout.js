@@ -26,3 +26,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.error("❌ Lỗi load header/footer:", err);
   }
 });
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});
