@@ -12,7 +12,7 @@ body {
 }
 /* Header */
 header {
-  background-color: #FF6B35;
+  background-color: #FF0000;
   color: white;
   padding: 20px 40px;
   display: flex;
@@ -425,7 +425,7 @@ nav > ul > li > a:hover {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: #b22222;
+  background-color: #FFCC99;
   min-width: 200px;
   border-radius: 8px;
   z-index: 1000;
