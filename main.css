@@ -1,7 +1,7 @@
 /* Font nhẹ nhàng, hiện đại */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 html, body {
-  background-color: #A3282D; /* hoặc màu nền header/banner của chị */
+  background-color: #03045E; /* hoặc màu nền header/banner của chị */
 }
 
 body {
@@ -13,7 +13,7 @@ body {
 }
 /* Header */
 header {
-  background-color: #A3282D;
+  background-color: #CAFOF8;
   color: white;
   padding: 20px 40px;
   display: flex;
@@ -59,7 +59,7 @@ main {
 
 /* Footer */
 footer {
-  background-color: #b30000;
+  background-color: #0077B6;
   color: white;
   text-align: center;
   padding: 10px 0;
@@ -112,7 +112,7 @@ nav > ul > li > a:hover {
 .banner h1 {
   font-size: 2rem; /* nhỏ nhẹ lại 1 chút */
   font-weight: 600;
-  color: #6A1B9A;
+  color: #90E0EF;
   background: rgba(255, 255, 255, 0.75);
   padding: 10px 24px;
   border-radius: 12px;
@@ -131,7 +131,7 @@ nav > ul > li > a:hover {
 /* ====== PHẦN TEST ====== */
 .tests {
   padding: 40px;
-  background-color: #fff6f6;
+  background-color: #ffC8DD;
   font-family: 'Inter', sans-serif;
 }
 
