@@ -96,14 +96,14 @@ nav > ul > li > a:hover {
 /* ====== BANNER ====== */
 .banner {
   position: relative;
-  height: 120px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #4A148C;
-  background: linear-gradient(to right, rgba(255,255,255,0.85), rgba(255,240,250,0.9));
-  border-bottom: 3px solid #A3282D;
+  background: linear-gradient(to right, #f7b6c8, #f9d0db); /* pastel hồng nhẹ */
+  border-bottom: 2px solid #A3282D; /* viền mảnh lại cho thanh hơn */
   backdrop-filter: blur(3px);
 }
 
