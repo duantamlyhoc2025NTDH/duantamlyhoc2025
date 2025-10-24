@@ -1,7 +1,7 @@
 /* Font nhẹ nhàng, hiện đại */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 html, body {
-  background-color: #03045E; /* hoặc màu nền header/banner của chị */
+  background-color: #CDB4DB; /* hoặc màu nền header/banner của chị */
 }
 
 body {
@@ -103,7 +103,7 @@ nav > ul > li > a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #4A148C;
+  color:  #FFC59F;
   background: linear-gradient(to right, #f7b6c8, #f9d0db); /* pastel hồng nhẹ */
   border-bottom: 2px solid #A3282D; /* viền mảnh lại cho thanh hơn */
   backdrop-filter: blur(3px);
