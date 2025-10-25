@@ -125,6 +125,30 @@ nav > ul > li > a:hover {
   max-width: 700px;
   line-height: 1.4;
 }
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.banner img {
+  width: 100%;          /* 👉 Cho ảnh tràn toàn bộ chiều ngang */
+  height: auto;         /* Tự co theo tỉ lệ ảnh */
+  object-fit: cover;    /* Giúp ảnh fill đẹp không méo */
+  display: block;
+}
+
+.banner h2 {
+  position: absolute;   /* Đặt chữ đè lên hình */
+  bottom: 40px;         /* Cách đáy 1 chút */
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4); /* Đổ bóng để nổi trên ảnh */
+}
 
 
 /* ====== PHẦN TEST ====== */
