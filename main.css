@@ -557,6 +557,45 @@ nav > ul > li > a:hover {
   background: linear-gradient(135deg, #f48fb1, #ce93d8);
   color: white;
 }
+/* ====== BỐ CỤC TRANG CHỦ (ĐÃ CHỈNH) ====== */
+.home-boxes {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+/* Các box thường: thu nhỏ lại */
+.home-boxes .box {
+  flex: 1 1 26%;
+  max-width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover giữ nguyên */
+.home-boxes .box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Box đặc biệt: nổi bật hơn */
+.home-boxes .box.special {
+  flex: 1 1 100%;
+  max-width: 100%;
+  background: linear-gradient(135deg, #f48fb1, #ce93d8);
+  color: white;
+  padding: 32px;
+  border: 2px solid #b32d6f;
+  box-shadow: 0 8px 20px rgba(179, 45, 111, 0.3);
+  text-align: center;
+  font-size: 1.1rem;
+}
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 768px) {
