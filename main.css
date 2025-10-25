@@ -484,41 +484,43 @@ body.loaded {
 /* --- HOME CONTENT --- */
 .home-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  padding: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 24px;
 }
 
 .content-box {
   background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  padding: 32px;
+  border-radius: 14px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  padding: 24px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 360px;
+  margin: 0 auto;
 }
 
 .content-box:hover {
-  transform: translateY(-6px);
+  transform: translateY(-5px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
 .content-box h2 {
   color: #8b0000;
-  font-size: 1.5rem;
-  margin-bottom: 12px;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 .content-box p {
   color: #333;
-  font-size: 1rem;
-  margin-bottom: 20px;
+  font-size: 0.95rem;
+  margin-bottom: 18px;
 }
 
 .btn {
   background-color: #8b0000;
   color: #fff;
-  padding: 10px 20px;
+  padding: 8px 18px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
@@ -531,13 +533,20 @@ body.loaded {
 
 /* --- SPECIAL BOX (HOME CONTENT) --- */
 .special {
-  background: linear-gradient(135deg, #ffe6ec, #fff0f5);
+  background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
   border: 2px solid #d63384;
-  box-shadow: 0 6px 14px rgba(214, 51, 132, 0.25);
+  box-shadow: 0 8px 22px rgba(214, 51, 132, 0.3);
+  transform: scale(1.05);
+  z-index: 2;
 }
 
 .special h2 {
   color: #d63384;
+  font-size: 1.4rem;
+}
+
+.special p {
+  color: #5a0039;
 }
 
 .special-btn {
@@ -554,36 +563,36 @@ body.loaded {
   justify-content: center;
   align-items: stretch;
   flex-wrap: wrap;
-  gap: 20px;
-  margin-top: 40px;
+  gap: 16px;
+  margin-top: 32px;
 }
 
-/* Các box thường: thu nhỏ lại */
+/* Các box thường: nhỏ gọn hơn */
 .home-boxes .box {
   flex: 1 1 26%;
-  max-width: 300px;
+  max-width: 280px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  padding: 20px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  padding: 18px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .home-boxes .box:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
-/* Box đặc biệt: nổi bật hơn */
+/* Box đặc biệt: nổi bật hơn, vừa phải */
 .home-boxes .box.special {
   flex: 1 1 100%;
-  max-width: 100%;
+  max-width: 95%;
   background: linear-gradient(135deg, #f48fb1, #ce93d8);
   color: white;
-  padding: 32px;
+  padding: 26px;
   border: 2px solid #b32d6f;
-  box-shadow: 0 8px 20px rgba(179, 45, 111, 0.3);
+  box-shadow: 0 8px 20px rgba(179, 45, 111, 0.35);
   text-align: center;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  transform: scale(1.03);
 }
-
