@@ -599,5 +599,71 @@ body.loaded {
     max-width: 90%;
   }
 }
+.test-grid {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+  background-color: #FFCC99;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #8b0000;
+  margin-bottom: 10px;
+}
+
+.section-desc {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.test-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.test-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.test-card h3 {
+  font-size: 1.3rem;
+  color: #d63384;
+  margin-bottom: 12px;
+}
+
+.test-card ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.test-card li {
+  margin-bottom: 8px;
+}
+
+.test-card a {
+  color: #8b0000;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.test-card a:hover {
+  text-decoration: underline;
+}
 
 
