@@ -528,6 +528,25 @@ nav > ul > li > a:hover {
 .special-btn:hover {
   background-color: #b32d6f;
 }
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .home-boxes {
+    flex-direction: column; /* xếp dọc khi màn hình nhỏ */
+  }
+
+  .home-boxes .box {
+    flex: 1 1 100%; /* full chiều rộng */
+  }
+}
+body {
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
 /* ====== BỐ CỤC TRANG CHỦ ====== */
 .home-boxes {
   display: flex;
@@ -595,24 +614,5 @@ nav > ul > li > a:hover {
   box-shadow: 0 8px 20px rgba(179, 45, 111, 0.3);
   text-align: center;
   font-size: 1.1rem;
-}
-
-/* ====== RESPONSIVE ====== */
-@media (max-width: 768px) {
-  .home-boxes {
-    flex-direction: column; /* xếp dọc khi màn hình nhỏ */
-  }
-
-  .home-boxes .box {
-    flex: 1 1 100%; /* full chiều rộng */
-  }
-}
-body {
-  opacity: 0;
-  transition: opacity 0.4s ease-in-out;
-}
-
-body.loaded {
-  opacity: 1;
 }
 
