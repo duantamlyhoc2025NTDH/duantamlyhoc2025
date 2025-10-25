@@ -666,25 +666,3 @@ body.loaded {
   text-decoration: underline;
 }
 
-.banner {
-  width: 100%;
-  overflow: hidden;
-}
-
-.banner-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  max-height: 400px;
-  border-radius: 8px;
-}
-
-/* Responsive cho điện thoại */
-@media screen and (max-width: 768px) {
-  .banner-content img {
-    max-height: 240px;
-    border-radius: 6px;
-  }
-}
-
