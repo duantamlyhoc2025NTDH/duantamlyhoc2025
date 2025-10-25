@@ -525,9 +525,10 @@ body.loaded {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 40px;
   width: 100%;
   max-width: 1000px;
+  margin-top: 16px; /* thêm khoảng cách phía trên */
 }
 
 .box-row .content-box {
@@ -539,6 +540,8 @@ body.loaded {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   flex: 1 1 320px;
   max-width: 320px;
+  flex: 1 1 340px; /* 👈 hơi nới nhẹ chiều rộng để cân */
+  max-width: 360px; /* giúp box không dính nhau */
 }
 
 .box-row .content-box:hover {
