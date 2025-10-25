@@ -95,8 +95,7 @@ nav > ul > li > a:hover {
 .banner {
   position: relative;
   width: 100%;
-  height: auto;
-  max-height: 80vh; /* ✅ Giới hạn chiều cao tối đa để không chiếm hết màn hình */
+  height: 45vh; /* ✅ Chiều cao banner chiếm khoảng nửa màn hình */
   overflow: hidden;
   text-align: center;
   display: flex;
@@ -106,37 +105,38 @@ nav > ul > li > a:hover {
 
 .banner img {
   width: 100%;
- height: auto;           /* ✅ Cho ảnh tự co theo tỉ lệ thật */
-  max-height: 60vh;       /* ✅ Không cao quá 80% màn hình */
-  object-fit: cover;      /* ✅ Ảnh vẫn phủ kín banner */
+  height: 100%;
+  object-fit: cover; /* ✅ Ảnh luôn phủ kín khung banner */
   display: block;
 }
 
 .banner h2 {
   position: absolute;
-  bottom: 40px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
-  font-size: clamp(1.2rem, 2vw + 0.5rem, 2rem); /* ✅ Co chữ theo màn hình */
+  font-size: clamp(1.2rem, 2vw + 0.5rem, 2rem);
   font-weight: 700;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   text-align: center;
   width: 90%;
 }
 
-/* ✅ Giới hạn banner theo viewport thật */
+/* ✅ Giao diện lớn hơn thì banner cao hơn một chút */
 @media (min-width: 1024px) {
   .banner {
+    height: 50vh;
     max-width: 100vw;
     left: 0;
     right: 0;
   }
 }
 
+/* ✅ Trên điện thoại: banner thấp lại cho gọn */
 @media (max-width: 768px) {
   .banner {
-    max-height: 60vh;
+    height: 35vh;
   }
   .banner h2 {
     bottom: 20px;
