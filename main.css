@@ -106,8 +106,9 @@ nav > ul > li > a:hover {
 
 .banner img {
   width: 100%;
-  height: 100%;
-  object-fit: cover; /* ✅ Giúp ảnh fill toàn bộ mà không méo */
+ height: auto;           /* ✅ Cho ảnh tự co theo tỉ lệ thật */
+  max-height: 60vh;       /* ✅ Không cao quá 80% màn hình */
+  object-fit: cover;      /* ✅ Ảnh vẫn phủ kín banner */
   display: block;
 }
 
