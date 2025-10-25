@@ -204,7 +204,7 @@ nav > ul > li > a:hover {
 .site-footer {
   background: #FF6B35;
   color: #fff;
-  padding: 20px 0 10px;
+  padding: 15px 0 10px;
   font-size: 15px;
   font-family: 'Poppins', sans-serif;
 }
@@ -212,7 +212,7 @@ nav > ul > li > a:hover {
 .footer-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  gap: 15px;
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
