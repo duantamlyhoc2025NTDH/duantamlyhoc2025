@@ -481,38 +481,25 @@ body.loaded {
   opacity: 1;
 }
 
-/* --- HOME CONTENT --- */
 .home-content {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 24px;
   padding: 20px 40px;
-  justify-items: center;
 }
 
-/* --- BOX ĐẶC BIỆT (ở hàng trên, chiếm toàn chiều ngang) --- */
+/* Box đặc biệt: nằm trên cùng, dài ngang, nổi bật */
 .content-box.special {
   background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
   border: 2px solid #d63384;
-  box-shadow: 0 10px 24px rgba(214, 51, 132, 0.3);
+  box-shadow: 0 10px 25px rgba(214,51,132,0.25);
   border-radius: 24px;
-  text-align: center;
-  padding: 32px 60px;
+  padding: 36px 60px;
   max-width: 1000px;
   width: 100%;
+  text-align: center;
   transform: scale(1.02);
-  position: relative;
-  z-index: 2;
-}
-
-/* hiệu ứng nổi nhẹ + glow */
-.content-box.special::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  box-shadow: 0 0 25px rgba(214, 51, 132, 0.25);
-  z-index: -1;
 }
 
 .content-box.special h2 {
@@ -529,33 +516,32 @@ body.loaded {
 .special-btn {
   background-color: #d63384;
 }
-
 .special-btn:hover {
   background-color: #b32d6f;
 }
 
-/* --- NHÓM 2 BOX DƯỚI --- */
-.home-content .box-group {
+/* Hàng 2 box nhỏ phía dưới */
+.box-row {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
   width: 100%;
+  max-width: 1000px;
 }
 
-/* Box thường */
-.box-group .content-box {
-  background-color: #ffffff;
-  border-radius: 20px;
+.box-row .content-box {
+  background-color: #fff;
+  border-radius: 18px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.08);
   padding: 24px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 360px;
-  flex: 1 1 300px;
+  flex: 1 1 320px;
+  max-width: 320px;
 }
 
-.box-group .content-box:hover {
+.box-row .content-box:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
@@ -572,7 +558,6 @@ body.loaded {
   margin-bottom: 18px;
 }
 
-/* Nút */
 .btn {
   background-color: #8b0000;
   color: #fff;
@@ -582,7 +567,6 @@ body.loaded {
   font-weight: 600;
   transition: background 0.3s ease;
 }
-
 .btn:hover {
   background-color: #a11c1c;
 }
@@ -591,16 +575,14 @@ body.loaded {
 @media (max-width: 900px) {
   .content-box.special {
     padding: 28px;
-    max-width: 95%;
   }
-
-  .home-content .box-group {
+  .box-row {
     flex-direction: column;
     align-items: center;
   }
-
-  .box-group .content-box {
+  .box-row .content-box {
     max-width: 90%;
   }
 }
+
 
