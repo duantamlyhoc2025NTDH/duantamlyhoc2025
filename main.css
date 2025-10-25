@@ -484,24 +484,28 @@ body.loaded {
 /* --- HOME CONTENT --- */
 .home-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  padding: 24px;
+  grid-template-areas:
+    "special"
+    "normal normal";
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  padding: 20px 40px;
+  justify-items: center;
 }
 
+/* Các box chung */
 .content-box {
   background-color: #ffffff;
-  border-radius: 14px;
+  border-radius: 20px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-  padding: 24px;
+  padding: 22px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 360px;
-  margin: 0 auto;
 }
 
 .content-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.12);
 }
 
@@ -517,6 +521,7 @@ body.loaded {
   margin-bottom: 18px;
 }
 
+/* Nút */
 .btn {
   background-color: #8b0000;
   color: #fff;
@@ -526,73 +531,71 @@ body.loaded {
   font-weight: 600;
   transition: background 0.3s ease;
 }
-
 .btn:hover {
   background-color: #a11c1c;
 }
 
-/* --- SPECIAL BOX (HOME CONTENT) --- */
+/* --- BOX ĐẶC BIỆT --- */
 .special {
+  grid-area: special;
   background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
   border: 2px solid #d63384;
-  box-shadow: 0 8px 22px rgba(214, 51, 132, 0.3);
-  transform: scale(1.05);
+  box-shadow: 0 10px 24px rgba(214, 51, 132, 0.3);
+  padding: 30px 60px;
+  border-radius: 24px;
+  text-align: center;
+  transform: scale(1.03);
+  position: relative;
   z-index: 2;
+  max-width: 90%;
+}
+
+/* hiệu ứng nổi nhẹ + glow */
+.special::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  box-shadow: 0 0 25px rgba(214, 51, 132, 0.3);
+  z-index: -1;
 }
 
 .special h2 {
   color: #d63384;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
 }
 
 .special p {
   color: #5a0039;
+  font-size: 1.05rem;
 }
 
 .special-btn {
   background-color: #d63384;
 }
-
 .special-btn:hover {
   background-color: #b32d6f;
 }
 
-/* ====== BỐ CỤC TRANG CHỦ ====== */
-.home-boxes {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-top: 32px;
+/* --- 2 BOX DƯỚI --- */
+.home-content .content-box:not(.special) {
+  grid-area: normal;
+  width: 100%;
+  max-width: 320px;
+  border-radius: 18px;
 }
 
-/* Các box thường: nhỏ gọn hơn */
-.home-boxes .box {
-  flex: 1 1 26%;
-  max-width: 280px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-  padding: 18px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.home-boxes .box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
-}
-
-/* Box đặc biệt: nổi bật hơn, vừa phải */
-.home-boxes .box.special {
-  flex: 1 1 100%;
-  max-width: 95%;
-  background: linear-gradient(135deg, #f48fb1, #ce93d8);
-  color: white;
-  padding: 26px;
-  border: 2px solid #b32d6f;
-  box-shadow: 0 8px 20px rgba(179, 45, 111, 0.35);
-  text-align: center;
-  font-size: 1.05rem;
-  transform: scale(1.03);
+/* Responsive */
+@media (max-width: 900px) {
+  .home-content {
+    grid-template-areas:
+      "special"
+      "normal"
+      "normal";
+    grid-template-columns: 1fr;
+  }
+  .special {
+    max-width: 100%;
+  }
 }
