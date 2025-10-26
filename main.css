@@ -705,4 +705,26 @@ body.loaded {
 .contact-form button:hover {
   background-color: #b32d6f;
 }
+/* ===== NÚT VỀ TRANG CHỦ ===== */
+.back-home {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  background-color: rgba(255,255,255,0.2);
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.back-home:hover {
+  background-color: rgba(255,255,255,0.35);
+}
+
+/* Cho mobile: đẩy lên đầu */
+@media (max-width: 768px) {
+  .back-home {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
 
