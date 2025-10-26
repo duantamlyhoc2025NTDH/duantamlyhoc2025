@@ -689,25 +689,4 @@ header {
 }
 
 
-/* === FOOTER RESPONSIVE FIX - KHÔI PHỤC CĂN GIỮA === */
-@media (max-width: 992px) {
-  .footer-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .footer-column {
-    margin-bottom: 15px;
-  }
-
-  .footer-column:last-child {
-    text-align: center;
-  }
-
-  .social-links {
-    justify-content: center !important;
-    margin-top: 8px;
-  }
-}
-
 
