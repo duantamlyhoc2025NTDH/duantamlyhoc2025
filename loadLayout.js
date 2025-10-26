@@ -29,14 +29,3 @@ document.addEventListener("DOMContentLoaded", async () => {
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
-document.addEventListener("DOMContentLoaded", () => {
-  const isHomePage = window.location.pathname.endsWith("index.html") || window.location.pathname === "/";
-  const backHome = document.getElementById("back-home");
-  if (backHome && !isHomePage) {
-    backHome.style.display = "inline-block";
-    backHome.style.marginLeft = "15px";
-    backHome.style.fontWeight = "500";
-    backHome.style.textDecoration = "none";
-    backHome.style.color = "#fff"; // hoặc màu phù hợp với header của chị
-  }
-});
