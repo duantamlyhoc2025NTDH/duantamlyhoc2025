@@ -501,7 +501,7 @@ body.loaded {
 
 /* Box đặc biệt: nằm trên cùng, dài ngang, nổi bật */
 .content-box.special {
-  background: linear-gradient(135deg, #ffd6e8, #ffeaf3);
+  background: #abb7b3;
   border: 2px solid #d63384;
   box-shadow: 0 10px 25px rgba(214,51,132,0.25);
   border-radius: 24px;
