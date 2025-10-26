@@ -708,5 +708,14 @@ body.loaded {
     margin-bottom: 10px;
   }
 }
+html, body {
+  overflow-x: hidden !important;
+}
+
+header {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
 
 
