@@ -104,7 +104,7 @@ nav > ul > li > a:hover {
   height: 100%;
   object-fit: cover; /* ✅ Fill toàn khung, không méo */
   transform: translateX(-50%);
-  z-index: 1;
+  z-index: 0;
   pointer-events: none; /* tránh lỗi hover */
 }
 
