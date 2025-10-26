@@ -12,7 +12,7 @@ body {
 }
 /* Header */
 header {
-  background-color: #FF6B35;
+  background-color: #243816;
   color: white;
   padding: 20px 40px;
   display: flex;
@@ -200,7 +200,7 @@ nav > ul > li > a:hover {
 
 /* ===== FOOTER ===== */
 .site-footer {
-  background: #FF6B35;
+  background: #243816;
   color: #fff;
   padding: 15px 0 10px;
   font-size: 15px;
