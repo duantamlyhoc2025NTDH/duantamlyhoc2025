@@ -55,15 +55,6 @@ main {
   border-radius: 8px;
 }
 
-/* Footer */
-footer {
-  background-color: #CDB4DB;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 14px;
-}
-
 /* --- Navigation cấp 1 --- */
 nav > ul {
   list-style: none;
@@ -704,6 +695,18 @@ body.loaded {
 
 .contact-form button:hover {
   background-color: #b32d6f;
+}
+@media (max-width: 768px) {
+  .site-footer {
+    text-align: center;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .footer-column {
+    margin-bottom: 10px;
+  }
 }
 
 
