@@ -92,58 +92,7 @@ nav > ul > li > a:hover {
   opacity: 0.8;
 }
 
-/* ==== FIXED BANNER GỌN & KHÔNG CHẠY ==== */
-.banner {
-  position: relative;
-  width: 100%;
-  height: 260px; /* ✅ Chiều cao gọn gàng, không phình */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  margin: 0 auto;
-  background-color: #000; /* fallback nếu ảnh load chậm */
-}
 
-.banner img {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* ✅ Fill toàn khung, không méo */
-  transform: translateX(-50%);
-  z-index: 1;
-  pointer-events: none; /* tránh lỗi hover */
-}
-
-.banner h2 {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  font-size: clamp(1.4rem, 2vw + 0.5rem, 2rem);
-  font-weight: 700;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  width: 90%;
-  line-height: 1.4;
-}
-
-/* ✅ Trên mobile: banner thấp hơn */
-@media (max-width: 768px) {
-  .banner {
-    height: 180px;
-  }
-  .banner h2 {
-    font-size: 1.2rem;
-  }
-}
-
-/* ✅ Trên desktop lớn: banner nhỉnh hơn 1 chút */
-@media (min-width: 1200px) {
-  .banner {
-    height: 300px;
-  }
 }/* ==== FIXED BANNER GỌN & KHÔNG CHẠY ==== */
 .banner {
   position: relative;
