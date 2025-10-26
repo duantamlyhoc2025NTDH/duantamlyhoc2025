@@ -87,7 +87,6 @@ nav > ul > li > a:hover {
   position: relative;
   width: 100%;
   height: 260px; /* ✅ Chiều cao gọn gàng, không phình */
-  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,6 +103,7 @@ nav > ul > li > a:hover {
   height: 100%;
   object-fit: cover; /* ✅ Fill toàn khung, không méo */
   transform: translateX(-50%);
+  clip-path: inset(0); /* ✅ Cắt gọn mà không cần overflow:hidden */
   z-index: 1;
   pointer-events: none; /* tránh lỗi hover */
 }
