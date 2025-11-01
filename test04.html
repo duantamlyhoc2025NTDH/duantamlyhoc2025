@@ -66,6 +66,17 @@
     <h1>Trắc nghiệm Đa dạng Giới</h1>
   </header>
   <main>
+    <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
+<section style="background-color: #e0f7fa; padding: 15px; border-left: 5px solid #00acc1; margin-bottom: 20px; border-radius: 6px;">
+  <h2>Giới thiệu</h2>
+  <p>
+    Bài trắc nghiệm này được xây dựng nhằm đánh giá mức độ hiểu biết và nhận thức của cá nhân về <strong>đa dạng giới</strong> – bao gồm các khái niệm như <em>non-binary</em>, <em>genderfluid</em>, <em>transgender</em>, và các biểu hiện giới nằm ngoài hệ nhị phân truyền thống. 
+  </p>
+  <p>
+    Dựa trên các tài liệu giáo dục giới và nghiên cứu xã hội học hiện đại, bài test giúp người làm bài khám phá mức độ cởi mở, hiểu biết và khả năng phân biệt giữa các khái niệm liên quan đến bản dạng giới. Đây là công cụ hỗ trợ nhận thức, không nhằm phân loại hay gán nhãn giới tính cho bất kỳ ai.
+  </p>
+</section>
+
     <form id="infoForm" class="info-form">
       <h2>Thông tin người làm bài</h2>
       <input type="text" id="name" placeholder="Họ và tên" required>
@@ -147,9 +158,14 @@
         <label><input type="radio" name="q10" value="3"> Rõ ràng</label>
       </div>
 
-      <button type="button" onclick="calculateResult()">Xem kết quả</button>
+<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
       <div id="result" class="result" style="display:none;"></div>
     </form>
+    <!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
+<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e0f7fa; padding: 15px; border-left: 4px solid #00acc1; border-radius: 6px;">
+  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn hoặc chẩn đoán từ chuyên gia tâm lý hoặc chuyên gia về giới. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới hoặc cần hỗ trợ tâm lý, hãy tìm đến sự giúp đỡ từ các chuyên gia có chuyên môn trong lĩnh vực giới và sức khỏe tâm thần.
+</section>
+
   </main>
 
   <script>
@@ -185,6 +201,21 @@
     <p><strong>Kết luận:</strong> ${resultText}</p>
   `;
 }
+</script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
 </script>
 </body>
 </html>
