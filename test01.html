@@ -173,8 +173,7 @@
   <label><input type="radio" name="q10" value="2"> Không đúng lắm</label>
   <label><input type="radio" name="q10" value="1"> Không đúng</label>
 </div>
-
-<button type="button" onclick="calculateResult()">Xem kết quả</button>
+<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
 <div id="result" class="result" style="display:none;"></div>
       <script>
 function calculateResult() {
@@ -226,5 +225,21 @@ function calculateResult() {
     </section>
   </form>
   </main>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("YOUR_USER_ID"); // 👈 thay bằng Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      from_name: "Hệ thống trắc nghiệm",
+      message: "Có người vừa hoàn thành một bài test trên hệ thống."
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+
 </body>
 </html>
