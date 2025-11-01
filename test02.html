@@ -66,6 +66,17 @@
     <h1>Trắc nghiệm Bản Dạng Giới (GIDYQ-AA)</h1>
   </header>
   <main>
+   
+  <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
+  <section style="background-color: #e6faff; padding: 15px; border-left: 5px solid #0099cc; margin-bottom: 20px; border-radius: 6px;">
+    <h2>Giới thiệu</h2>
+    <p>
+      Bài trắc nghiệm này dựa trên <strong>GIDYQ-AA (Gender Identity/Gender Dysphoria Questionnaire for Adolescents and Adults)</strong> – một công cụ đánh giá được phát triển bởi các nhà nghiên cứu tại Đại học Toronto nhằm hỗ trợ nhận diện mức độ không thoải mái với giới tính sinh học và bản dạng giới của cá nhân.
+    </p>
+    <p>
+      GIDYQ-AA được sử dụng trong các nghiên cứu lâm sàng và tâm lý học để sàng lọc các biểu hiện liên quan đến <em>gender dysphoria</em> (phiền muộn giới tính), đồng thời giúp cá nhân hiểu rõ hơn về cảm nhận giới của mình. Bài test không xác định giới tính, mà giúp người làm bài khám phá mức độ đồng nhất hoặc khác biệt giữa bản dạng giới và giới tính sinh học.
+    </p>
+  </section>
     <form id="infoForm" class="info-form">
       <h2>Thông tin người làm bài</h2>
       <input type="text" id="name" placeholder="Họ và tên" required>
@@ -146,11 +157,15 @@
         <label><input type="radio" name="q10" value="1"> Thỉnh thoảng</label>
         <label><input type="radio" name="q10" value="0"> Không</label>
       </div>
+<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
 
-      <button type="button" onclick="calculateResult()">Xem kết quả</button>
       <div id="result" class="result" style="display:none;"></div>
     </form>
-  </main>
+     <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e6faff; padding: 15px; border-left: 4px solid #0099cc; border-radius: 6px;">
+    <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho chẩn đoán chuyên môn từ bác sĩ hoặc chuyên gia tâm lý. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới, phiền muộn giới tính hoặc cần hỗ trợ tâm lý, hãy tìm đến sự giúp đỡ từ chuyên gia có chuyên môn trong lĩnh vực giới và sức khỏe tâm thần.
+  </section>
+</main>
+ 
 
   <script>
    function calculateResult() {
@@ -185,6 +200,21 @@
     <p><strong>Kết luận:</strong> ${resultText}</p>
   `;
 }
+</script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
 </script>
 </body>
 </html>
