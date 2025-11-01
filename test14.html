@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Chấp nhận Sự Đa dạng Giới</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f3e5f5, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fce4ec;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #6a1b9a;
+      text-align: center;
+    }
+    section {
+      background-color: #f3e5f5;
+      padding: 15px;
+      border-left: 5px solid #ab47bc;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #ab47bc, #6a1b9a);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #6a1b9a, #ab47bc);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #f3e5f5;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>🌈 Test Chấp nhận Sự Đa dạng Giới</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này dựa trên các nghiên cứu về thái độ xã hội đối với đa dạng giới, giúp bạn nhận diện mức độ cởi mở và khả năng chấp nhận sự khác biệt trong bản dạng giới và xu hướng tính dục.
+      </p>
+      <p>
+        Mục tiêu là hỗ trợ giáo dục bình đẳng giới và xây dựng môi trường học đường, gia đình, xã hội thân thiện với mọi bản dạng.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Bạn cảm thấy thế nào khi gặp người thuộc cộng đồng LGBTQ+?</strong></p>
+        <label><input type="radio" name="q1" value="3"> Thoải mái và tôn trọng</label>
+        <label><input type="radio" name="q1" value="2"> Bình thường</label>
+        <label><input type="radio" name="q1" value="1"> Hơi ngại</label>
+        <label><input type="radio" name="q1" value="0"> Không thoải mái</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Bạn nghĩ gì về việc sử dụng đại từ they/them?</strong></p>
+        <label><input type="radio" name="q2" value="3"> Hoàn toàn ủng hộ</label>
+        <label><input type="radio" name="q2" value="2"> Có thể chấp nhận</label>
+        <label><input type="radio" name="q2" value="1"> Khó hiểu</label>
+        <label><input type="radio" name="q2" value="0"> Không đồng tình</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Bạn có sẵn sàng làm việc chung với người chuyển giới?</strong></p>
+        <label><input type="radio" name="q3" value="3"> Rất sẵn sàng</label>
+        <label><input type="radio" name="q3" value="2"> Có thể</label>
+        <label><input type="radio" name="q3" value="1"> Cần thời gian thích nghi</label>
+        <label><input type="radio" name="q3" value="0"> Không muốn</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Bạn có ủng hộ hôn nhân đồng giới?</strong></p>
+        <label><input type="radio" name="q4" value="3"> Có</label>
+        <label><input type="radio" name="q4" value="2"> Phân vân</label>
+        <label><input type="radio" name="q4" value="1"> Không ủng hộ</label>
+        <label><input type="radio" name="q4" value="0"> Phản đối</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Bạn nghĩ gì về việc giáo dục giới tính trong trường học?</strong></p>
+        <label><input type="radio" name="q5" value="3"> Rất cần thiết</label>
+        <label><input type="radio" name="q5" value="2"> Có thể triển khai</label>
+        <label><input type="radio" name="q5" value="1"> Không cần thiết</label>
+        <label><input type="radio" name="q5" value="0"> Nên tránh</label>
+      </div>
+
+      <div class="question">
+        <p><strong>6. Bạn có từng đứng ra bảo vệ người bị kỳ thị giới?</strong></p>
+        <label><input type="radio" name="q6" value="3"> Có</label>
+        <label><input type="radio" name="q6" value="2"> Đã từng nghĩ đến</label>
+        <label><input type="radio" name="q6" value="1"> Không dám</label>
+        <label><input type="radio" name="q6" value="0"> Không quan tâm</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Bạn có cảm thấy khó chịu khi người khác thể hiện giới không truyền thống?</strong></p>
+        <label><input type="radio" name="q7" value="0"> Có</label>
+        <label><input type="radio" name="q7" value="1"> Hơi ngại</label>
+        <label><input type="radio" name="q7" value="2"> Bình thường</label>
+        <label><input type="radio" name="q7" value="3"> Hoàn toàn thoải mái</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Bạn có theo dõi nội dung về đa dạng giới trên mạng xã hội?</strong></p>
+        <label><input type="radio" name="q8" value="3"> Thường xuyên</label>
+        <label><input type="radio" name="q8" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q8" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q8" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Bạn có bạn bè thuộc cộng đồng LGBTQ+?</strong></p>
+        <label><input type="radio" name="q9" value="3"> Có và rất thân</label>
+        <label><input type="radio" name="q9" value="2"> Có quen biết</label>
+        <label><input type="radio" name="q9" value="1"> Không rõ</label>
+        <label><input type="radio" name="q9" value="0"> Không có</label>
+      </div>
+
+         <div class="question">
+        <p><strong>10. Bạn có sẵn sàng học hỏi thêm về đa dạng giới?</strong></p>
+        <label><input type="radio" name="q10" value="3"> Rất sẵn sàng</label>
+        <label><input type="radio" name="q10" value="2"> Có thể</label>
+        <label><input type="radio" name="q10" value="1"> Không chắc</label>
+        <label><input type="radio" name="q10" value="0"> Không quan tâm</label>
+      </div>
+
+     <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #f3e5f5; padding: 15px; border-left: 4px solid #ab47bc; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện giá trị đạo đức hay nhân cách của bạn. Kết quả không dùng để phân loại hay đánh giá cá nhân.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 10) {
+        resultText += "<p>📘 <strong>Nhận thức giới hạn:</strong> Bạn còn nhiều rào cản trong việc chấp nhận sự đa dạng giới. Hãy mở lòng và tìm hiểu thêm.</p>";
+      } else if (score <= 20) {
+        resultText += "<p>📗 <strong>Nhận thức trung bình:</strong> Bạn đã có sự cởi mở nhất định nhưng vẫn còn một số định kiến tiềm ẩn. Hãy tiếp tục học hỏi và lắng nghe.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn có tư duy cởi mở, tôn trọng sự khác biệt và sẵn sàng đồng hành cùng cộng đồng đa dạng giới. Tuyệt vời!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
