@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Vai trò giới trong xã hội</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #f1f8e9, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #f9fbe7;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #558b2f;
+      text-align: center;
+    }
+    section {
+      background-color: #f1f8e9;
+      padding: 15px;
+      border-left: 5px solid #8bc34a;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #8bc34a, #558b2f);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #558b2f, #8bc34a);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #f1f8e9;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>⚖️ Test Nhận diện vai trò giới trong xã hội</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này dựa trên lý thuyết vai trò xã hội của giới tính (Gender Role Theory), giúp bạn khám phá cách bạn nhìn nhận vai trò của nam và nữ trong các lĩnh vực như công việc, gia đình, giáo dục và lãnh đạo.
+      </p>
+      <p>
+        Mục tiêu là hỗ trợ nhận thức xã hội và thúc đẩy tư duy bình đẳng giới trong cộng đồng.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Nam giới thường được kỳ vọng làm nghề gì?</strong></p>
+        <label><input type="radio" name="q1" value="1"> Kỹ sư, lãnh đạo</label>
+        <label><input type="radio" name="q1" value="0"> Giáo viên mầm non</label>
+        <label><input type="radio" name="q1" value="0"> Nội trợ</label>
+        <label><input type="radio" name="q1" value="0"> Thư ký</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Nữ giới thường bị đánh giá thấp trong lĩnh vực nào?</strong></p>
+        <label><input type="radio" name="q2" value="1"> Công nghệ và kỹ thuật</label>
+        <label><input type="radio" name="q2" value="0"> Giáo dục</label>
+        <label><input type="radio" name="q2" value="0"> Y tế</label>
+        <label><input type="radio" name="q2" value="0"> Nghệ thuật</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Vai trò giới là gì?</strong></p>
+        <label><input type="radio" name="q3" value="1"> Kỳ vọng xã hội về hành vi của từng giới</label>
+        <label><input type="radio" name="q3" value="0"> Giới tính sinh học</label>
+        <label><input type="radio" name="q3" value="0"> Bản dạng giới</label>
+        <label><input type="radio" name="q3" value="0"> Xu hướng tính dục</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Ai có thể làm lãnh đạo giỏi?</strong></p>
+        <label><input type="radio" name="q4" value="1"> Bất kỳ giới nào</label>
+        <label><input type="radio" name="q4" value="0"> Chỉ nam giới</label>
+        <label><input type="radio" name="q4" value="0"> Chỉ nữ giới</label>
+        <label><input type="radio" name="q4" value="0"> Người lớn tuổi</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Định kiến giới ảnh hưởng đến điều gì?</strong></p>
+        <label><input type="radio" name="q5" value="1"> Cơ hội phát triển cá nhân</label>
+        <label><input type="radio" name="q5" value="0"> Sở thích cá nhân</label>
+        <label><input type="radio" name="q5" value="0"> Thời tiết</label>
+        <label><input type="radio" name="q5" value="0"> Sức khỏe thể chất</label>
+      </div>
+
+      <div class="question">
+        <p><strong>6. Nữ giới có thể làm nghề gì?</strong></p>
+        <label><input type="radio" name="q6" value="1"> Bất kỳ nghề nào phù hợp năng lực</label>
+        <label><input type="radio" name="q6" value="0"> Chỉ nghề nhẹ nhàng</label>
+        <label><input type="radio" name="q6" value="0"> Nghề liên quan đến chăm sóc</label>
+        <label><input type="radio" name="q6" value="0"> Nghề văn phòng</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Nam giới có thể làm nội trợ không?</strong></p>
+        <label><input type="radio" name="q7" value="1"> Có, nếu phù hợp hoàn cảnh</label>
+        <label><input type="radio" name="q7" value="0"> Không, đó là việc của nữ</label>
+        <label><input type="radio" name="q7" value="0"> Chỉ khi thất nghiệp</label>
+        <label><input type="radio" name="q7" value="0"> Không rõ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Trẻ em nên được giáo dục giới như thế nào?</strong></p>
+        <label><input type="radio" name="q8" value="1"> Bình đẳng và không định kiến</label>
+        <label><input type="radio" name="q8" value="0"> Theo giới tính sinh học</label>
+        <label><input type="radio" name="q8" value="0"> Theo truyền thống</label>
+        <label><input type="radio" name="q8" value="0"> Không cần giáo dục giới</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Định kiến giới có thể thay đổi không?</strong></p>
+        <label><input type="radio" name="q9" value="1"> Có, thông qua giáo dục và truyền thông</label>
+        <label><input type="radio" name="q9" value="0"> Không thể thay đổi</label>
+        <label><input type="radio" name="q9" value="0"> Chỉ thay đổi ở thành phố</label>
+        <label><input type="radio" name="q9" value="0"> Tùy vào giới tính</label>
+      <div class="question">
+        <p><strong>10. Bình đẳng giới nghĩa là gì?</strong></p>
+        <label><input type="radio" name="q10" value="1"> Cơ hội và quyền lợi ngang nhau cho mọi giới</label>
+        <label><input type="radio" name="q10" value="0"> Nam giới có quyền hơn</label>
+        <label><input type="radio" name="q10" value="0"> Nữ giới cần được bảo vệ</label>
+        <label><input type="radio" name="q10" value="0"> Mỗi giới có vai trò riêng biệt</label>
+      </div>
+
+      <<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #f1f8e9; padding: 15px; border-left: 4px solid #8bc34a; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện tư duy xã hội của bạn. Kết quả không dùng để phân loại hay đánh giá năng lực cá nhân.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 3) {
+        resultText += "<p>📘 <strong>Nhận thức giới hạn:</strong> Bạn còn chịu ảnh hưởng bởi định kiến giới truyền thống. Hãy tìm hiểu thêm để mở rộng tư duy.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Nhận thức trung bình:</strong> Bạn đã có một số hiểu biết về vai trò giới nhưng vẫn còn những góc nhìn chưa toàn diện.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn có tư duy bình đẳng và hiểu rõ rằng vai trò giới không nên bị ràng buộc bởi định kiến xã hội.</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
