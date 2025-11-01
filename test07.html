@@ -1,8 +1,15 @@
-<main style="font-family: 'Segoe UI', sans-serif; padding: 40px; max-width: 800px; margin: auto; background-color: #e8f5e9; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+<main>
   <h2 style="color: #2e7d32; text-align: center;">⚖️ Trắc nghiệm Định kiến Giới</h2>
-  <p style="font-size: 18px; line-height: 1.6; color: #333; text-align: center;">
-    Bài trắc nghiệm giúp bạn nhận diện tư duy định kiến giới, hiểu tác hại và cách thay đổi suy nghĩ. Mỗi câu chỉ có một đáp án đúng. Sau khi hoàn thành, bạn sẽ nhận được kết quả đánh giá tổng quan.
+  <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
+<section style="background-color: #e8f5e9; padding: 15px; border-left: 5px solid #388e3c; margin-bottom: 20px; border-radius: 6px;">
+  <h3 style="color: #2e7d32;">Giới thiệu</h3>
+  <p>
+    Bài trắc nghiệm này được xây dựng dựa trên các nghiên cứu xã hội học và tâm lý học giới, đặc biệt là lý thuyết về <strong>vai trò giới</strong> và <strong>định kiến giới</strong> trong xã hội hiện đại. Định kiến giới là những suy nghĩ cố định, phiến diện về vai trò, hành vi hoặc năng lực của một giới nào đó.
   </p>
+  <p>
+    Bài test giúp người làm bài nhận diện những tư duy định kiến phổ biến, hiểu được tác hại của chúng đối với cá nhân và cộng đồng, từ đó thúc đẩy tư duy bình đẳng và cởi mở hơn trong các mối quan hệ xã hội.
+  </p>
+</section>
 
   <form id="quizForm" style="margin-top: 30px;">
     <fieldset style="border: 1px solid #c8e6c9; padding: 20px; border-radius: 8px; background-color: #e8f5e9;">
@@ -51,8 +58,12 @@
       <label><input type="radio" name="q5" value="0"> Trung Quốc</label>
     </div>
 
-    <button type="button" onclick="calculateScore()" style="margin-top: 30px; padding: 12px 24px; background-color: #388e3c; color: white; border: none; border-radius: 6px; font-size: 16px;">🔍 Xem kết quả</button>
+    <button type="button" onclick="calculateScore()"; notifyTestTaken(); style="margin-top: 30px; padding: 12px 24px; background-color: #388e3c; color: white; border: none; border-radius: 6px; font-size: 16px;">🔍 Xem kết quả</button>
   </form>
+<!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
+<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e8f5e9; padding: 15px; border-left: 4px solid #388e3c; border-radius: 6px;">
+  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn chuyên môn từ chuyên gia giáo dục, tâm lý hoặc xã hội học. Nếu bạn có những băn khoăn sâu hơn về giới, bình đẳng hoặc định kiến xã hội, hãy tìm đến sự hỗ trợ từ người có chuyên môn hoặc tổ chức uy tín.
+</section>
 
   <div id="result" style="margin-top: 40px; font-size: 18px; color: #333; background-color: #e8f5e9; padding: 20px; border-radius: 8px;"></div>
   <script>
@@ -83,3 +94,19 @@
     }
   </script>
 </main>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</hmtl>
