@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Tư duy Giới trong Truyền thông</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fffde7, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fffde7;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #f9a825;
+      text-align: center;
+    }
+    section {
+      background-color: #fff8e1;
+      padding: 15px;
+      border-left: 5px solid #fbc02d;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #fbc02d, #f9a825);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #f9a825, #fbc02d);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #fff8e1;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>📰 Test Tư duy Giới trong Truyền thông</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này khai thác cách truyền thông đại chúng (phim ảnh, quảng cáo, mạng xã hội) ảnh hưởng đến tư duy giới và định kiến xã hội. Dựa trên lý thuyết phản ánh và kiến tạo xã hội qua truyền thông, bài test giúp bạn nhận diện các khuôn mẫu giới đang tồn tại trong nội dung truyền thông hàng ngày.
+      </p>
+      <p>
+        Mục tiêu là nâng cao nhận thức phê phán và xây dựng tư duy bình đẳng giới trong tiếp nhận thông tin.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Bạn có từng thấy quảng cáo mô tả phụ nữ chỉ làm việc nhà?</strong></p>
+        <label><input type="radio" name="q1" value="3"> Rất thường xuyên</label>
+        <label><input type="radio" name="q1" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q1" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q1" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Bạn nghĩ gì khi phim ảnh luôn mô tả nam giới là người mạnh mẽ?</strong></p>
+        <label><input type="radio" name="q2" value="0"> Hoàn toàn hợp lý</label>
+        <label><input type="radio" name="q2" value="1"> Có phần đúng</label>
+        <label><input type="radio" name="q2" value="2"> Thiếu đa dạng</label>
+        <label><input type="radio" name="q2" value="3"> Định kiến giới rõ rệt</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Bạn có từng thấy nhân vật LGBTQ+ bị chế giễu trên truyền thông?</strong></p>
+        <label><input type="radio" name="q3" value="3"> Có, rất rõ</label>
+        <label><input type="radio" name="q3" value="2"> Có nhưng ít</label>
+        <label><input type="radio" name="q3" value="1"> Không rõ</label>
+        <label><input type="radio" name="q3" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Bạn có từng thấy truyền thông khuyến khích bình đẳng giới?</strong></p>
+        <label><input type="radio" name="q4" value="3"> Có, rất tích cực</label>
+        <label><input type="radio" name="q4" value="2"> Có nhưng chưa phổ biến</label>
+        <label><input type="radio" name="q4" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q4" value="0"> Không thấy</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Bạn có từng phản biện nội dung truyền thông mang định kiến giới?</strong></p>
+        <label><input type="radio" name="q5" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q5" value="2"> Đôi khi</label>
+        <label><input type="radio" name="q5" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q5" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>6. Bạn có theo dõi nội dung truyền thông về đa dạng giới?</strong></p>
+        <label><input type="radio" name="q6" value="3"> Thường xuyên</label>
+        <label><input type="radio" name="q6" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q6" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q6" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Bạn có cảm thấy truyền thông ảnh hưởng đến cách bạn nhìn nhận giới?</strong></p>
+        <label><input type="radio" name="q7" value="3"> Rất nhiều</label>
+        <label><input type="radio" name="q7" value="2"> Có phần</label>
+        <label><input type="radio" name="q7" value="1"> Không rõ</label>
+        <label><input type="radio" name="q7" value="0"> Không ảnh hưởng</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Bạn có từng thấy truyền thông mô tả giới phi nhị phân?</strong></p>
+        <label><input type="radio" name="q8" value="3"> Có, rõ ràng</label>
+        <label><input type="radio" name="q8" value="2"> Có nhưng mờ nhạt</label>
+        <label><input type="radio" name="q8" value="1"> Không rõ</label>
+        <label><input type="radio" name="q8" value="0"> Chưa từng</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Bạn có từng chia sẻ nội dung truyền thông tích cực về giới?</strong></p>
+        <label><input type="radio" name="q9" value="3"> Có</label>
+        <label><input type="radio" name="q9" value="2"> Đã từng</label>
+        <label><input type="radio" name="q9" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q9" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p><strong>10. Bạn có mong muốn truyền thông thay đổi cách thể hiện giới?</strong></p>
+        <label><input type="radio" name="q10" value="3"> Rất mong muốn</label>
+        <label><input type="radio" name="q10" value="2"> Có thể</label>
+        <label><input type="radio" name="q10" value="1"> Không rõ</label>
+        <label><input type="radio" name="q10" value="0"> Không quan tâm</label>
+      </div>
+
+ <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff8e1; padding: 15px; border-left: 4px solid #fbc02d; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện tư duy truyền thông hay năng lực chuyên môn. Kết quả không dùng để phân loại hay đánh giá cá nhân.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 10) {
+        resultText += "<p>📘 <strong>Nhận thức giới hạn:</strong> Bạn chưa nhận diện rõ ảnh hưởng của truyền thông đến tư duy giới. Hãy quan sát và phản biện nhiều hơn.</p>";
+      } else if (score <= 20) {
+        resultText += "<p>📗 <strong>Nhận thức trung bình:</strong> Bạn đã có sự quan tâm nhất định đến cách truyền thông thể hiện giới. Hãy tiếp tục học hỏi và chia sẻ góc nhìn của mình.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn có tư duy phê phán và hiểu rõ vai trò của truyền thông trong việc kiến tạo bình đẳng giới. Tuyệt vời!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
