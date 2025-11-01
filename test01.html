@@ -226,13 +226,14 @@ function calculateResult() {
   </form>
   </main>
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // 👈 thay bằng Public Key của chị
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
 
   function notifyTestTaken() {
     emailjs.send("service_mvaiail", "template_contact", {
-      from_name: "Hệ thống trắc nghiệm",
-      message: "Có người vừa hoàn thành một bài test trên hệ thống."
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
     }).then(function(response) {
       console.log("Email đã gửi thành công!", response.status);
     }, function(error) {
@@ -240,6 +241,7 @@ function calculateResult() {
     });
   }
 </script>
+
 
 </body>
 </html>
