@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Tự nhận thức về Bản Dạng Giới</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #e1f5fe;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #0277bd;
+      text-align: center;
+    }
+    section {
+      background-color: #e3f2fd;
+      padding: 15px;
+      border-left: 5px solid #039be5;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #039be5, #0277bd);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #0277bd, #039be5);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #e3f2fd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>🔍 Test Tự nhận thức về Bản Dạng Giới</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này dựa trên lý thuyết bản dạng giới và phổ giới (gender spectrum), giúp bạn khám phá cảm nhận của mình về giới tính, từ đó hiểu rõ hơn về bản thân và vị trí của mình trong phổ giới.
+      </p>
+      <p>
+        Mục tiêu là hỗ trợ quá trình tự khám phá và thúc đẩy sự tự tin trong việc thể hiện bản dạng giới cá nhân.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Bạn có cảm thấy giới tính sinh học phản ánh đúng con người bạn?</strong></p>
+        <label><input type="radio" name="q1" value="0"> Hoàn toàn đúng</label>
+        <label><input type="radio" name="q1" value="1"> Phần nào đúng</label>
+        <label><input type="radio" name="q1" value="2"> Không chắc</label>
+        <label><input type="radio" name="q1" value="3"> Không đúng</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Bạn có từng nghi ngờ hoặc khám phá bản dạng giới của mình?</strong></p>
+        <label><input type="radio" name="q2" value="3"> Có</label>
+        <label><input type="radio" name="q2" value="2"> Đang khám phá</label>
+        <label><input type="radio" name="q2" value="1"> Đã từng</label>
+        <label><input type="radio" name="q2" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Bạn cảm thấy thoải mái khi thể hiện bản thân theo giới tính mình cảm nhận?</strong></p>
+        <label><input type="radio" name="q3" value="3"> Rất thoải mái</label>
+        <label><input type="radio" name="q3" value="2"> Có thể chấp nhận</label>
+        <label><input type="radio" name="q3" value="1"> Không thoải mái</label>
+        <label><input type="radio" name="q3" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Bạn có từng sử dụng đại từ khác với giới tính sinh học?</strong></p>
+        <label><input type="radio" name="q4" value="3"> Có</label>
+        <label><input type="radio" name="q4" value="2"> Đang thử nghiệm</label>
+        <label><input type="radio" name="q4" value="1"> Nghĩ đến nhưng chưa dùng</label>
+        <label><input type="radio" name="q4" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Bạn có cảm thấy bản dạng giới của mình thay đổi theo thời gian?</strong></p>
+        <label><input type="radio" name="q5" value="3"> Có</label>
+        <label><input type="radio" name="q5" value="2"> Có thể</label>
+        <label><input type="radio" name="q5" value="1"> Không rõ</label>
+        <label><input type="radio" name="q5" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p><strong>6. Bạn có từng cảm thấy không thoải mái với cách người khác gọi bạn?</strong></p>
+        <label><input type="radio" name="q6" value="3"> Thường xuyên</label>
+        <label><input type="radio" name="q6" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q6" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q6" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Bạn có từng tìm hiểu về các bản dạng giới như non-binary, genderfluid…?</strong></p>
+        <label><input type="radio" name="q7" value="3"> Có</label>
+        <label><input type="radio" name="q7" value="2"> Đang tìm hiểu</label>
+        <label><input type="radio" name="q7" value="1"> Nghe qua</label>
+        <label><input type="radio" name="q7" value="0"> Chưa từng</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Bạn có cảm thấy bản dạng giới của mình không thuộc nhị phân nam/nữ?</strong></p>
+        <label><input type="radio" name="q8" value="3"> Có</label>
+        <label><input type="radio" name="q8" value="2"> Có thể</label>
+        <label><input type="radio" name="q8" value="1"> Không rõ</label>
+        <label><input type="radio" name="q8" value="0"> Không</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Bạn có từng chia sẻ bản dạng giới của mình với người khác?</strong></p>
+        <label><input type="radio" name="q9" value="3"> Có</label>
+        <label><input type="radio" name="q9" value="2"> Đang cân nhắc</label>
+        <label><input type="radio" name="q9" value="1"> Chia sẻ gián tiếp</label>
+        <label><input type="radio" name="q9" value="0"> Không</label>
+      </div>
+
+      <      <div class="question">
+        <p><strong>10. Bạn có cảm thấy bản dạng giới là một phần quan trọng trong việc hiểu về bản thân?</strong></p>
+        <label><input type="radio" name="q10" value="3"> Rất quan trọng</label>
+        <label><input type="radio" name="q10" value="2"> Có phần</label>
+        <label><input type="radio" name="q10" value="1"> Không rõ</label>
+        <label><input type="radio" name="q10" value="0"> Không quan trọng</label>
+      </div>
+
+     <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e3f2fd; padding: 15px; border-left: 4px solid #039be5; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn chuyên môn từ chuyên gia tâm lý hoặc giới tính. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới, hãy tìm đến sự hỗ trợ phù hợp.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 10) {
+        resultText += "<p>📘 <strong>Nhận thức giới hạn:</strong> Bạn chưa có nhiều trải nghiệm hoặc hiểu biết về bản dạng giới. Hãy bắt đầu bằng việc lắng nghe và tìm hiểu thêm.</p>";
+      } else if (score <= 20) {
+        resultText += "<p>📗 <strong>Nhận thức trung bình:</strong> Bạn đang trong quá trình khám phá bản thân. Hãy tiếp tục học hỏi và kết nối với cộng đồng đa dạng giới.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn có sự hiểu biết sâu sắc và tự tin về bản dạng giới của mình. Hãy lan tỏa sự tích cực này đến người khác nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
+
