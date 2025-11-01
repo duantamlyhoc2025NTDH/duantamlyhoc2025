@@ -66,6 +66,17 @@
     <h1>Trắc nghiệm Xu Hướng Tính Dục (Kinsey Scale)</h1>
   </header>
   <main>
+    <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
+<section style="background-color: #fff0f8; padding: 15px; border-left: 5px solid #cc3399; margin-bottom: 20px; border-radius: 6px;">
+  <h2>Giới thiệu</h2>
+  <p>
+    Bài trắc nghiệm này dựa trên <strong>Thang đo Kinsey (Kinsey Scale)</strong> – một công cụ được phát triển bởi nhà tình dục học <strong>Alfred Kinsey</strong> và cộng sự vào những năm 1940. Thang đo này giúp đánh giá xu hướng tính dục của một người không theo cách nhị phân (chỉ đồng tính hoặc dị tính), mà theo một phổ liên tục từ 0 đến 6.
+  </p>
+  <p>
+    Theo lý thuyết của Kinsey, xu hướng tính dục là một dải phổ linh hoạt, có thể thay đổi theo thời gian và trải nghiệm sống. Bài test này không nhằm gán nhãn hay xác định danh tính, mà giúp bạn khám phá và hiểu rõ hơn về cảm xúc và sự thu hút của bản thân đối với các giới khác nhau.
+  </p>
+</section>
+
     <form id="infoForm" class="info-form">
       <h2>Thông tin người làm bài</h2>
       <input type="text" id="name" placeholder="Họ và tên" required>
@@ -157,9 +168,14 @@
         <label><input type="radio" name="q10" value="0"> Không</label>
       </div>
 
-      <button type="button" onclick="calculateResult()">Xem kết quả</button>
+  <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
       <div id="result" class="result" style="display:none;"></div>
     </form>
+    <!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
+<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff0f8; padding: 15px; border-left: 4px solid #cc3399; border-radius: 6px;">
+  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn hoặc chẩn đoán từ chuyên gia tâm lý hoặc chuyên gia về giới và tính dục. Nếu bạn có những băn khoăn sâu hơn về xu hướng tính dục hoặc bản dạng giới, hãy tìm đến sự hỗ trợ từ các chuyên gia có chuyên môn.
+</section>
+
   </main>
 
   <script>
@@ -197,6 +213,21 @@
     <p><strong>Kết luận:</strong> ${resultText}</p>
   `;
 }
+</script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
 </script>
 </body>
 </html>
