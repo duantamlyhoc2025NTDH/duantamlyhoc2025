@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Áp lực Giới trong Học đường</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #fff3e0, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff8e1;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #ef6c00;
+      text-align: center;
+    }
+    section {
+      background-color: #fff3e0;
+      padding: 15px;
+      border-left: 5px solid #fb8c00;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #fb8c00, #ef6c00);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #ef6c00, #fb8c00);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #fff3e0;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>🎒 Test Áp lực Giới trong Học đường</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này giúp bạn nhận diện những áp lực vô hình từ kỳ vọng giới trong môi trường học đường, từ việc chọn ngành học đến cách thể hiện bản thân. Dựa trên các nghiên cứu về giới và giáo dục, bài test hỗ trợ bạn hiểu rõ hơn về ảnh hưởng của định kiến giới đến quá trình học tập và phát triển cá nhân.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Bạn có từng bị kỳ vọng học giỏi vì là con trai/con gái?</strong></p>
+        <label><input type="radio" name="q1" value="3"> Thường xuyên</label>
+        <label><input type="radio" name="q1" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q1" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q1" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Bạn có cảm thấy áp lực phải chọn ngành học “phù hợp với giới”?</strong></p>
+        <label><input type="radio" name="q2" value="3"> Có, rất rõ</label>
+        <label><input type="radio" name="q2" value="2"> Có nhưng không nhiều</label>
+        <label><input type="radio" name="q2" value="1"> Không rõ</label>
+        <label><input type="radio" name="q2" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Bạn có từng bị trêu chọc vì cách ăn mặc không “đúng giới”?</strong></p>
+        <label><input type="radio" name="q3" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q3" value="2"> Đôi khi</label>
+        <label><input type="radio" name="q3" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q3" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Bạn có cảm thấy khó thể hiện cảm xúc vì sợ bị đánh giá theo giới?</strong></p>
+        <label><input type="radio" name="q4" value="3"> Rất thường xuyên</label>
+        <label><input type="radio" name="q4" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q4" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q4" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Bạn có từng bị phân công nhiệm vụ theo giới (con trai làm việc nặng, con gái làm việc nhẹ)?</strong></p>
+        <label><input type="radio" name="q5" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q5" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q5" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q5" value="0"> Không bao giờ</label>
+      </div>
+      <div class="question">
+        <p><strong>6. Bạn có từng bị nhận xét về ngoại hình theo chuẩn giới?</strong></p>
+        <label><input type="radio" name="q6" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q6" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q6" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q6" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Bạn có từng bị áp lực phải thể hiện tính cách “đúng giới”?</strong></p>
+        <label><input type="radio" name="q7" value="3"> Có, rất rõ</label>
+        <label><input type="radio" name="q7" value="2"> Có nhưng không nhiều</label>
+        <label><input type="radio" name="q7" value="1"> Không rõ</label>
+        <label><input type="radio" name="q7" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Bạn có từng bị giáo viên hoặc người lớn phân biệt giới trong đánh giá năng lực?</strong></p>
+        <label><input type="radio" name="q8" value="3"> Có, rõ ràng</label>
+        <label><input type="radio" name="q8" value="2"> Có nhưng nhẹ</label>
+        <label><input type="radio" name="q8" value="1"> Không rõ</label>
+        <label><input type="radio" name="q8" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Bạn có từng cảm thấy không được là chính mình vì áp lực giới?</strong></p>
+        <label><input type="radio" name="q9" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q9" value="2"> Đôi khi</label>
+        <label><input type="radio" name="q9" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q9" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>10. Bạn có mong muốn học đường trở nên bình đẳng giới hơn?</strong></p>
+        <label><input type="radio" name="q10" value="3"> Rất mong muốn</label>
+        <label><input type="radio" name="q10" value="2"> Có thể</label>
+        <label><input type="radio" name="q10" value="1"> Không rõ</label>
+        <label><input type="radio" name="q10" value="0"> Không quan tâm</label>
+      </div>
+
+         <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff3e0; padding: 15px; border-left: 4px solid #fb8c00; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện trải nghiệm học đường hay năng lực cá nhân. Nếu bạn gặp áp lực kéo dài, hãy tìm đến sự hỗ trợ từ người đáng tin cậy hoặc chuyên gia tâm lý học đường.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 10) {
+        resultText += "<p>📘 <strong>Áp lực giới thấp:</strong> Bạn ít bị ảnh hưởng bởi định kiến giới trong học đường. Hãy tiếp tục giữ vững sự tự tin và hỗ trợ bạn bè xung quanh.</p>";
+      } else if (score <= 20) {
+        resultText += "<p>📗 <strong>Áp lực giới trung bình:</strong> Bạn đã từng trải qua một số tình huống bị ảnh hưởng bởi giới. Hãy chia sẻ và tìm cách vượt qua cùng người thân hoặc thầy cô.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Áp lực giới cao:</strong> Bạn đang chịu nhiều kỳ vọng và định kiến giới trong môi trường học đường. Hãy tìm sự hỗ trợ và không ngại thể hiện bản thân một cách tích cực.</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
