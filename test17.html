@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Giao tiếp Giới tính Lành mạnh</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    main {
+      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #e0f2f1;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #00838f;
+      text-align: center;
+    }
+    section {
+      background-color: #e0f7fa;
+      padding: 15px;
+      border-left: 5px solid #00acc1;
+      margin-bottom: 20px;
+      border-radius: 6px;
+    }
+    .question {
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    button {
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: linear-gradient(to right, #00acc1, #00838f);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    button:hover {
+      background: linear-gradient(to right, #00838f, #00acc1);
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    }
+    #result {
+      margin-top: 40px;
+      font-size: 18px;
+      color: #333;
+      background-color: #e0f7fa;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>💬 Test Giao tiếp Giới tính Lành mạnh</h2>
+
+    <!-- MỞ ĐẦU -->
+    <section>
+      <h3>Giới thiệu</h3>
+      <p>
+        Bài trắc nghiệm này dựa trên lý thuyết giao tiếp giới tính và kỹ năng xã hội, giúp bạn nhận diện cách bạn thể hiện cảm xúc, tôn trọng ranh giới và xây dựng mối quan hệ lành mạnh trong giao tiếp giữa các giới.
+      </p>
+      <p>
+        Mục tiêu là hỗ trợ phát triển kỹ năng giao tiếp tích cực, tôn trọng bản thân và người khác trong các mối quan hệ cá nhân và xã hội.
+      </p>
+    </section>
+
+    <!-- CÂU HỎI -->
+    <form id="quizForm">
+      <div class="question">
+        <p><strong>1. Khi người khác không muốn chia sẻ, bạn sẽ:</strong></p>
+        <label><input type="radio" name="q1" value="3"> Tôn trọng và chờ đợi</label>
+        <label><input type="radio" name="q1" value="2"> Gợi mở nhẹ nhàng</label>
+        <label><input type="radio" name="q1" value="1"> Hỏi liên tục</label>
+        <label><input type="radio" name="q1" value="0"> Ép buộc phải nói</label>
+      </div>
+
+      <div class="question">
+        <p><strong>2. Khi bạn không thoải mái với hành vi của người khác, bạn sẽ:</strong></p>
+        <label><input type="radio" name="q2" value="3"> Nói rõ cảm xúc và ranh giới</label>
+        <label><input type="radio" name="q2" value="2"> Tránh mặt</label>
+        <label><input type="radio" name="q2" value="1"> Im lặng chịu đựng</label>
+        <label><input type="radio" name="q2" value="0"> Phản ứng gay gắt</label>
+      </div>
+
+      <div class="question">
+        <p><strong>3. Bạn có thường xuyên hỏi ý kiến người khác trước khi chia sẻ chuyện riêng?</strong></p>
+        <label><input type="radio" name="q3" value="3"> Có, luôn tôn trọng</label>
+        <label><input type="radio" name="q3" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q3" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q3" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>4. Khi người khác từ chối tình cảm, bạn sẽ:</strong></p>
+        <label><input type="radio" name="q4" value="3"> Tôn trọng quyết định</label>
+        <label><input type="radio" name="q4" value="2"> Cố gắng thuyết phục</label>
+        <label><input type="radio" name="q4" value="1"> Buồn và tránh mặt</label>
+        <label><input type="radio" name="q4" value="0"> Giận dữ và trách móc</label>
+      </div>
+
+      <div class="question">
+        <p><strong>5. Bạn có thường xuyên lắng nghe khi người khác chia sẻ?</strong></p>
+        <label><input type="radio" name="q5" value="3"> Có, rất chú tâm</label>
+        <label><input type="radio" name="q5" value="2"> Có nhưng dễ mất tập trung</label>
+        <label><input type="radio" name="q5" value="1"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q5" value="0"> Hiếm khi</label>
+      </div>
+
+      <div class="question">
+        <p><strong>6. Bạn có từng nói “không” khi không thoải mái?</strong></p>
+        <label><input type="radio" name="q6" value="3"> Có, rõ ràng</label>
+        <label><input type="radio" name="q6" value="2"> Có nhưng ngại</label>
+        <label><input type="radio" name="q6" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q6" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>7. Bạn có từng xin phép trước khi chạm vào người khác?</strong></p>
+        <label><input type="radio" name="q7" value="3"> Luôn luôn</label>
+        <label><input type="radio" name="q7" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q7" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q7" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>8. Bạn có từng chia sẻ cảm xúc thật với người thân?</strong></p>
+        <label><input type="radio" name="q8" value="3"> Có, thường xuyên</label>
+        <label><input type="radio" name="q8" value="2"> Thỉnh thoảng</label>
+        <label><input type="radio" name="q8" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q8" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>9. Bạn có từng xin lỗi khi làm người khác tổn thương?</strong></p>
+        <label><input type="radio" name="q9" value="3"> Có, ngay lập tức</label>
+        <label><input type="radio" name="q9" value="2"> Có nhưng khó nói</label>
+        <label><input type="radio" name="q9" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q9" value="0"> Không bao giờ</label>
+      </div>
+
+      <div class="question">
+        <p><strong>10. Bạn có từng tôn trọng quyền riêng tư của người khác?</strong></p>
+        <label><input type="radio" name="q10" value="3"> Luôn tôn trọng</label>
+        <label><input type="radio" name="q10" value="2"> Có nhưng đôi lúc tò mò</label>
+        <label><input type="radio" name="q10" value="1"> Hiếm khi</label>
+        <label><input type="radio" name="q10" value="0"> Không quan tâm</label>
+      </div>
+
+      <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+    </form>
+
+    <!-- KẾT QUẢ -->
+    <div id="result"></div>
+
+    <!-- MIỄN TRỪ TRÁCH NHIỆM -->
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e0f7fa; padding: 15px; border-left: 4px solid #00acc1; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện kỹ năng giao tiếp hay năng lực cá nhân. Nếu bạn gặp khó khăn trong giao tiếp, hãy tìm đến sự hỗ trợ từ chuyên gia hoặc người đáng tin cậy.
+    </section>
+  </main>
+
+  <script>
+    function calculateScore() {
+      const name = document.getElementById("username")?.value?.trim() || "Bạn";
+      let score = 0;
+      for (let i = 1; i <= 10; i++) {
+        const answer = document.querySelector('input[name="q' + i + '"]:checked');
+        if (answer) score += parseInt(answer.value);
+      }
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
+      if (score <= 10) {
+        resultText += "<p>📘 <strong>Giao tiếp chưa lành mạnh:</strong> Bạn còn gặp khó khăn trong việc thể hiện cảm xúc và tôn trọng ranh giới. Hãy học cách lắng nghe và nói rõ cảm xúc của mình.</p>";
+      } else if (score <= 20) {
+        resultText += "<p>📗 <strong>Giao tiếp ở mức trung bình:</strong> Bạn đã có một số kỹ năng giao tiếp tích cực nhưng vẫn cần cải thiện để xây dựng mối quan hệ lành mạnh hơn.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Giao tiếp lành mạnh:</strong> Bạn có khả năng lắng nghe, tôn trọng và thể hiện cảm xúc một cách tích cực. Hãy tiếp tục phát triển kỹ năng này nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText;
+    }
+  </script>
+<script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
+</body>
+</html>
