@@ -75,6 +75,10 @@
         Bài trắc nghiệm này dựa trên lý thuyết đồng cảm và nhận thức xã hội, giúp bạn khám phá khả năng đặt mình vào vị trí của người khác giới, từ đó xây dựng sự thấu hiểu và hỗ trợ tốt hơn trong các mối quan hệ cá nhân và xã hội.
       </p>
     </section>
+<div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn:</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <!-- CÂU HỎI -->
     <form id="quizForm">
@@ -171,27 +175,7 @@
     </section>
   </main>
 
-  <script>
-    function calculateScore() {
-      const name = document.getElementById("username")?.value?.trim() || "Bạn";
-      let score = 0;
-      for (let i = 1; i <= 10; i++) {
-        const answer = document.querySelector('input[name="q' + i + '"]:checked');
-        if (answer) score += parseInt(answer.value);
-      }
-
-      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
-      if (score <= 10) {
-        resultText += "<p>📘 <strong>Đồng cảm giới thấp:</strong> Bạn chưa có nhiều trải nghiệm hoặc chưa thực sự đặt mình vào vị trí của người khác giới. Hãy bắt đầu bằng việc lắng nghe và quan sát nhiều hơn.</p>";
-      } else if (score <= 20) {
-        resultText += "<p>📗 <strong>Đồng cảm giới trung bình:</strong> Bạn đã có sự quan tâm nhất định đến trải nghiệm giới, nhưng vẫn cần mở rộng góc nhìn và chia sẻ nhiều hơn.</p>";
-      } else {
-        resultText += "<p>📕 <strong>Đồng cảm giới cao:</strong> Bạn có khả năng thấu hiểu và hỗ trợ người khác giới một cách tích cực. Hãy lan tỏa sự đồng cảm này đến cộng đồng nhé!</p>";
-      }
-
-      document.getElementById("result").innerHTML = resultText;
-    }
-  </script>
+  <script> function calculateScore() { const name = document.getElementById("username")?.value?.trim() || "Bạn"; let score = 0; for (let i = 1; i <= 10; i++) { const answer = document.querySelector('input[name="q' + i + '"]:checked'); if (answer) score += parseInt(answer.value); } let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`; if (score <= 10) { resultText += "<p>📘 <strong>Đồng cảm giới thấp:</strong> Bạn chưa có nhiều trải nghiệm hoặc chưa thực sự đặt mình vào vị trí của người khác giới. Hãy bắt đầu bằng việc lắng nghe và quan sát nhiều hơn.</p>"; } else if (score <= 20) { resultText += "<p>📗 <strong>Đồng cảm giới trung bình:</strong> Bạn đã có sự quan tâm nhất định đến trải nghiệm giới, nhưng vẫn cần mở rộng góc nhìn và chia sẻ nhiều hơn.</p>"; } else { resultText += "<p>📕 <strong>Đồng cảm giới cao:</strong> Bạn có khả năng thấu hiểu và hỗ trợ người khác giới một cách tích cực. Hãy lan tỏa sự đồng cảm này đến cộng đồng nhé!</p>"; } document.getElementById("result").innerHTML = resultText; } </script>
 <script>
   emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
 
