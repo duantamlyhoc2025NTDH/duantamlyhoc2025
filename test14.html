@@ -78,6 +78,10 @@
         Mục tiêu là hỗ trợ giáo dục bình đẳng giới và xây dựng môi trường học đường, gia đình, xã hội thân thiện với mọi bản dạng.
       </p>
     </section>
+<div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn (tùy chọn):</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <!-- CÂU HỎI -->
     <form id="quizForm">
@@ -161,7 +165,7 @@
         <label><input type="radio" name="q10" value="0"> Không quan tâm</label>
       </div>
 
-     <button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+     <button type="button" onclick="calculateScore(); notifyTestTaken();">Xem kết quả</button>
     </form>
 
     <!-- KẾT QUẢ -->
