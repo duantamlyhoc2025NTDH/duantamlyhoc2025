@@ -170,25 +170,24 @@
   </main>
 
   <script>
-    function calculateScore() {
-      const name = document.getElementById("username")?.value?.trim() || "Bạn";
-      let score = 0;
-      for (let i = 1; i <= 10; i++) {
-        const answer = document.querySelector('input[name="q' + i + '"]:checked');
-        if (answer) score += parseInt(answer.value);
-      }
+  function calculateScore() {
+  let score = 0;
+  for (let i = 1; i <= 10; i++) {
+    const answer = document.querySelector('input[name="q' + i + '"]:checked');
+    if (answer) score += parseInt(answer.value);
+  }
 
-      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name}</p>`;
-      if (score <= 10) {
-        resultText += "<p>📘 <strong>Áp lực giới thấp:</strong> Bạn ít bị ảnh hưởng bởi định kiến giới trong học đường. Hãy tiếp tục giữ vững sự tự tin và hỗ trợ bạn bè xung quanh.</p>";
-      } else if (score <= 20) {
-        resultText += "<p>📗 <strong>Áp lực giới trung bình:</strong> Bạn đã từng trải qua một số tình huống bị ảnh hưởng bởi giới. Hãy chia sẻ và tìm cách vượt qua cùng người thân hoặc thầy cô.</p>";
-      } else {
-        resultText += "<p>📕 <strong>Áp lực giới cao:</strong> Bạn đang chịu nhiều kỳ vọng và định kiến giới trong môi trường học đường. Hãy tìm sự hỗ trợ và không ngại thể hiện bản thân một cách tích cực.</p>";
-      }
+  let resultText = `<p><strong>👤 Người làm bài:</strong> Bạn</p>`;
+  if (score <= 10) {
+    resultText += "<p>📘 <strong>Áp lực giới thấp:</strong> Bạn ít bị ảnh hưởng bởi định kiến giới trong học đường. Hãy tiếp tục giữ vững sự tự tin và hỗ trợ bạn bè xung quanh.</p>";
+  } else if (score <= 20) {
+    resultText += "<p>📗 <strong>Áp lực giới trung bình:</strong> Bạn đã từng trải qua một số tình huống bị ảnh hưởng bởi giới. Hãy chia sẻ và tìm cách vượt qua cùng người thân hoặc thầy cô.</p>";
+  } else {
+    resultText += "<p>📕 <strong>Áp lực giới cao:</strong> Bạn đang chịu nhiều kỳ vọng và định kiến giới trong môi trường học đường. Hãy tìm sự hỗ trợ và không ngại thể hiện bản thân một cách tích cực.</p>";
+  }
 
-      document.getElementById("result").innerHTML = resultText;
-    }
+  document.getElementById("result").innerHTML = resultText;
+}
   </script>
 <script>
   emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
