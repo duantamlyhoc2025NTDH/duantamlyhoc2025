@@ -66,12 +66,20 @@
     <h1>Trắc nghiệm Tư duy Logic</h1>
   </header>
   <main>
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
+    <section style="background-color: #e1f5fe; padding: 15px; border-left: 5px solid #0288d1; margin-bottom: 20px; border-radius: 6px;">
+  <h2>🧠 Giới thiệu</h2>
+  <p>
+    Bài trắc nghiệm này giúp bạn khám phá mức độ tư duy logic thông qua các câu hỏi suy luận, phân tích và giải quyết vấn đề. Dựa trên các nguyên lý cơ bản của tư duy phản biện, bài test sẽ phản ánh khả năng xử lý thông tin và lập luận hợp lý của bạn trong các tình huống thường gặp.
+  </p>
+  <p>
+    Mục tiêu là giúp bạn nhận diện điểm mạnh và những khía cạnh cần cải thiện trong tư duy logic, từ đó hỗ trợ quá trình học tập và ra quyết định hiệu quả hơn.
+  </p>
+</section>
+
+   <div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn:</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <form id="quizForm">
       <h2>10 câu hỏi trắc nghiệm</h2>
@@ -79,7 +87,7 @@
       <!-- Câu hỏi sẽ được tạo bằng JavaScript -->
       <div id="questions"></div>
 
-      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+     <button type="button" onclick="calculateScore(); notifyTestTaken();">Xem kết quả</button>
     </form>
 
     <div id="result" class="result"></div>
@@ -198,6 +206,20 @@
     }
 
     document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+  }
+</script>
+  <script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
   }
 </script>
 </body>
