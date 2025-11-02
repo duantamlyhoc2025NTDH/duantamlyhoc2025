@@ -64,23 +64,32 @@
 <body>
   <header>
     <h1>Trắc nghiệm Ra Quyết Định</h1>
+    <section style="background-color: #e8f5e9; color: #000; padding: 15px; border-left: 5px solid #2e7d32; margin-bottom: 20px; border-radius: 6px;">
+  <h2>Giới thiệu</h2>
+  <p>
+    Bài trắc nghiệm này giúp bạn khám phá khả năng ra quyết định trong các tình huống đời sống và học tập. Dựa trên nguyên lý tâm lý học nhận thức và kỹ năng giải quyết vấn đề, bài test phản ánh cách bạn phân tích, cân nhắc và lựa chọn khi đứng trước các lựa chọn khác nhau.
+  </p>
+  <p>
+    Mỗi câu hỏi là một tình huống giả định, yêu cầu bạn chọn phương án phù hợp nhất. Kết quả sẽ giúp bạn nhận diện điểm mạnh và những khía cạnh cần cải thiện trong kỹ năng ra quyết định.
+  </p>
+</section>
+
   </header>
   <main>
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
+   <div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn:</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <form id="quizForm">
       <h2>10 câu hỏi trắc nghiệm</h2>
       <div id="questions"></div>
-      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+ <button type="button" onclick="calculateScore(); notifyTestTaken();">Xem kết quả</button>
     </form>
 
-    <div id="result" class="result"></div>
-  </main>
+    <<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #dcedc8; padding: 15px; border-left: 4px solid #2e7d32; border-radius: 6px;">
+  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện năng lực ra quyết định của bạn. Kết quả nhằm hỗ trợ nhận diện xu hướng lựa chọn và định hướng phát triển kỹ năng cá nhân.
+</section>
 
   <script>
     const questions = [
@@ -197,5 +206,19 @@
       document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
     }
   </script>
+      <script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
 </body>
 </html>
