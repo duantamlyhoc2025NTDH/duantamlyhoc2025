@@ -66,17 +66,15 @@
     <h1>Trắc nghiệm Tư duy Phản biện</h1>
   </header>
   <main>
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
+   <div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn:</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <form id="quizForm">
       <h2>10 câu hỏi trắc nghiệm</h2>
       <div id="questions"></div>
-      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+         <button type="button" onclick="calculateScore(); notifyTestTaken();">Xem kết quả</button>
     </form>
 
     <div id="result" class="result"></div>
@@ -197,5 +195,19 @@
       document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
     }
   </script>
+  <script>
+  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
+
+  function notifyTestTaken() {
+    emailjs.send("service_mvaiail", "template_contact", {
+      message: "Có người vừa hoàn thành bài test BSRI.",
+      timestamp: new Date().toLocaleString()
+    }).then(function(response) {
+      console.log("Email đã gửi thành công!", response.status);
+    }, function(error) {
+      console.error("Gửi email thất bại", error);
+    });
+  }
+</script>
 </body>
 </html>
