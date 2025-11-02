@@ -78,6 +78,10 @@
         Mục tiêu là hỗ trợ nhận thức xã hội và thúc đẩy tư duy bình đẳng giới trong cộng đồng.
       </p>
     </section>
+<div style="margin-bottom: 20px;">
+  <label for="username"><strong>Nhập tên của bạn (tùy chọn):</strong></label>
+  <input type="text" id="username" placeholder="Tên của bạn..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc;">
+</div>
 
     <!-- CÂU HỎI -->
     <form id="quizForm">
@@ -151,6 +155,7 @@
         <label><input type="radio" name="q9" value="0"> Không thể thay đổi</label>
         <label><input type="radio" name="q9" value="0"> Chỉ thay đổi ở thành phố</label>
         <label><input type="radio" name="q9" value="0"> Tùy vào giới tính</label>
+      </div>
       <div class="question">
         <p><strong>10. Bình đẳng giới nghĩa là gì?</strong></p>
         <label><input type="radio" name="q10" value="1"> Cơ hội và quyền lợi ngang nhau cho mọi giới</label>
@@ -159,7 +164,7 @@
         <label><input type="radio" name="q10" value="0"> Mỗi giới có vai trò riêng biệt</label>
       </div>
 
-      <<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
+      <button type="button" onclick="calculateScore(); notifyTestTaken();">Xem kết quả</button>
     </form>
 
     <!-- KẾT QUẢ -->
