@@ -709,6 +709,24 @@ header,
   position: relative !important;
   z-index: 1 !important;
 }
+.game-container {
+  text-align: center;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 16px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.game-container h2 {
+  margin-bottom: 16px;
+  color: #8b0000;
+}
+.game-container iframe {
+  max-width: 100%;
+  height: auto;
+}
 
 
 
