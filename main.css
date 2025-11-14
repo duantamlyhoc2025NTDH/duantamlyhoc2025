@@ -723,5 +723,9 @@ header,
   height: auto;
 }
 
+.game-frame {
+  width: 485px;
+  max-width: 100%;
+}
 
 
