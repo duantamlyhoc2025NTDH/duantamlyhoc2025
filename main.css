@@ -713,19 +713,20 @@ header,
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;     /* Căn giữa ngang */
-  justify-content: center; /* Căn giữa dọc nếu cần */
+  align-items: center;
   margin: 40px 0;
 }
 
-.game-container iframe {
-  max-width: 100%;  /* Không bị tràn trên mobile */
-  height: auto;
+.game-frame {
+  width: 485px;      /* Giữ đúng kích thước của Scratch */
+  max-width: 100%;   /* Cho responsive */
 }
 
-.game-frame {
-  width: 485px;
-  max-width: 100%;
+.game-frame iframe {
+  width: 100%;       /* Cho phép co giãn theo khung */
+  height: 402px;     /* KHÔNG để auto */
+  border: none;
 }
+
 
 
