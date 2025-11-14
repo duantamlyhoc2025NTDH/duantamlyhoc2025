@@ -691,6 +691,24 @@ header {
   box-sizing: border-box !important;
   overflow-x: hidden !important;
 }
+/* ==== FIX DROPDOWN CHUI DƯỚI BANNER ==== */
+
+header,
+.navbar,
+.navbar ul,
+.navbar ul li,
+.dropdown,
+.dropdown-content {
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+/* Banner phải nằm thấp hơn menu */
+.banner,
+.banner img {
+  position: relative !important;
+  z-index: 1 !important;
+}
 
 
 
