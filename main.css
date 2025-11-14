@@ -710,21 +710,16 @@ header,
   z-index: 1 !important;
 }
 .game-container {
-  text-align: center;
-  margin: 40px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 16px;
-  width: fit-content;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;     /* Căn giữa ngang */
+  justify-content: center; /* Căn giữa dọc nếu cần */
+  margin: 40px 0;
 }
 
-.game-container h2 {
-  margin-bottom: 16px;
-  color: #8b0000;
-}
 .game-container iframe {
-  max-width: 100%;
+  max-width: 100%;  /* Không bị tràn trên mobile */
   height: auto;
 }
 
