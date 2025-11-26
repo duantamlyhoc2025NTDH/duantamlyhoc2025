@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Giao Tiếp Trong Gia Đình</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #fff9c4, #ffffff);
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #fbc02d;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: #fffde7;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #fbc02d;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+    .result {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #fff9c4;
+      border: 1px solid #fbc02d;
+      border-radius: 5px;
+    }
+    .info-form input {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #fbc02d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #f9a825;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm Giao Tiếp Trong Gia Đình</h1>
+  </header>
+  <main>
+    <section style="background-color: #fffde7; color: #000; padding: 15px; border-left: 5px solid #fbc02d; margin-bottom: 20px; border-radius: 6px;">
+      <h2>👨‍👩‍👧‍👦 Giới thiệu</h2>
+      <p>
+        Bài trắc nghiệm này giúp bạn khám phá mức độ giao tiếp trong gia đình – bao gồm sự lắng nghe, chia sẻ và thấu hiểu giữa các thành viên. Kết quả sẽ phản ánh cách gia đình bạn kết nối qua lời nói và hành động.
+      </p>
+      <p>
+        Mỗi câu hỏi là một tình huống quen thuộc trong đời sống gia đình. Hãy chọn phương án phù hợp nhất với trải nghiệm của bạn để khám phá mức độ giao tiếp nhé!
+      </p>
+    </section>
+
+    <form id="infoForm" class="info-form">
+      <h2>Thông tin người làm bài</h2>
+      <input type="text" id="name" placeholder="Họ và tên" required>
+      <input type="number" id="age" placeholder="Tuổi" required>
+      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
+    </form>
+
+    <form id="quizForm">
+      <h2>10 câu hỏi trắc nghiệm</h2>
+      <div id="questions"></div>
+      <button type="button" onclick="calculateScore()">🔍 Xem kết quả</button>
+    </form>
+
+    <div id="result" class="result"></div>
+
+    <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff9c4; padding: 15px; border-left: 4px solid #fbc02d; border-radius: 6px;">
+      <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không phản ánh toàn diện mối quan hệ gia đình. Kết quả nhằm hỗ trợ bạn nhận diện mức độ giao tiếp và định hướng xây dựng gia đình hạnh phúc hơn.
+    </section>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "Khi bạn chia sẻ ý kiến, gia đình thường?",
+        options: ["Lắng nghe và phản hồi", "Bỏ qua", "Chỉ trích", "Im lặng"],
+        correct: 0,
+        explain: "Lắng nghe và phản hồi là dấu hiệu giao tiếp tốt."
+      },
+      {
+        q: "Trong bữa cơm, gia đình bạn thường?",
+        options: ["Ăn trong im lặng", "Trò chuyện vui vẻ", "Ai dùng điện thoại nấy", "Tranh luận căng thẳng"],
+        correct: 1,
+        explain: "Trò chuyện trong bữa cơm giúp tăng sự gắn kết."
+      },
+      {
+        q: "Khi có mâu thuẫn, gia đình bạn thường?",
+        options: ["Tránh nói chuyện", "Thảo luận để giải quyết", "Để lâu rồi quên", "Cãi nhau lớn tiếng"],
+        correct: 1,
+        explain: "Thảo luận để giải quyết là cách giao tiếp lành mạnh."
+      },
+      {
+        q: "Bạn cảm thấy được tôn trọng khi bày tỏ ý kiến?",
+        options: ["Luôn luôn", "Thỉnh thoảng", "Hiếm khi", "Không bao giờ"],
+        correct: 0,
+        explain: "Cảm giác được tôn trọng là nền tảng giao tiếp tốt."
+      },
+      {
+        q: "Gia đình bạn thường chia sẻ thông tin quan trọng?",
+        options: ["Luôn chia sẻ", "Chỉ khi cần", "Ít khi", "Không bao giờ"],
+        correct: 0,
+        explain: "Chia sẻ thông tin giúp tăng sự minh bạch và gắn kết."
+      },
+      {
+        q: "Khi bạn buồn, gia đình thường?",
+        options: ["An ủi và động viên", "Không quan tâm", "Trách móc", "Để bạn tự xoay sở"],
+        correct: 0,
+        explain: "An ủi và động viên là biểu hiện giao tiếp tích cực."
+      },
+      {
+        q: "Gia đình bạn có thói quen hỏi thăm nhau mỗi ngày?",
+        options: ["Có", "Thỉnh thoảng", "Ít khi", "Không bao giờ"],
+        correct: 0,
+        explain: "Hỏi thăm nhau mỗi ngày giúp duy trì kết nối."
+      },
+      {
+        q: "Khi có quyết định chung, gia đình bạn thường?",
+        options: ["Bàn bạc cùng nhau", "Một người quyết định", "Không ai quan tâm", "Tránh thảo luận"],
+        correct: 0,
+        explain: "Bàn bạc cùng nhau thể hiện sự giao tiếp dân chủ."
+      },
+      {
+        q: "Bạn cảm thấy thoải mái khi chia sẻ bí mật với gia đình?",
+        options: ["Hoàn toàn thoải mái", "Một phần", "Ít thoải mái", "Không thoải mái"],
+        correct: 0,
+        explain: "Thoải mái chia sẻ bí mật là dấu hiệu tin tưởng và giao tiếp tốt."
+      },
+      {
+        q: "Gia đình bạn thường khích lệ nhau khi đạt thành tích?",
+        options: ["Luôn luôn", "Thỉnh thoảng", "Ít khi", "Không bao giờ"],
+        correct: 0,
+        explain: "Khích lệ nhau giúp tạo động lực và tăng sự gắn kết."
+      }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<p><strong>Câu ${index + 1}:</strong> ${item.q}</p>` +
+        item.options.map((opt, i) =>
+          `<label><input type="radio" name="q${index}" value="${i}"> ${opt}</label>`
+        ).join("");
+      container.appendChild(div);
+    });
+
+    function calculateScore() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
+        return;
+      }
+
+      let score = 0;
+      let feedback = "";
+      questions.forEach((item, index) => {
+        const answer = document.querySelector(`input[name="q${index}"]:checked`);
+        if (answer) {
+          const val = parseInt(answer.value);
+          if (val === item.correct) {
+            score++;
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
+          } else {
+            feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
+          }
+        } else {
+          feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Chưa chọn – ${item.explain}</p>`;
+        }
+      });
+
+      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi, giới tính: ${gender})</p>`;
+      resultText += `<p><strong>🔢 Tổng điểm:</strong> ${score}/10</p>`;
+
+      if (score <= 3) {
+        resultText += "<p>📘 <strong>Kỹ năng giao tiếp trong gia đình còn hạn chế:</strong> Bạn cần dành thêm thời gian lắng nghe và chia sẻ để cải thiện sự kết nối.</p>";
+      } else if (score <= 7) {
+        resultText += "<p>📗 <strong>Kỹ năng giao tiếp trong gia đình ở mức trung bình:</strong> Gia đình bạn đã có sự trao đổi, nhưng vẫn cần tăng cường sự thấu hiểu và tôn trọng lẫn nhau.</p>";
+      } else {
+        resultText += "<p>📕 <strong>Kỹ năng giao tiếp trong gia đình tốt:</strong> Gia đình bạn có sự lắng nghe, chia sẻ và khích lệ mạnh mẽ. Hãy tiếp tục duy trì nhé!</p>";
+      }
+
+      document.getElementById("result").innerHTML = resultText + "<hr>" + feedback;
+    }
+  </script>
+</body>
+</html>
