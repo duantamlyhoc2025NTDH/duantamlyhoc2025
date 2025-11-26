@@ -187,8 +187,7 @@
         if (answer) {
           const val = parseInt(answer.value);
           if (val === item.correct) {
-          if (val === item.correct) {
-            score++;
+                score++;
             feedback += `<p><strong>Câu ${index + 1}:</strong> ✅ Đúng – ${item.explain}</p>`;
           } else {
             feedback += `<p><strong>Câu ${index + 1}:</strong> ❌ Sai – ${item.explain}</p>`;
