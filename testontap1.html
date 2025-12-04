@@ -546,7 +546,7 @@
     </div>
 
     <script>
-        // Dữ liệu câu hỏi - 100 câu
+        // Dữ liệu câu hỏi - 100 câu ĐẦY ĐỦ
         const questions = [
             // PHẦN 1: GIỚI THIỆU, CƠ SỞ THẦN KINH VÀ TRI GIÁC (Câu 1 - Câu 25)
             {
@@ -778,7 +778,7 @@
                     "Người tham gia có thể nhớ nội dung chi tiết của thông điệp.",
                     "Người tham gia nhận thức được giọng nam hay giọng nữ, nhưng không biết nội dung thông điệp.",
                     "Người tham gia không nhận thức được bất cứ điều gì từ thông điệp đó.",
-                    "Người tham gia có khả năng chuyển kênchú ý ngay lập tức khi nghe thấy tên mình."
+                    "Người tham gia có khả năng chuyển kênh chú ý ngay lập tức khi nghe thấy tên mình."
                 ],
                 answer: "B",
                 explanation: "Kết quả cho thấy người nghe chỉ có thể nhận ra các đặc điểm vật lý (giọng nói, cường độ) nhưng không phải nội dung ý nghĩa."
@@ -1200,28 +1200,659 @@
                 answer: "A",
                 explanation: "MPI (misleading postevent information) có thể bóp méo trí nhớ về sự kiện ban đầu, dẫn đến việc người chứng kiến nhớ sai."
             },
-            // Vì giới hạn độ dài, tôi chỉ thêm 50 câu đầu tiên vào mã mẫu
-            // Trong thực tế, bạn cần thêm tất cả 100 câu hỏi
-        ];
-
-        // Thêm 50 câu hỏi còn lại vào đây (từ câu 51 đến 100)
-        // Do giới hạn độ dài, tôi sẽ chỉ thêm một vài câu làm mẫu
-        // Bạn có thể thêm toàn bộ 100 câu bằng cách mở rộng mảng questions
-        for (let i = 51; i <= 100; i++) {
-            questions.push({
-                id: i,
-                part: i <= 75 ? 3 : 4,
-                question: `Câu hỏi mẫu ${i} - Nội dung câu hỏi sẽ được thêm đầy đủ sau.`,
+            // PHẦN 3: TRÍ NHỚ DÀI HẠN VÀ CÁC LỖI TRÍ NHỚ (Câu 51 - Câu 75)
+            {
+                id: 51,
+                part: 3,
+                question: "Việc sử dụng các câu hỏi gợi ý (suggestive questioning) trong lời khai nhân chứng (ví dụ: 'Anh/Chị có thấy cái xe màu trắng...' khi chiếc xe thực tế là màu đỏ) là ví dụ về loại lỗi trí nhớ nào?",
                 options: [
-                    "Lựa chọn A cho câu hỏi " + i,
-                    "Lựa chọn B cho câu hỏi " + i,
-                    "Lựa chọn C cho câu hỏi " + i,
-                    "Lựa chọn D cho câu hỏi " + i
+                    "Ảnh hưởng Độ dài Từ (Word-Length Effect).",
+                    "Sai lầm dựa trên sự Ám thị (Suggestive Misinformation).",
+                    "Gây nhiễu Ngược (Retroactive Interference).",
+                    "Mù Thay đổi (Change Blindness)."
                 ],
-                answer: i % 4 === 0 ? "A" : i % 4 === 1 ? "B" : i % 4 === 2 ? "C" : "D",
-                explanation: `Giải thích cho câu hỏi ${i} - Đây là giải thích mẫu, sẽ được thay thế bằng giải thích thực tế.`
-            });
-        }
+                answer: "B",
+                explanation: "Các câu hỏi dẫn dắt (suggestive questions) là một hình thức ám thị có thể làm thay đổi trí nhớ của nhân chứng, gây ra lỗi Ám thị."
+            },
+            {
+                id: 52,
+                part: 3,
+                question: "Thí nghiệm của Vogel và cs (2005) sử dụng ERP để nghiên cứu khả năng phân phối sự chú ý (allocation of attention) trong WM, kết quả cho thấy nhóm có sức chứa WM cao có đặc điểm nào?",
+                options: [
+                    "Tăng hoạt động ERP trong vùng Thị giác sơ cấp (Primary Visual Cortex).",
+                    "Tăng phản ứng ERP khi có thêm vật thể gây nhiễu không liên quan (hình chữ nhật xanh).",
+                    "Khả năng lờ đi yếu tố gây nhiễu (hình chữ nhật xanh) hiệu quả hơn, thể hiện sự kiểm soát tốt hơn của Trung tâm Điều hành.",
+                    "Thời gian phản ứng phanh (reaction time) kéo dài hơn."
+                ],
+                answer: "C",
+                explanation: "Nhóm sức chứa cao hoạt động tốt hơn nhờ kiểm soát sự chú ý hiệu quả, có khả năng chặn thông tin không liên quan đi vào WM."
+            },
+            {
+                id: 53,
+                part: 3,
+                question: "Mô tả nào sau đây phù hợp nhất với Trí nhớ Dài hạn (LTM) theo Mô hình Modal?",
+                options: [
+                    "Có thời gian lưu trữ ngắn (15-30 giây) và mã hóa chủ yếu bằng âm vị.",
+                    "Có sức chứa vô hạn và thời gian lưu trữ có thể kéo dài nhiều năm hoặc nhiều thập kỷ.",
+                    "Chỉ lưu trữ thông tin về kỹ năng vận động và thói quen.",
+                    "Được tạo thành từ ba thành phần: Vòng âm vị, Phần đệm thị giác không gian, và Trung tâm điều hành."
+                ],
+                answer: "B",
+                explanation: "LTM được mô tả là một 'bản lưu trữ' thông tin gần như vô hạn và tồn tại lâu dài."
+            },
+            {
+                id: 54,
+                part: 3,
+                question: "Trong bối cảnh tâm lý học nhận thức, thuật ngữ nào mô tả quá trình được sử dụng để đưa thông tin vào Trí nhớ Dài hạn (LTM)?",
+                options: [
+                    "Khôi phục (Retrieval).",
+                    "Phân rã (Decay).",
+                    "Mã hóa (Encoding).",
+                    "Tái phân cực (Repolarization)."
+                ],
+                answer: "C",
+                explanation: "Mã hóa là quá trình thiết lập thông tin trong LTM, có thể là qua nhẩm lại ý nghĩa hoặc các chiến lược khác."
+            },
+            {
+                id: 55,
+                part: 3,
+                question: "Kết quả thí nghiệm của Craik và Tulving (1975) về Thuyết Các Mức độ Xử lý cho thấy điều gì?",
+                options: [
+                    "Xử lý hời hợt (ví dụ: câu hỏi về viết hoa) dẫn đến nhớ tốt hơn vì nó tốn ít thời gian phản ứng hơn.",
+                    "Xử lý sâu (ví dụ: câu hỏi điền vào chỗ trống) dẫn đến nhớ tốt hơn vì nó tạo ra nhiều kết nối ý nghĩa hơn.",
+                    "Xử lý âm vị luôn tốt hơn xử lý ngữ nghĩa.",
+                    "Không có sự khác biệt giữa các mức độ xử lý trong khả năng nhớ lại."
+                ],
+                answer: "B",
+                explanation: "Xử lý sâu (Elaborative Rehearsal) tốn thời gian hơn nhưng tạo ra khả năng nhớ lại cao hơn, vì nó tạo ra nhiều kết nối ý nghĩa hơn."
+            },
+            {
+                id: 56,
+                part: 3,
+                question: "Khái niệm Mã hóa Đặc trưng (Encoding Specificity) cho thấy sự nhớ lại sẽ tăng lên khi nào?",
+                options: [
+                    "Khi người học có tâm trạng khác nhau giữa lúc mã hóa và khôi phục.",
+                    "Khi loại mã hóa (ví dụ: ngữ nghĩa) và loại khôi phục (ví dụ: âm vần) là khác nhau.",
+                    "Khi loại mã hóa và loại khôi phục xuất hiện trong cùng một bối cảnh/nơi chốn.",
+                    "Khi thông tin được tổ chức một cách ngẫu nhiên."
+                ],
+                answer: "C",
+                explanation: "Mã hóa Đặc trưng là việc trí nhớ tốt nhất khi có sự phù hợp về bối cảnh (context) hoặc nơi chốn giữa lúc học và lúc kiểm tra (ví dụ: học dưới nước, nhớ dưới nước)."
+            },
+            {
+                id: 57,
+                part: 3,
+                question: "Điều kiện hóa Cổ điển (Classical Conditioning) được xem là một loại Trí nhớ Ẩn (Implicit Memory) vì sao?",
+                options: [
+                    "Nó liên quan đến việc học một kỹ năng vận động (motor skill).",
+                    "Nó xuất hiện ngay cả khi người đó quên sự ghép đôi ban đầu của kích thích (ví dụ: quên sự ghép đôi âm thanh và luồng khí).",
+                    "Nó yêu cầu sự nhắc lại ý nghĩa (elaborative rehearsal).",
+                    "Nó được khu biệt tại Hồi hải mã (Hippocampus)."
+                ],
+                answer: "B",
+                explanation: "Sự học tập xảy ra mà không cần nhận thức về sự kiện ban đầu, là bản chất của Trí nhớ Ẩn."
+            },
+            {
+                id: 58,
+                part: 3,
+                question: "Thành phần mới được thêm vào Mô hình Trí nhớ Làm việc của Baddeley (năm 2000) để giải thích việc lưu trữ thông tin và kết nối với Trí nhớ Dài hạn (LTM) là gì?",
+                options: [
+                    "Vòng Âm vị (Phonological Loop).",
+                    "Phần đệm Phác thảo Thị giác Không gian (Visuospatial Sketchpad).",
+                    "Trung tâm Điều hành (Central Executive).",
+                    "Bộ nhớ Đệm theo Chu kỳ (Episodic Buffer)."
+                ],
+                answer: "D",
+                explanation: "Bộ nhớ Đệm theo Chu kỳ là thành phần mới được thêm vào để giải thích việc tích hợp thông tin từ các thành phần WM khác nhau và liên kết với LTM."
+            },
+            {
+                id: 59,
+                part: 3,
+                question: "Trí nhớ Đèn chớp (Flashbulb Memories) được định nghĩa là gì?",
+                options: [
+                    "Những sự kiện đã xảy ra trong khoảng thời gian nhiều phút hoặc nhiều giờ.",
+                    "Những ký ức cực kỳ sống động và chi tiết về nơi mà một người đang ở và họ đang làm gì khi nghe về những sự kiện gây sốc và cảm xúc mạnh.",
+                    "Sự nhớ lại tăng cường những sự kiện xảy ra khi còn thiếu niên và đầu tuổi trưởng thành.",
+                    "Trí nhớ có thể bị thay đổi hoặc tạo nên từ sự ám thị của người khác."
+                ],
+                answer: "B",
+                explanation: "Trí nhớ Đèn chớp là những ký ức về bối cảnh cá nhân khi nhận được tin tức gây sốc, thường đi kèm với cảm xúc mạnh."
+            },
+            {
+                id: 60,
+                part: 3,
+                question: "Giả thuyết Nhắc lại Tường thuật (Narrative Rehearsal Hypothesis) chống lại quan điểm cơ chế đặc biệt của Trí nhớ Đèn chớp (Flashbulb Memories) bằng cách nào?",
+                options: [
+                    "Cho rằng Trí nhớ Đèn chớp vẫn chính xác tuyệt đối sau nhiều năm.",
+                    "Cho rằng cảm xúc mạnh gây ra những cơ chế đặc biệt ở Hạch Hạnh nhân (Amygdala).",
+                    "Cho rằng Trí nhớ Đèn chớp mạnh mẽ vì chúng ta cứ nhắc lại (rehearsal) sau khi nó xuất hiện (ví dụ: qua tin tức, thảo luận).",
+                    "Cho rằng trí nhớ đèn chớp là loại Nhớ Ngữ nghĩa, không phải Nhớ Tình tiết."
+                ],
+                answer: "C",
+                explanation: "Giả thuyết này cho rằng sự lặp lại (rehearsal) sau sự kiện là lý do chính khiến ký ức này mạnh mẽ, chứ không phải do cơ chế sinh học đặc biệt nào."
+            },
+            {
+                id: 61,
+                part: 3,
+                question: "Yếu tố nào được coi là một loại lỗi tiềm ẩn trong quá trình Mã hóa (Encoding) Trí nhớ, dẫn đến trí nhớ bị bóp méo hoặc không chính xác?",
+                options: [
+                    "Quá trình Nhẩm lại Ý nghĩa (Elaborative Rehearsal).",
+                    "Sử dụng các Giản đồ (Schemas) hoặc Kịch bản (Scripts) để tạo ra suy luận và 'điền vào chỗ trống' khi tiếp nhận thông tin.",
+                    "Quá trình Khôi phục theo bối cảnh (Context-dependent retrieval).",
+                    "Sự phân rã của dấu vết trí nhớ theo thời gian."
+                ],
+                answer: "B",
+                explanation: "Sự sử dụng Schemas/Scripts và suy luận trong quá trình mã hóa có thể dẫn đến việc lưu trữ những chi tiết không có thật."
+            },
+            {
+                id: 62,
+                part: 3,
+                question: "Thí nghiệm của Larry Jacoby và cs (1989) về 'Trở nên nổi tiếng chỉ sau một đêm' đã chứng minh loại lỗi trí nhớ nào?",
+                options: [
+                    "Gây nhiễu Xuôi (Proactive Interference).",
+                    "Mù Thay đổi (Change Blindness).",
+                    "Sai lầm về Nguồn quy kết (Source Misattribution), khi sự quen thuộc bị quy kết sai cho sự nổi tiếng.",
+                    "Ảnh hưởng Độ dài Từ (Word-Length Effect)."
+                ],
+                answer: "C",
+                explanation: "Người tham gia quy kết nhầm sự quen thuộc (thấy tên 24 giờ trước) thành sự nổi tiếng (nguồn gốc)."
+            },
+            {
+                id: 63,
+                part: 3,
+                question: "Điều nào sau đây là một trong những lời khuyên (dựa trên nghiên cứu) để cải thiện độ chính xác của lời khai Nhân chứng?",
+                options: [
+                    "Cảnh sát nên hỏi những câu hỏi dẫn dắt (suggestive questions) để gợi ý trí nhớ.",
+                    "Tránh xác nhận hoặc bác bỏ lựa chọn của nhân chứng khi họ chọn nghi phạm.",
+                    "Chỉ đưa ra các bức hình nhận diện giống hệt mô tả của nhân chứng.",
+                    "Yêu cầu nhân chứng mô tả tốc độ xe bằng những từ mạnh (ví dụ: 'đâm mạnh' thay vì 'va')."
+                ],
+                answer: "B",
+                explanation: "Phản hồi xác thực có thể làm tăng sự tự tin và củng cố niềm tin vào một lựa chọn sai lầm."
+            },
+            {
+                id: 64,
+                part: 3,
+                question: "Theo nghiên cứu của Zihl và cs (1983, 1991) về một người phụ nữ bị tổn thương Vùng Trung gian Thùy Thái dương (MT Area), chức năng nhận thức nào bị ảnh hưởng?",
+                options: [
+                    "Sản xuất ngôn ngữ (Broca's aphasia).",
+                    "Nhận diện khuôn mặt (Prosopagnosia).",
+                    "Tri giác chuyển động thị giác (Perceiving visual movement).",
+                    "Thành lập trí nhớ mới (Amnesia)."
+                ],
+                answer: "C",
+                explanation: "Vùng MT chuyên môn hóa cho tri giác chuyển động, tổn thương vùng này dẫn đến mất khả năng thấy được chuyển động."
+            },
+            {
+                id: 65,
+                part: 3,
+                question: "Điều nào sau đây KHÔNG phải là một trong 3 cấu trúc chính của Mô hình Trí nhớ Modal (Modal Model)?",
+                options: [
+                    "Trí nhớ Tạm thời (Sensory Memory).",
+                    "Trí nhớ Ngắn hạn (Short-term Memory).",
+                    "Trí nhớ Dài hạn (Long-term Memory).",
+                    "Trí nhớ Làm việc (Working Memory)."
+                ],
+                answer: "D",
+                explanation: "WM là một sự thay thế/mở rộng cho STM, không phải là một cấu trúc trong Mô hình Modal nguyên thủy của Atkinson và Shiffrin."
+            },
+            {
+                id: 66,
+                part: 3,
+                question: "Kỹ thuật nào đo lường phản ứng của hàng ngàn nơ-ron với những kích thích hoặc sự kiện riêng biệt bằng cách ghi lại hoạt động điện bằng các điện cực đặt trên da đầu?",
+                options: [
+                    "Cộng hưởng từ Chức năng (fMRI).",
+                    "Kỹ thuật PET (Positron Emission Tomography).",
+                    "Điện thế Gây nên (Event-Related Potential - ERP).",
+                    "Phương pháp Từ não đồ (MEG)."
+                ],
+                answer: "C",
+                explanation: "ERP đo hoạt động điện của nhóm lớn nơ-ron, có độ phân giải thời gian cao."
+            },
+            {
+                id: 67,
+                part: 3,
+                question: "Nếu bạn thấy một hình ảnh được tạo thành từ các hình vuông màu xanh lam và các hình tròn màu đỏ, theo Luật Tương tự (Similarity) của Gestalt, bạn có xu hướng nhóm các vật thể lại như thế nào?",
+                options: [
+                    "Tất cả các vật thể được nhóm lại thành một nhóm duy nhất.",
+                    "Các hình vuông màu xanh lam được nhóm lại với nhau, và các hình tròn màu đỏ được nhóm lại với nhau.",
+                    "Các vật thể gần nhau nhất sẽ được nhóm lại.",
+                    "Chỉ các vật thể ở đầu và cuối hình ảnh được nhóm lại."
+                ],
+                answer: "B",
+                explanation: "Luật Tương tự cho rằng các vật thể giống nhau (về màu sắc, hình dạng, kích thước, hướng) có xu hướng được nhóm lại với nhau."
+            },
+            {
+                id: 68,
+                part: 3,
+                question: "Thí nghiệm của Treisman và Schmidt (1982) về Liên kết Không thực (Illusory Conjunctions) cho thấy vai trò quan trọng của điều gì trong việc liên kết các nét đặc trưng thành một vật thể duy nhất?",
+                options: [
+                    "Phân tích nét đặc trưng (Feature Analysis).",
+                    "Sự chú ý tập trung (Focused Attention).",
+                    "Mô hình Phù hợp Mẫu (Template-Matching).",
+                    "Tính bật ra (Pop-out)."
+                ],
+                answer: "B",
+                explanation: "Sự chú ý tập trung là cần thiết để kết nối các nét đặc trưng riêng lẻ thành một vật thể duy nhất, nếu thiếu chú ý sẽ xảy ra Liên kết Không thực."
+            },
+            {
+                id: 69,
+                part: 3,
+                question: "Theo Thuyết Phân tích Nét Đặc trưng (Feature Integration Theory - FIT) của Treisman, giai đoạn nào bao gồm việc phân tích sự vật thành các nét đặc trưng riêng lẻ (màu sắc, hình dạng, phương hướng) một cách tự động và vô thức?",
+                options: [
+                    "Giai đoạn Tập trung Chú ý (Focused Attention Stage).",
+                    "Giai đoạn Mã hóa (Encoding Stage).",
+                    "Giai đoạn Trước Chú ý (Pre-attentive Stage).",
+                    "Giai đoạn Quyết định (Decision Stage)."
+                ],
+                answer: "C",
+                explanation: "Ở giai đoạn này, các nét đặc trưng được phân tích riêng lẻ và tự động trước khi sự chú ý tập trung kết hợp chúng lại."
+            },
+            {
+                id: 70,
+                part: 3,
+                question: "Thí nghiệm của Lee Brooks (1968) về việc hình dung chữ F và chỉ (hoặc nói) 'trong/ngoài' các góc đã chứng minh điều gì về Trí nhớ Làm việc?",
+                options: [
+                    "Vòng Âm vị và Phần đệm Phác thảo Thị giác Không gian không có giới hạn sức chứa.",
+                    "Hai nhiệm vụ cạnh tranh nguồn lực nhận thức nhiều hơn khi chúng sử dụng cùng một loại hệ thống (ví dụ: thị giác-không gian đấu với thị giác-không gian).",
+                    "Việc kiềm hãm cấu âm (articulatory suppression) không ảnh hưởng đến WM.",
+                    "Luyện tập có thể làm cho các nhiệm vụ trở nên tự động hoàn toàn."
+                ],
+                answer: "B",
+                explanation: "Nhiệm vụ khó hơn khi hình dung chữ F (không gian) và chỉ vào bảng (không gian) cùng một lúc, do quá tải Phần đệm Phác thảo Thị giác Không gian."
+            },
+            {
+                id: 71,
+                part: 3,
+                question: "Điều kiện nào sau đây có khả năng dẫn đến việc bị phân tâm nhiều nhất theo Thuyết Tải trọng Tri giác của Lavie?",
+                options: [
+                    "Thực hiện nhiệm vụ có tải trọng cao (High-load task).",
+                    "Thực hiện nhiệm vụ có tải trọng thấp (Low-load task).",
+                    "Nhiệm vụ trở nên tự động hoàn toàn sau khi luyện tập.",
+                    "Nhiệm vụ yêu cầu xử lý từ trên xuống (top-down processing)."
+                ],
+                answer: "B",
+                explanation: "Tải trọng thấp để lại nguồn lực nhận thức dư thừa để xử lý thông tin gây nhiễu, dẫn đến bị phân tâm nhiều hơn."
+            },
+            {
+                id: 72,
+                part: 3,
+                question: "Trong Mô hình Tiếp cận Các Thành tố (Recognition by Components - RBC) của Irving Biederman (1987), các vật thể được nhận diện dựa trên sự sắp xếp của các hình khối cơ bản 3D được gọi là gì?",
+                options: [
+                    "Template.",
+                    "Features.",
+                    "Geons.",
+                    "Neurons."
+                ],
+                answer: "C",
+                explanation: "Geons (Geometric Ions) là các hình khối 3D cơ bản (ví dụ: hình trụ, hình nón) mà Biederman cho rằng có thể kết hợp để tạo ra hầu hết các vật thể."
+            },
+            {
+                id: 73,
+                part: 3,
+                question: "Trường hợp của Clive Wearing, người bị tổn thương Thùy Thái dương (Temporal Lobe), đã chứng minh rằng Trí nhớ Ngắn hạn (STM) và Trí nhớ Dài hạn (LTM) là hai cơ chế khác nhau như thế nào?",
+                options: [
+                    "Ông mất STM nhưng LTM vẫn còn nguyên vẹn.",
+                    "Ông có khả năng hình thành trí nhớ mới (LTM), nhưng không thể nhớ lại sự kiện cũ (STM).",
+                    "Ông có STM vẫn còn hoạt động (khoảng 7-30 giây), nhưng không thể hình thành LTM mới, cho thấy sự phân tách (dissociation) giữa 2 hệ thống.",
+                    "Ông chỉ có Trí nhớ Ngữ nghĩa, không có Trí nhớ Tình tiết."
+                ],
+                answer: "C",
+                explanation: "Sự tồn tại của STM nhưng không có LTM mới là bằng chứng cho thấy chúng là hai hệ thống độc lập."
+            },
+            {
+                id: 74,
+                part: 3,
+                question: "Điều nào sau đây là ví dụ về Trí nhớ Tình tiết (Episodic Memory)?",
+                options: [
+                    "Nhớ rằng Bill Clinton thắng cuộc tuyển cử tổng thống Mỹ năm 1992.",
+                    "Nhớ rằng 'Nhà Văn hóa Thanh niên ở gần nhà thờ Đức Bà'.",
+                    "Nhớ lại lần đầu tiên bạn học được từ 'phân rã' (decay) là trong buổi học Tâm lý học Nhận thức tuần trước.",
+                    "Khả năng lái xe đạp mà không cần suy nghĩ."
+                ],
+                answer: "C",
+                explanation: "Ký ức về một sự kiện cụ thể đã xảy ra trong cuộc đời cá nhân bạn (thời gian, địa điểm) là Nhớ Tình tiết."
+            },
+            {
+                id: 75,
+                part: 3,
+                question: "Thí nghiệm của Godden và Baddeley (1975) về thợ lặn đã chứng minh loại mã hóa khôi phục nào?",
+                options: [
+                    "Quá trình Chuyển giao Thích hợp (Transfer-Appropriate Processing).",
+                    "Mã hóa Đặc trưng theo bối cảnh (Encoding Specificity) cho nơi chốn.",
+                    "Ảnh hưởng độ dài từ (Word-Length Effect).",
+                    "Sự phân rã (Decay) của thông tin."
+                ],
+                answer: "B",
+                explanation: "Kết quả cho thấy nhớ tốt nhất khi học và kiểm tra diễn ra ở cùng một nơi (dưới nước hoặc trên cạn)."
+            },
+            // PHẦN 4: TỔNG KẾT VÀ ỨNG DỤNG NHẬN THỨC (Câu 76 - Câu 100)
+            {
+                id: 76,
+                part: 4,
+                question: "Việc một người bán vé xe lửa nhận dạng nhầm một lính thủy là tên cướp vì anh lính trông 'quen quen', sau đó được biết lính thủy này đã đến mua vé trước đó, là ví dụ về lỗi trí nhớ nào trong lời khai nhân chứng?",
+                options: [
+                    "Gây nhiễu Xuôi (Proactive Interference).",
+                    "Sai lầm do sự Quen thuộc (Familiarity-based Misattribution).",
+                    "Ảnh hưởng Thông tin Sai lệch (Misinformation Effect).",
+                    "Mù Thay đổi (Change Blindness)."
+                ],
+                answer: "B",
+                explanation: "Người bán vé quy kết nhầm sự quen thuộc (thấy anh lính ở trạm xe lửa trước đó) thành việc anh ta là tên cướp, là lỗi quy kết sai nguồn gốc."
+            },
+            {
+                id: 77,
+                part: 4,
+                question: "Mô tả nào sau đây phù hợp nhất với quá trình tri giác (perception) là chính xác nhất?",
+                options: [
+                    "Nó là một quá trình đơn giản, hoàn toàn tự động và từ dưới lên (bottom-up).",
+                    "Nó là những trải nghiệm xuất phát từ sự kích thích các giác quan và là sự kết hợp của quá trình từ trên xuống và từ dưới lên.",
+                    "Nó chỉ tập trung vào nhận diện đồ vật, không liên quan đến hành động.",
+                    "Nó là sự ghi nhớ chính xác những gì đang diễn ra trong môi trường."
+                ],
+                answer: "B",
+                explanation: "Tri giác là phức tạp, bao gồm cả dữ liệu giác quan (dưới lên) và kiến thức/kỳ vọng (trên xuống)."
+            },
+            {
+                id: 78,
+                part: 4,
+                question: "Ý nghĩa chính của sự khác biệt giữa Tri giác (Perception) và Cảm giác (Sensation) là gì?",
+                options: [
+                    "Cảm giác xảy ra sau, Tri giác xảy ra trước.",
+                    "Cảm giác là sự cộng dồn các đơn vị yếu tố nhỏ, còn Tri giác là sự cộng dồn các đơn vị lớn hơn.",
+                    "Cảm giác là các kích thích thụ động lên giác quan, còn Tri giác là quá trình giải thích (interpretation) và tổ chức (organization) các kích thích đó thành những trải nghiệm có ý nghĩa.",
+                    "Cả hai thuật ngữ đều giống nhau và có thể thay thế cho nhau."
+                ],
+                answer: "C",
+                explanation: "Cảm giác là thông tin thô, Tri giác là quá trình tinh thần xây dựng ý nghĩa từ thông tin đó."
+            },
+            {
+                id: 79,
+                part: 4,
+                question: "Điều nào sau đây là đặc điểm của Xử lý Tự động (Automatic Processing) xảy ra sau khi luyện tập trong nhiệm vụ phân chia sự chú ý?",
+                options: [
+                    "Sử dụng nhiều khả năng nhận thức hơn so với ban đầu.",
+                    "Chỉ xảy ra ở một số người có khả năng đặc biệt.",
+                    "Diễn ra mà không làm người ta chủ ý để thực hiện nó và sử dụng ít khả năng nhận thức.",
+                    "Khả năng phân chia chú ý hoàn toàn bị loại trừ."
+                ],
+                answer: "C",
+                explanation: "Xử lý tự động diễn ra vô thức và tốn ít nguồn lực, cho phép phân chia chú ý hiệu quả hơn."
+            },
+            {
+                id: 80,
+                part: 4,
+                question: "Thí nghiệm của Glanzer và Cunitz về Đường cong Vị trí theo Thứ tự (Serial-position Curve) cho thấy Ảnh hưởng Mới xảy ra (Recency Effect) là do thông tin được lưu trữ ở đâu?",
+                options: [
+                    "Trí nhớ Tạm thời (Sensory Memory).",
+                    "Trí nhớ Ngắn hạn (STM).",
+                    "Trí nhớ Dài hạn (LTM).",
+                    "Bộ nhớ Đệm theo Chu kỳ (Episodic Buffer)."
+                ],
+                answer: "B",
+                explanation: "Các từ cuối cùng vẫn còn trong STM và có thể được truy xuất dễ dàng, dẫn đến Recency Effect."
+            },
+            {
+                id: 81,
+                part: 4,
+                question: "Điều nào sau đây là ví dụ về Trí nhớ Ngữ nghĩa (Semantic Memory)?",
+                options: [
+                    "Lần đầu tiên bạn được gặp giáo viên Tâm lý học Nhận thức.",
+                    "Khả năng tạo ra một câu phức tạp hơn cho một từ để nhớ tốt hơn.",
+                    "Nhớ rằng Trí nhớ Tạm thời (Sensory Memory) chỉ tồn tại trong vài giây hoặc phần giây.",
+                    "Việc có cảm giác khó chịu khi thấy các vật thể màu đỏ sau một kinh nghiệm xấu."
+                ],
+                answer: "C",
+                explanation: "Đây là kiến thức, sự thật, khái niệm về thế giới (Trí nhớ Ngữ nghĩa)."
+            },
+            {
+                id: 82,
+                part: 4,
+                question: "Sự khác biệt giữa Mô hình Bộ lọc của Broadbent và Mô hình Lựa chọn Sau (Late-selection Model) là gì?",
+                options: [
+                    "Mô hình Bộ lọc chặn thông điệp không chú ý trước khi phân tích ý nghĩa, còn Mô hình Lựa chọn Sau xử lý thông điệp không chú ý đến mức ý nghĩa trước khi chọn lọc.",
+                    "Mô hình Bộ lọc giải thích được hiện tượng tiệc cocktail, còn Mô hình Lựa chọn Sau thì không.",
+                    "Mô hình Bộ lọc có Bộ Suy giảm, còn Mô hình Lựa chọn Sau có Bộ Lọc.",
+                    "Mô hình Bộ lọc dựa trên quá trình từ trên xuống, còn Mô hình Lựa chọn Sau dựa trên từ dưới lên."
+                ],
+                answer: "A",
+                explanation: "Mô hình Lựa chọn Sau cho rằng thông tin được phân tích ý nghĩa trước khi sự chú ý được áp dụng (lựa chọn sau)."
+            },
+            {
+                id: 83,
+                part: 4,
+                question: "Thí nghiệm của MacKay (1973) về câu mơ hồ như 'They were throwing stones at the bank' và từ gợi ý (ví dụ: 'money') ở tai không chú ý đã hỗ trợ cho mô hình chú ý nào?",
+                options: [
+                    "Mô hình Bộ lọc của Broadbent.",
+                    "Thuyết Suy giảm của Treisman.",
+                    "Mô hình Lựa chọn Sau (Late-selection Model).",
+                    "Lý thuyết Tải trọng Tri giác của Lavie."
+                ],
+                answer: "C",
+                explanation: "Kết quả cho thấy từ gợi ý không chú ý (ý nghĩa) vẫn ảnh hưởng đến việc giải thích câu, nghĩa là ý nghĩa đã được xử lý hoàn toàn (lựa chọn sau)."
+            },
+            {
+                id: 84,
+                part: 4,
+                question: "Thuật ngữ nào mô tả sự nhầm lẫn (mistake) khi nhận diện các ký tự (ví dụ: 'F' nhầm là 'S' hay 'X') có âm thanh tương tự trong Trí nhớ Ngắn hạn?",
+                options: [
+                    "Ảnh hưởng Độ dài Từ (Word-Length Effect).",
+                    "Ảnh hưởng Âm Tương tự (Phonological Similarity Effect).",
+                    "Kiềm hãm Cấu âm (Articulatory Suppression).",
+                    "Gây nhiễu Ngược (Retroactive Interference)."
+                ],
+                answer: "B",
+                explanation: "Hiện tượng này xảy ra vì STM/Vòng Âm vị mã hóa dựa trên âm thanh, dẫn đến sự nhầm lẫn giữa các mục có âm tương tự."
+            },
+            {
+                id: 85,
+                part: 4,
+                question: "Theo Luật Gần gũi (Proximity or Nearness) của Gestalt, các yếu tố trong môi trường được tổ chức tri giác như thế nào?",
+                options: [
+                    "Những vật thể có hình dạng giống nhau được nhóm lại.",
+                    "Những vật thể xuất hiện gần nhau thì được nhóm lại thành nhóm.",
+                    "Những vật thể di chuyển theo hướng như nhau thì được nhóm lại.",
+                    "Mọi hình ảnh kích thích được nhìn một cách đơn giản nhất có thể."
+                ],
+                answer: "B",
+                explanation: "Luật Gần gũi cho rằng các vật thể ở gần nhau có xu hướng được tri giác như một nhóm hoặc một đơn vị duy nhất."
+            },
+            {
+                id: 86,
+                part: 4,
+                question: "Điều nào sau đây KHÔNG phải là một trong những loại Trí nhớ Ẩn (Implicit Memory) chính?",
+                options: [
+                    "Priming.",
+                    "Nhớ Phương thức (Procedural Memory).",
+                    "Điều kiện hóa Cổ điển (Classical Conditioning).",
+                    "Nhớ Tình tiết (Episodic Memory)."
+                ],
+                answer: "D",
+                explanation: "Nhớ Tình tiết là loại Trí nhớ Rõ ràng (Explicit Memory)."
+            },
+            {
+                id: 87,
+                part: 4,
+                question: "Thí nghiệm của Craik và Tulving (1975) đã chứng minh rằng việc nhớ tốt hơn nếu một từ xuất hiện trong một câu phức tạp hơn. Điều này là do quá trình mã hóa nào?",
+                options: [
+                    "Nhẩm lại máy móc (Maintenance Rehearsal).",
+                    "Tập hợp lại (Chunking).",
+                    "Tạo ra sự kết nối giữa từ để nhớ và những thứ khác, dẫn đến mã hóa sâu hơn.",
+                    "Ảnh hưởng độ dài từ (Word-Length Effect)."
+                ],
+                answer: "C",
+                explanation: "Câu phức tạp tạo ra nhiều gợi ý khôi phục tiềm năng và tăng tính sống động (imagery), là một hình thức của xử lý sâu (Elaborative Rehearsal)."
+            },
+            {
+                id: 88,
+                part: 4,
+                question: "Sự khác biệt cơ bản giữa Thuật toán (Algorithm) và Phương pháp Tối ưu (Heuristic) là gì?",
+                options: [
+                    "Thuật toán là một lối tắt tinh thần, còn Phương pháp Tối ưu là một quy tắc cứng nhắc.",
+                    "Thuật toán đảm bảo giải quyết được vấn đề mọi lúc (nhưng chậm), còn Phương pháp Tối ưu không đảm bảo giải pháp đúng mọi lúc (nhưng nhanh hơn).",
+                    "Chỉ có Thuật toán được sử dụng trong tri giác, Phương pháp Tối ưu chỉ được sử dụng trong giải quyết vấn đề.",
+                    "Thuật toán được sử dụng trong tri giác từ trên xuống, Phương pháp Tối ưu được sử dụng trong tri giác từ dưới lên."
+                ],
+                answer: "B",
+                explanation: "Thuật toán đảm bảo giải pháp (100% chính xác), Phương pháp Tối ưu là nhanh chóng nhưng không đảm bảo."
+            },
+            {
+                id: 89,
+                part: 4,
+                question: "Vai trò của Quá trình Điều khiển (Control Processing) trong Mô hình Trí nhớ Modal là gì?",
+                options: [
+                    "Là những cấu trúc vật lý trong não (ví dụ: STM, LTM).",
+                    "Là các hoạt động tùy chọn do người tham gia kiểm soát (ví dụ: sự nhắc lại, liên hệ với kiến thức khác) để tăng cường trí nhớ.",
+                    "Đo lường thời gian thông tin được lưu trữ trong STM.",
+                    "Chỉ liên quan đến việc mã hóa hình ảnh trong trí nhớ tạm thời."
+                ],
+                answer: "B",
+                explanation: "Quá trình điều khiển là các chiến lược chủ động do cá nhân sử dụng để hỗ trợ trí nhớ (ví dụ: nhẩm lại, tổ chức thông tin)."
+            },
+            {
+                id: 90,
+                part: 4,
+                question: "Trong bối cảnh Tâm lý học Nhận thức, Tri giác (Perception) được xem là 'cửa ngõ' của nhận thức vì lý do nào?",
+                options: [
+                    "Nó là quá trình tâm thần phức tạp nhất.",
+                    "Nó cho chúng ta khả năng kinh nghiệm được cái gì đang tồn tại trong môi trường và là bước đầu tiên để thông tin đi vào xử lý nhận thức.",
+                    "Nó chỉ liên quan đến sự phân tích nét đặc trưng (feature analysis) và mô hình RBC.",
+                    "Nó chỉ hoạt động khi có quá trình từ trên xuống (top-down processing)."
+                ],
+                answer: "B",
+                explanation: "Tri giác là bước đầu tiên trong chuỗi xử lý thông tin nhận thức (tri giác → chú ý → trí nhớ, v.v.)."
+            },
+            {
+                id: 91,
+                part: 4,
+                question: "Thí nghiệm của Shintaro Funahashi và cs (1989) trên khỉ đã chứng minh điều gì về nơ-ron ở Vỏ não Trán trước (Prefrontal Cortex - PF)?",
+                options: [
+                    "Nơ-ron ở PF phản ứng mạnh nhất khi kích thích ban đầu xuất hiện.",
+                    "Nơ-ron ở PF có khả năng tiếp tục phóng điện (phản ứng) trong khoảng thời gian trì hoãn ngay cả khi kích thích ban đầu đã mất đi.",
+                    "Nơ-ron ở PF chỉ liên quan đến Nhớ Phương thức (Procedural Memory).",
+                    "Hoạt động PF tương ứng với Nhớ Tình tiết (Episodic Memory)."
+                ],
+                answer: "B",
+                explanation: "Điều này cho thấy PF lưu giữ thông tin về vị trí trong khoảng trì hoãn, là cơ chế sinh lý của Trí nhớ Làm việc."
+            },
+            {
+                id: 92,
+                part: 4,
+                question: "Vùng Broca và Vùng Wernicke cung cấp bằng chứng cho nguyên tắc thần kinh nào?",
+                options: [
+                    "Biểu diễn Thần kinh (Neural Representation).",
+                    "Thuyết Tế bào Thần kinh (Neuron Doctrine).",
+                    "Khu biệt Chức năng (Localization of Function).",
+                    "Xử lý Song song (Parallel Processing)."
+                ],
+                answer: "C",
+                explanation: "Sự chuyên biệt của hai vùng này đối với các chức năng ngôn ngữ khác nhau (sản xuất và hiểu) là bằng chứng điển hình cho Khu biệt Chức năng."
+            },
+            {
+                id: 93,
+                part: 4,
+                question: "Điều nào sau đây là ví dụ về một Mô hình Quá trình (Process Model) trong Tâm lý học Nhận thức?",
+                options: [
+                    "Vỏ não Trán trước (Prefrontal Cortex).",
+                    "Vòng Âm vị (Phonological Loop).",
+                    "Sơ đồ dòng chảy thông tin trong Mô hình Bộ lọc của Broadbent (ví dụ: Thông điệp → Bộ lọc → Phát hiện → Nhớ).",
+                    "Trí nhớ Tạm thời (Sensory Memory)."
+                ],
+                answer: "C",
+                explanation: "Mô hình Quá trình đại diện cho các quy trình/dòng chảy thông tin liên quan đến các cơ chế nhận thức (thường là các mũi tên trong sơ đồ)."
+            },
+            {
+                id: 94,
+                part: 4,
+                question: "Thí nghiệm của Treisman (1986) về việc tìm mục tiêu R trong các ký tự gây rối P và Q cho thấy thời gian phản ứng tăng tuyến tính với số lượng nhân tố gây rối. Hiện tượng này thể hiện điều gì?",
+                options: [
+                    "Tính bật ra (Pop-out), xảy ra ở giai đoạn trước chú ý.",
+                    "Sự cần thiết của sự chú ý tập trung (Focused Attention) để thực hiện tìm kiếm có đối tượng (conjunction search).",
+                    "Ảnh hưởng độ dài từ (Word-Length Effect).",
+                    "Tri giác từ dưới lên (Bottom-up processing) là không đủ."
+                ],
+                answer: "B",
+                explanation: "Việc tìm kiếm yêu cầu kết hợp hai nét đặc trưng (conjunction search) cần sự chú ý tập trung, khiến thời gian phản ứng tăng tuyến tính."
+            },
+            {
+                id: 95,
+                part: 4,
+                question: "Trong bối cảnh Mã hóa Trí nhớ, việc tự động nhóm các từ ngẫu nhiên (ví dụ: táo, mận, xoài; bàn, ghế, kệ sách) khi nhớ lại là ví dụ về chiến lược nào?",
+                options: [
+                    "Nhẩm lại máy móc (Maintenance Rehearsal).",
+                    "Ảnh hưởng Liên quan đến Bản thân (Self-Reference Effect).",
+                    "Tổ chức thông tin (Organization).",
+                    "Mã hóa Đặc trưng (Encoding Specificity)."
+                ],
+                answer: "C",
+                explanation: "Người tham gia tự tổ chức thông tin thành các danh mục có ý nghĩa để nhớ tốt hơn, là một hình thức của nhẩm lại ý nghĩa."
+            },
+            {
+                id: 96,
+                part: 4,
+                question: "Điều nào sau đây là bằng chứng cho thấy Mã hóa Ngữ nghĩa (Semantic Coding) là loại mã hóa chiếm ưu thế trong Trí nhớ Dài hạn (LTM)?",
+                options: [
+                    "Các lỗi mắc phải liên quan đến từ có âm thanh tương tự.",
+                    "Các lỗi (errors) mà con người mắc phải trong nhiệm vụ liên quan đến LTM thường là lỗi về ý nghĩa (semantic error) chứ không phải lỗi về hình ảnh hay âm vị.",
+                    "Khả năng nhớ lại những từ được mã hóa hình ảnh.",
+                    "Thời gian phản ứng tăng lên khi nhiệm vụ có tải trọng cao."
+                ],
+                answer: "B",
+                explanation: "Nghiên cứu của Sachs (1967) cho thấy LTM ưu tiên mã hóa ngữ nghĩa (ý nghĩa của câu) chứ không phải cấu trúc âm thanh/từ ngữ."
+            },
+            {
+                id: 97,
+                part: 4,
+                question: "Trong bối cảnh khoa học thần kinh nhận thức, Kích thích Từ trường Xuyên sọ (Transcranial Magnetic Stimulation - TMS) được sử dụng để làm gì?",
+                options: [
+                    "Ghi lại hoạt động điện của nơ-ron một cách chính xác về thời gian.",
+                    "Tạo ra một nhiễu tạm thời (temporary lesion) tại một vùng não hạn chế để kiểm tra mối quan hệ nhân quả giữa vùng đó và chức năng nhận thức.",
+                    "Đo lưu lượng máu bằng cách tiêm chất phóng xạ.",
+                    "Đo lưu lượng máu mà không cần tiêm chất phóng xạ."
+                ],
+                answer: "B",
+                explanation: "TMS mô phỏng tổn thương não tạm thời để xác định chức năng của một vùng não cụ thể (quan hệ nhân quả)."
+            },
+            {
+                id: 98,
+                part: 4,
+                question: "Điều nào sau đây KHÔNG phải là một trong những kết luận chính của Cajal về Thuyết Tế bào Thần kinh (Neuron Doctrine)?",
+                options: [
+                    "Nơ-ron là những đơn vị riêng lẻ.",
+                    "Có một khoảng cách nhỏ giữa sợi trục và đuôi gai của nơ-ron khác (synapse).",
+                    "Nơ-ron kết nối bừa bãi với nơ-ron khác.",
+                    "Nơ-ron bắt thông tin từ môi trường được gọi là cơ quan nhận cảm (receptors)."
+                ],
+                answer: "C",
+                explanation: "Cajal kết luận nơ-ron chỉ kết nối với nơ-ron riêng biệt (mạch thần kinh - neural circuits)."
+            },
+            {
+                id: 99,
+                part: 4,
+                question: "Việc một sinh viên nhớ điểm A chính xác hơn (89%) so với điểm D (29%) và có xu hướng thổi phồng điểm thực tế (Bahrick và cs, 1996) là bằng chứng cho điều gì?",
+                options: [
+                    "Sự phân rã (Decay) của trí nhớ.",
+                    "Bản chất kiến tạo của trí nhớ bị ảnh hưởng bởi những mong đợi (mong muốn điểm cao) và xu hướng nhớ sự kiện tích cực dễ hơn tiêu cực.",
+                    "Ảnh hưởng độ dài từ (Word-Length Effect).",
+                    "Mã hóa Đặc trưng theo trạng thái tâm trạng (Mood-dependent memory)."
+                ],
+                answer: "B",
+                explanation: "Đây là ví dụ điển hình về việc kiến thức/mong muốn (từ trên xuống) ảnh hưởng đến việc khôi phục trí nhớ (kiến tạo) để phù hợp với hình ảnh bản thân."
+            },
+            {
+                id: 100,
+                part: 4,
+                question: "Theo Thuyết Tải trọng Tri giác (Perceptual Load Theory), tại sao lái xe vào giờ cao điểm, khi có nhiều thông tin trên đường, người lái xe lại ít bị phân tâm bởi tiếng nói chuyện trong xe hơn so với lái xe trên đường vắng?",
+                options: [
+                    "Lái xe giờ cao điểm là nhiệm vụ có tải trọng thấp, để lại nhiều nguồn lực hơn cho sự phân tâm.",
+                    "Tiếng nói chuyện trở nên tự động hoàn toàn khi lái xe giờ cao điểm.",
+                    "Lái xe giờ cao điểm là nhiệm vụ có tải trọng cao, chiếm dụng hầu hết mọi nguồn lực, khiến nguồn lực dư thừa để xử lý thông tin gây nhiễu (tiếng nói chuyện) là rất ít.",
+                    "Điều này chỉ xảy ra khi sử dụng điện thoại rảnh tay (hands-free)."
+                ],
+                answer: "C",
+                explanation: "Tải trọng cao làm giảm đáng kể sự xử lý thông tin không liên quan (phân tâm), phù hợp với dự đoán của Lavie."
+            }
+        ];
 
         // Phần thông tin
         const partInfo = {
