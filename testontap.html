@@ -1,0 +1,1820 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm Tâm lý học Nhận thức</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #4a6fa5;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+            margin: 5px;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .progress-container {
+            margin: 25px 0;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #3498db;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .question-container {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            background-color: #f9fbfd;
+        }
+        
+        .question-number {
+            font-size: 1.2rem;
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background-color: white;
+        }
+        
+        .option:hover {
+            background-color: #f0f7ff;
+            border-color: #a0c4ff;
+        }
+        
+        .option.selected {
+            background-color: #e1f0ff;
+            border-color: #3498db;
+            font-weight: bold;
+        }
+        
+        .option.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        .option.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-prev {
+            background-color: #f8f9fa;
+            color: #495057;
+            border: 1px solid #ced4da;
+        }
+        
+        .btn-next {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .btn-submit {
+            background-color: #2ecc71;
+            color: white;
+        }
+        
+        .btn-prev:hover {
+            background-color: #e2e6ea;
+        }
+        
+        .btn-next:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-submit:hover {
+            background-color: #27ae60;
+        }
+        
+        button:disabled {
+            background-color: #ecf0f1;
+            color: #bdc3c7;
+            cursor: not-allowed;
+        }
+        
+        .results-container {
+            display: none;
+            padding: 30px;
+            text-align: center;
+            background-color: #f9fbfd;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .results-title {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #3498db;
+            margin: 20px 0;
+        }
+        
+        .score-text {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .result-details {
+            text-align: left;
+            margin-top: 30px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .explanation {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+            display: none;
+        }
+        
+        .explanation-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .section-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #e8f4fc;
+            color: #3498db;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .timer {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                margin-bottom: 15px;
+            }
+            
+            .navigation {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Trắc nghiệm Tâm lý học Nhận thức</h1>
+            <p class="subtitle">100 câu hỏi trắc nghiệm từ các chương học</p>
+        </header>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value" id="current-question">1</div>
+                <div class="stat-label">Câu hiện tại</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="correct-count">0</div>
+                <div class="stat-label">Đúng</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="incorrect-count">0</div>
+                <div class="stat-label">Sai</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="unanswered-count">100</div>
+                <div class="stat-label">Chưa trả lời</div>
+            </div>
+        </div>
+        
+        <div class="timer" id="timer">Thời gian: 00:00</div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress" id="progress-bar"></div>
+            </div>
+            <div style="text-align: center; margin-top: 5px; color: #7f8c8d;">
+                <span id="progress-text">1/100</span>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <div class="section-tag" id="section-tag">Phần 1: Giới thiệu & Lịch sử</div>
+            <div class="question-number" id="question-number">Câu hỏi 1</div>
+            <div class="question-text" id="question-text"></div>
+            
+            <div class="options-container" id="options-container">
+                <!-- Các lựa chọn sẽ được thêm bằng JavaScript -->
+            </div>
+            
+            <div class="explanation" id="explanation">
+                <div class="explanation-title">Giải thích:</div>
+                <div id="explanation-text"></div>
+            </div>
+        </div>
+        
+        <div class="navigation">
+            <button class="btn-prev" id="prev-btn" onclick="prevQuestion()">Câu trước</button>
+            <div>
+                <button class="btn-next" id="next-btn" onclick="nextQuestion()">Câu tiếp theo</button>
+                <button class="btn-submit" id="submit-btn" onclick="submitQuiz()" style="display: none;">Nộp bài</button>
+            </div>
+        </div>
+        
+        <div class="results-container" id="results-container">
+            <h2 class="results-title">Kết quả bài làm của bạn</h2>
+            <div class="score" id="final-score">0/100</div>
+            <p class="score-text" id="score-text"></p>
+            
+            <div class="result-details">
+                <h3>Thống kê chi tiết</h3>
+                <div id="results-details"></div>
+                <button onclick="restartQuiz()" style="margin-top: 20px; background-color: #f39c12;">Làm lại bài trắc nghiệm</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dữ liệu câu hỏi trắc nghiệm
+        const quizData = [
+            // Phần 1: Giới thiệu & Lịch sử (15 câu)
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Tâm lý học nhận thức (cognitive psychology) là gì?",
+                options: [
+                    "Ngành nghiên cứu về hành vi có thể quan sát được",
+                    "Phần của tâm lý học quan tâm đến nghiên cứu khoa học về tâm trí",
+                    "Ngành nghiên cứu về các rối loạn tâm thần",
+                    "Ngành nghiên cứu về sự phát triển của trẻ em"
+                ],
+                correct: 1,
+                explanation: "Tâm lý học nhận thức là một phần ngành của tâm lý học quan tâm đến những nghiên cứu khoa học về tâm trí (mind)."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Ai là người đã thực hiện nghiên cứu về 'thời gian phản ứng' và được xem là tiên phong trong tâm lý học nhận thức?",
+                options: [
+                    "Wilhelm Wundt",
+                    "Hermann Ebbinghaus",
+                    "Franciscus Donders",
+                    "William James"
+                ],
+                correct: 2,
+                explanation: "Franciscus Donders (1868) đã thực hiện nghiên cứu về thời gian phản ứng, một phương pháp quan trọng trong nghiên cứu nhận thức."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Phòng thí nghiệm tâm lý học đầu tiên được thành lập bởi ai?",
+                options: [
+                    "William James",
+                    "Hermann Ebbinghaus",
+                    "Wilhelm Wundt",
+                    "Franciscus Donders"
+                ],
+                correct: 2,
+                explanation: "Wilhelm Wundt thành lập phòng thí nghiệm tâm lý học đầu tiên vào năm 1879 tại Leipzig, Đức."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Ai đã nghiên cứu về 'đường cong quên' (forgetting curve)?",
+                options: [
+                    "William James",
+                    "Hermann Ebbinghaus",
+                    "Wilhelm Wundt",
+                    "John Watson"
+                ],
+                correct: 1,
+                explanation: "Hermann Ebbinghaus (1885) đã nghiên cứu về đường cong quên, cho thấy sự suy giảm trí nhớ theo thời gian."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Tác phẩm 'Principles of Psychology' (1890) được viết bởi ai?",
+                options: [
+                    "Wilhelm Wundt",
+                    "Hermann Ebbinghaus",
+                    "William James",
+                    "John Watson"
+                ],
+                correct: 2,
+                explanation: "William James đã viết 'Principles of Psychology' (1890), một tác phẩm quan trọng trong tâm lý học."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Thí nghiệm 'Little Albert' nổi tiếng được thực hiện bởi ai?",
+                options: [
+                    "B.F. Skinner",
+                    "John Watson và Rosalie Rayner",
+                    "Edward Tolman",
+                    "Noam Chomsky"
+                ],
+                correct: 1,
+                explanation: "John Watson và Rosalie Rayner đã thực hiện thí nghiệm 'Little Albert' về điều kiện hóa cổ điển."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Ai đã phát triển khái niệm 'bản đồ nhận thức' (cognitive map)?",
+                options: [
+                    "B.F. Skinner",
+                    "Edward Tolman",
+                    "John Watson",
+                    "Noam Chomsky"
+                ],
+                correct: 1,
+                explanation: "Edward Tolman (1938) đã phát triển khái niệm 'bản đồ nhận thức' dựa trên nghiên cứu về chuột trong mê cung."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Phương pháp tiếp cận xử lý thông tin (information-processing approach) trở nên phổ biến vào thập niên nào?",
+                options: [
+                    "1930s",
+                    "1950s",
+                    "1970s",
+                    "1990s"
+                ],
+                correct: 1,
+                explanation: "Phương pháp tiếp cận xử lý thông tin trở nên phổ biến vào những năm 1950s, với sự phát triển của máy tính và trí tuệ nhân tạo."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Thí nghiệm 'nghe phân đôi' (dichotic listening) được thực hiện bởi ai vào năm 1953?",
+                options: [
+                    "Donald Broadbent",
+                    "Colin Cherry",
+                    "Anne Treisman",
+                    "John Ridley Stroop"
+                ],
+                correct: 1,
+                explanation: "Colin Cherry (1953) đã sử dụng phương pháp nghe phân đôi để nghiên cứu sự chú ý chọn lọc."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Mô hình bộ lọc chú ý (filter model of attention) được đề xuất bởi ai?",
+                options: [
+                    "Colin Cherry",
+                    "Anne Treisman",
+                    "Donald Broadbent",
+                    "Daniel Kahneman"
+                ],
+                correct: 2,
+                explanation: "Donald Broadbent (1958) đã đề xuất mô hình bộ lọc chú ý để giải thích sự chú ý chọn lọc."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Hội nghị MIT năm 1956 được coi là 'ngày sinh của khoa học nhận thức' với sự tham gia của ai?",
+                options: [
+                    "John McCarthy",
+                    "Noam Chomsky",
+                    "Herbert Simon",
+                    "Tất cả các đáp án trên"
+                ],
+                correct: 3,
+                explanation: "Hội nghị MIT năm 1956 với sự tham gia của John McCarthy, Noam Chomsky, Herbert Simon và những người khác được coi là sự khởi đầu chính thức của khoa học nhận thức."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Nghiên cứu của Beilock & Carr (2005) về 'choking under pressure' (thất bại dưới áp lực) cho thấy điều gì?",
+                options: [
+                    "Áp lực luôn cải thiện hiệu suất",
+                    "Áp lực chỉ ảnh hưởng đến người có kỹ năng thấp",
+                    "Người có kỹ năng tốt có thể thực hiện kém đi dưới áp lực do ảnh hưởng đến trí nhớ làm việc",
+                    "Áp lực không ảnh hưởng đến hiệu suất nhận thức"
+                ],
+                correct: 2,
+                explanation: "Beilock & Carr (2005) phát hiện rằng người có kỹ năng tốt nhưng lại thực hiện kém đi trong tình huống căng thẳng do áp lực tâm lý ảnh hưởng đến trí nhớ làm việc."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Khoa học nhận thức (cognitive science) là lĩnh vực liên ngành bao gồm các ngành nào?",
+                options: [
+                    "Tâm lý học nhận thức và ngôn ngữ học",
+                    "Khoa học thần kinh và triết học",
+                    "Trí tuệ nhân tạo và nhân học",
+                    "Tất cả các đáp án trên"
+                ],
+                correct: 3,
+                explanation: "Khoa học nhận thức là lĩnh vực liên ngành bao gồm tâm lý học nhận thức, ngôn ngữ học, khoa học thần kinh, triết học, trí tuệ nhân tạo, và nhân học."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Mô hình trong tâm lý học nhận thức có vai trò gì?",
+                options: [
+                    "Đại diện cho các cấu trúc trong não có liên quan đến các chức năng cụ thể",
+                    "Đơn giản hóa các quá trình phức tạp",
+                    "Cung cấp khung lý thuyết để hiểu các hiện tượng nhận thức",
+                    "Tất cả các đáp án trên"
+                ],
+                correct: 3,
+                explanation: "Mô hình trong tâm lý học nhận thức có vai trò đại diện cho các cấu trúc trong não, đơn giản hóa các quá trình phức tạp, và cung cấp khung lý thuyết để hiểu các hiện tượng nhận thức."
+            },
+            {
+                section: "Phần 1: Giới thiệu & Lịch sử",
+                question: "Mô hình quá trình (process model) trong tâm lý học nhận thức tập trung vào điều gì?",
+                options: [
+                    "Cấu trúc vật lý của não",
+                    "Các giai đoạn xử lý thông tin theo thời gian",
+                    "Sự phát triển nhận thức theo tuổi tác",
+                    "Các rối loạn nhận thức"
+                ],
+                correct: 1,
+                explanation: "Mô hình quá trình tập trung vào các giai đoạn xử lý thông tin theo thời gian, từ khi thông tin được tiếp nhận đến khi tạo ra phản ứng."
+            },
+            // Phần 2: Sự chú ý (20 câu)
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Sự chú ý (attention) được định nghĩa là gì?",
+                options: [
+                    "Khả năng xử lý mọi thông tin từ môi trường cùng lúc",
+                    "Quá trình tập trung vào những nét đặc trưng riêng biệt trong môi trường",
+                    "Khả năng ghi nhớ thông tin trong thời gian dài",
+                    "Quá trình giải thích các kích thích từ giác quan"
+                ],
+                correct: 1,
+                explanation: "Sự chú ý là một quá trình tập trung vào những nét đặc trưng riêng biệt trong môi trường, thường dẫn đến loại trừ những nét đặc trưng khác."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Hiện tượng 'tiệc cocktail' (cocktail party phenomenon) đề cập đến điều gì?",
+                options: [
+                    "Khả năng chú ý vào một cuộc trò chuyện trong môi trường ồn ào",
+                    "Xu hướng uống rượu khi tham gia tiệc",
+                    "Khả năng nhớ tên mọi người trong một bữa tiệc",
+                    "Hiện tượng say rượu ảnh hưởng đến nhận thức"
+                ],
+                correct: 0,
+                explanation: "Hiện tượng tiệc cocktail là khả năng chú ý vào một thông điệp cụ thể (như một cuộc trò chuyện) trong môi trường có nhiều âm thanh khác (như một bữa tiệc ồn ào)."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Mô hình bộ lọc của Broadbent (1958) là mô hình gì?",
+                options: [
+                    "Mô hình lựa chọn muộn (late-selection model)",
+                    "Mô hình lựa chọn sớm (early-selection model)",
+                    "Mô hình xử lý song song",
+                    "Mô hình phân tán"
+                ],
+                correct: 1,
+                explanation: "Mô hình bộ lọc của Broadbent là mô hình lựa chọn sớm, cho rằng bộ lọc xuất hiện trước khi thông tin được phân tích ý nghĩa."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Theo mô hình của Broadbent, bộ lọc chọn thông điệp dựa trên yếu tố gì?",
+                options: [
+                    "Ý nghĩa của thông điệp",
+                    "Sự quen thuộc của thông điệp",
+                    "Đặc điểm vật lý (giọng nói, cường độ, tốc độ)",
+                    "Cảm xúc gắn liền với thông điệp"
+                ],
+                correct: 2,
+                explanation: "Theo mô hình của Broadbent, bộ lọc chọn thông điệp dựa trên đặc điểm vật lý như giọng người nói, cường độ, tốc độ nói, trọng âm."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thuyết suy giảm của Treisman (Treisman's Attenuation Theory) khác với mô hình của Broadbent như thế nào?",
+                options: [
+                    "Thông tin không chú ý bị chặn hoàn toàn",
+                    "Thông tin không chú ý bị suy giảm nhưng không bị chặn hoàn toàn",
+                    "Thông tin không chú ý được xử lý hoàn toàn giống thông tin chú ý",
+                    "Không có sự khác biệt đáng kể"
+                ],
+                correct: 1,
+                explanation: "Thuyết suy giảm của Treisman cho rằng thông tin không chú ý bị suy giảm (attenuated) nhưng không bị chặn hoàn toàn, và có thể được xử lý nếu có ý nghĩa quan trọng."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Mô hình lựa chọn muộn (late-selection models) cho rằng điều gì?",
+                options: [
+                    "Thông tin ở kênh không chú ý bị chặn trước khi được phân tích ý nghĩa",
+                    "Tất cả thông tin đều được phân tích ý nghĩa trước khi lựa chọn chú ý",
+                    "Chỉ có thông tin chú ý mới được phân tích ý nghĩa",
+                    "Sự lựa chọn chú ý xảy ra ở giai đoạn cảm giác"
+                ],
+                correct: 1,
+                explanation: "Mô hình lựa chọn muộn cho rằng tất cả thông tin (cả chú ý và không chú ý) đều được phân tích ý nghĩa trước khi lựa chọn chú ý xảy ra."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thí nghiệm của MacKay (1973) về câu mơ hồ 'They were throwing stones at the bank' ủng hộ mô hình nào?",
+                options: [
+                    "Mô hình bộ lọc của Broadbent",
+                    "Thuyết suy giảm của Treisman",
+                    "Mô hình lựa chọn muộn",
+                    "Mô hình tải trọng nhiệm vụ"
+                ],
+                correct: 2,
+                explanation: "Thí nghiệm của MacKay (1973) cho thấy ý nghĩa từ kênh không chú ý ảnh hưởng đến cách giải nghĩa câu mơ hồ, ủng hộ mô hình lựa chọn muộn."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Theo Lavie (1995), khi nào thông tin không chú ý có khả năng được xử lý?",
+                options: [
+                    "Khi nhiệm vụ có tải trọng cao",
+                    "Khi nhiệm vụ có tải trọng thấp",
+                    "Khi người thực hiện mệt mỏi",
+                    "Khi thông tin có ý nghĩa cảm xúc"
+                ],
+                correct: 1,
+                explanation: "Theo Lavie (1995), khi nhiệm vụ có tải trọng thấp (dễ, sử dụng ít nguồn lực nhận thức), thông tin không chú ý có khả năng được xử lý hơn."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Hiệu ứng Stroop liên quan đến điều gì?",
+                options: [
+                    "Sự xung đột giữa màu sắc và vị trí của từ",
+                    "Sự xung đột giữa tên màu sắc và màu mực của từ",
+                    "Sự xung đột giữa kích thước và hình dạng của từ",
+                    "Sự xung đột giữa âm thanh và ý nghĩa của từ"
+                ],
+                correct: 1,
+                explanation: "Hiệu ứng Stroop xảy ra khi nghĩa của từ (ví dụ: 'xanh') gây cản trở khả năng gọi tên màu mực của từ đó (ví dụ: từ 'xanh' được in bằng mực đỏ)."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Sự chú ý được phân chia (divided attention) phụ thuộc vào các yếu tố nào?",
+                options: [
+                    "Sự tập luyện",
+                    "Độ khó của nhiệm vụ",
+                    "Loại nhiệm vụ",
+                    "Tất cả các đáp án trên"
+                ],
+                correct: 3,
+                explanation: "Sự chú ý được phân chia phụ thuộc vào sự tập luyện, độ khó của nhiệm vụ, và loại nhiệm vụ."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thí nghiệm của Schneider và Shiffrin (1977) cho thấy điều gì về xử lý tự động?",
+                options: [
+                    "Xử lý tự động không thể học được",
+                    "Xử lý tự động đòi hỏi nhiều nguồn lực nhận thức",
+                    "Xử lý tự động có thể phát triển qua luyện tập và sử dụng ít nguồn lực nhận thức",
+                    "Xử lý tự động chỉ xuất hiện với các nhiệm vụ đơn giản"
+                ],
+                correct: 2,
+                explanation: "Thí nghiệm của Schneider và Shiffrin (1977) cho thấy xử lý tự động có thể phát triển qua luyện tập và khi xuất hiện, nó sử dụng ít nguồn lực nhận thức."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Hiện tượng 'mù thay đổi' (change blindness) là gì?",
+                options: [
+                    "Không thể nhìn thấy các vật chuyển động nhanh",
+                    "Không thể phát hiện sự thay đổi trong cảnh vật khi không chú ý",
+                    "Mất khả năng nhìn màu sắc",
+                    "Khó khăn trong việc theo dõi các vật di chuyển"
+                ],
+                correct: 1,
+                explanation: "Mù thay đổi là hiện tượng con người không thể phát hiện sự thay đổi trong cảnh vật khi không chú ý vào vị trí thay đổi đó."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thí nghiệm của Fei-Fei Li và cộng sự (2002) về chú ý hình ảnh cho thấy điều gì?",
+                options: [
+                    "Chúng ta không thể xử lý thông tin hình ảnh khi không chú ý",
+                    "Chúng ta có thể thu nhận thông tin từ hình ảnh ngay cả khi không chú ý vào nó",
+                    "Chú ý là bắt buộc để xử lý bất kỳ thông tin hình ảnh nào",
+                    "Chúng ta chỉ xử lý hình ảnh khi chúng có ý nghĩa cảm xúc"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Fei-Fei Li và cộng sự (2002) cho thấy chúng ta có thể thu nhận thông tin từ hình ảnh (như nhận diện con vật) ngay cả khi đang chú ý vào nhiệm vụ khác."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Sự chú ý từ trên xuống (top-down attention) được thúc đẩy bởi yếu tố nào?",
+                options: [
+                    "Các đặc điểm vật lý của kích thích",
+                    "Ý nghĩa và sự hiểu biết về tình huống",
+                    "Cường độ của kích thích",
+                    "Sự tương phản của kích thích với nền"
+                ],
+                correct: 1,
+                explanation: "Sự chú ý từ trên xuống được thúc đẩy bởi ý nghĩa và sự hiểu biết của chúng ta trong tình huống đó, như nghe tên mình trong căn phòng ồn ào."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thí nghiệm của Lee Brooks (1968) về sự chú ý được phân chia cho thấy điều gì?",
+                options: [
+                    "Chúng ta luôn có thể làm hai nhiệm vụ cùng loại tốt như nhau",
+                    "Chúng ta gặp khó khăn khi làm hai nhiệm vụ cùng loại vì chúng cạnh tranh nguồn lực",
+                    "Loại nhiệm vụ không ảnh hưởng đến khả năng phân chia chú ý",
+                    "Nhiệm vụ không gian luôn dễ thực hiện cùng lúc với nhiệm vụ ngôn ngữ"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Lee Brooks (1968) cho thấy chúng ta gặp khó khăn khi làm hai nhiệm vụ cùng loại (ví dụ: cả hai đều là nhiệm vụ ngôn ngữ) vì chúng cạnh tranh nguồn lực nhận thức."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Nghiên cứu về sử dụng điện thoại khi lái xe cho thấy điều gì?",
+                options: [
+                    "Sử dụng điện thoại không ảnh hưởng đến khả năng lái xe",
+                    "Chỉ nhắn tin mới ảnh hưởng đến lái xe, còn nói chuyện thì không",
+                    "Nói chuyện trên điện thoại sử dụng nguồn lực nhận thức đáng lẽ được dùng để lái xe",
+                    "Chỉ người mới lái xe bị ảnh hưởng bởi việc sử dụng điện thoại"
+                ],
+                correct: 2,
+                explanation: "Nghiên cứu của Strayer và Johnston (2001) và các nghiên cứu khác cho thấy nói chuyện trên điện thoại sử dụng nguồn lực nhận thức đáng lẽ được dùng để lái xe, làm tăng nguy cơ tai nạn."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Trong mô hình trí nhớ làm việc của Baddeley, thành phần nào được mô tả là 'trung tâm điều hành'?",
+                options: [
+                    "Vòng âm vị",
+                    "Phần đệm phác thảo thị giác không gian",
+                    "Trung tâm điều hành",
+                    "Bộ nhớ đệm theo chu kỳ"
+                ],
+                correct: 2,
+                explanation: "Trung tâm điều hành là thành phần trong mô hình trí nhớ làm việc của Baddeley, có chức năng điều phối sự chú ý và điều khiển hoạt động của các thành phần khác."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Hiện tượng 'bật ra' (pop-out) trong tìm kiếm thị giác xảy ra khi nào?",
+                options: [
+                    "Khi mục tiêu khác biệt rõ ràng với các vật gây nhiễu",
+                    "Khi có nhiều vật gây nhiễu",
+                    "Khi mục tiêu giống với các vật gây nhiễu",
+                    "Khi người tìm kiếm mệt mỏi"
+                ],
+                correct: 0,
+                explanation: "Hiện tượng 'bật ra' xảy ra khi mục tiêu khác biệt rõ ràng với các vật gây nhiễu về một đặc điểm cơ bản (như màu sắc, hướng), và thời gian tìm kiếm không phụ thuộc vào số lượng vật gây nhiễu."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Thí nghiệm 'Dear Aunt Jane' của Gray và Wedderburn (1960) chứng minh điều gì?",
+                options: [
+                    "Thông tin không chú ý bị chặn hoàn toàn",
+                    "Thông tin có thể chuyển kênh dựa trên ý nghĩa",
+                    "Chúng ta chỉ xử lý thông tin dựa trên đặc điểm vật lý",
+                    "Sự chú ý không thể phân chia được"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm 'Dear Aunt Jane' chứng minh rằng thông tin có thể chuyển kênh dựa trên ý nghĩa, thách thức mô hình bộ lọc của Broadbent."
+            },
+            {
+                section: "Phần 2: Sự chú ý",
+                question: "Theo thuyết phân tích nét đặc trưng (Feature Integration Theory) của Treisman, vai trò của sự chú ý là gì?",
+                options: [
+                    "Phân tích các nét đặc trưng cơ bản",
+                    "Kết nối các nét đặc trưng lại với nhau để tạo thành vật thể",
+                    "Lọc bỏ các nét đặc trưng không quan trọng",
+                    "Tăng cường độ của các nét đặc trưng"
+                ],
+                correct: 1,
+                explanation: "Theo thuyết phân tích nét đặc trưng của Treisman, sự chú ý có vai trò kết nối các nét đặc trưng lại với nhau để tạo thành vật thể hoàn chỉnh."
+            },
+            // Phần 3: Tri giác (15 câu)
+            {
+                section: "Phần 3: Tri giác",
+                question: "Tri giác (perception) là gì?",
+                options: [
+                    "Sự kích thích các giác quan",
+                    "Những trải nghiệm xuất phát từ sự kích thích các giác quan",
+                    "Quá trình lưu trữ thông tin từ giác quan",
+                    "Khả năng nhận biết các kích thích môi trường"
+                ],
+                correct: 1,
+                explanation: "Tri giác là những trải nghiệm xuất phát từ sự kích thích các giác quan, liên quan đến quá trình tổ chức và giải thích thông tin giác quan."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Thí nghiệm 'nhà bếp' của Palmer (1975) chứng minh điều gì?",
+                options: [
+                    "Màu sắc ảnh hưởng đến tri giác",
+                    "Ngữ cảnh ảnh hưởng đến tri giác vật thể",
+                    "Kích thước vật thể ảnh hưởng đến nhận diện",
+                    "Ánh sáng ảnh hưởng đến tri giác chiều sâu"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm 'nhà bếp' của Palmer cho thấy sự hiểu biết về ngữ cảnh (ví dụ: căn bếp) ảnh hưởng đến khả năng nhận diện vật thể (ví dụ: nhận diện ổ bánh mì dễ hơn hộp thư trong bếp)."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Mô hình phù hợp mẫu (template-matching model) trong nhận dạng vật thể có hạn chế gì?",
+                options: [
+                    "Không giải thích được sự biến đổi của cùng một vật thể",
+                    "Không giải thích được nhận dạng màu sắc",
+                    "Chỉ áp dụng cho nhận dạng khuôn mặt",
+                    "Quá phức tạp để thực hiện"
+                ],
+                correct: 0,
+                explanation: "Mô hình phù hợp mẫu có hạn chế là không giải thích được cách chúng ta nhận dạng cùng một vật thể dưới nhiều dạng biến đổi khác nhau (ví dụ: chữ A viết tay khác nhau)."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Mô hình nhận ra các ký tự dựa trên phân tích nét đặc trưng (feature-matching model) được đề xuất bởi ai?",
+                options: [
+                    "Selfridge và Neisser",
+                    "Broadbent và Treisman",
+                    "Biederman và Marr",
+                    "Gibson và Gregory"
+                ],
+                correct: 0,
+                explanation: "Mô hình nhận ra các ký tự dựa trên phân tích nét đặc trưng (Pandemonium model) được đề xuất bởi Selfridge và Neisser."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Thuyết phân tích nét đặc trưng (Feature Integration Theory - FIT) của Treisman gồm mấy giai đoạn?",
+                options: [
+                    "1 giai đoạn",
+                    "2 giai đoạn",
+                    "3 giai đoạn",
+                    "4 giai đoạn"
+                ],
+                correct: 1,
+                explanation: "Thuyết phân tích nét đặc trưng của Treisman gồm 2 giai đoạn: giai đoạn trước chú ý (phân tích nét đặc trưng tự động) và giai đoạn tập trung chú ý (kết nối các nét đặc trưng)."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "'Liên kết không thực' (illusory conjunctions) là gì?",
+                options: [
+                    "Nhận diện sai vật thể do thiếu chú ý",
+                    "Sự pha trộn các nét đặc trưng từ các kích thích khác nhau",
+                    "Nhìn thấy vật thể không tồn tại",
+                    "Nhận diện đúng vật thể dù thiếu thông tin"
+                ],
+                correct: 1,
+                explanation: "Liên kết không thực là sự pha trộn các nét đặc trưng từ các kích thích khác nhau, xảy ra khi thiếu sự chú ý (theo thuyết FIT của Treisman)."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Thuyết tiếp cận các thành tố (Recognition by Components - RBC) được đề xuất bởi ai?",
+                options: [
+                    "David Marr",
+                    "Irving Biederman",
+                    "James Gibson",
+                    "Richard Gregory"
+                ],
+                correct: 1,
+                explanation: "Thuyết tiếp cận các thành tố (RBC) được đề xuất bởi Irving Biederman (1987), cho rằng chúng ta nhận dạng vật thể bằng cách xác định các thành phần cơ bản (geons)."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Theo thuyết RBC, 'geons' là gì?",
+                options: [
+                    "Các nét đặc trưng cơ bản như đường thẳng, đường cong",
+                    "Các hình khối cơ bản cấu tạo nên vật thể",
+                    "Các mẫu chuyển động cơ bản",
+                    "Các màu sắc cơ bản"
+                ],
+                correct: 1,
+                explanation: "Geons là các hình khối cơ bản (như hình trụ, hình chữ nhật, hình chóp) theo thuyết RBC, là các thành phần cấu tạo nên vật thể trong môi trường."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Trường phái tâm lý Gestalt tập trung nghiên cứu điều gì?",
+                options: [
+                    "Các đơn vị cảm giác riêng lẻ",
+                    "Cách chúng ta tổ chức các phần thành tổng thể có ý nghĩa",
+                    "Ảnh hưởng của kinh nghiệm quá khứ lên tri giác",
+                    "Cơ chế sinh lý của tri giác"
+                ],
+                correct: 1,
+                explanation: "Trường phái Gestalt tập trung nghiên cứu cách chúng ta tổ chức các phần thành tổng thể có ý nghĩa, với quan điểm 'tổng thể khác với tổng các phần'."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Luật Gestalt nào nói rằng 'mọi hình ảnh kích thích được nhìn một cách đơn giản nhất có thể'?",
+                options: [
+                    "Luật gần gũi (Proximity)",
+                    "Luật tương tự (Similarity)",
+                    "Luật đơn giản (Pragnanz)",
+                    "Luật chấp ghép (Good Continuation)"
+                ],
+                correct: 2,
+                explanation: "Luật đơn giản (Pragnanz) còn gọi là luật hình đẹp (law of good figure), nói rằng mọi hình ảnh kích thích được nhìn một cách đơn giản nhất có thể."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Theo luật Gestalt, những yếu tố xuất hiện gần nhau có xu hướng được nhóm lại với nhau. Đây là luật gì?",
+                options: [
+                    "Luật tương tự (Similarity)",
+                    "Luật gần gũi (Proximity)",
+                    "Luật chung số phận (Common Fate)",
+                    "Luật chấp ghép (Good Continuation)"
+                ],
+                correct: 1,
+                explanation: "Luật gần gũi (Proximity) nói rằng những yếu tố xuất hiện gần nhau có xu hướng được nhóm lại với nhau thành một nhóm."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Luật Gestalt nào nói rằng những yếu tố di chuyển theo cùng hướng có xu hướng được nhóm lại?",
+                options: [
+                    "Luật chấp ghép (Good Continuation)",
+                    "Luật chung số phận (Common Fate)",
+                    "Luật đóng kín (Closure)",
+                    "Luật tương tự (Similarity)"
+                ],
+                correct: 1,
+                explanation: "Luật chung số phận (Common Fate) nói rằng những yếu tố di chuyển theo cùng hướng có xu hướng được nhóm lại với nhau."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Tại sao tri giác được coi là 'cửa ngõ của nhận thức'?",
+                options: [
+                    "Vì tri giác là bước đầu tiên trong quá trình nhận thức",
+                    "Vì tri giác không quan trọng bằng các quá trình nhận thức khác",
+                    "Vì tri giác chỉ liên quan đến giác quan, không liên quan đến nhận thức",
+                    "Vì tri giác là quá trình nhận thức duy nhất"
+                ],
+                correct: 0,
+                explanation: "Tri giác được coi là 'cửa ngõ của nhận thức' vì nó là bước đầu tiên trong quá trình nhận thức, cung cấp thông tin đầu vào cho các quá trình nhận thức khác như chú ý, trí nhớ, ngôn ngữ, giải quyết vấn đề."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Sự khác biệt giữa thuật toán (algorithm) và phương pháp tối ưu (heuristic) trong tri giác là gì?",
+                options: [
+                    "Thuật toán luôn cho kết quả đúng, phương pháp tối ưu có thể sai",
+                    "Phương pháp tối ưu luôn cho kết quả đúng, thuật toán có thể sai",
+                    "Không có sự khác biệt đáng kể",
+                    "Thuật toán nhanh hơn phương pháp tối ưu"
+                ],
+                correct: 0,
+                explanation: "Thuật toán là phương pháp đảm bảo giải quyết vấn đề (luôn cho kết quả đúng nếu áp dụng đúng), trong khi phương pháp tối ưu (heuristic) là 'phương pháp tối ưu' nhanh hơn nhưng có thể không cho kết quả đúng mọi lúc."
+            },
+            {
+                section: "Phần 3: Tri giác",
+                question: "Quá trình tri giác từ dưới lên (bottom-up processing) dựa trên yếu tố gì?",
+                options: [
+                    "Kinh nghiệm và kiến thức trước đó",
+                    "Kỳ vọng và ngữ cảnh",
+                    "Đặc điểm của kích thích từ môi trường",
+                    "Cảm xúc và động cơ"
+                ],
+                correct: 2,
+                explanation: "Quá trình tri giác từ dưới lên dựa trên đặc điểm của kích thích từ môi trường, bắt đầu từ các đơn vị cảm giác nhỏ nhất và xây dựng lên thành nhận thức hoàn chỉnh."
+            },
+            // Phần 4: Khoa học thần kinh nhận thức (10 câu)
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Thuyết tế bào thần kinh (neuron doctrine) được khẳng định bởi ai?",
+                options: [
+                    "Camillo Golgi",
+                    "Santiago Ramón y Cajal",
+                    "Edgar Adrian",
+                    "Charles Sherrington"
+                ],
+                correct: 1,
+                explanation: "Santiago Ramón y Cajal đã khẳng định thuyết tế bào thần kinh, cho rằng hệ thần kinh được cấu tạo từ các tế bào riêng lẻ (nơ-ron) chứ không phải một mạng lưới liên tục."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Điện thế hoạt động (action potential) là gì?",
+                options: [
+                    "Điện thế nghỉ của nơ-ron",
+                    "Sự lan truyền tín hiệu điện dọc theo sợi trục",
+                    "Khả năng tiếp nhận thông tin của nơ-ron",
+                    "Sự giải phóng chất dẫn truyền thần kinh"
+                ],
+                correct: 1,
+                explanation: "Điện thế hoạt động là sự lan truyền tín hiệu điện dọc theo sợi trục của nơ-ron, cho phép truyền thông tin trong hệ thần kinh."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Vùng não nào liên quan đến nhận diện khuôn mặt?",
+                options: [
+                    "Vùng vận động sơ cấp",
+                    "Vùng thị giác sơ cấp",
+                    "Vùng bên dưới thùy thái dương (IT cortex)",
+                    "Vùng đồi thị"
+                ],
+                correct: 2,
+                explanation: "Vùng bên dưới thùy thái dương (inferotemporal cortex - IT cortex) liên quan đến nhận diện vật thể, đặc biệt là nhận diện khuôn mặt."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Chứng mù khả năng nhận diện (prosopagnosia) là gì?",
+                options: [
+                    "Mất khả năng nhận diện màu sắc",
+                    "Mất khả năng nhận diện khuôn mặt quen thuộc",
+                    "Mất khả năng nhận diện chữ viết",
+                    "Mất khả năng nhận diện âm thanh"
+                ],
+                correct: 1,
+                explanation: "Chứng mù khả năng nhận diện (prosopagnosia) là chứng bệnh làm con người không thể nhận diện được những khuôn mặt quen thuộc, thường do tổn thương vùng IT cortex."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Vùng não nào liên quan đến tri giác chuyển động (motion perception)?",
+                options: [
+                    "Vùng thị giác sơ cấp (V1)",
+                    "Vùng trung gian thùy thái dương (MT area)",
+                    "Vùng đỉnh sau",
+                    "Vùng chẩm"
+                ],
+                correct: 1,
+                explanation: "Vùng trung gian thùy thái dương (medial temporal area - MT area) liên quan đến tri giác chuyển động. Tổn thương vùng này có thể gây mất khả năng tri giác chuyển động."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Vùng Broca liên quan đến chức năng ngôn ngữ nào?",
+                options: [
+                    "Hiểu ngôn ngữ",
+                    "Sản xuất ngôn ngữ",
+                    "Nhận diện âm thanh ngôn ngữ",
+                    "Đọc hiểu"
+                ],
+                correct: 1,
+                explanation: "Vùng Broca nằm ở thùy trán, liên quan đến sản xuất ngôn ngữ. Tổn thương vùng này gây chứng mất ngôn ngữ Broca với khó khăn trong việc nói."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Vùng Wernicke liên quan đến chức năng ngôn ngữ nào?",
+                options: [
+                    "Sản xuất ngôn ngữ",
+                    "Hiểu ngôn ngữ",
+                    "Phát âm",
+                    "Ngữ pháp"
+                ],
+                correct: 1,
+                explanation: "Vùng Wernicke nằm ở thùy thái dương, liên quan đến hiểu ngôn ngữ. Tổn thương vùng này gây chứng mất ngôn ngữ Wernicke với lời nói trôi chảy nhưng vô nghĩa và khó hiểu ngôn ngữ."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Phương pháp fMRI (functional magnetic resonance imaging) đo lường điều gì?",
+                options: [
+                    "Hoạt động điện của nơ-ron",
+                    "Lưu lượng máu và mức oxy hóa trong não",
+                    "Tín hiệu từ chất phóng xạ",
+                    "Từ trường sinh ra bởi hoạt động điện của nơ-ron"
+                ],
+                correct: 1,
+                explanation: "fMRI đo lường lưu lượng máu và mức oxy hóa trong não (BOLD signal), phản ánh hoạt động thần kinh ở các vùng não khác nhau."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Phương pháp ERP (event-related potential) là gì?",
+                options: [
+                    "Phương pháp ghi lại từ trường của não",
+                    "Phương pháp ghi lại hoạt động điện của não đáp ứng với kích thích cụ thể",
+                    "Phương pháp chụp cắt lớp não",
+                    "Phương pháp kích thích từ trường xuyên sọ"
+                ],
+                correct: 1,
+                explanation: "ERP là phương pháp ghi lại hoạt động điện của não (qua điện cực trên da đầu) đáp ứng với kích thích hoặc sự kiện cụ thể, có độ phân giải thời gian cao."
+            },
+            {
+                section: "Phần 4: Khoa học thần kinh nhận thức",
+                question: "Phương pháp TMS (transcranial magnetic stimulation) được sử dụng để làm gì?",
+                options: [
+                    "Chụp ảnh cấu trúc não",
+                    "Gây ức chế tạm thời hoạt động của một vùng não nhỏ",
+                    "Đo lường tốc độ dẫn truyền thần kinh",
+                    "Phát hiện khối u não"
+                ],
+                correct: 1,
+                explanation: "TMS sử dụng từ trường để gây ức chế tạm thời hoạt động của một vùng não nhỏ, cho phép nghiên cứu mối quan hệ nhân quả giữa vùng não đó và chức năng nhận thức."
+            },
+            // Phần 5: Trí nhớ (25 câu)
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Mô hình trí nhớ của Atkinson và Shiffrin (1968) còn được gọi là gì?",
+                options: [
+                    "Mô hình xử lý thông tin",
+                    "Mô hình đa kho lưu trữ",
+                    "Mô hình cấu trúc đặc trưng (modal model)",
+                    "Mô hình trí nhớ làm việc"
+                ],
+                correct: 2,
+                explanation: "Mô hình trí nhớ của Atkinson và Shiffrin (1968) còn được gọi là mô hình cấu trúc đặc trưng (modal model) hoặc mô hình đa kho lưu trữ, với ba cấu trúc chính: trí nhớ tạm thời, trí nhớ ngắn hạn và trí nhớ dài hạn."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Theo mô hình của Atkinson và Shiffrin, thông tin được chuyển từ trí nhớ ngắn hạn sang trí nhớ dài hạn bằng cách nào?",
+                options: [
+                    "Tự động chuyển sau một thời gian",
+                    "Thông qua sự nhắc lại (rehearsal)",
+                    "Chỉ khi thông tin có ý nghĩa cảm xúc",
+                    "Thông qua sự củng cố trong giấc ngủ"
+                ],
+                correct: 1,
+                explanation: "Theo mô hình của Atkinson và Shiffrin, thông tin được chuyển từ trí nhớ ngắn hạn sang trí nhớ dài hạn thông qua sự nhắc lại (rehearsal) và các quá trình điều khiển khác."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thí nghiệm của Sperling (1960) về trí nhớ tạm thời thị giác (iconic memory) sử dụng phương pháp nào?",
+                options: [
+                    "Phương pháp báo cáo toàn bộ",
+                    "Phương pháp báo cáo một phần",
+                    "Cả hai phương pháp trên",
+                    "Phương pháp nhận diện"
+                ],
+                correct: 2,
+                explanation: "Sperling sử dụng cả phương pháp báo cáo toàn bộ (whole report) và báo cáo một phần (partial report) để nghiên cứu trí nhớ tạm thời thị giác (iconic memory)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Kết quả thí nghiệm của Sperling cho thấy dung lượng của trí nhớ tạm thời thị giác là bao nhiêu?",
+                options: [
+                    "Khoảng 4-5 mục",
+                    "Khoảng 9-10 mục",
+                    "Khoảng 12 mục",
+                    "Gần như toàn bộ thông tin thị giác trong một thời gian rất ngắn"
+                ],
+                correct: 3,
+                explanation: "Thí nghiệm của Sperling cho thấy trí nhớ tạm thời thị giác có thể ghi nhận gần như toàn bộ thông tin thị giác (khoảng 9-10 mục trong 12 mục) trong một thời gian rất ngắn (dưới 1 giây), trước khi thông tin mờ dần."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Ảnh hưởng mới xảy ra (recency effect) trong đường cong vị trí chuỗi (serial position curve) liên quan đến loại trí nhớ nào?",
+                options: [
+                    "Trí nhớ tạm thời",
+                    "Trí nhớ ngắn hạn (STM)",
+                    "Trí nhớ dài hạn (LTM)",
+                    "Trí nhớ làm việc"
+                ],
+                correct: 1,
+                explanation: "Ảnh hưởng mới xảy ra (recency effect) - nhớ tốt những mục ở cuối danh sách - liên quan đến trí nhớ ngắn hạn (STM), vì những mục này vừa mới được xử lý và còn trong STM."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Ảnh hưởng ban đầu (primacy effect) trong đường cong vị trí chuỗi liên quan đến loại trí nhớ nào?",
+                options: [
+                    "Trí nhớ tạm thời",
+                    "Trí nhớ ngắn hạn (STM)",
+                    "Trí nhớ dài hạn (LTM)",
+                    "Trí nhớ cảm giác"
+                ],
+                correct: 2,
+                explanation: "Ảnh hưởng ban đầu (primacy effect) - nhớ tốt những mục ở đầu danh sách - liên quan đến trí nhớ dài hạn (LTM), vì những mục này có nhiều thời gian để được nhắc lại và chuyển vào LTM."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thí nghiệm của Conrad (1964) về mã hóa trong trí nhớ ngắn hạn cho thấy điều gì?",
+                options: [
+                    "STM mã hóa chủ yếu bằng hình ảnh",
+                    "STM mã hóa chủ yếu bằng âm vị (phonological coding)",
+                    "STM mã hóa chủ yếu bằng ngữ nghĩa",
+                    "STM không có mã hóa cụ thể"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Conrad (1964) cho thấy trong trí nhớ ngắn hạn, chúng ta thường mắc lỗi nhầm lẫn giữa các ký tự có âm thanh tương tự, chứng tỏ STM mã hóa chủ yếu bằng âm vị (phonological coding)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thí nghiệm của Wickens và cộng sự (1976) về 'sự giải phóng khỏi gây nhiễu xuôi' (release from proactive interference) chứng minh điều gì về STM?",
+                options: [
+                    "STM chỉ mã hóa bằng âm vị",
+                    "STM cũng mã hóa bằng ngữ nghĩa",
+                    "STM không bị ảnh hưởng bởi gây nhiễu",
+                    "STM có dung lượng không giới hạn"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Wickens và cộng sự (1976) chứng minh rằng STM cũng mã hóa bằng ngữ nghĩa, vì sự giải phóng khỏi gây nhiễu xuôi xảy ra khi loại từ thay đổi (ví dụ: từ trái cây sang nghề nghiệp)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Sức chứa của trí nhớ ngắn hạn (STM) theo George Miller (1956) là bao nhiêu?",
+                options: [
+                    "3 ± 2 mục",
+                    "5 ± 2 mục",
+                    "7 ± 2 mục",
+                    "9 ± 2 mục"
+                ],
+                correct: 2,
+                explanation: "George Miller (1956) đề xuất rằng sức chứa của trí nhớ ngắn hạn là 7 ± 2 mục (từ 5 đến 9 mục)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Tập hợp lại' (chunking) là gì?",
+                options: [
+                    "Phân chia thông tin thành các phần nhỏ hơn",
+                    "Nhóm các đơn vị thông tin riêng lẻ thành các đơn vị lớn hơn có ý nghĩa",
+                    "Lặp lại thông tin nhiều lần",
+                    "Liên kết thông tin mới với kiến thức cũ"
+                ],
+                correct: 1,
+                explanation: "Tập hợp lại (chunking) là quá trình nhóm các đơn vị thông tin riêng lẻ (ví dụ: các chữ số, chữ cái) thành các đơn vị lớn hơn có ý nghĩa (ví dụ: từ, cụm từ, số điện thoại), giúp tăng sức chứa hiệu quả của STM."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thí nghiệm của Peterson và Peterson (1959) về thời gian duy trì của STM cho thấy điều gì?",
+                options: [
+                    "Thông tin có thể tồn tại trong STM vô thời hạn nếu được nhắc lại",
+                    "Thông tin trong STM suy giảm nhanh chóng (khoảng 15-20 giây) nếu không được nhắc lại",
+                    "Thông tin trong STM tự động chuyển sang LTM sau 30 giây",
+                    "STM không có giới hạn thời gian duy trì"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Peterson và Peterson (1959) cho thấy thông tin trong STM suy giảm nhanh chóng (khoảng 15-20 giây) nếu không được nhắc lại do sự gây nhiễu và sự phân rã theo thời gian."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Mô hình trí nhớ làm việc (working memory) của Baddeley và Hitch (1974) gồm các thành phần nào?",
+                options: [
+                    "Vòng âm vị, phần đệm phác thảo thị giác không gian, trung tâm điều hành",
+                    "Trí nhớ tạm thời, trí nhớ ngắn hạn, trí nhớ dài hạn",
+                    "Bộ nhớ đệm, bộ xử lý trung tâm, kho lưu trữ",
+                    "Vùng Broca, vùng Wernicke, thể chai"
+                ],
+                correct: 0,
+                explanation: "Mô hình trí nhớ làm việc của Baddeley và Hitch (1974) ban đầu gồm ba thành phần: vòng âm vị (phonological loop), phần đệm phác thảo thị giác không gian (visuospatial sketchpad), và trung tâm điều hành (central executive). Sau này thêm bộ nhớ đệm theo chu kỳ (episodic buffer)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Hiệu ứng âm tương tự' (phonological similarity effect) liên quan đến thành phần nào trong mô hình trí nhớ làm việc?",
+                options: [
+                    "Trung tâm điều hành",
+                    "Vòng âm vị",
+                    "Phần đệm phác thảo thị giác không gian",
+                    "Bộ nhớ đệm theo chu kỳ"
+                ],
+                correct: 1,
+                explanation: "Hiệu ứng âm tương tự (dễ nhầm lẫn giữa các từ có âm thanh tương tự) liên quan đến vòng âm vị trong mô hình trí nhớ làm việc, vì vòng âm vị xử lý thông tin ngôn ngữ và âm thanh."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Kiềm hãm cấu âm' (articulatory suppression) là gì?",
+                options: [
+                    "Khó khăn trong việc phát âm các từ dài",
+                    "Nói lặp lại một âm không liên quan (như 'the the the') làm giảm hiệu suất của vòng âm vị",
+                    "Mất khả năng nói do tổn thương não",
+                    "Khó khăn trong việc hiểu ngôn ngữ khi có tiếng ồn"
+                ],
+                correct: 1,
+                explanation: "Kiềm hãm cấu âm (articulatory suppression) là hiện tượng nói lặp lại một âm không liên quan (như 'the the the') làm giảm hiệu suất của vòng âm vị, vì nó cản trở quá trình nhắc lại bằng lời nói bên trong."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thí nghiệm của Brooks (1968) về sự tương tác giữa vòng âm vị và phần đệm phác thảo thị giác không gian cho thấy điều gì?",
+                options: [
+                    "Hai thành phần này hoạt động độc lập hoàn toàn",
+                    "Hai thành phần này có thể hoạt động song song tốt nếu nhiệm vụ khác loại",
+                    "Hai thành phần này luôn cạnh tranh nhau",
+                    "Chỉ một thành phần có thể hoạt động tại một thời điểm"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Brooks (1968) cho thấy vòng âm vị và phần đệm phác thảo thị giác không gian có thể hoạt động song song tốt nếu nhiệm vụ khác loại (ví dụ: một nhiệm vụ ngôn ngữ và một nhiệm vụ không gian), nhưng gặp khó khăn nếu cả hai nhiệm vụ cùng loại (ví dụ: cả hai đều là nhiệm vụ ngôn ngữ)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thùy não nào đóng vai trò quan trọng trong trí nhớ làm việc, đặc biệt là trung tâm điều hành?",
+                options: [
+                    "Thùy chẩm",
+                    "Thùy thái dương",
+                    "Thùy trán",
+                    "Thùy đỉnh"
+                ],
+                correct: 2,
+                explanation: "Thùy trán (đặc biệt là vỏ não trán trước - prefrontal cortex) đóng vai trò quan trọng trong trí nhớ làm việc, đặc biệt là chức năng của trung tâm điều hành như điều khiển sự chú ý, lập kế hoạch, và ức chế phản ứng."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Trí nhớ dài hạn (LTM) được chia thành hai loại chính là gì?",
+                options: [
+                    "Trí nhớ ngắn hạn và trí nhớ dài hạn",
+                    "Trí nhớ tường minh (explicit) và trí nhớ ẩn (implicit)",
+                    "Trí nhớ cảm giác và trí nhớ ngắn hạn",
+                    "Trí nhớ ngôn ngữ và trí nhớ hình ảnh"
+                ],
+                correct: 1,
+                explanation: "Trí nhớ dài hạn được chia thành hai loại chính: trí nhớ tường minh (explicit/declarative) - có ý thức nhớ lại, và trí nhớ ẩn (implicit) - ảnh hưởng đến hành vi mà không có ý thức nhớ lại."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Trí nhớ tình tiết (episodic memory) và trí nhớ ngữ nghĩa (semantic memory) thuộc loại trí nhớ nào?",
+                options: [
+                    "Trí nhớ ẩn (implicit)",
+                    "Trí nhớ tường minh (explicit/declarative)",
+                    "Trí nhớ phương thức (procedural)",
+                    "Trí nhớ ngắn hạn"
+                ],
+                correct: 1,
+                explanation: "Trí nhớ tình tiết (nhớ sự kiện cá nhân) và trí nhớ ngữ nghĩa (nhớ kiến thức chung về thế giới) đều thuộc trí nhớ tường minh (explicit/declarative memory)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Thuyết các mức độ xử lý (levels-of-processing theory) của Craik và Lockhart (1972) cho rằng điều gì quyết định độ bền của trí nhớ?",
+                options: [
+                    "Thời gian luyện tập",
+                    "Số lần lặp lại",
+                    "Độ sâu của quá trình xử lý",
+                    "Sức chứa của trí nhớ ngắn hạn"
+                ],
+                correct: 2,
+                explanation: "Thuyết các mức độ xử lý cho rằng độ bền của trí nhớ phụ thuộc vào độ sâu của quá trình xử lý: xử lý sâu (như xử lý ngữ nghĩa) tạo ra trí nhớ bền hơn xử lý nông (như xử lý hình thức)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Ảnh hưởng tự tham chiếu' (self-reference effect) là gì?",
+                options: [
+                    "Xu hướng nhớ thông tin liên quan đến bản thân tốt hơn",
+                    "Xu hướng quên thông tin về bản thân",
+                    "Khó khăn trong việc đánh giá bản thân",
+                    "Tác động của cảm xúc đối với trí nhớ"
+                ],
+                correct: 0,
+                explanation: "Ảnh hưởng tự tham chiếu (self-reference effect) là xu hướng nhớ thông tin liên quan đến bản thân tốt hơn thông tin không liên quan, vì quá trình xử lý sâu hơn khi liên hệ với bản thân."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Sự phù hợp mã hóa-khôi phục' (encoding specificity principle) của Tulving nói lên điều gì?",
+                options: [
+                    "Thông tin được mã hóa cùng với ngữ cảnh sẽ dễ khôi phục hơn khi ở cùng ngữ cảnh đó",
+                    "Càng luyện tập nhiều càng nhớ tốt",
+                    "Thông tin mới làm suy yếu thông tin cũ",
+                    "Trí nhớ phụ thuộc vào loại mã hóa"
+                ],
+                correct: 0,
+                explanation: "Nguyên lý phù hợp mã hóa-khôi phục (encoding specificity principle) của Tulving nói rằng thông tin được mã hóa cùng với ngữ cảnh (như địa điểm, trạng thái cảm xúc) sẽ dễ khôi phục hơn khi ở cùng hoặc ngữ cảnh tương tự."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Sự ưu việt của hình ảnh' (picture superiority effect) là gì?",
+                options: [
+                    "Hình ảnh luôn được nhớ tốt hơn từ ngữ",
+                    "Từ ngữ luôn được nhớ tốt hơn hình ảnh",
+                    "Hình ảnh chỉ được nhớ tốt hơn khi có màu sắc",
+                    "Hình ảnh và từ ngữ được nhớ như nhau"
+                ],
+                correct: 0,
+                explanation: "Sự ưu việt của hình ảnh (picture superiority effect) là hiện tượng hình ảnh thường được nhớ tốt hơn từ ngữ, có thể do hình ảnh được xử lý sâu hơn (cả về hình ảnh lẫn ngữ nghĩa) và dễ tạo liên tưởng."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Bệnh nhân H.M. (Henry Molaison) nổi tiếng trong nghiên cứu trí nhớ vì điều gì?",
+                options: [
+                    "Có trí nhớ siêu phàm",
+                    "Mất khả năng hình thành trí nhớ dài hạn mới sau phẫu thuật cắt bỏ hồi hải mã",
+                    "Mất toàn bộ trí nhớ quá khứ",
+                    "Chỉ mất trí nhớ ngắn hạn"
+                ],
+                correct: 1,
+                explanation: "Bệnh nhân H.M. (Henry Molaison) nổi tiếng vì sau phẫu thuật cắt bỏ hồi hải mã (hippocampus) và các vùng xung quanh để điều trị động kinh, ông mất khả năng hình thành trí nhớ dài hạn mới (chứng quên thuận chiều) nhưng vẫn giữ được trí nhớ ngắn hạn và một số trí nhớ cũ."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Vùng não nào đóng vai trò then chốt trong việc hình thành trí nhớ dài hạn mới?",
+                options: [
+                    "Đồi thị (thalamus)",
+                    "Hồi hải mã (hippocampus)",
+                    "Tiểu não (cerebellum)",
+                    "Thể chai (corpus callosum)"
+                ],
+                correct: 1,
+                explanation: "Hồi hải mã (hippocampus) và các vùng xung quanh ở thùy thái dương giữa đóng vai trò then chốt trong việc hình thành trí nhớ dài hạn mới (đặc biệt là trí nhớ tường minh)."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "'Gây nhiễu xuôi' (proactive interference) là gì?",
+                options: [
+                    "Thông tin cũ cản trở việc học hoặc nhớ thông tin mới",
+                    "Thông tin mới cản trở việc nhớ thông tin cũ",
+                    "Sự quên do thời gian trôi qua",
+                    "Sự quên do tổn thương não"
+                ],
+                correct: 0,
+                explanation: "Gây nhiễu xuôi (proactive interference) là hiện tượng thông tin đã học trước đó cản trở việc học hoặc nhớ thông tin mới. Ví dụ: khó nhớ số điện thoại mới vì số cũ vẫn còn trong đầu."
+            },
+            {
+                section: "Phần 5: Trí nhớ",
+                question: "Trí nhớ ẩn (implicit memory) bao gồm các loại nào?",
+                options: [
+                    "Trí nhớ tình tiết và trí nhớ ngữ nghĩa",
+                    "Trí nhớ phương thức, sự tiền tố (priming), và điều kiện hóa",
+                    "Trí nhớ ngắn hạn và trí nhớ dài hạn",
+                    "Trí nhớ cảm giác và trí nhớ làm việc"
+                ],
+                correct: 1,
+                explanation: "Trí nhớ ẩn (implicit memory) bao gồm trí nhớ phương thức (procedural memory - kỹ năng), sự tiền tố (priming - tăng khả năng nhận diện sau khi tiếp xúc), và điều kiện hóa (conditioning - học mối liên hệ giữa các kích thích)."
+            },
+            // Phần 6: Lỗi trí nhớ & Ứng dụng (15 câu)
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Cách tiếp cận kiến tạo (constructive approach) về trí nhớ cho rằng điều gì?",
+                options: [
+                    "Trí nhớ là bản sao chính xác của sự kiện",
+                    "Trí nhớ được tạo ra từ những gì thực sự xảy ra cộng với kiến thức, kinh nghiệm và kỳ vọng",
+                    "Trí nhớ chỉ phụ thuộc vào thông tin giác quan",
+                    "Trí nhớ không thể bị sai lệch"
+                ],
+                correct: 1,
+                explanation: "Cách tiếp cận kiến tạo (constructive approach) cho rằng trí nhớ không phải là bản sao chính xác, mà được tạo ra (kiến tạo) từ những gì thực sự xảy ra cộng với kiến thức, kinh nghiệm, kỳ vọng và các yếu tố khác."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Thí nghiệm 'Cuộc chiến của các linh hồn' (War of the Ghosts) của Bartlett (1932) chứng minh điều gì?",
+                options: [
+                    "Trí nhớ hoàn toàn chính xác",
+                    "Trí nhớ bị biến đổi theo văn hóa và kinh nghiệm của người nhớ",
+                    "Chỉ có những người có trí nhớ tốt mới nhớ chính xác câu chuyện",
+                    "Câu chuyện dễ nhớ vì có cốt truyện hấp dẫn"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm 'Cuộc chiến của các linh hồn' của Bartlett cho thấy trí nhớ bị biến đổi (ngắn hơn, bỏ sót chi tiết, thay đổi cho phù hợp với văn hóa) theo thời gian, ủng hộ cách tiếp cận kiến tạo."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "'Nguồn quy kết sai' (source misattribution) là gì?",
+                options: [
+                    "Nhớ chính xác thông tin nhưng quên nguồn gốc của nó",
+                    "Quên hoàn toàn thông tin",
+                    "Nhớ sai thông tin",
+                    "Không thể mã hóa thông tin mới"
+                ],
+                correct: 0,
+                explanation: "Nguồn quy kết sai (source misattribution) là hiện tượng nhớ chính xác thông tin nhưng quên hoặc sai lầm về nguồn gốc của nó (ví dụ: nhớ một sự kiện từ giấc mơ tưởng là thật, hoặc nhớ một ý tưởng của người khác tưởng là của mình)."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Thí nghiệm 'trở nên nổi tiếng chỉ sau một đêm' của Jacoby và cộng sự (1989) minh họa hiện tượng gì?",
+                options: [
+                    "Trí nhớ hoàn hảo",
+                    "Nguồn quy kết sai",
+                    "Ảnh hưởng tiền tố (priming)",
+                    "Chứng quên"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Jacoby cho thấy sau 24h, người tham gia có xu hướng nhận những tên không nổi tiếng đã thấy trước đó là người nổi tiếng, vì họ nhớ là đã thấy tên đó (nhưng không nhớ là thấy trong thí nghiệm) và cảm thấy quen thuộc, dẫn đến quy kết sai nguồn gốc sự quen thuộc đó."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "'Ảnh hưởng thông tin sai lệch' (misinformation effect) là gì?",
+                options: [
+                    "Thông tin mới làm suy yếu trí nhớ cũ",
+                    "Thông tin sai lệch xuất hiện sau sự kiện có thể làm biến đổi trí nhớ về sự kiện đó",
+                    "Quên thông tin do không được củng cố",
+                    "Nhớ sai do tổn thương não"
+                ],
+                correct: 1,
+                explanation: "Ảnh hưởng thông tin sai lệch (misinformation effect) là hiện tượng thông tin sai lệch hoặc gây hiểu lầm xuất hiện sau khi một người chứng kiến sự kiện có thể làm biến đổi cách họ nhớ và mô tả sự kiện đó sau này."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Ai là nhà nghiên cứu nổi tiếng về ảnh hưởng thông tin sai lệch và trí nhớ nhân chứng?",
+                options: [
+                    "Elizabeth Loftus",
+                    "Endel Tulving",
+                    "Alan Baddeley",
+                    "George Sperling"
+                ],
+                correct: 0,
+                explanation: "Elizabeth Loftus là nhà nghiên cứu nổi tiếng về ảnh hưởng thông tin sai lệch (misinformation effect) và sự dễ sai lầm của trí nhớ nhân chứng."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Trong thí nghiệm của Loftus và Palmer (1974), từ 'đâm mạnh' (smashed) so với 'va' (hit) khi hỏi về tốc độ ô tô dẫn đến kết quả gì?",
+                options: [
+                    "Không có sự khác biệt trong ước lượng tốc độ",
+                    "Người nghe từ 'đâm mạnh' ước lượng tốc độ cao hơn và có nhiều khả năng 'nhớ' thấy kính vỡ hơn",
+                    "Người nghe từ 'va' ước lượng tốc độ cao hơn",
+                    "Chỉ có từ 'đâm mạnh' ảnh hưởng đến trí nhớ"
+                ],
+                correct: 1,
+                explanation: "Thí nghiệm của Loftus và Palmer (1974) cho thấy từ ngữ sử dụng trong câu hỏi có thể ảnh hưởng đến trí nhớ: người nghe từ 'đâm mạnh' (smashed) ước lượng tốc độ cao hơn (65 km/h so với 54 km/h) và sau đó có nhiều khả năng 'nhớ' thấy kính vỡ hơn (32% so với 14%) dù không có kính vỡ trong hình."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "'Trí nhớ sáng tỏ' (flashbulb memory) là gì?",
+                options: [
+                    "Trí nhớ rất chi tiết và sống động về việc nghe tin một sự kiện gây sốc hoặc có cảm xúc mạnh",
+                    "Trí nhớ về một bức ảnh chụp nhanh",
+                    "Trí nhớ chỉ tồn tại trong vài giây",
+                    "Trí nhớ sai lệch hoàn toàn"
+                ],
+                correct: 0,
+                explanation: "Trí nhớ sáng tỏ (flashbulb memory) là trí nhớ rất chi tiết và sống động về việc nghe tin một sự kiện gây sốc, bất ngờ hoặc có cảm xúc mạnh (ví dụ: nơi đang ở, đang làm gì khi nghe tin về vụ 11/9)."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Theo nghiên cứu, trí nhớ sáng tỏ có đặc điểm gì so với trí nhớ thông thường?",
+                options: [
+                    "Hoàn toàn chính xác và không thay đổi theo thời gian",
+                    "Có cảm giác chắc chắn hơn nhưng vẫn có thể sai lệch và thay đổi",
+                    "Chỉ tồn tại trong thời gian ngắn",
+                    "Không liên quan đến cảm xúc"
+                ],
+                correct: 1,
+                explanation: "Nghiên cứu (ví dụ của Neisser & Harsch, 1992 về vụ nổ tàu Challenger) cho thấy trí nhớ sáng tỏ tuy có cảm giác chắc chắn và sống động hơn, nhưng vẫn có thể sai lệch và thay đổi theo thời gian, không phải là 'bức ảnh' hoàn hảo."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Vì sao trí nhớ nhân chứng thường không đáng tin cậy?",
+                options: [
+                    "Do ảnh hưởng của sự tập trung vào vũ khí (weapon focus)",
+                    "Do sự quen thuộc sai (familiarity)",
+                    "Do câu hỏi dẫn dắt và phản hồi từ cảnh sát",
+                    "Tất cả các đáp án trên"
+                ],
+                correct: 3,
+                explanation: "Trí nhớ nhân chứng thường không đáng tin cậy do nhiều yếu tố: sự tập trung vào vũ khí làm giảm nhớ chi tiết khác; sự quen thuộc sai (nhận diện ai đó vì trông quen, dù không phải thủ phạm); câu hỏi dẫn dắt và phản hồi từ cảnh sát có thể vô tình làm thay đổi hoặc củng cố trí nhớ sai."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "'Hiệu ứng tập trung vào vũ khí' (weapon focus effect) là gì?",
+                options: [
+                    "Nạn nhân chỉ nhớ vũ khí, không nhớ gì khác",
+                    "Sự chú ý tập trung vào vũ khí làm giảm khả năng nhớ các chi tiết khác (như khuôn mặt thủ phạm)",
+                    "Thủ phạm thường tập trung vào vũ khí",
+                    "Vũ khí làm tăng khả năng nhớ mọi chi tiết"
+                ],
+                correct: 1,
+                explanation: "Hiệu ứng tập trung vào vũ khí (weapon focus effect) là hiện tượng khi có vũ khí (đặc biệt là súng), sự chú ý của nhân chứng thường tập trung vào vũ khí, làm giảm khả năng nhớ các chi tiết khác như khuôn mặt, quần áo của thủ phạm."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Để giảm sai lầm trong nhận dạng nghi phạm, nên làm gì?",
+                options: [
+                    "Chỉ cho nhân chứng xem một bức ảnh duy nhất của nghi phạm",
+                    "Nói với nhân chứng rằng nghi phạm chắc chắn có trong hàng nhận dạng",
+                    "Sử dụng hàng nhận dạng với những người có ngoại hình tương tự, và nói với nhân chứng rằng nghi phạm có thể có hoặc không trong đó",
+                    "Khuyến khích nhân chứng chọn người 'trông giống nhất'"
+                ],
+                correct: 2,
+                explanation: "Để giảm sai lầm, nên sử dụng hàng nhận dạng với những người có ngoại hình tương tự nghi phạm, và quan trọng là nói với nhân chứng rằng nghi phạm có thể có hoặc không trong hàng đó, để tránh việc họ cảm thấy phải chọn một ai đó."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Trí nhớ tự thuật (autobiographical memory) là gì?",
+                options: [
+                    "Trí nhớ về kiến thức chung",
+                    "Trí nhớ về các sự kiện và kinh nghiệm cá nhân trong cuộc đời",
+                    "Trí nhớ về cách thực hiện kỹ năng",
+                    "Trí nhớ ngắn hạn về bản thân"
+                ],
+                correct: 1,
+                explanation: "Trí nhớ tự thuật (autobiographical memory) là trí nhớ về các sự kiện và kinh nghiệm cá nhân trong cuộc đời mà chúng ta đã trải qua."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "'Sự hồi tưởng' (reminiscence bump) là gì?",
+                options: [
+                    "Xu hướng nhớ nhiều sự kiện từ thời thơ ấu",
+                    "Xu hướng nhớ nhiều sự kiện gần đây",
+                    "Xu hướng nhớ nhiều sự kiện từ thời thiếu niên và đầu tuổi trưởng thành (khoảng 10-30 tuổi)",
+                    "Xu hướng quên các sự kiện cũ"
+                ],
+                correct: 2,
+                explanation: "Sự hồi tưởng (reminiscence bump) là xu hướng nhớ nhiều sự kiện tự thuật từ thời thiếu niên và đầu tuổi trưởng thành (khoảng 10-30 tuổi), một giai đoạn quan trọng của sự hình thành bản sắc và nhiều sự kiện 'đầu tiên'."
+            },
+            {
+                section: "Phần 6: Lỗi trí nhớ & Ứng dụng",
+                question: "Hạch hạnh nhân (amygdala) có vai trò gì trong trí nhớ?",
+                options: [
+                    "Xử lý thông tin thị giác",
+                    "Xử lý ngôn ngữ",
+                    "Củng cố trí nhớ liên quan đến cảm xúc, đặc biệt là cảm xúc mạnh",
+                    "Lưu trữ trí nhớ dài hạn"
+                ],
+                correct: 2,
+                explanation: "Hạch hạnh nhân (amygdala) đóng vai trò quan trọng trong việc xử lý cảm xúc và củng cố trí nhớ liên quan đến cảm xúc, đặc biệt là cảm xúc mạnh (như sợ hãi). Nó tương tác với hồi hải mã để tăng cường mã hóa và lưu giữ các ký ức cảm xúc."
+            }
+        ];
+
+        // Biến toàn cục
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizData.length).fill(null);
+        let score = 0;
+        let quizCompleted = false;
+        let startTime = new Date();
+        let timerInterval;
+
+        // Khởi tạo trang
+        document.addEventListener('DOMContentLoaded', function() {
+            displayQuestion();
+            updateProgress();
+            updateStats();
+            startTimer();
+        });
+
+        // Hiển thị câu hỏi
+        function displayQuestion() {
+            const question = quizData[currentQuestionIndex];
+            document.getElementById('section-tag').textContent = question.section;
+            document.getElementById('question-number').textContent = `Câu hỏi ${currentQuestionIndex + 1}`;
+            document.getElementById('question-text').textContent = question.question;
+            
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                optionElement.textContent = option;
+                optionElement.addEventListener('click', () => selectOption(index));
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Hiển thị giải thích nếu câu hỏi đã được trả lời
+            const explanation = document.getElementById('explanation');
+            if (userAnswers[currentQuestionIndex] !== null) {
+                document.getElementById('explanation-text').textContent = question.explanation;
+                explanation.style.display = 'block';
+                
+                // Đánh dấu đáp án đúng/sai
+                const options = document.querySelectorAll('.option');
+                options.forEach((opt, idx) => {
+                    if (idx === question.correct) {
+                        opt.classList.add('correct');
+                    } else if (idx === userAnswers[currentQuestionIndex] && idx !== question.correct) {
+                        opt.classList.add('incorrect');
+                    }
+                });
+            } else {
+                explanation.style.display = 'none';
+            }
+            
+            // Cập nhật nút điều hướng
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            if (currentQuestionIndex === quizData.length - 1) {
+                document.getElementById('next-btn').style.display = 'none';
+                document.getElementById('submit-btn').style.display = 'inline-block';
+            } else {
+                document.getElementById('next-btn').style.display = 'inline-block';
+                document.getElementById('submit-btn').style.display = 'none';
+            }
+        }
+
+        // Chọn đáp án
+        function selectOption(optionIndex) {
+            if (quizCompleted) return;
+            
+            userAnswers[currentQuestionIndex] = optionIndex;
+            displayQuestion();
+            updateStats();
+        }
+
+        // Câu hỏi tiếp theo
+        function nextQuestion() {
+            if (currentQuestionIndex < quizData.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+                updateProgress();
+            }
+        }
+
+        // Câu hỏi trước
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+                updateProgress();
+            }
+        }
+
+        // Cập nhật thanh tiến độ
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / quizData.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            document.getElementById('progress-text').textContent = `${currentQuestionIndex + 1}/${quizData.length}`;
+            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+        }
+
+        // Cập nhật thống kê
+        function updateStats() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+            
+            userAnswers.forEach((answer, index) => {
+                if (answer === null) {
+                    unansweredCount++;
+                } else if (answer === quizData[index].correct) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+            
+            document.getElementById('correct-count').textContent = correctCount;
+            document.getElementById('incorrect-count').textContent = incorrectCount;
+            document.getElementById('unanswered-count').textContent = unansweredCount;
+            
+            score = correctCount;
+        }
+
+        // Bắt đầu đếm thời gian
+        function startTimer() {
+            startTime = new Date();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        // Cập nhật thời gian
+        function updateTimer() {
+            const currentTime = new Date();
+            const elapsedTime = Math.floor((currentTime - startTime) / 1000);
+            const minutes = Math.floor(elapsedTime / 60);
+            const seconds = elapsedTime % 60;
+            document.getElementById('timer').textContent = `Thời gian: ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        // Nộp bài
+        function submitQuiz() {
+            if (confirm("Bạn có chắc chắn muốn nộp bài không?")) {
+                quizCompleted = true;
+                clearInterval(timerInterval);
+                
+                // Tính điểm
+                updateStats();
+                
+                // Hiển thị kết quả
+                document.querySelector('.question-container').style.display = 'none';
+                document.querySelector('.navigation').style.display = 'none';
+                document.getElementById('results-container').style.display = 'block';
+                
+                const percentage = Math.round((score / quizData.length) * 100);
+                document.getElementById('final-score').textContent = `${score}/${quizData.length}`;
+                
+                let scoreText = "";
+                if (percentage >= 90) {
+                    scoreText = "Xuất sắc! Bạn có kiến thức rất vững về Tâm lý học Nhận thức.";
+                } else if (percentage >= 70) {
+                    scoreText = "Tốt! Bạn nắm khá vững các khái niệm cơ bản.";
+                } else if (percentage >= 50) {
+                    scoreText = "Khá! Bạn đã nắm được nhiều kiến thức quan trọng.";
+                } else {
+                    scoreText = "Hãy ôn tập lại các tài liệu để củng cố kiến thức nhé!";
+                }
+                
+                document.getElementById('score-text').textContent = `Điểm số: ${percentage}% - ${scoreText}`;
+                
+                // Hiển thị chi tiết kết quả theo phần
+                const resultsDetails = document.getElementById('results-details');
+                resultsDetails.innerHTML = "";
+                
+                // Nhóm câu hỏi theo phần
+                const sections = {};
+                quizData.forEach((q, index) => {
+                    if (!sections[q.section]) {
+                        sections[q.section] = { total: 0, correct: 0 };
+                    }
+                    sections[q.section].total++;
+                    if (userAnswers[index] === q.correct) {
+                        sections[q.section].correct++;
+                    }
+                });
+                
+                for (const [section, data] of Object.entries(sections)) {
+                    const sectionPercentage = Math.round((data.correct / data.total) * 100);
+                    const sectionElement = document.createElement('div');
+                    sectionElement.innerHTML = `<strong>${section}:</strong> ${data.correct}/${data.total} (${sectionPercentage}%)`;
+                    sectionElement.style.marginBottom = '10px';
+                    resultsDetails.appendChild(sectionElement);
+                }
+                
+                // Thêm lời khuyên
+                const advice = document.createElement('div');
+                advice.style.marginTop = '20px';
+                advice.style.padding = '15px';
+                advice.style.backgroundColor = '#f8f9fa';
+                advice.style.borderRadius = '6px';
+                advice.innerHTML = `<strong>Lời khuyên:</strong> Hãy xem lại những câu sai và đọc kỹ phần giải thích để hiểu rõ hơn về các khái niệm. Bạn có thể làm lại bài trắc nghiệm để kiểm tra sự tiến bộ.`;
+                resultsDetails.appendChild(advice);
+            }
+        }
+
+        // Làm lại bài trắc nghiệm
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers = new Array(quizData.length).fill(null);
+            score = 0;
+            quizCompleted = false;
+            
+            document.querySelector('.question-container').style.display = 'block';
+            document.querySelector('.navigation').style.display = 'flex';
+            document.getElementById('results-container').style.display = 'none';
+            
+            startTime = new Date();
+            startTimer();
+            
+            displayQuestion();
+            updateProgress();
+            updateStats();
+        }
+    </script>
+</body>
+</html>
