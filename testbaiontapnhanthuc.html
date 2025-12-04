@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trắc nghiệm Tâm lý học Nhận thức - Phần 1</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+    .question { border: 1px solid #ccc; padding: 12px; margin-bottom: 16px; border-radius: 6px; }
+    .q-title { font-weight: bold; margin-bottom: 8px; }
+    .options label { display: block; margin: 4px 0; }
+    .correct { color: green; font-weight: bold; }
+    .incorrect { color: red; font-weight: bold; }
+    .result { margin-top: 8px; }
+    button { margin: 8px 4px; padding: 6px 12px; }
+  </style>
+</head>
+<body>
+  <h1>Trắc nghiệm Phần 1 (Câu 1–25)</h1>
+  <p>Chọn đáp án cho từng câu, sau đó nhấn <b>Nộp bài</b> để xem đúng/sai.</p>
+
+  <div id="quiz"></div>
+  <button onclick="submitQuiz()">Nộp bài</button>
+  <button onclick="resetQuiz()">Làm lại</button>
+  <div id="summary"></div>
+
+<script>
+const questions = [
+  {q:"Câu 1: Thuật ngữ Tâm lý học Nhận thức được định nghĩa là nghiên cứu khoa học về:",options:["Cảm xúc và hành vi","Tâm trí (mind)","Phản ứng kích thích-phản hồi","Cơ sở thần kinh của hành vi"],answer:1},
+  {q:"Câu 2: Trong thí nghiệm thời gian phản ứng của Donders, nhiệm vụ lựa chọn tốn nhiều thời gian hơn vì:",options:["Sự cảm nhận ánh sáng","Sự chuẩn bị phản ứng","Sự quyết định nút nào để nhấn","Sự phản ứng hành vi"],answer:2},
+  {q:"Câu 3: Ebbinghaus đo trí nhớ bằng phương pháp nào?",options:["Ghi lại hoạt động nơ-ron","Phân tích nội quan","Đường cong quên","Thời gian phản ứng"],answer:2},
+  {q:"Câu 4: Sự kiện đánh dấu kết thúc Chủ nghĩa Hành vi và bắt đầu cách tiếp cận xử lý thông tin?",options:["Principles of Psychology của James","Thí nghiệm Little Albert","Chomsky chỉ trích Verbal Behavior","Thí nghiệm của Donders"],answer:2},
+  {q:"Câu 5: Bản đồ Nhận thức của Tolman chứng minh điều gì?",options:["Học tập chỉ xảy ra khi có thưởng","Tồn tại biểu diễn không gian bên trong","Học tập luôn là kết quả điều kiện hóa","Hành vi là chuỗi phản hồi đơn giản"],answer:1},
+  {q:"Câu 6: Khác biệt giữa Mô hình Cấu trúc và Mô hình Quá trình?",options:["Cấu trúc đại diện quy trình, Quá trình đại diện chức năng","Cấu trúc đại diện vùng não, Quá trình đại diện dòng chảy thông tin","Cấu trúc chỉ áp dụng trí nhớ, Quá trình áp dụng tri giác","Cấu trúc kiểm tra bằng hành vi, Quá trình bằng sinh lý"],answer:1},
+  {q:"Câu 7: Kỹ thuật nhuộm mô não của Golgi giúp Cajal kết luận gì?",options:["Não là mạng liên tục","Nơ-ron là đơn vị riêng lẻ","Nơ-ron truyền tín hiệu một chiều","Điện thế nghỉ -70mV"],answer:1},
+  {q:"Câu 8: Khi điện thế hoạt động đạt +40mV, điều gì xảy ra?",options:["Na+ mở ra và tràn vào","K+ đóng lại","Na+ đóng, K+ mở ra (tái phân cực)","Trở lại điện thế nghỉ"],answer:2},
+  {q:"Câu 9: Nguyên tắc Biểu diễn Thần kinh nghĩa là:",options:["Tâm trí tiếp nhận trực tiếp","Mọi trải nghiệm mã hóa thành dấu hiệu thần kinh","Chức năng nhận thức khu biệt tại một vùng","Điện thế hoạt động không đổi biên độ"],answer:1},
+  {q:"Câu 10: Chứng Prosopagnosia cho thấy chức năng khu biệt của vùng nào?",options:["Broca","Vỏ não thị giác sơ cấp","MT","Fusiform Face Area (FFA)"],answer:3},
+  {q:"Câu 11: Kỹ thuật chụp ảnh não không xâm lấn, dựa trên lưu lượng máu và hemoglobin?",options:["PET","ERP","fMRI","TMS"],answer:2},
+  {q:"Câu 12: Thủ thuật Tính trừ trong fMRI/PET dùng để:",options:["Xác định vùng não lớn nhất","Đo thời gian phản ứng","Trừ baseline để xác định hoạt động liên quan","Gây cản trở tạm thời"],answer:2},
+
+questions.push(
+  {q:"Câu 13: Trường hợp bệnh nhân H.M. cho thấy vai trò của Hồi hải mã là:",options:["Nơi lưu trữ duy nhất LTM","Quan trọng trong mã hóa trí nhớ mới","Ngôn ngữ khu biệt tại Broca/Wernicke","Tri giác chuyển động do MT"],answer:1},
+  {q:"Câu 14: Thí nghiệm Nhà bếp của Palmer chứng minh quá trình tri giác nào?",options:["Bottom-up","Top-down","Template-Matching","Gestalt Similarity"],answer:1},
+  {q:"Câu 15: Mô hình Feature-Matching hoạt động dựa trên:",options:["So sánh hình ảnh võng mạc","Phân tích thành nét đặc trưng","Sử dụng geons 3D","Hồi tưởng vô thức"],answer:1},
+  {q:"Câu 16: Luật Pragnanz của Gestalt nói rằng:",options:["Tri giác phức tạp nhất","Nhóm vật thể gần nhau","Tri giác đơn giản, đối xứng, hình đẹp","Nhóm vật thể cùng hướng"],answer:2},
+  {q:"Câu 17: Heuristic trong tri giác là:",options:["Quy tắc cứng nhắc","Lối tắt tinh thần nhanh nhưng không luôn đúng","Phân tích sự vật thành thành tố nhỏ","Cộng dồn cảm giác nhỏ"],answer:1},
+  {q:"Câu 18: Thí nghiệm Dichotic Listening của Cherry cho thấy:",options:["Nhớ nội dung chi tiết","Nhận ra giọng nam/nữ nhưng không biết nội dung","Không nhận thức gì","Chuyển chú ý khi nghe tên mình"],answer:1},
+  {q:"Câu 19: Mô hình Bộ lọc của Broadbent là early-selection vì:",options:["Bộ lọc sau phân tích ý nghĩa","Chú ý phân chia","Chặn thông điệp không chú ý dựa trên đặc điểm vật lý","Giải thích cocktail party"],answer:2},
+  {q:"Câu 20: Thuyết Suy giảm của Treisman khác Broadbent ở chỗ:",options:["Chỉ thông điệp chú ý đi qua","Thông điệp không chú ý bị làm yếu","Lựa chọn sau phân tích ý nghĩa","Loại bỏ khái niệm bộ lọc"],answer:1},
+  {q:"Câu 21: Vai trò của Dictionary Unit trong thuyết Treisman:",options:["Lưu trữ tạm thời","Phân tích đặc điểm vật lý","Chứa từ với ngưỡng hoạt động","Chỉ xử lý thông điệp chú ý"],answer:2},
+  {q:"Câu 22: Lý thuyết Perceptual Load của Lavie dự đoán:",options:["Phân tâm cao hơn","Phân tâm ít hơn","Thời gian phản ứng giảm","Thông tin không chú ý vẫn xử lý"],answer:1},
+  {q:"Câu 23: Thí nghiệm Strayer & Johnston về điện thoại khi lái xe cho thấy:",options:["Lái xe tự động","Điện thoại chiếm nguồn lực, phản ứng phanh chậm","Chỉ cầm tay giảm hiệu suất","Phản ứng phanh không đổi"],answer:1},
+  {q:"Câu 24: Hiện tượng Change Blindness xảy ra khi:",options:["Chú ý quá kỹ chi tiết","Không phát hiện thay đổi do thiếu chú ý","Tri giác top-down chiếm ưu thế","Chỉ xảy ra ở trẻ em"],answer:1},
+ {q:"Câu 25: Trong Modal Model của Atkinson & Shiffrin, cấu trúc giữ thông tin vài giây là:",options:["Trí nhớ Dài hạn (LTM)","Trí nhớ Ngắn hạn (STM)","Trí nhớ Tạm thời (Sensory memory)","Trí nhớ Làm việc (Working memory)"],answer:2}
+);
+];
+// Hàm render quiz
+function renderQuiz() {
+  const quizDiv = document.getElementById("quiz");
+  quizDiv.innerHTML = "";
+  questions.forEach((q, idx) => {
+    const box = document.createElement("div");
+    box.className = "question";
+    const title = document.createElement("div");
+    title.className = "q-title";
+    title.textContent = q.q;
+    box.appendChild(title);
+
+    const opts = document.createElement("div");
+    opts.className = "options";
+    q.options.forEach((opt, i) => {
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = "q" + idx;
+      input.value = i;
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(" " + String.fromCharCode(65+i) + ". " + opt));
+      opts.appendChild(label);
+    });
+    box.appendChild(opts);
+    quizDiv.appendChild(box);
+  });
+}
+
+function submitQuiz() {
+  let correct = 0;
+  questions.forEach((q, idx) => {
+    const selected = document.querySelector('input[name="q'+idx+'"]:checked');
+    const box = document.getElementsByClassName("question")[idx];
+    let result = box.querySelector(".result");
+    if (!result) {
+      result = document.createElement("div");
+      result.className = "result";
+      box.appendChild(result);
+    }
+    if (selected) {
+      if (parseInt(selected.value) === q.answer) {
+        result.innerHTML = "<span class='correct'>Đúng</span>";
+        correct++;
+      } else {
+        result.innerHTML = "<span class='incorrect'>Sai</span> — Đáp án đúng: " + String.fromCharCode(65+q.answer) + ". " + q.options[q.answer];
+      }
+    } else {
+      result.innerHTML = "<span class='incorrect'>Chưa chọn</span> — Đáp án đúng: " + String.fromCharCode(65+q.answer) + ". " + q.options[q.answer];
+    }
+  });
+  document.getElementById("summary").innerHTML = "Kết quả: Đúng " + correct + "/" + questions.length + " câu. Điểm: " + (correct/questions.length*10).toFixed(2);
+}
+
+function resetQuiz() {
+  document.getElementById("summary").innerHTML = "";
+  renderQuiz();
+}
+
+renderQuiz();
+</script>
+</body>
+</html>
