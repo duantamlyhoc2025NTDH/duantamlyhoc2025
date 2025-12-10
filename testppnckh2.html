@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm PPNCKH Tâm lý học - Bộ 2</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            background-image: linear-gradient(to bottom right, #fff5e6, #e6f7ff);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            border-bottom: 5px solid #e74c3c;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .info-bar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #ecf0f1;
+            padding: 15px 25px;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-box {
+            background-color: white;
+            padding: 8px 15px;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        #submit-btn {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        #submit-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(231, 76, 60, 0.3);
+        }
+        
+        #reset-btn {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        #reset-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .quiz-container {
+            padding: 25px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .part-header {
+            background-color: #9b59b6;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid #9b59b6;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .question-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background-color: #9b59b6;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .option {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .option:hover {
+            background-color: #f8f9fa;
+            border-color: #bdc3c7;
+        }
+        
+        .option input {
+            margin-right: 15px;
+            transform: scale(1.3);
+        }
+        
+        .option.selected {
+            background-color: #f4ecf7;
+            border-color: #9b59b6;
+        }
+        
+        .option.correct {
+            background-color: #d5f4e6;
+            border-color: #2ecc71;
+        }
+        
+        .option.incorrect {
+            background-color: #fdeaea;
+            border-color: #e74c3c;
+        }
+        
+        .result-container {
+            display: none;
+            padding: 30px;
+            text-align: center;
+            animation: fadeIn 0.8s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: conic-gradient(#2ecc71 0% var(--percentage), #ecf0f1 var(--percentage) 100%);
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .score-circle::before {
+            content: '';
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        
+        .score-text {
+            position: relative;
+            z-index: 1;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .score-label {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        
+        .result-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .result-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .result-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #9b59b6;
+        }
+        
+        .result-actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .part-score {
+            font-size: 0.9rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 15px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #ecf0f1;
+            height: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: #9b59b6;
+            width: 0%;
+            transition: width 0.5s;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .info-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .controls {
+                justify-content: center;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Trắc nghiệm PPNCKH Tâm lý học - Bộ 2</h1>
+            <p class="subtitle">100 câu hỏi mới ôn tập 5 bài: 1, 2, 4, 5, 6 (bỏ Bài 3)</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </header>
+        
+        <div class="info-bar">
+            <div class="stats">
+                <div class="stat-box">📝 <span id="total-questions">100</span> câu</div>
+                <div class="stat-box">⏱️ Thời gian: <span id="timer">00:00</span></div>
+                <div class="stat-box">✅ Đã làm: <span id="answered-count">0</span> câu</div>
+                <div class="stat-box">📊 Điểm: <span id="current-score">0</span>/100</div>
+            </div>
+            
+            <div class="controls">
+                <button id="submit-btn">📤 Nộp bài</button>
+                <button id="reset-btn">🔄 Làm lại</button>
+            </div>
+        </div>
+        
+        <div class="quiz-container" id="quiz-container">
+            <!-- Các phần câu hỏi sẽ được thêm bằng JavaScript -->
+        </div>
+        
+        <div class="result-container" id="result-container">
+            <h2>🎉 Kết quả bài kiểm tra của bạn</h2>
+            <div class="score-circle" id="score-circle">
+                <div class="score-text" id="final-score">0</div>
+                <div class="score-label">điểm</div>
+            </div>
+            
+            <div class="result-details">
+                <div class="result-box">
+                    <h3>Số câu đúng</h3>
+                    <div class="result-value" id="correct-answers">0</div>
+                    <p>trên 100 câu</p>
+                </div>
+                
+                <div class="result-box">
+                    <h3>Tỷ lệ đúng</h3>
+                    <div class="result-value" id="accuracy">0%</div>
+                    <p>phần trăm</p>
+                </div>
+                
+                <div class="result-box">
+                    <h3>Thời gian làm bài</h3>
+                    <div class="result-value" id="final-time">00:00</div>
+                    <p>phút:giây</p>
+                </div>
+            </div>
+            
+            <div class="result-actions">
+                <button id="review-btn" style="background-color: #f39c12; color: white;">🔍 Xem lại bài làm</button>
+                <button id="try-again-btn" style="background-color: #3498db; color: white;">🔄 Làm lại</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Trắc nghiệm ôn tập môn Phương pháp Nghiên cứu Khoa học trong Tâm lý học - Bộ 2</p>
+            <p>Dựa trên 5 bài giảng: Bài 1 (Khoa học và TLH), Bài 2 (Câu hỏi NC & Giả thuyết), Bài 4&5 (PP thực nghiệm), Bài 6 (Đề cương & Đạo văn)</p>
+        </footer>
+    </div>
+
+    <script>
+        // DỮ LIỆU 100 CÂU HỎI MỚI - BỘ 2
+        const questions = [
+            // Phần 1: Bài 1 – KHOA HỌC VÀ TÂM LÝ HỌC (25 câu mới)
+            {
+                id: 1,
+                part: 1,
+                text: "Đâu là đặc điểm phân biệt giữa khoa học và giả khoa học?",
+                options: [
+                    "A. Khoa học luôn đúng, giả khoa học luôn sai.",
+                    "B. Khoa học dựa trên cảm xúc, giả khoa học dựa trên logic.",
+                    "C. Khoa học có thể bị phản nghiệm, giả khoa học thì không.",
+                    "D. Khoa học chỉ nghiên cứu tự nhiên, giả khoa học nghiên cứu xã hội."
+                ],
+                correct: "C"
+            },
+            {
+                id: 2,
+                part: 1,
+                text: "Theo Karl Popper, tiêu chuẩn nào là quan trọng nhất để phân biệt khoa học?",
+                options: [
+                    "A. Khả năng dự đoán chính xác.",
+                    "B. Tính có thể kiểm chứng bằng thực nghiệm.",
+                    "C. Tính có thể bị phản nghiệm (falsifiability).",
+                    "D. Sự đồng thuận của cộng đồng khoa học."
+                ],
+                correct: "C"
+            },
+            {
+                id: 3,
+                part: 1,
+                text: "Trong nghiên cứu tâm lý học, 'tính khách quan' đạt được nhờ:",
+                options: [
+                    "A. Sử dụng phương pháp định lượng.",
+                    "B. Loại bỏ hoàn toàn ảnh hưởng của nhà nghiên cứu.",
+                    "C. Áp dụng các quy trình chuẩn hóa và kiểm soát.",
+                    "D. Chỉ nghiên cứu hành vi quan sát được."
+                ],
+                correct: "C"
+            },
+            {
+                id: 4,
+                part: 1,
+                text: "Mục tiêu chính của nghiên cứu khoa học trong tâm lý học là:",
+                options: [
+                    "A. Chứng minh các lý thuyết hiện có.",
+                    "B. Khám phá và giải thích các hiện tượng tâm lý một cách hệ thống.",
+                    "C. Ứng dụng ngay lập tức vào thực tiễn.",
+                    "D. Tạo ra các công cụ đo lường mới."
+                ],
+                correct: "B"
+            },
+            {
+                id: 5,
+                part: 1,
+                text: "Yếu tố nào sau đây KHÔNG phải là đặc điểm của tư duy khoa học?",
+                options: [
+                    "A. Hoài nghi có hệ thống.",
+                    "B. Chấp nhận thay đổi khi có bằng chứng mới.",
+                    "C. Tuân thủ tuyệt đối các lý thuyết hiện có.",
+                    "D. Tìm kiếm bằng chứng khách quan."
+                ],
+                correct: "C"
+            },
+            {
+                id: 6,
+                part: 1,
+                text: "Vấn đề 'khủng hoảng tái lập' (replication crisis) trong tâm lý học chủ yếu liên quan đến:",
+                options: [
+                    "A. Thiếu tính đạo đức trong nghiên cứu.",
+                    "B. Khó khăn trong việc sao chép kết quả nghiên cứu.",
+                    "C. Sử dụng quá nhiều phương pháp định tính.",
+                    "D. Thiếu kinh phí nghiên cứu."
+                ],
+                correct: "B"
+            },
+            {
+                id: 7,
+                part: 1,
+                text: "Tại sao phân tâm học của Freud thường bị chỉ trích là thiếu tính khoa học?",
+                options: [
+                    "A. Vì nó quá phức tạp.",
+                    "B. Vì nó không thể kiểm chứng bằng phương pháp khoa học thông thường.",
+                    "C. Vì Freud không phải là nhà khoa học.",
+                    "D. Vì nó chỉ áp dụng cho bệnh nhân tâm thần."
+                ],
+                correct: "B"
+            },
+            {
+                id: 8,
+                part: 1,
+                text: "Đâu là ví dụ về 'kiến thức tiền khoa học' (prescientific knowledge)?",
+                options: [
+                    "A. Thuyết tương đối của Einstein.",
+                    "B. Quan niệm 'nhân nào quả ấy' trong Phật giáo.",
+                    "C. Lý thuyết học tập của Pavlov.",
+                    "D. Thang đo trí thông minh Wechsler."
+                ],
+                correct: "B"
+            },
+            {
+                id: 9,
+                part: 1,
+                text: "Chủ nghĩa hành vi (behaviorism) nhấn mạnh yếu tố nào trong nghiên cứu tâm lý?",
+                options: [
+                    "A. Tiến trình vô thức.",
+                    "B. Trải nghiệm chủ quan.",
+                    "C. Hành vi quan sát được.",
+                    "D. Cấu trúc sinh lý thần kinh."
+                ],
+                correct: "C"
+            },
+            {
+                id: 10,
+                part: 1,
+                text: "Tâm lý học nhận thức (cognitive psychology) tập trung nghiên cứu:",
+                options: [
+                    "A. Các quá trình tinh thần như trí nhớ, tư duy.",
+                    "B. Ảnh hưởng của gen đến hành vi.",
+                    "C. Tác động của xã hội đến cá nhân.",
+                    "D. Các rối loạn tâm thần."
+                ],
+                correct: "A"
+            },
+            {
+                id: 11,
+                part: 1,
+                text: "Nguyên tắc đạo đức 'không gây hại' (non-maleficence) trong nghiên cứu có nghĩa là:",
+                options: [
+                    "A. Không được thực hiện nghiên cứu có rủi ro.",
+                    "B. Phải đảm bảo lợi ích lớn hơn rủi ro.",
+                    "C. Tuyệt đối không gây tổn hại về thể chất hoặc tinh thần cho người tham gia.",
+                    "D. Chỉ nghiên cứu trên động vật."
+                ],
+                correct: "C"
+            },
+            {
+                id: 12,
+                part: 1,
+                text: "Khi một nhà nghiên cứu che giấu mục đích thực sự của nghiên cứu, họ phải:",
+                options: [
+                    "A. Không bao giờ tiết lộ mục đích thực.",
+                    "B. Giải thích và xin lỗi ngay sau khi nghiên cứu kết thúc (debriefing).",
+                    "C. Chỉ tiết lộ nếu người tham gia hỏi.",
+                    "D. Trả thêm tiền cho người tham gia."
+                ],
+                correct: "B"
+            },
+            {
+                id: 13,
+                part: 1,
+                text: "Quy trình 'đồng ý sau khi được thông tin' (informed consent) KHÔNG cần bao gồm:",
+                options: [
+                    "A. Mục đích nghiên cứu.",
+                    "B. Rủi ro và lợi ích tiềm năng.",
+                    "C. Quyền rút lui bất cứ lúc nào.",
+                    "D. Kết quả dự đoán chính xác của nghiên cứu."
+                ],
+                correct: "D"
+            },
+            {
+                id: 14,
+                part: 1,
+                text: "Nghiên cứu trên động vật trong tâm lý học được chấp nhận khi:",
+                options: [
+                    "A. Không có phương pháp thay thế nào khác.",
+                    "B. Lợi ích khoa học vượt trội so với tổn hại gây ra.",
+                    "C. Tuân thủ các hướng dẫn đạo đức về chăm sóc động vật.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 15,
+                part: 1,
+                text: "Sự khác biệt giữa 'quy luật' (law) và 'lý thuyết' (theory) trong khoa học là:",
+                options: [
+                    "A. Quy luật đúng tuyệt đối, lý thuyết chỉ là giả thuyết.",
+                    "B. Quy luật mô tả hiện tượng, lý thuyết giải thích hiện tượng.",
+                    "C. Quy luật có thể kiểm chứng, lý thuyết thì không.",
+                    "D. Không có sự khác biệt đáng kể."
+                ],
+                correct: "B"
+            },
+            {
+                id: 16,
+                part: 1,
+                text: "Trong lịch sử tâm lý học, Wilhelm Wundt được ghi nhận vì:",
+                options: [
+                    "A. Thành lập phòng thí nghiệm tâm lý đầu tiên.",
+                    "B. Phát triển phân tâm học.",
+                    "C. Sáng lập chủ nghĩa hành vi.",
+                    "D. Tạo ra test trí thông minh đầu tiên."
+                ],
+                correct: "A"
+            },
+            {
+                id: 17,
+                part: 1,
+                text: "Phương pháp nội quan (introspection) bị chỉ trích vì:",
+                options: [
+                    "A. Quá chủ quan và không thể kiểm chứng.",
+                    "B. Quá tốn kém.",
+                    "C. Chỉ áp dụng được cho người bình thường.",
+                    "D. Không có giá trị ứng dụng."
+                ],
+                correct: "A"
+            },
+            {
+                id: 18,
+                part: 1,
+                text: "Nghiên cứu 'Tù nhân Stanford' của Zimbardo bị chỉ trích chủ yếu vì:",
+                options: [
+                    "A. Kết quả không có ý nghĩa thống kê.",
+                    "B. Vi phạm nghiêm trọng đạo đức nghiên cứu.",
+                    "C. Sử dụng phương pháp không phù hợp.",
+                    "D. Không được công bố trên tạp chí uy tín."
+                ],
+                correct: "B"
+            },
+            {
+                id: 19,
+                part: 1,
+                text: "Nguyên tắc 'bảo mật' (confidentiality) trong nghiên cứu có nghĩa là:",
+                options: [
+                    "A. Không ai được biết người tham gia là ai.",
+                    "B. Thông tin cá nhân được bảo vệ và không tiết lộ.",
+                    "C. Nghiên cứu phải được giữ bí mật hoàn toàn.",
+                    "D. Chỉ nhà nghiên cứu được biết kết quả."
+                ],
+                correct: "B"
+            },
+            {
+                id: 20,
+                part: 1,
+                text: "Hiệp hội Tâm lý học Hoa Kỳ (APA) có vai trò quan trọng trong:",
+                options: [
+                    "A. Thiết lập tiêu chuẩn đạo đức nghiên cứu.",
+                    "B. Cấp bằng hành nghề tâm lý.",
+                    "C. Xuất bản tạp chí khoa học.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 21,
+                part: 1,
+                text: "Trong khoa học, 'thực tế' (fact) khác với 'ý kiến' (opinion) ở chỗ:",
+                options: [
+                    "A. Thực tế luôn đúng, ý kiến có thể sai.",
+                    "B. Thực tế dựa trên bằng chứng khách quan, ý kiến dựa trên quan điểm cá nhân.",
+                    "C. Thực tế phức tạp hơn ý kiến.",
+                    "D. Thực tế được nhiều người công nhận, ý kiến thì không."
+                ],
+                correct: "B"
+            },
+            {
+                id: 22,
+                part: 1,
+                text: "Nghiên cứu 'tương quan' (correlational study) bị hạn chế vì:",
+                options: [
+                    "A. Không thể xác định mối quan hệ nhân-quả.",
+                    "B. Không có giá trị thực tiễn.",
+                    "C. Quá đơn giản và dễ thực hiện.",
+                    "D. Chỉ áp dụng cho biến định tính."
+                ],
+                correct: "A"
+            },
+            {
+                id: 23,
+                part: 1,
+                text: "Yếu tố nào sau đây là đặc trưng của nghiên cứu định lượng?",
+                options: [
+                    "A. Tập trung vào ý nghĩa và trải nghiệm chủ quan.",
+                    "B. Sử dụng số liệu và phân tích thống kê.",
+                    "C. Thu thập dữ liệu dạng văn bản.",
+                    "D. Không có giả thuyết từ đầu."
+                ],
+                correct: "B"
+            },
+            {
+                id: 24,
+                part: 1,
+                text: "Tại sao 'tính tái lập' (replicability) quan trọng trong nghiên cứu khoa học?",
+                options: [
+                    "A. Giúp tiết kiệm thời gian và chi phí.",
+                    "B. Tăng độ tin cậy và tính hợp lệ của kết quả.",
+                    "C. Cho phép so sánh giữa các nghiên cứu.",
+                    "D. Cả B và C."
+                ],
+                correct: "D"
+            },
+            {
+                id: 25,
+                part: 1,
+                text: "Trong bối cảnh Việt Nam, thách thức lớn nhất đối với nghiên cứu tâm lý học là:",
+                options: [
+                    "A. Thiếu nhà nghiên cứu được đào tạo bài bản.",
+                    "B. Hạn chế về kinh phí và cơ sở vật chất.",
+                    "C. Thiếu công cụ đo lường phù hợp với văn hóa.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            // Phần 2: Bài 2 – CÂU HỎI NC, GIẢ THUYẾT & THAO TÁC HÓA (20 câu mới)
+            {
+                id: 26,
+                part: 2,
+                text: "Câu hỏi nghiên cứu tốt nhất nên bắt nguồn từ:",
+                options: [
+                    "A. Trực giác của nhà nghiên cứu.",
+                    "B. Khoảng trống trong tài liệu hiện có.",
+                    "C. Yêu cầu của cấp trên.",
+                    "D. Vấn đề thời sự trong xã hội."
+                ],
+                correct: "B"
+            },
+            {
+                id: 27,
+                part: 2,
+                text: "'Câu hỏi nghiên cứu quá rộng' có nghĩa là:",
+                options: [
+                    "A. Không thể trả lời trong một nghiên cứu duy nhất.",
+                    "B. Đã có quá nhiều nghiên cứu về vấn đề này.",
+                    "C. Không có giá trị thực tiễn.",
+                    "D. Quá khó để hiểu."
+                ],
+                correct: "A"
+            },
+            {
+                id: 28,
+                part: 2,
+                text: "Khi đặt câu hỏi nghiên cứu, điều quan trọng nhất cần xem xét là:",
+                options: [
+                    "A. Tính mới lạ của vấn đề.",
+                    "B. Khả năng trả lời bằng phương pháp nghiên cứu phù hợp.",
+                    "C. Sở thích cá nhân của nhà nghiên cứu.",
+                    "D. Khả năng được tài trợ."
+                ],
+                correct: "B"
+            },
+            {
+                id: 29,
+                part: 2,
+                text: "Giả thuyết nghiên cứu là:",
+                options: [
+                    "A. Câu hỏi mà nghiên cứu muốn trả lời.",
+                    "B. Dự đoán có cơ sở về kết quả nghiên cứu.",
+                    "C. Phương pháp sẽ sử dụng trong nghiên cứu.",
+                    "D. Kết quả mong đợi của nghiên cứu."
+                ],
+                correct: "B"
+            },
+            {
+                id: 30,
+                part: 2,
+                text: "Giả thuyết 'vô hướng' (non-directional) phù hợp khi:",
+                options: [
+                    "A. Có cơ sở lý thuyết mạnh mẽ về hướng của mối quan hệ.",
+                    "B. Không có nghiên cứu nào trước đó về vấn đề này.",
+                    "C. Nhà nghiên cứu muốn thận trọng.",
+                    "D. Cả B và C."
+                ],
+                correct: "D"
+            },
+            {
+                id: 31,
+                part: 2,
+                text: "Giả thuyết 'có hướng' (directional) thường được ưa chuộng hơn vì:",
+                options: [
+                    "A. Dễ kiểm chứng hơn.",
+                    "B. Thể hiện sự hiểu biết sâu sắc về vấn đề.",
+                    "C. Có ý nghĩa thống kê cao hơn.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "B"
+            },
+            {
+                id: 32,
+                part: 2,
+                text: "Thao tác hóa biến 'trí thông minh' có thể thực hiện bằng:",
+                options: [
+                    "A. Điểm số trên bài test IQ.",
+                    "B. Đánh giá chủ quan của giáo viên.",
+                    "C. Thành tích học tập.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 33,
+                part: 2,
+                text: "Định nghĩa hoạt động (operational definition) của 'sự hài lòng công việc' có thể là:",
+                options: [
+                    "A. Cảm giác tích cực về công việc.",
+                    "B. Điểm số trên thang đo Minnesota Satisfaction Questionnaire.",
+                    "C. Tỷ lệ nghỉ việc trong một năm.",
+                    "D. Cả B và C."
+                ],
+                correct: "D"
+            },
+            {
+                id: 34,
+                part: 2,
+                text: "Khi thao tác hóa khái niệm trừu tượng, nguyên tắc quan trọng là:",
+                options: [
+                    "A. Càng nhiều chỉ số càng tốt.",
+                    "B. Chỉ số phải phản ánh đúng bản chất khái niệm.",
+                    "C. Sử dụng các công cụ đơn giản nhất.",
+                    "D. Sao chép từ các nghiên cứu trước."
+                ],
+                correct: "B"
+            },
+            {
+                id: 35,
+                part: 2,
+                text: "Biến 'trung gian' (mediator) là biến:",
+                options: [
+                    "A. Giải thích tại sao có mối quan hệ giữa hai biến khác.",
+                    "B. Ảnh hưởng đến cường độ của mối quan hệ.",
+                    "C. Là kết quả của nghiên cứu.",
+                    "D. Gây nhiễu cho kết quả nghiên cứu."
+                ],
+                correct: "A"
+            },
+            {
+                id: 36,
+                part: 2,
+                text: "Biến 'điều tiết' (moderator) là biến:",
+                options: [
+                    "A. Ảnh hưởng đến cường độ hoặc hướng của mối quan hệ.",
+                    "B. Là nguyên nhân trực tiếp của biến phụ thuộc.",
+                    "C. Không liên quan đến nghiên cứu.",
+                    "D. Được kiểm soát trong thí nghiệm."
+                ],
+                correct: "A"
+            },
+            {
+                id: 37,
+                part: 2,
+                text: "Trong đề cương nghiên cứu, phần 'cơ sở lý thuyết' cần:",
+                options: [
+                    "A. Liệt kê tất cả các nghiên cứu liên quan.",
+                    "B. Chỉ ra khoảng trống mà nghiên cứu sẽ lấp đầy.",
+                    "C. Sao chép nguyên văn từ các tài liệu.",
+                    "D. Trình bày ngắn gọn trong 1-2 trang."
+                ],
+                correct: "B"
+            },
+            {
+                id: 38,
+                part: 2,
+                text: "Khi xây dựng khung lý thuyết, bước đầu tiên là:",
+                options: [
+                    "A. Xác định các biến chính.",
+                    "B. Tổng quan tài liệu.",
+                    "C. Đặt câu hỏi nghiên cứu.",
+                    "D. Chọn phương pháp nghiên cứu."
+                ],
+                correct: "B"
+            },
+            {
+                id: 39,
+                part: 2,
+                text: "Một câu hỏi nghiên cứu tốt nên:",
+                options: [
+                    "A. Rõ ràng, cụ thể và có thể kiểm chứng.",
+                    "B. Phức tạp và đa chiều.",
+                    "C. Đơn giản và dễ trả lời.",
+                    "D. Mở và không có hướng dự đoán."
+                ],
+                correct: "A"
+            },
+            {
+                id: 40,
+                part: 2,
+                text: "Giả thuyết 'null' (H0) là:",
+                options: [
+                    "A. Giả thuyết ngược lại với giả thuyết nghiên cứu.",
+                    "B. Giả thuyết chính của nghiên cứu.",
+                    "C. Giả thuyết không có hướng.",
+                    "D. Giả thuyết không thể kiểm chứng."
+                ],
+                correct: "A"
+            },
+            {
+                id: 41,
+                part: 2,
+                text: "Thao tác hóa biến 'sự sáng tạo' trong nghiên cứu có thể sử dụng:",
+                options: [
+                    "A. Bài test Torrance về tư duy sáng tạo.",
+                    "B. Số lượng bằng sáng chế.",
+                    "C. Đánh giá của đồng nghiệp.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 42,
+                part: 2,
+                text: "Khi một khái niệm có nhiều cách thao tác hóa khác nhau, nhà nghiên cứu nên:",
+                options: [
+                    "A. Chọn cách đơn giản nhất.",
+                    "B. Sử dụng tất cả các cách.",
+                    "C. Chọn cách phù hợp nhất với mục tiêu nghiên cứu.",
+                    "D. Tạo cách thao tác hóa mới."
+                ],
+                correct: "C"
+            },
+            {
+                id: 43,
+                part: 2,
+                text: "Để đảm bảo tính 'hiệu lực' (validity) khi thao tác hóa khái niệm, cần:",
+                options: [
+                    "A. Sử dụng công cụ đã được chuẩn hóa.",
+                    "B. Kiểm tra độ tin cậy của công cụ.",
+                    "C. Đảm bảo công cụ đo đúng cái cần đo.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 44,
+                part: 2,
+                text: "Mô hình nghiên cứu thường bao gồm:",
+                options: [
+                    "A. Biến độc lập, biến phụ thuộc, biến kiểm soát.",
+                    "B. Giả thuyết và câu hỏi nghiên cứu.",
+                    "C. Phương pháp và công cụ nghiên cứu.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "A"
+            },
+            {
+                id: 45,
+                part: 2,
+                text: "Khi đặt giả thuyết cho nghiên cứu so sánh hai nhóm, giả thuyết nên:",
+                options: [
+                    "A. Chỉ ra hướng khác biệt dự kiến.",
+                    "B. Chỉ nói có sự khác biệt.",
+                    "C. So sánh với một tiêu chuẩn cố định.",
+                    "D. Không cần đề cập đến nhóm nào."
+                ],
+                correct: "A"
+            },
+            // Phần 3: Bài 4&5 – PHƯƠNG PHÁP THỰC NGHIỆM VÀ THIẾT KẾ (35 câu mới)
+            {
+                id: 46,
+                part: 3,
+                text: "Thiết kế 'between-subjects' phù hợp khi:",
+                options: [
+                    "A. Cần so sánh nhiều điều kiện khác nhau.",
+                    "B. Muốn loại bỏ sự khác biệt cá nhân.",
+                    "C. Có ít người tham gia.",
+                    "D. Nghiên cứu kéo dài nhiều giai đoạn."
+                ],
+                correct: "A"
+            },
+            {
+                id: 47,
+                part: 3,
+                text: "Ưu điểm chính của thiết kế 'within-subjects' là:",
+                options: [
+                    "A. Giảm thiểu sự khác biệt cá nhân giữa các nhóm.",
+                    "B. Tiết kiệm số lượng người tham gia.",
+                    "C. Tránh hiệu ứng luyện tập.",
+                    "D. Cả A và B."
+                ],
+                correct: "D"
+            },
+            {
+                id: 48,
+                part: 3,
+                text: "Hiệu ứng 'carry-over' trong thiết kế within-subjects có thể được giảm thiểu bằng:",
+                options: [
+                    "A. Tăng thời gian nghỉ giữa các điều kiện.",
+                    "B. Đối trọng (counterbalancing) thứ tự các điều kiện.",
+                    "C. Sử dụng các phiên bản khác nhau của nhiệm vụ.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 49,
+                part: 3,
+                text: "Thiết kế 'mixed design' kết hợp:",
+                options: [
+                    "A. Biến between-subjects và within-subjects.",
+                    "B. Phương pháp định lượng và định tính.",
+                    "C. Nghiên cứu thực nghiệm và tự nhiên.",
+                    "D. Đo lường trước và sau can thiệp."
+                ],
+                correct: "A"
+            },
+            {
+                id: 50,
+                part: 3,
+                text: "'Hiệu ứng chính' (main effect) trong thiết kế giai thừa là:",
+                options: [
+                    "A. Ảnh hưởng riêng lẻ của một biến độc lập.",
+                    "B. Tương tác giữa các biến độc lập.",
+                    "C. Ảnh hưởng của biến kiểm soát.",
+                    "D. Kết quả tổng hợp của tất cả biến."
+                ],
+                correct: "A"
+            },
+            {
+                id: 51,
+                part: 3,
+                text: "'Hiệu ứng tương tác' (interaction effect) xảy ra khi:",
+                options: [
+                    "A. Ảnh hưởng của một biến phụ thuộc vào mức độ của biến khác.",
+                    "B. Hai biến có tác động độc lập.",
+                    "C. Không có hiệu ứng chính nào đáng kể.",
+                    "D. Tất cả các biến đều có ảnh hưởng."
+                ],
+                correct: "A"
+            },
+            {
+                id: 52,
+                part: 3,
+                text: "Thiết kế 'pretest-posttest control group' được sử dụng để:",
+                options: [
+                    "A. Đánh giá hiệu quả của can thiệp.",
+                    "B. So sánh hai phương pháp điều trị.",
+                    "C. Kiểm soát sự khác biệt ban đầu giữa các nhóm.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 53,
+                part: 3,
+                text: "Trong thiết kế Solomon four-group, mục đích chính là:",
+                options: [
+                    "A. Kiểm soát hiệu ứng của việc đo lường trước.",
+                    "B. Tăng số lượng nhóm tham gia.",
+                    "C. So sánh nhiều can thiệp cùng lúc.",
+                    "D. Giảm thời gian nghiên cứu."
+                ],
+                correct: "A"
+            },
+            {
+                id: 54,
+                part: 3,
+                text: "Thiết kế 'single-blind' giúp giảm thiểu:",
+                options: [
+                    "A. Thiên vị của người tham gia.",
+                    "B. Thiên vị của nhà nghiên cứu.",
+                    "C. Ảnh hưởng của biến gây nhiễu.",
+                    "D. Hiệu ứng placebo."
+                ],
+                correct: "A"
+            },
+            {
+                id: 55,
+                part: 3,
+                text: "Thiết kế 'double-blind' được ưa chuộng trong nghiên cứu lâm sàng vì:",
+                options: [
+                    "A. Giảm thiểu thiên vị từ cả người tham gia và nhà nghiên cứu.",
+                    "B. Dễ thực hiện hơn các thiết kế khác.",
+                    "C. Không cần nhóm đối chứng.",
+                    "D. Cho kết quả nhanh hơn."
+                ],
+                correct: "A"
+            },
+            {
+                id: 56,
+                part: 3,
+                text: "'Hiệu ứng Hawthorne' đề cập đến:",
+                options: [
+                    "A. Sự thay đổi hành vi do biết mình được nghiên cứu.",
+                    "B. Ảnh hưởng của môi trường làm việc.",
+                    "C. Tác động của phần thưởng đến hiệu suất.",
+                    "D. Sự cải thiện do luyện tập."
+                ],
+                correct: "A"
+            },
+            {
+                id: 57,
+                part: 3,
+                text: "Trong thực nghiệm, 'biến gây nhiễu' (confounding variable) là:",
+                options: [
+                    "A. Biến không được kiểm soát ảnh hưởng đến kết quả.",
+                    "B. Biến được thao túng trong nghiên cứu.",
+                    "C. Biến phụ thuộc của nghiên cứu.",
+                    "D. Biến trung gian giữa các biến."
+                ],
+                correct: "A"
+            },
+            {
+                id: 58,
+                part: 3,
+                text: "Kỹ thuật 'matching' trong nghiên cứu được sử dụng để:",
+                options: [
+                    "A. Tạo các cặp đối tượng tương đương trên một số đặc điểm.",
+                    "B. Ghép ngẫu nhiên các đối tượng vào nhóm.",
+                    "C. Chọn đối tượng có đặc điểm giống nhau.",
+                    "D. So khớp kết quả với dự đoán."
+                ],
+                correct: "A"
+            },
+            {
+                id: 59,
+                part: 3,
+                text: "Thiết kế 'quasi-experiment' được sử dụng khi:",
+                options: [
+                    "A. Không thể phân nhóm ngẫu nhiên.",
+                    "B. Nghiên cứu trong môi trường tự nhiên.",
+                    "C. Cần kiểm soát chặt chẽ các biến.",
+                    "D. Cả A và B."
+                ],
+                correct: "D"
+            },
+            {
+                id: 60,
+                part: 3,
+                text: "Trong thiết kế 'time series', dữ liệu được thu thập:",
+                options: [
+                    "A. Tại nhiều thời điểm trước và sau can thiệp.",
+                    "B. Chỉ một lần duy nhất.",
+                    "C. Trước và ngay sau can thiệp.",
+                    "D. Tại các thời điểm ngẫu nhiên."
+                ],
+                correct: "A"
+            },
+            {
+                id: 61,
+                part: 3,
+                text: "Thiết kế 'cross-sectional' thu thập dữ liệu:",
+                options: [
+                    "A. Tại một thời điểm duy nhất.",
+                    "B. Theo thời gian từ cùng một nhóm.",
+                    "C. Từ nhiều nhóm khác nhau.",
+                    "D. Cả A và C."
+                ],
+                correct: "D"
+            },
+            {
+                id: 62,
+                part: 3,
+                text: "Thiết kế 'longitudinal' theo dõi:",
+                options: [
+                    "A. Cùng một nhóm đối tượng qua thời gian.",
+                    "B. Nhiều nhóm đối tượng khác nhau.",
+                    "C. Sự thay đổi giữa các thế hệ.",
+                    "D. Ảnh hưởng ngắn hạn của can thiệp."
+                ],
+                correct: "A"
+            },
+            {
+                id: 63,
+                part: 3,
+                text: "'Hiệu ứng đo lường lặp lại' (repeated measures effect) là:",
+                options: [
+                    "A. Sự thay đổi kết quả do được đo nhiều lần.",
+                    "B. Sự khác biệt giữa các lần đo.",
+                    "C. Sai số do dụng cụ đo.",
+                    "D. Sự cải thiện do luyện tập."
+                ],
+                correct: "A"
+            },
+            {
+                id: 64,
+                part: 3,
+                text: "Trong thiết kế 'A-B-A' (reversal design), giai đoạn B là:",
+                options: [
+                    "A. Giai đoạn can thiệp.",
+                    "B. Giai đoạn cơ sở (baseline).",
+                    "C. Giai đoạn đánh giá.",
+                    "D. Giai đoạn theo dõi."
+                ],
+                correct: "A"
+            },
+            {
+                id: 65,
+                part: 3,
+                text: "Thiết kế 'multiple baseline' được sử dụng khi:",
+                options: [
+                    "A. Không thể đảo ngược can thiệp.",
+                    "B. Có nhiều đối tượng hoặc hành vi.",
+                    "C. Muốn khái quát hóa kết quả.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 66,
+                part: 3,
+                text: "'Hiệu ứng thứ tự' (order effect) trong within-subjects design có thể là:",
+                options: [
+                    "A. Hiệu ứng luyện tập (practice effect).",
+                    "B. Hiệu ứng mệt mỏi (fatigue effect).",
+                    "C. Hiệu ứng mang theo (carry-over effect).",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 67,
+                part: 3,
+                text: "Kỹ thuật 'Latin square' được sử dụng để:",
+                options: [
+                    "A. Cân bằng thứ tự các điều kiện.",
+                    "B. Phân tích dữ liệu phức tạp.",
+                    "C. Thiết kế bảng câu hỏi.",
+                    "D. Chọn mẫu ngẫu nhiên."
+                ],
+                correct: "A"
+            },
+            {
+                id: 68,
+                part: 3,
+                text: "Trong thiết kế 'factorial', ký hiệu 2x3x2 có nghĩa là:",
+                options: [
+                    "A. 3 biến độc lập với 2, 3, và 2 mức.",
+                    "B. 2 biến độc lập với 3 và 2 mức.",
+                    "C. 3 biến phụ thuộc.",
+                    "D. 2 nhóm với 3 lần đo."
+                ],
+                correct: "A"
+            },
+            {
+                id: 69,
+                part: 3,
+                text: "'Hiệu ứng trần' (ceiling effect) xảy ra khi:",
+                options: [
+                    "A. Điểm số tập trung ở mức cao nhất.",
+                    "B. Điểm số tập trung ở mức thấp nhất.",
+                    "C. Không có sự khác biệt giữa các nhóm.",
+                    "D. Phương tiện đo không đủ nhạy."
+                ],
+                correct: "A"
+            },
+            {
+                id: 70,
+                part: 3,
+                text: "'Hiệu ứng sàn' (floor effect) là vấn đề trong đo lường khi:",
+                options: [
+                    "A. Điểm số tập trung ở mức thấp nhất.",
+                    "B. Điểm số quá phân tán.",
+                    "C. Không thể phân biệt được sự khác biệt nhỏ.",
+                    "D. Cả A và C."
+                ],
+                correct: "D"
+            },
+            {
+                id: 71,
+                part: 3,
+                text: "Thiết kế 'single-case' phù hợp cho nghiên cứu:",
+                options: [
+                    "A. Trường hợp hiếm hoặc đặc biệt.",
+                    "B. Can thiệp cá nhân hóa.",
+                    "C. Khám phá cơ chế của hiện tượng.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 72,
+                part: 3,
+                text: "Trong thiết kế 'yoked control', nhóm đối chứng:",
+                options: [
+                    "A. Nhận can thiệp giống hệt về thời gian và tần suất.",
+                    "B. Không nhận bất kỳ can thiệp nào.",
+                    "C. Tự lựa chọn thời gian can thiệp.",
+                    "D. Nhận can thiệp ngẫu nhiên."
+                ],
+                correct: "A"
+            },
+            {
+                id: 73,
+                part: 3,
+                text: "'Hiệu ứng kỳ vọng của thí nghiệm viên' (experimenter expectancy effect) có thể được giảm thiểu bằng:",
+                options: [
+                    "A. Sử dụng thiết kế mù đôi.",
+                    "B. Huấn luyện thí nghiệm viên.",
+                    "C. Sử dụng kịch bản chuẩn hóa.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 74,
+                part: 3,
+                text: "Thiết kế 'nested' (lồng nhau) được sử dụng khi:",
+                options: [
+                    "A. Các cấp độ của một biến chỉ tồn tại trong một cấp độ của biến khác.",
+                    "B. Có nhiều biến độc lập tương tác với nhau.",
+                    "C. Mẫu nghiên cứu được chọn theo cụm.",
+                    "D. Nghiên cứu trong nhiều bối cảnh khác nhau."
+                ],
+                correct: "A"
+            },
+            {
+                id: 75,
+                part: 3,
+                text: "Trong thiết kế 'split-plot', biến between-subjects thường là:",
+                options: [
+                    "A. Biến khó hoặc không thể thay đổi trong thí nghiệm.",
+                    "B. Biến được thao túng nhiều lần.",
+                    "C. Biến phụ thuộc chính.",
+                    "D. Biến kiểm soát."
+                ],
+                correct: "A"
+            },
+            {
+                id: 76,
+                part: 3,
+                text: "'Hiệu ứng đo lường' (testing effect) là:",
+                options: [
+                    "A. Sự cải thiện do làm quen với bài test.",
+                    "B. Sự suy giảm do mệt mỏi.",
+                    "C. Sự thay đổi do mong đợi.",
+                    "D. Sai số do dụng cụ đo."
+                ],
+                correct: "A"
+            },
+            {
+                id: 77,
+                part: 3,
+                text: "Thiết kế 'regression discontinuity' được sử dụng để:",
+                options: [
+                    "A. Đánh giá chương trình dựa trên điểm cắt.",
+                    "B. Phân tích hồi quy đa biến.",
+                    "C. Dự đoán kết quả dựa trên biến tiên đoán.",
+                    "D. Điều chỉnh sai số đo lường."
+                ],
+                correct: "A"
+            },
+            {
+                id: 78,
+                part: 3,
+                text: "Trong thiết kế 'interrupted time series', điểm 'interruption' là:",
+                options: [
+                    "A. Thời điểm can thiệp được thực hiện.",
+                    "B. Khi dữ liệu bị thiếu.",
+                    "C. Khi thay đổi phương pháp đo.",
+                    "D. Kết thúc nghiên cứu."
+                ],
+                correct: "A"
+            },
+            {
+                id: 79,
+                part: 3,
+                text: "Thiết kế 'covariance analysis' (ANCOVA) cho phép:",
+                options: [
+                    "A. Điều chỉnh sự khác biệt ban đầu giữa các nhóm.",
+                    "B. Phân tích tương quan giữa các biến.",
+                    "C. So sánh nhiều nhóm cùng lúc.",
+                    "D. Kiểm tra tương tác giữa các biến."
+                ],
+                correct: "A"
+            },
+            {
+                id: 80,
+                part: 3,
+                text: "'Hiệu ứng kích thích' (stimulus effect) trong nghiên cứu là:",
+                options: [
+                    "A. Phản ứng đặc biệt với một kích thích cụ thể.",
+                    "B. Sự thích nghi với kích thích lặp lại.",
+                    "C. Ảnh hưởng của cường độ kích thích.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            // Phần 4: Bài 6 – ĐỀ CƯƠNG NC, ĐẠO VĂN & TRÍCH DẪN APA (20 câu mới)
+            {
+                id: 81,
+                part: 4,
+                text: "Phần 'Tóm tắt' (Abstract) trong đề cương nghiên cứu nên:",
+                options: [
+                    "A. Dài khoảng 500 từ.",
+                    "B. Trình bày toàn bộ nội dung nghiên cứu một cách ngắn gọn.",
+                    "C. Chỉ nêu vấn đề nghiên cứu.",
+                    "D. Liệt kê tất cả các tài liệu tham khảo."
+                ],
+                correct: "B"
+            },
+            {
+                id: 82,
+                part: 4,
+                text: "Trong đề cương, phần 'Đặt vấn đề' cần làm rõ:",
+                options: [
+                    "A. Tính cấp thiết của nghiên cứu.",
+                    "B. Khoảng trống trong tài liệu hiện có.",
+                    "C. Ý nghĩa lý thuyết và thực tiễn.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 83,
+                part: 4,
+                text: "Khi trình bày 'Tổng quan tài liệu', cần tránh:",
+                options: [
+                    "A. Liệt kê các nghiên cứu một cách máy móc.",
+                    "B. Phân tích và tổng hợp các nghiên cứu.",
+                    "C. Chỉ ra các mâu thuẫn trong tài liệu.",
+                    "D. Xác định khoảng trống nghiên cứu."
+                ],
+                correct: "A"
+            },
+            {
+                id: 84,
+                part: 4,
+                text: "Phần 'Phương pháp' trong đề cương cần mô tả chi tiết để:",
+                options: [
+                    "A. Người khác có thể lặp lại nghiên cứu.",
+                    "B. Chứng minh tính khả thi của nghiên cứu.",
+                    "C. Đáp ứng yêu cầu của hội đồng đạo đức.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 85,
+                part: 4,
+                text: "Khi mô tả 'người tham gia' trong đề cương, cần bao gồm:",
+                options: [
+                    "A. Tiêu chí lựa chọn và loại trừ.",
+                    "B. Cỡ mẫu và phương pháp chọn mẫu.",
+                    "C. Đặc điểm nhân khẩu học dự kiến.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 86,
+                part: 4,
+                text: "Trong phần 'Công cụ nghiên cứu', cần cung cấp thông tin về:",
+                options: [
+                    "A. Độ tin cậy và hiệu lực của công cụ.",
+                    "B. Cách thức sử dụng và chấm điểm.",
+                    "C. Nguồn gốc và bản quyền của công cụ.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 87,
+                part: 4,
+                text: "Phần 'Quy trình nghiên cứu' nên mô tả:",
+                options: [
+                    "A. Các bước thực hiện theo trình tự thời gian.",
+                    "B. Cách tiếp cận người tham gia.",
+                    "C. Các biện pháp đảm bảo đạo đức.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 88,
+                part: 4,
+                text: "Kế hoạch phân tích dữ liệu trong đề cương cần:",
+                options: [
+                    "A. Chỉ ra các phương pháp thống kê sẽ sử dụng.",
+                    "B. Mô tả cách xử lý dữ liệu thiếu.",
+                    "C. Nêu phần mềm thống kê sẽ dùng.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 89,
+                part: 4,
+                text: "Phần 'Ngân sách' trong đề cương cần:",
+                options: [
+                    "A. Liệt kê chi tiết các khoản chi.",
+                    "B. Chỉ nêu tổng số tiền cần.",
+                    "C. Ước tính sơ bộ các khoản chi.",
+                    "D. Không cần thiết trong đề cương khoa học."
+                ],
+                correct: "A"
+            },
+            {
+                id: 90,
+                part: 4,
+                text: "'Đạo văn' (plagiarism) có thể là:",
+                options: [
+                    "A. Sao chép ý tưởng mà không ghi nguồn.",
+                    "B. Sử dụng ngôn từ của người khác mà không trích dẫn.",
+                    "C. Tự đạo văn (self-plagiarism).",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 91,
+                part: 4,
+                text: "Để tránh đạo văn khi sử dụng ý của người khác, cần:",
+                options: [
+                    "A. Diễn giải lại bằng từ ngữ của mình và trích dẫn nguồn.",
+                    "B. Sao chép nguyên văn trong dấu ngoặc kép và trích dẫn.",
+                    "C. Chỉ thay đổi một vài từ.",
+                    "D. Cả A và B."
+                ],
+                correct: "D"
+            },
+            {
+                id: 92,
+                part: 4,
+                text: "Trích dẫn theo APA trong văn bản cho tác phẩm của hai tác giả là:",
+                options: [
+                    "A. (Nguyễn & Trần, 2020).",
+                    "B. (Nguyễn Văn A và Trần Thị B, 2020).",
+                    "C. (Nguyễn, Trần, 2020).",
+                    "D. (A. Nguyễn và B. Trần, 2020)."
+                ],
+                correct: "A"
+            },
+            {
+                id: 93,
+                part: 4,
+                text: "Khi trích dẫn tác phẩm của 3-5 tác giả lần đầu, cần:",
+                options: [
+                    "A. Liệt kê tất cả các tác giả.",
+                    "B. Chỉ liệt kê tác giả đầu tiên.",
+                    "C. Sử dụng 'và cộng sự' ngay từ đầu.",
+                    "D. Không cần trích dẫn đầy đủ."
+                ],
+                correct: "A"
+            },
+            {
+                id: 94,
+                part: 4,
+                text: "Trong danh mục tài liệu tham khảo theo APA, sách được trình bày:",
+                options: [
+                    "A. Tác giả. (Năm). Tên sách. Nhà xuất bản.",
+                    "B. Tên sách. (Năm). Tác giả. Nhà xuất bản.",
+                    "C. Tác giả. Tên sách. (Năm). Nhà xuất bản.",
+                    "D. Tên sách. Tác giả. (Năm). Nhà xuất bản."
+                ],
+                correct: "A"
+            },
+            {
+                id: 95,
+                part: 4,
+                text: "Khi trích dẫn bài báo từ tạp chí có DOI, cần:",
+                options: [
+                    "A. Bao gồm đường link đầy đủ đến DOI.",
+                    "B. Chỉ cần số DOI, không cần link.",
+                    "C. Không cần DOI nếu có thông tin đầy đủ.",
+                    "D. Chỉ cần tên tạp chí và số trang."
+                ],
+                correct: "A"
+            },
+            {
+                id: 96,
+                part: 4,
+                text: "'Tự đạo văn' (self-plagiarism) xảy ra khi:",
+                options: [
+                    "A. Sử dụng lại công trình cũ của mình mà không trích dẫn.",
+                    "B. Gửi cùng một bài báo đến nhiều tạp chí.",
+                    "C. Phân tích lại dữ liệu cũ mà không nói rõ.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 97,
+                part: 4,
+                text: "Phần 'Phụ lục' trong đề cương có thể chứa:",
+                options: [
+                    "A. Công cụ nghiên cứu đầy đủ.",
+                    "B. Thư đồng ý tham gia nghiên cứu.",
+                    "C. Các bảng biểu phức tạp.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 98,
+                part: 4,
+                text: "Khi viết đề cương nghiên cứu, thì của động từ nên là:",
+                options: [
+                    "A. Thì tương lai (sẽ thực hiện).",
+                    "B. Thì hiện tại (đang thực hiện).",
+                    "C. Thì quá khứ (đã thực hiện).",
+                    "D. Thì hiện tại hoàn thành."
+                ],
+                correct: "A"
+            },
+            {
+                id: 99,
+                part: 4,
+                text: "Trong phần 'Hạn chế và định hướng nghiên cứu tương lai', cần:",
+                options: [
+                    "A. Thừa nhận các điểm yếu của nghiên cứu.",
+                    "B. Đề xuất hướng nghiên cứu tiếp theo.",
+                    "C. Giải thích cách khắc phục hạn chế.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            },
+            {
+                id: 100,
+                part: 4,
+                text: "Để đảm bảo chất lượng đề cương nghiên cứu, nên:",
+                options: [
+                    "A. Nhờ người có kinh nghiệm đọc và góp ý.",
+                    "B. Kiểm tra tính logic và mạch lạc.",
+                    "C. Đảm bảo đáp ứng các yêu cầu về đạo đức.",
+                    "D. Tất cả các ý trên."
+                ],
+                correct: "D"
+            }
+        ];
+
+        // Phần thông tin
+        const partInfo = {
+            1: { name: "Bài 1 - Khoa học và Tâm lý học", count: 25 },
+            2: { name: "Bài 2 - Câu hỏi NC, Giả thuyết & Thao tác hóa", count: 20 },
+            3: { name: "Bài 4&5 - Phương pháp thực nghiệm và Thiết kế", count: 35 },
+            4: { name: "Bài 6 - Đề cương NC, Đạo văn & Trích dẫn APA", count: 20 }
+        };
+
+        // Biến toàn cục
+        let userAnswers = {};
+        let startTime = new Date();
+        let timerInterval;
+        let quizSubmitted = false;
+
+        // Khởi tạo trang
+        document.addEventListener('DOMContentLoaded', function() {
+            initQuiz();
+            startTimer();
+            
+            // Xử lý sự kiện nút nộp bài
+            document.getElementById('submit-btn').addEventListener('click', submitQuiz);
+            
+            // Xử lý sự kiện nút làm lại
+            document.getElementById('reset-btn').addEventListener('click', resetQuiz);
+            
+            // Xử lý sự kiện nút xem lại
+            document.getElementById('review-btn').addEventListener('click', function() {
+                document.getElementById('result-container').style.display = 'none';
+                document.getElementById('quiz-container').style.display = 'grid';
+                quizSubmitted = false;
+                updateProgress();
+            });
+            
+            // Xử lý sự kiện nút làm lại từ kết quả
+            document.getElementById('try-again-btn').addEventListener('click', resetQuiz);
+        });
+
+        // Khởi tạo bài quiz
+        function initQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = '';
+            
+            // Tạo các phần
+            for (let part = 1; part <= 4; part++) {
+                const partQuestions = questions.filter(q => q.part === part);
+                
+                const partHeader = document.createElement('div');
+                partHeader.className = 'part-header';
+                partHeader.innerHTML = `
+                    <span>${partInfo[part].name} (${partInfo[part].count} câu)</span>
+                    <span class="part-score" id="part-score-${part}">0/${partInfo[part].count}</span>
+                `;
+                quizContainer.appendChild(partHeader);
+                
+                // Tạo các câu hỏi trong phần
+                partQuestions.forEach(question => {
+                    const questionCard = document.createElement('div');
+                    questionCard.className = 'question-card';
+                    questionCard.id = `question-${question.id}`;
+                    
+                    let optionsHTML = '';
+                    question.options.forEach((option, index) => {
+                        const optionLetter = String.fromCharCode(65 + index); // A, B, C, D
+                        optionsHTML += `
+                            <div class="option" data-question="${question.id}" data-option="${optionLetter}">
+                                <input type="radio" id="q${question.id}_${optionLetter}" name="q${question.id}" value="${optionLetter}">
+                                <label for="q${question.id}_${optionLetter}">${option}</label>
+                            </div>
+                        `;
+                    });
+                    
+                    questionCard.innerHTML = `
+                        <div class="question-number">${question.id}</div>
+                        <div class="question-text">${question.text}</div>
+                        <div class="options">${optionsHTML}</div>
+                    `;
+                    
+                    quizContainer.appendChild(questionCard);
+                });
+            }
+            
+            // Thêm sự kiện click cho các lựa chọn
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    if (quizSubmitted) return;
+                    
+                    const questionId = this.getAttribute('data-question');
+                    const selectedOption = this.getAttribute('data-option');
+                    
+                    // Xóa lựa chọn trước đó cho câu hỏi này
+                    document.querySelectorAll(`.option[data-question="${questionId}"]`).forEach(opt => {
+                        opt.classList.remove('selected');
+                        opt.querySelector('input').checked = false;
+                    });
+                    
+                    // Đánh dấu lựa chọn hiện tại
+                    this.classList.add('selected');
+                    this.querySelector('input').checked = true;
+                    
+                    // Lưu câu trả lời
+                    userAnswers[questionId] = selectedOption;
+                    
+                    // Cập nhật tiến trình
+                    updateProgress();
+                });
+            });
+            
+            // Khởi tạo đối tượng userAnswers
+            userAnswers = {};
+        }
+
+        // Cập nhật tiến trình làm bài
+        function updateProgress() {
+            const answeredCount = Object.keys(userAnswers).length;
+            const progress = (answeredCount / questions.length) * 100;
+            
+            document.getElementById('answered-count').textContent = answeredCount;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            
+            // Tính điểm tạm thời (chỉ tính cho phần đã làm)
+            let tempScore = 0;
+            Object.keys(userAnswers).forEach(questionId => {
+                const question = questions.find(q => q.id == questionId);
+                if (question && userAnswers[questionId] === question.correct) {
+                    tempScore++;
+                }
+            });
+            
+            document.getElementById('current-score').textContent = tempScore;
+            
+            // Cập nhật điểm từng phần
+            for (let part = 1; part <= 4; part++) {
+                const partQuestions = questions.filter(q => q.part === part);
+                let partCorrect = 0;
+                
+                partQuestions.forEach(question => {
+                    if (userAnswers[question.id] === question.correct) {
+                        partCorrect++;
+                    }
+                });
+                
+                document.getElementById(`part-score-${part}`).textContent = `${partCorrect}/${partInfo[part].count}`;
+            }
+        }
+
+        // Bộ đếm thời gian
+        function startTimer() {
+            startTime = new Date();
+            timerInterval = setInterval(() => {
+                const now = new Date();
+                const diff = Math.floor((now - startTime) / 1000); // chênh lệch giây
+                
+                const minutes = Math.floor(diff / 60);
+                const seconds = diff % 60;
+                
+                document.getElementById('timer').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Nộp bài
+        function submitQuiz() {
+            if (quizSubmitted) return;
+            
+            // Kiểm tra xem đã làm hết câu hỏi chưa
+            const answeredCount = Object.keys(userAnswers).length;
+            if (answeredCount < questions.length) {
+                if (!confirm(`Bạn mới làm ${answeredCount}/${questions.length} câu. Bạn có chắc muốn nộp bài không?`)) {
+                    return;
+                }
+            }
+            
+            quizSubmitted = true;
+            clearInterval(timerInterval);
+            
+            // Tính điểm
+            let correctCount = 0;
+            const partScores = {1: 0, 2: 0, 3: 0, 4: 0};
+            
+            questions.forEach(question => {
+                const userAnswer = userAnswers[question.id];
+                const isCorrect = userAnswer === question.correct;
+                
+                if (isCorrect) {
+                    correctCount++;
+                    partScores[question.part]++;
+                }
+                
+                // Đánh dấu câu trả lời đúng/sai
+                const questionElement = document.getElementById(`question-${question.id}`);
+                const options = questionElement.querySelectorAll('.option');
+                
+                options.forEach(option => {
+                    const optionLetter = option.getAttribute('data-option');
+                    
+                    if (optionLetter === question.correct) {
+                        option.classList.add('correct');
+                    } else if (optionLetter === userAnswer && !isCorrect) {
+                        option.classList.add('incorrect');
+                    }
+                    
+                    // Vô hiệu hóa tất cả các lựa chọn
+                    option.style.pointerEvents = 'none';
+                });
+            });
+            
+            // Tính điểm
+            const score = correctCount;
+            const accuracy = ((correctCount / questions.length) * 100).toFixed(1);
+            
+            // Hiển thị kết quả
+            showResults(score, correctCount, accuracy);
+        }
+
+        // Hiển thị kết quả
+        function showResults(score, correctCount, accuracy) {
+            document.getElementById('quiz-container').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            
+            // Cập nhật điểm số
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('correct-answers').textContent = correctCount;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+            document.getElementById('final-time').textContent = document.getElementById('timer').textContent;
+            
+            // Cập nhật biểu đồ hình tròn
+            const percentage = (score / questions.length) * 100;
+            document.getElementById('score-circle').style.setProperty('--percentage', `${percentage}%`);
+            
+            // Thêm hiệu ứng
+            const scoreElement = document.getElementById('final-score');
+            let currentScore = 0;
+            const incrementScore = () => {
+                if (currentScore < score) {
+                    currentScore++;
+                    scoreElement.textContent = currentScore;
+                    setTimeout(incrementScore, 30);
+                }
+            };
+            
+            incrementScore();
+        }
+
+        // Làm lại bài quiz
+        function resetQuiz() {
+            if (!quizSubmitted && Object.keys(userAnswers).length > 0) {
+                if (!confirm("Bạn có chắc muốn làm lại từ đầu? Tất cả câu trả lời sẽ bị xóa.")) {
+                    return;
+                }
+            }
+            
+            // Đặt lại tất cả biến
+            userAnswers = {};
+            quizSubmitted = false;
+            
+            // Đặt lại giao diện
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('quiz-container').style.display = 'grid';
+            
+            // Đặt lại bộ đếm thời gian
+            clearInterval(timerInterval);
+            startTimer();
+            
+            // Khởi tạo lại quiz
+            initQuiz();
+            updateProgress();
+        }
+    </script>
+</body>
+</html>
