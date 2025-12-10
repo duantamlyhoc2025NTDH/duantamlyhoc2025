@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 Câu Trắc Nghiệm Phương Pháp Nghiên Cứu Khoa Học</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .instructions {
+            background-color: #e8f4fc;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+        
+        .part-container {
+            margin-bottom: 40px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .part-title {
+            color: #2c3e50;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #3498db;
+            font-size: 22px;
+        }
+        
+        .question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+        
+        .question:last-child {
+            border-bottom: none;
+        }
+        
+        .question-number {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #2c3e50;
+        }
+        
+        .options {
+            margin-left: 40px;
+        }
+        
+        .option {
+            margin-bottom: 8px;
+            padding: 8px 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .option:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .option input {
+            margin-right: 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        #submit-btn {
+            background-color: #27ae60;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        #submit-btn:hover {
+            background-color: #219653;
+        }
+        
+        .result-container {
+            display: none;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .result-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .score {
+            font-size: 28px;
+            font-weight: bold;
+            color: #27ae60;
+            margin: 15px 0;
+        }
+        
+        .part-score {
+            margin-bottom: 10px;
+            padding: 8px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background-color: #95a5a6;
+            padding: 8px 15px;
+            font-size: 14px;
+        }
+        
+        .nav-btn:hover {
+            background-color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 22px;
+            }
+            
+            .part-container {
+                padding: 15px;
+            }
+            
+            .options {
+                margin-left: 20px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>100 Câu Trắc Nghiệm Phương Pháp Nghiên Cứu Khoa Học</h1>
+        <div class="subtitle">Kiến thức: Bài 1 đến Bài 6 - Phương pháp NCKH, Đạo đức, Thiết kế nghiên cứu, Đề cương NC & APA</div>
+    </div>
+    
+    <div class="instructions">
+        <strong>Hướng dẫn:</strong> Chọn đáp án đúng cho mỗi câu hỏi. Sau khi hoàn thành tất cả câu hỏi, nhấn nút "Nộp bài" để xem kết quả. Có thể sử dụng các nút điều hướng để chuyển giữa các phần.
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" onclick="scrollToPart(1)">Phần 1 (1-25)</button>
+        <button class="nav-btn" onclick="scrollToPart(2)">Phần 2 (26-50)</button>
+        <button class="nav-btn" onclick="scrollToPart(3)">Phần 3 (51-75)</button>
+        <button class="nav-btn" onclick="scrollToPart(4)">Phần 4 (76-100)</button>
+    </div>
+    
+    <form id="quiz-form">
+        <!-- PHẦN 1 -->
+        <div class="part-container" id="part1">
+            <h2 class="part-title">PHẦN 1: TỪ CÂU 1 ĐẾN CÂU 25</h2>
+            <p style="margin-bottom: 20px; color: #555; font-style: italic;">Kiến thức: Bài 1 - Giới thiệu, Triết lý Khoa học, Đạo đức. Bài 2 - Quy trình NCKH, Câu hỏi NC, Giả thuyết & Thao tác hóa khái niệm</p>
+            
+            <!-- Câu 1 -->
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Trong ba tiêu chí cốt lõi của khoa học, tiêu chí nào được Karl Popper nhấn mạnh là quan trọng nhất để phân biệt khoa học với giả khoa học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q1" value="a"> a. Các quy trình có thể được tái sử dụng (Replicable Procedure)</div>
+                    <div class="option"><input type="radio" name="q1" value="b"> b. Các lý thuyết có thể được phản nghiệm (Falsifiable Theories)</div>
+                    <div class="option"><input type="radio" name="q1" value="c"> c. Những dự đoán có thể được kiểm chứng (Verifiable Prediction)</div>
+                    <div class="option"><input type="radio" name="q1" value="d"> d. Kiến thức được xây dựng dựa trên sự đồng thuận của cộng đồng khoa học</div>
+                </div>
+            </div>
+            
+            <!-- Câu 2 -->
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">Phát biểu nào sau đây phân biệt chính xác nhất giữa Lý thuyết (Theory) và Quy luật (Law) trong khoa học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q2" value="a"> a. Quy luật đã được chứng minh là đúng tuyệt đối, còn lý thuyết chỉ là phỏng đoán.</div>
+                    <div class="option"><input type="radio" name="q2" value="b"> b. Lý thuyết giải thích tại sao một hiện tượng xảy ra, còn Quy luật mô tả cách hiện tượng xảy ra mà không giải thích nguyên nhân.</div>
+                    <div class="option"><input type="radio" name="q2" value="c"> c. Quy luật là kết quả của một thí nghiệm, còn lý thuyết là kết quả của nhiều thí nghiệm.</div>
+                    <div class="option"><input type="radio" name="q2" value="d"> d. Quy luật thuộc về vật lý học, còn lý thuyết thuộc về tâm lý học và khoa học xã hội.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 3 -->
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Khoa học được định nghĩa chủ yếu bằng yếu tố nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q3" value="a"> a. Nội dung nghiên cứu (Cái gì?)</div>
+                    <div class="option"><input type="radio" name="q3" value="b"> b. Quá trình thực hiện (Như thế nào?)</div>
+                    <div class="option"><input type="radio" name="q3" value="c"> c. Tập hợp các lý thuyết được chấp nhận</div>
+                    <div class="option"><input type="radio" name="q3" value="d"> d. Khả năng giải quyết mọi vấn đề</div>
+                </div>
+            </div>
+            
+            <!-- Câu 4 -->
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">Giả khoa học (Pseudoscience) khác biệt cơ bản với khoa học ở điểm nào trong quá trình kiểm chứng lý thuyết?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q4" value="a"> a. Giả khoa học không sử dụng phương pháp thống kê.</div>
+                    <div class="option"><input type="radio" name="q4" value="b"> b. Giả khoa học không có giả thuyết để kiểm chứng.</div>
+                    <div class="option"><input type="radio" name="q4" value="c"> c. Giả khoa học chỉ tìm cách kiểm chứng (xác minh) lý thuyết, trong khi khoa học phải tìm cách phản chứng (phản nghiệm).</div>
+                    <div class="option"><input type="radio" name="q4" value="d"> d. Giả khoa học không có bất kỳ nền tảng lý thuyết nào.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 5 -->
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">Mục tiêu nào sau đây của Nghiên cứu Khoa học trong Tâm lý học liên quan đến việc xây dựng tri thức mới về các hiện tượng hành vi?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q5" value="a"> a. Để khám phá (To explore)</div>
+                    <div class="option"><input type="radio" name="q5" value="b"> b. Để lượng giá (To evaluate)</div>
+                    <div class="option"><input type="radio" name="q5" value="c"> c. Để kiểm chứng (To test)</div>
+                    <div class="option"><input type="radio" name="q5" value="d"> d. Để thúc đẩy hành động (To promote action)</div>
+                </div>
+            </div>
+            
+            <!-- Câu 6 -->
+            <div class="question">
+                <div class="question-number">6</div>
+                <div class="question-text">Đặc điểm nào sau đây là KHÔNG đúng về kiến thức khoa học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q6" value="a"> a. Kiến thức khoa học luôn là tạm thời và có thể thay đổi.</div>
+                    <div class="option"><input type="radio" name="q6" value="b"> b. Kiến thức khoa học cố gắng giảm thiểu tính chủ quan bằng quy trình có hệ thống và logic.</div>
+                    <div class="option"><input type="radio" name="q6" value="c"> c. Kiến thức khoa học là tuyệt đối, cố định và vĩnh viễn.</div>
+                    <div class="option"><input type="radio" name="q6" value="d"> d. Kiến thức khoa học không thể giải thích mọi hiện tượng trong thế giới tự nhiên.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 7 -->
+            <div class="question">
+                <div class="question-number">7</div>
+                <div class="question-text">Nhà Triết học quan tâm đến câu hỏi nào sau đây trong một nghiên cứu về tác động của tập thể dục lên trầm cảm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q7" value="a"> a. Thiết kế nghiên cứu như thế nào để thu thập dữ liệu?</div>
+                    <div class="option"><input type="radio" name="q7" value="b"> b. Kết quả dữ liệu sẽ xác minh hay bác bỏ giả thuyết?</div>
+                    <div class="option"><input type="radio" name="q7" value="c"> c. Trầm cảm có thực sự tồn tại như một khái niệm trừu tượng không và làm thế nào để đo lường nó?</div>
+                    <div class="option"><input type="radio" name="q7" value="d"> d. Làm thế nào để áp dụng kết quả nghiên cứu vào thực tiễn lâm sàng?</div>
+                </div>
+            </div>
+            
+            <!-- Câu 8 -->
+            <div class="question">
+                <div class="question-number">8</div>
+                <div class="question-text">Theo nguyên tắc đạo đức nghiên cứu cơ bản, người tham gia cần được thông tin đầy đủ về điều gì trước khi tham gia?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q8" value="a"> a. Tất cả các giả thuyết nghiên cứu và kết quả mong đợi của nhà nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q8" value="b"> b. Quyền được rút khỏi nghiên cứu bất cứ lúc nào, ngay cả khi nó đã bắt đầu.</div>
+                    <div class="option"><input type="radio" name="q8" value="c"> c. Mã hóa và dữ liệu cá nhân của họ sẽ được công khai sau nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q8" value="d"> d. Bằng cấp và kinh nghiệm chuyên môn của tất cả các nhà nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 9 -->
+            <div class="question">
+                <div class="question-number">9</div>
+                <div class="question-text">Để tôn trọng sự bảo mật và riêng tư của đối tượng nghiên cứu (nguyên tắc đạo đức), nhà nghiên cứu cần lưu ý điều gì, đặc biệt trong môi trường trực tuyến?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q9" value="a"> a. Chỉ thu thập dữ liệu về tuổi và giới tính.</div>
+                    <div class="option"><input type="radio" name="q9" value="b"> b. Không sử dụng bất kỳ công cụ thu thập dữ liệu trực tuyến nào.</div>
+                    <div class="option"><input type="radio" name="q9" value="c"> c. Suy nghĩ về việc mã hóa dữ liệu, mức độ bảo mật trong quá trình chia sẻ và xin trợ giúp chuyên môn nếu cần.</div>
+                    <div class="option"><input type="radio" name="q9" value="d"> d. Bắt buộc người tham gia ký cam kết không tiết lộ thông tin nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 10 -->
+            <div class="question">
+                <div class="question-number">10</div>
+                <div class="question-text">Sự kiện lịch sử nào đánh dấu Tâm lý học tách khỏi Triết học và trở thành một môn khoa học độc lập?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q10" value="a"> a. Việc Sigmund Freud phát triển Phân tâm học.</div>
+                    <div class="option"><input type="radio" name="q10" value="b"> b. Việc Wilhelm Wundt thành lập phòng thí nghiệm tâm lý học thực nghiệm đầu tiên tại Đại học Leipzig năm 1879.</div>
+                    <div class="option"><input type="radio" name="q10" value="c"> c. Sự ra đời của Chủ nghĩa Hành vi (Behaviourism) vào đầu thế kỷ 20.</div>
+                    <div class="option"><input type="radio" name="q10" value="d"> d. Việc Hiệp hội Tâm lý học Hoa Kỳ (APA) tuyên bố TLH là một môn khoa học cơ bản.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 11 -->
+            <div class="question">
+                <div class="question-number">11</div>
+                <div class="question-text">Dạng dữ liệu chủ yếu được sử dụng trong Nghiên cứu Định lượng (Quantitative Research) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q11" value="a"> a. Dữ liệu chữ (từ đoạn hội thoại, phỏng vấn sâu)</div>
+                    <div class="option"><input type="radio" name="q11" value="b"> b. Dữ liệu hình ảnh và video</div>
+                    <div class="option"><input type="radio" name="q11" value="c"> c. Dữ liệu số (từ các thang đo, kết quả thực nghiệm)</div>
+                    <div class="option"><input type="radio" name="q11" value="d"> d. Dữ liệu về lịch sử phát triển của đối tượng nghiên cứu</div>
+                </div>
+            </div>
+            
+            <!-- Câu 12 -->
+            <div class="question">
+                <div class="question-number">12</div>
+                <div class="question-text">Mục đích chính của Nghiên cứu Định tính (Qualitative Research) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q12" value="a"> a. Kiểm chứng giả thuyết về một hiện tượng.</div>
+                    <div class="option"><input type="radio" name="q12" value="b"> b. Lượng hóa hiện tượng và dự đoán mối quan hệ giữa các biến số.</div>
+                    <div class="option"><input type="radio" name="q12" value="c"> c. Khám phá về một hiện tượng chưa có nhiều lý thuyết và xây dựng lý thuyết (Quy nạp).</div>
+                    <div class="option"><input type="radio" name="q12" value="d"> d. Diễn dịch lý thuyết và tìm kiếm thông tin kiểm chứng.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 13 -->
+            <div class="question">
+                <div class="question-number">13</div>
+                <div class="question-text">Tiêu chí 'Các quy trình có thể được tái sử dụng' (Replicable Procedure) đòi hỏi điều gì đối với một nghiên cứu khoa học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q13" value="a"> a. Kết quả nghiên cứu phải luôn giống nhau khi thực hiện lại.</div>
+                    <div class="option"><input type="radio" name="q13" value="b"> b. Quy trình kiểm chứng lý thuyết phải có thể được sao chép trong một bối cảnh khác.</div>
+                    <div class="option"><input type="radio" name="q13" value="c"> c. Nhà nghiên cứu phải luôn giữ bí mật về quy trình thực hiện.</div>
+                    <div class="option"><input type="radio" name="q13" value="d"> d. Nghiên cứu phải được thực hiện trên cùng một nhóm đối tượng ban đầu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 14 -->
+            <div class="question">
+                <div class="question-number">14</div>
+                <div class="question-text">Trong bối cảnh Mục tiêu đầu ra của môn học, NCKH chính là để kiểm định điều gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q14" value="a"> a. Cảm tính và kinh nghiệm cá nhân của người hành nghề.</div>
+                    <div class="option"><input type="radio" name="q14" value="b"> b. Nguồn gốc của tri thức và các giá trị cốt lõi.</div>
+                    <div class="option"><input type="radio" name="q14" value="c"> c. Các lý thuyết có phù hợp với thực tiễn và có chứng cứ khoa học trong đời thực hay không.</div>
+                    <div class="option"><input type="radio" name="q14" value="d"> d. Các quy định môn học và cách đặt câu hỏi nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 15 -->
+            <div class="question">
+                <div class="question-number">15</div>
+                <div class="question-text">Cuộc 'Khủng hoảng niềm tin vào Khoa học Tâm lý' (Replication Crisis) chủ yếu đề cập đến thất bại trong việc đáp ứng tiêu chí khoa học nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q15" value="a"> a. Các lý thuyết có thể được phản nghiệm.</div>
+                    <div class="option"><input type="radio" name="q15" value="b"> b. Các quy trình có thể được tái sử dụng (Replicable Procedure).</div>
+                    <div class="option"><input type="radio" name="q15" value="c"> c. Những dự đoán có thể được kiểm chứng.</div>
+                    <div class="option"><input type="radio" name="q15" value="d"> d. Mức độ đạo đức của các nghiên cứu tâm lý.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 16 -->
+            <div class="question">
+                <div class="question-number">16</div>
+                <div class="question-text">Thao tác hóa khái niệm (Operationalization) là gì trong quy trình nghiên cứu định lượng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q16" value="a"> a. Quá trình tìm kiếm nền tảng lý thuyết cho câu hỏi nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q16" value="b"> b. Quá trình chuyển đổi khái niệm trừu tượng thành các thủ tục nghiên cứu cụ thể và có thể đo lường được.</div>
+                    <div class="option"><input type="radio" name="q16" value="c"> c. Việc đặt ra các giả thuyết có hướng hoặc vô hướng.</div>
+                    <div class="option"><input type="radio" name="q16" value="d"> d. Giai đoạn phân tích dữ liệu bằng phần mềm thống kê.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 17 -->
+            <div class="question">
+                <div class="question-number">17</div>
+                <div class="question-text">Tại sao nhà nghiên cứu cần sử dụng định nghĩa hoạt động (operational definition) thay vì định nghĩa trong từ điển khi xây dựng phần Dẫn luận?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q17" value="a"> a. Để làm cho bài nghiên cứu trở nên học thuật hơn.</div>
+                    <div class="option"><input type="radio" name="q17" value="b"> b. Để cụ thể hóa cách khái niệm trừu tượng sẽ được đo lường (lượng hóa) trong nghiên cứu này.</div>
+                    <div class="option"><input type="radio" name="q17" value="c"> c. Để phản biện các nghiên cứu trước đây đã sử dụng định nghĩa sai.</div>
+                    <div class="option"><input type="radio" name="q17" value="d"> d. Để giới hạn phạm vi nghiên cứu chỉ trong các khái niệm vật lý.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 18 -->
+            <div class="question">
+                <div class="question-number">18</div>
+                <div class="question-text">Trong quy trình nghiên cứu khoa học định lượng (gồm 6 bước: Quan sát/Câu hỏi → Nền tảng lý thuyết → Giả thuyết → Thu thập DL → Phân tích DL → Chia sẻ), bước nào diễn ra ngay trước khi thu thập dữ liệu?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q18" value="a"> a. Tìm kiếm nền tảng lý thuyết và các kết quả hiện có.</div>
+                    <div class="option"><input type="radio" name="q18" value="b"> b. Phân tích dữ liệu.</div>
+                    <div class="option"><input type="radio" name="q18" value="c"> c. Đặt giả thuyết.</div>
+                    <div class="option"><input type="radio" name="q18" value="d"> d. Quan sát và đặt câu hỏi nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 19 -->
+            <div class="question">
+                <div class="question-number">19</div>
+                <div class="question-text">Giả thuyết nào sau đây là một ví dụ của giả thuyết có hướng (directional hypothesis)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q19" value="a"> a. Sự khác biệt về giới tính có liên quan đến mức độ lo âu.</div>
+                    <div class="option"><input type="radio" name="q19" value="b"> b. Nhóm sinh viên tập thể dục ít nhất 3 lần/tuần sẽ có điểm test chú ý cao hơn nhóm tập thể dục ít hơn.</div>
+                    <div class="option"><input type="radio" name="q19" value="c"> c. Mối quan hệ giữa căng thẳng và hiệu suất làm việc sẽ được tìm thấy.</div>
+                    <div class="option"><input type="radio" name="q19" value="d"> d. Sử dụng mạng xã hội có tác động đến tư duy sáng tạo.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 20 -->
+            <div class="question">
+                <div class="question-number">20</div>
+                <div class="question-text">Để được coi là một câu hỏi nghiên cứu hay, câu hỏi đó KHÔNG NÊN có đặc điểm nào sau đây?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q20" value="a"> a. Quá rộng hoặc chung chung.</div>
+                    <div class="option"><input type="radio" name="q20" value="b"> b. Có thể được trả lời thông qua các phương pháp định lượng.</div>
+                    <div class="option"><input type="radio" name="q20" value="c"> c. Đã được trả lời bởi các nghiên cứu trước đó.</div>
+                    <div class="option"><input type="radio" name="q20" value="d"> d. Thể hiện rõ các biến số liên quan.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 21 -->
+            <div class="question">
+                <div class="question-number">21</div>
+                <div class="question-text">Khái niệm 'Lỗ hổng kiến thức' (Research Gap) được xác định như thế nào trong phần Dẫn luận (Introduction)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q21" value="a"> a. Là sự khác biệt về kết quả giữa nghiên cứu định tính và định lượng.</div>
+                    <div class="option"><input type="radio" name="q21" value="b"> b. Là sự khác biệt giữa sở thích cá nhân của nhà nghiên cứu và nhu cầu của xã hội.</div>
+                    <div class="option"><input type="radio" name="q21" value="c"> c. Là phần kiến thức đã có trừ đi phần kiến thức chưa có về mối quan hệ giữa các biến số, bao gồm hạn chế về phương pháp và thiết kế.</div>
+                    <div class="option"><input type="radio" name="q21" value="d"> d. Là sự thiếu hụt tài liệu tham khảo cho đề tài nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 22 -->
+            <div class="question">
+                <div class="question-number">22</div>
+                <div class="question-text">Sự khác biệt cơ bản về hình thức giữa Câu hỏi Nghiên cứu (Research Question) và Giả thuyết (Hypothesis) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q22" value="a"> a. Câu hỏi NC phải có nền tảng lý thuyết, còn Giả thuyết thì không cần.</div>
+                    <div class="option"><input type="radio" name="q22" value="b"> b. Câu hỏi NC là dạng câu hỏi '...?' nêu vấn đề muốn có câu trả lời, còn Giả thuyết là dạng câu phát biểu '...' nêu cụ thể điều mong đợi sẽ tìm thấy.</div>
+                    <div class="option"><input type="radio" name="q22" value="c"> c. Câu hỏi NC luôn là vô hướng, còn Giả thuyết luôn là có hướng.</div>
+                    <div class="option"><input type="radio" name="q22" value="d"> d. Câu hỏi NC chỉ liên quan đến tương quan, còn Giả thuyết chỉ liên quan đến nhân quả.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 23 -->
+            <div class="question">
+                <div class="question-number">23</div>
+                <div class="question-text">Giả thuyết nào sau đây thể hiện mối quan hệ Nhân quả (Causal) trong nghiên cứu thực nghiệm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q23" value="a"> a. Có mối tương quan cao giữa việc sử dụng mạng xã hội và mức độ lo âu.</div>
+                    <div class="option"><input type="radio" name="q23" value="b"> b. Thái độ tương đồng cao có liên quan với sự thu hút cao.</div>
+                    <div class="option"><input type="radio" name="q23" value="c"> c. Việc sử dụng phương pháp trị liệu A sẽ gây ra sự giảm đáng kể triệu chứng trầm cảm.</div>
+                    <div class="option"><input type="radio" name="q23" value="d"> d. Hai biến số X và Y có mối quan hệ.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 24 -->
+            <div class="question">
+                <div class="question-number">24</div>
+                <div class="question-text">Giả thuyết nào sau đây thể hiện mối quan hệ Tương quan (Correlational) trong nghiên cứu phi thực nghiệm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q24" value="a"> a. Âm nhạc cổ điển sẽ cải thiện khả năng tập trung của học sinh.</div>
+                    <div class="option"><input type="radio" name="q24" value="b"> b. Độ tuổi tương quan với mức độ sử dụng Internet ở người lớn tuổi.</div>
+                    <div class="option"><input type="radio" name="q24" value="c"> c. Nhóm can thiệp A sẽ có điểm lo âu thấp hơn nhóm đối chứng.</div>
+                    <div class="option"><input type="radio" name="q24" value="d"> d. Ánh sáng mặt trời không có tác động đến tâm trạng.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 25 -->
+            <div class="question">
+                <div class="question-number">25</div>
+                <div class="question-text">Trong quá trình thao tác hóa khái niệm, việc 'Cụ thể hóa các khái niệm thành các chiều kích (Dimensions)' có ý nghĩa gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q25" value="a"> a. Giúp thu thập số liệu nhanh chóng hơn.</div>
+                    <div class="option"><input type="radio" name="q25" value="b"> b. Là bước cuối cùng trước khi viết item câu hỏi.</div>
+                    <div class="option"><input type="radio" name="q25" value="c"> c. Phân chia khái niệm trừu tượng thành các khía cạnh nhỏ hơn, cụ thể hơn để xây dựng phép đo (ví dụ: 'Động lực học tập' chia thành 'Số lần tham gia phát biểu' và 'Số lần đi học trễ').</div>
+                    <div class="option"><input type="radio" name="q25" value="d"> d. Xác định rõ ràng tên của biến độc lập và biến phụ thuộc.</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button type="button" onclick="scrollToPart(2)">Tiếp tục đến Phần 2</button>
+            </div>
+        </div>
+        
+        <!-- PHẦN 2 -->
+        <div class="part-container" id="part2">
+            <h2 class="part-title">PHẦN 2: TỪ CÂU 26 ĐẾN CÂU 50</h2>
+            <p style="margin-bottom: 20px; color: #555; font-style: italic;">Kiến thức: Bài 2 - Thao tác hóa khái niệm. Bài 3 - Các hình thức đo lường, Thang đo & Đặc tính công cụ</p>
+            
+            <!-- Câu 26 -->
+            <div class="question">
+                <div class="question-number">26</div>
+                <div class="question-text">Khái niệm 'Sự hạnh phúc' (Happiness) được coi là một biến số ẩn (Latent Variable) trong Tâm lý học vì lý do nào sau đây?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q26" value="a"> a. Nó có thể được đo lường bằng một thang đo duy nhất.</div>
+                    <div class="option"><input type="radio" name="q26" value="b"> b. Nó là một khái niệm trừu tượng, không thể quan sát trực tiếp và cần nhiều chỉ báo đo lường được (như 'hài lòng', 'cười', 'thỏa mãn') để phản ánh.</div>
+                    <div class="option"><input type="radio" name="q26" value="c"> c. Nó là một biến số độc lập trong hầu hết các nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q26" value="d"> d. Nó là một biến số không thể thao tác hóa được.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 27 -->
+            <div class="question">
+                <div class="question-number">27</div>
+                <div class="question-text">Mục đích của việc đặt giả thuyết trong quy trình nghiên cứu khoa học định lượng là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q27" value="a"> a. Để tổng hợp các kết quả nghiên cứu trước đây về đề tài.</div>
+                    <div class="option"><input type="radio" name="q27" value="b"> b. Để đưa ra một phỏng đoán cụ thể, có thể kiểm chứng được (verifiable) về kết quả nghiên cứu, dựa trên câu hỏi nghiên cứu và nền tảng lý thuyết.</div>
+                    <div class="option"><input type="radio" name="q27" value="c"> c. Để làm cho nghiên cứu trở nên phức tạp hơn.</div>
+                    <div class="option"><input type="radio" name="q27" value="d"> d. Để chứng minh rằng nhà nghiên cứu đã đọc đủ tài liệu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 28 -->
+            <div class="question">
+                <div class="question-number">28</div>
+                <div class="question-text">Thứ tự chính xác của các bước trong Quy trình Nghiên cứu Khoa học Định lượng là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q28" value="a"> a. Quan sát → Đặt Giả thuyết → Tìm nền tảng Lý thuyết → Thu thập DL → Phân tích DL → Chia sẻ</div>
+                    <div class="option"><input type="radio" name="q28" value="b"> b. Quan sát → Tìm nền tảng Lý thuyết → Đặt Giả thuyết → Thu thập DL → Phân tích DL → Chia sẻ</div>
+                    <div class="option"><input type="radio" name="q28" value="c"> c. Thu thập DL → Phân tích DL → Đặt Giả thuyết → Chia sẻ → Quan sát → Tìm nền tảng Lý thuyết</div>
+                    <div class="option"><input type="radio" name="q28" value="d"> d. Tìm nền tảng Lý thuyết → Quan sát → Đặt Giả thuyết → Thu thập DL → Chia sẻ → Phân tích DL</div>
+                </div>
+            </div>
+            
+            <!-- Câu 29 -->
+            <div class="question">
+                <div class="question-number">29</div>
+                <div class="question-text">Trong 3 kiểu định nghĩa khái niệm ('thực', 'định danh', 'thao tác'), Định nghĩa Thực (Real Definition) được hiểu là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q29" value="a"> a. Mô tả các hoạt động cụ thể để đo lường khái niệm (Operational Definition).</div>
+                    <div class="option"><input type="radio" name="q29" value="b"> b. Định nghĩa được tìm thấy trong từ điển (Nominal Definition).</div>
+                    <div class="option"><input type="radio" name="q29" value="c"> c. Khái quát bản chất của một khái niệm trừu tượng.</div>
+                    <div class="option"><input type="radio" name="q29" value="d"> d. Định nghĩa dựa trên sở thích cá nhân của nhà nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 30 -->
+            <div class="question">
+                <div class="question-number">30</div>
+                <div class="question-text">Nền tảng lý thuyết (Theoretical Framework) có vai trò gì trong việc đặt câu hỏi và giả thuyết nghiên cứu?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q30" value="a"> a. Lý thuyết là không cần thiết nếu nhà nghiên cứu có kinh nghiệm lâm sàng sâu sắc.</div>
+                    <div class="option"><input type="radio" name="q30" value="b"> b. Cung cấp chứng cứ và lập luận logic để giải thích tại sao mối quan hệ giữa các biến số nên được nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q30" value="c"> c. Giúp nhà nghiên cứu quyết định số lượng câu hỏi cần đặt.</div>
+                    <div class="option"><input type="radio" name="q30" value="d"> d. Chỉ được sử dụng trong các nghiên cứu thực nghiệm, không cần cho nghiên cứu tương quan.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 31 -->
+            <div class="question">
+                <div class="question-number">31</div>
+                <div class="question-text">Đo lường trong Tâm lý học là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q31" value="a"> a. Việc so sánh một đại lượng vật lý với một vật chuẩn đã biết.</div>
+                    <div class="option"><input type="radio" name="q31" value="b"> b. Sử dụng những thủ pháp hay kỹ thuật nghiên cứu nhằm lượng hóa sự vật, hiện tượng tâm lý, xã hội cần đánh giá (ví dụ: hiểu biết, kỹ năng, cảm xúc, thuộc tính, phẩm chất).</div>
+                    <div class="option"><input type="radio" name="q31" value="c"> c. Chỉ sử dụng các công cụ đo lường khách quan như fMRI hoặc điện cơ.</div>
+                    <div class="option"><input type="radio" name="q31" value="d"> d. Quá trình đánh giá định tính (phạm trù hóa) các thuộc tính tâm lý.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 32 -->
+            <div class="question">
+                <div class="question-number">32</div>
+                <div class="question-text">Thang đo nào sau đây là phù hợp nhất để đo lường biến số 'Giới tính' (Nam/Nữ) trong nghiên cứu định lượng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q32" value="a"> a. Thang đo Thứ bậc (Ordinal)</div>
+                    <div class="option"><input type="radio" name="q32" value="b"> b. Thang đo Định danh (Nominal)</div>
+                    <div class="option"><input type="radio" name="q32" value="c"> c. Thang đo Định khoảng (Interval)</div>
+                    <div class="option"><input type="radio" name="q32" value="d"> d. Thang đo Tỷ lệ (Ratio)</div>
+                </div>
+            </div>
+            
+            <!-- Câu 33 -->
+            <div class="question">
+                <div class="question-number">33</div>
+                <div class="question-text">Thang đo nào được sử dụng để đo lường biến số 'Thứ hạng học lực' (Hạng nhất, Hạng nhì, Hạng ba) trong một lớp học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q33" value="a"> a. Thang đo Định danh (Nominal)</div>
+                    <div class="option"><input type="radio" name="q33" value="b"> b. Thang đo Tỷ lệ (Ratio)</div>
+                    <div class="option"><input type="radio" name="q33" value="c"> c. Thang đo Thứ bậc (Ordinal)</div>
+                    <div class="option"><input type="radio" name="q33" value="d"> d. Thang đo Định khoảng (Interval)</div>
+                </div>
+            </div>
+            
+            <!-- Câu 34 -->
+            <div class="question">
+                <div class="question-number">34</div>
+                <div class="question-text">Đặc điểm nào sau đây là của Thang đo Định khoảng (Interval Scale)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q34" value="a"> a. Chỉ có thể phân loại và xếp thứ tự.</div>
+                    <div class="option"><input type="radio" name="q34" value="b"> b. Có điểm '0' tuyệt đối, có thể thực hiện các phép toán nhân/chia.</div>
+                    <div class="option"><input type="radio" name="q34" value="c"> c. Có thể phân loại, xếp thứ tự và có khoảng cách giữa các giá trị là bằng nhau (ví dụ: nhiệt độ C, điểm số IQ), nhưng không có điểm '0' tuyệt đối.</div>
+                    <div class="option"><input type="radio" name="q34" value="d"> d. Chỉ sử dụng để đo lường các thuộc tính vật lý.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 35 -->
+            <div class="question">
+                <div class="question-number">35</div>
+                <div class="question-text">Ưu điểm nổi bật nhất của Thang đo Tỷ lệ (Ratio Scale) so với các loại thang đo khác là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q35" value="a"> a. Có khả năng phân loại đối tượng.</div>
+                    <div class="option"><input type="radio" name="q35" value="b"> b. Có thể sắp xếp thứ tự các giá trị.</div>
+                    <div class="option"><input type="radio" name="q35" value="c"> c. Có thể thực hiện phép toán cộng và trừ.</div>
+                    <div class="option"><input type="radio" name="q35" value="d"> d. Có điểm '0' tuyệt đối, cho phép thực hiện tất cả các phép toán thống kê, bao gồm nhân và chia.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 36 -->
+            <div class="question">
+                <div class="question-number">36</div>
+                <div class="question-text">Đặc tính 'Độ hiệu lực' (Validity) của một công cụ đo lường trong Tâm lý học đề cập đến điều gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q36" value="a"> a. Công cụ đo lường phải cho ra kết quả nhất quán khi đo lặp lại (ví dụ: Cronbach alpha cao).</div>
+                    <div class="option"><input type="radio" name="q36" value="b"> b. Công cụ có thể phân biệt được các mức độ khác nhau của hiện tượng cần đo (ví dụ: phân biệt mức độ trầm cảm nhẹ và nặng).</div>
+                    <div class="option"><input type="radio" name="q36" value="c"> c. Công cụ đo lường đúng cái mà nó cần đo (ví dụ: thang đo trầm cảm thực sự đo trầm cảm, không phải lo âu).</div>
+                    <div class="option"><input type="radio" name="q36" value="d"> d. Công cụ có thể loại trừ được những người không có hiện tượng cần đo.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 37 -->
+            <div class="question">
+                <div class="question-number">37</div>
+                <div class="question-text">Độ tin cậy (Reliability) của một công cụ đo lường được thể hiện qua yếu tố nào sau đây?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q37" value="a"> a. Khả năng khái quát hóa kết quả ra quần thể rộng hơn.</div>
+                    <div class="option"><input type="radio" name="q37" value="b"> b. Sự nhất quán (consistency) của kết quả đo lường khi được thực hiện lại hoặc đo bằng các item tương đương (ví dụ: hệ số Cronbach alpha).</div>
+                    <div class="option"><input type="radio" name="q37" value="c"> c. Tốc độ xử lý thông tin của đối tượng khi làm test.</div>
+                    <div class="option"><input type="radio" name="q37" value="d"> d. Sự phù hợp giữa công cụ và mô hình lý thuyết.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 38 -->
+            <div class="question">
+                <div class="question-number">38</div>
+                <div class="question-text">Trong nghiên cứu định lượng, đo lường có vai trò gì trong việc xử lý số liệu?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q38" value="a"> a. Giúp nhà nghiên cứu xác định ý tưởng nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q38" value="b"> b. Giải quyết vấn đề cơ bản về lượng hóa các đặc trưng của đối tượng, cho phép sử dụng công cụ toán học để xử lý số liệu.</div>
+                    <div class="option"><input type="radio" name="q38" value="c"> c. Là bước cuối cùng của quy trình nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q38" value="d"> d. Giúp khẳng định tính chủ quan của các nhận định lâm sàng.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 39 -->
+            <div class="question">
+                <div class="question-number">39</div>
+                <div class="question-text">Nguyên tắc đầu tiên và quan trọng nhất khi thiết kế một công cụ đo lường trong nghiên cứu tâm lý là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q39" value="a"> a. Xác định kiểu cho điểm (Scoring method).</div>
+                    <div class="option"><input type="radio" name="q39" value="b"> b. Xác định rõ đối tượng trả lời/cung cấp thông tin (Dành cho ai?).</div>
+                    <div class="option"><input type="radio" name="q39" value="c"> c. Xác định rõ mục đích đo lường của công cụ (Đo cái gì?).</div>
+                    <div class="option"><input type="radio" name="q39" value="d"> d. Đảm bảo công cụ có độ tin cậy Cronbach alpha cao.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 40 -->
+            <div class="question">
+                <div class="question-number">40</div>
+                <div class="question-text">Việc thiết kế công cụ đo lường (xây dựng và thử công cụ) nằm ở giai đoạn nào trong Quy trình chung trong thiết kế công cụ đo lường đối với NCKHTL?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q40" value="a"> a. Giai đoạn 1 (Xác định ý tưởng NC) và Giai đoạn 2 (Xác định tên đề tài).</div>
+                    <div class="option"><input type="radio" name="q40" value="b"> b. Giai đoạn 3 (Xây dựng đề cương NC) và Giai đoạn 6 (Thu thập số liệu).</div>
+                    <div class="option"><input type="radio" name="q40" value="c"> c. Giai đoạn 4 (Xây dựng công cụ NC) và Giai đoạn 5 (Thử công cụ NC).</div>
+                    <div class="option"><input type="radio" name="q40" value="d"> d. Giai đoạn 7 (Làm sạch, xử lý và phân tích số liệu) và Giai đoạn 8 (Viết báo cáo).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 41 -->
+            <div class="question">
+                <div class="question-number">41</div>
+                <div class="question-text">Hình thức đo lường nào là phổ biến nhất để thu thập số liệu cho nghiên cứu định lượng trong Tâm lý học?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q41" value="a"> a. Phỏng vấn sâu (In-depth Interview)</div>
+                    <div class="option"><input type="radio" name="q41" value="b"> b. Test trên máy tính (Cognitive Test)</div>
+                    <div class="option"><input type="radio" name="q41" value="c"> c. Quan sát thực tế (Naturalistic Observation)</div>
+                    <div class="option"><input type="radio" name="q41" value="d"> d. Bảng hỏi (Questionnaire) hoặc Thang đo tự báo cáo (Self-report Scale)</div>
+                </div>
+            </div>
+            
+            <!-- Câu 42 -->
+            <div class="question">
+                <div class="question-number">42</div>
+                <div class="question-text">Thang đo Likert (Likert Scale) thường có bao nhiêu mức độ để mô tả thái độ của con người đối với một vấn đề?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q42" value="a"> a. 2 mức độ (Có/Không)</div>
+                    <div class="option"><input type="radio" name="q42" value="b"> b. Từ 5 đến 7 mức độ (Ví dụ: Hoàn toàn không đồng ý → Hoàn toàn đồng ý)</div>
+                    <div class="option"><input type="radio" name="q42" value="c"> c. 3 mức độ (Thấp, Trung bình, Cao)</div>
+                    <div class="option"><input type="radio" name="q42" value="d"> d. 10 mức độ (Từ 1 đến 10)</div>
+                </div>
+            </div>
+            
+            <!-- Câu 43 -->
+            <div class="question">
+                <div class="question-number">43</div>
+                <div class="question-text">Hình thức câu trả lời 'Matching items' (Nối đôi) trong bảng hỏi có đặc điểm gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q43" value="a"> a. Yêu cầu người trả lời viết một đoạn văn ngắn để trả lời câu hỏi.</div>
+                    <div class="option"><input type="radio" name="q43" value="b"> b. Yêu cầu người trả lời chọn một câu trả lời đúng từ nhiều lựa chọn khác nhau.</div>
+                    <div class="option"><input type="radio" name="q43" value="c"> c. Yêu cầu người trả lời ghép cặp các yếu tố từ hai danh sách hoặc cột có liên quan với nhau.</div>
+                    <div class="option"><input type="radio" name="q43" value="d"> d. Yêu cầu người trả lời đánh giá một phát biểu theo một thang thái độ.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 44 -->
+            <div class="question">
+                <div class="question-number">44</div>
+                <div class="question-text">Các Test Nhận thức (Cognitive Test) thực hiện trên máy tính thường được sử dụng để đo lường các thuộc tính nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q44" value="a"> a. Thái độ, niềm tin và sự hài lòng trong cuộc sống.</div>
+                    <div class="option"><input type="radio" name="q44" value="b"> b. Các tiến trình nội tâm (ví dụ: thời gian phản ứng, tốc độ xử lý, sự chú ý chọn lọc) với độ chính xác cao.</div>
+                    <div class="option"><input type="radio" name="q44" value="c"> c. Các triệu chứng rối loạn tâm thần theo tiêu chí lâm sàng.</div>
+                    <div class="option"><input type="radio" name="q44" value="d"> d. Hành vi trong môi trường tự nhiên của đối tượng nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 45 -->
+            <div class="question">
+                <div class="question-number">45</div>
+                <div class="question-text">Điểm khác biệt chính giữa hình thức đo lường Bảng hỏi (Questionnaire) và Phỏng vấn (Interview) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q45" value="a"> a. Phỏng vấn chỉ dùng cho nghiên cứu Định tính, Bảng hỏi chỉ dùng cho Định lượng.</div>
+                    <div class="option"><input type="radio" name="q45" value="b"> b. Bảng hỏi là hình thức thu thập dữ liệu trực tiếp, Phỏng vấn là gián tiếp.</div>
+                    <div class="option"><input type="radio" name="q45" value="c"> c. Phỏng vấn có tính tương tác cao, linh hoạt về cấu trúc câu hỏi, và thu thập dữ liệu chữ; Bảng hỏi có cấu trúc cố định và thu thập dữ liệu số.</div>
+                    <div class="option"><input type="radio" name="q45" value="d"> d. Phỏng vấn chỉ được thực hiện trên nhóm mẫu lớn, Bảng hỏi trên nhóm mẫu nhỏ.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 46 -->
+            <div class="question">
+                <div class="question-number">46</div>
+                <div class="question-text">Trong Phương pháp Quan sát (Observation), kỹ thuật 'Event Sampling' (Ghi nhận sự kiện) có đặc điểm nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q46" value="a"> a. Ghi nhận tất cả các hành vi xảy ra trong một khoảng thời gian cố định (ví dụ: 0'' đến 15'').</div>
+                    <div class="option"><input type="radio" name="q46" value="b"> b. Chỉ ghi nhận những hành vi (đã được xác định trước) xảy ra trong một khoảng thời gian nhất định và đo thời gian/tần suất của chúng.</div>
+                    <div class="option"><input type="radio" name="q46" value="c"> c. Đo lường hành vi bằng cách sử dụng các thang đo Likert.</div>
+                    <div class="option"><input type="radio" name="q46" value="d"> d. Chỉ áp dụng trong môi trường phòng thí nghiệm.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 47 -->
+            <div class="question">
+                <div class="question-number">47</div>
+                <div class="question-text">Kỹ thuật 'Time Sampling' (Lấy mẫu thời gian) trong quan sát hoạt động như thế nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q47" value="a"> a. Quan sát và ghi lại tất cả các hành vi xảy ra trong một phiên quan sát dài.</div>
+                    <div class="option"><input type="radio" name="q47" value="b"> b. Quan sát và ghi lại sự xuất hiện của hành vi được xác định trước trong một khoảng thời gian cố định (ví dụ: 0'' → 15'') và tính tần suất xuất hiện.</div>
+                    <div class="option"><input type="radio" name="q47" value="c"> c. Chỉ sử dụng để đo lường các hành vi không có cấu trúc.</div>
+                    <div class="option"><input type="radio" name="q47" value="d"> d. Đo lường thời gian phản ứng của đối tượng nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 48 -->
+            <div class="question">
+                <div class="question-number">48</div>
+                <div class="question-text">Đặc tính 'Độ nhạy' (Sensitivity) của một công cụ đo lường quan trọng trong trường hợp nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q48" value="a"> a. Khi cần đảm bảo tính nhất quán của kết quả theo thời gian.</div>
+                    <div class="option"><input type="radio" name="q48" value="b"> b. Khi công cụ cần có khả năng phát hiện đúng những người có hiện tượng/vấn đề (tức là không bỏ sót ca dương tính).</div>
+                    <div class="option"><input type="radio" name="q48" value="c"> c. Khi cần đo lường chính xác các khái niệm trừu tượng.</div>
+                    <div class="option"><input type="radio" name="q48" value="d"> d. Khi công cụ cần loại trừ đúng những người không có hiện tượng/vấn đề.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 49 -->
+            <div class="question">
+                <div class="question-number">49</div>
+                <div class="question-text">Đặc tính 'Độ đặc hiệu' (Specificity) của một công cụ đo lường là khả năng nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q49" value="a"> a. Khả năng phân biệt các hiện tượng khác nhau (ví dụ: trầm cảm và lo âu).</div>
+                    <div class="option"><input type="radio" name="q49" value="b"> b. Khả năng phát hiện đúng những người có hiện tượng cần đo (Dương tính thật).</div>
+                    <div class="option"><input type="radio" name="q49" value="c"> c. Khả năng loại trừ đúng những người không có hiện tượng cần đo (Âm tính thật).</div>
+                    <div class="option"><input type="radio" name="q49" value="d"> d. Khả năng áp dụng cho nhiều quần thể khác nhau.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 50 -->
+            <div class="question">
+                <div class="question-number">50</div>
+                <div class="question-text">Theo quan điểm trong bài giảng, mối quan hệ giữa Nhận định lâm sàng (Clinical judgment) dựa trên quan sát không cấu trúc và việc sử dụng các công cụ chuẩn đoán (Tests) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q50" value="a"> a. Nhận định lâm sàng luôn chủ quan và sai lầm, do đó nên chỉ sử dụng các công cụ chuẩn đoán.</div>
+                    <div class="option"><input type="radio" name="q50" value="b"> b. Các công cụ chuẩn đoán hỗ trợ đắc lực cho nhận định lâm sàng bằng cách cung cấp kết quả có độ hiệu lực và tin cậy cao hơn để kiểm chứng trực tiếp.</div>
+                    <div class="option"><input type="radio" name="q50" value="c"> c. Chỉ cần một trong hai, tùy thuộc vào sở thích của nhà lâm sàng.</div>
+                    <div class="option"><input type="radio" name="q50" value="d"> d. Các công cụ chuẩn đoán chỉ có ý nghĩa khi kết quả đơn lẻ của chúng được sử dụng.</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button type="button" onclick="scrollToPart(1)">Quay lại Phần 1</button>
+                <button type="button" onclick="scrollToPart(3)">Tiếp tục đến Phần 3</button>
+            </div>
+        </div>
+        
+        <!-- PHẦN 3 -->
+        <div class="part-container" id="part3">
+            <h2 class="part-title">PHẦN 3: TỪ CÂU 51 ĐẾN CÂU 75</h2>
+            <p style="margin-bottom: 20px; color: #555; font-style: italic;">Kiến thức: Bài 4 & Bài 5 - Phương pháp Thực nghiệm, Biến số, Thiết kế Thực nghiệm Căn bản</p>
+            
+            <!-- Câu 51 -->
+            <div class="question">
+                <div class="question-number">51</div>
+                <div class="question-text">Yêu cầu cốt lõi nào sau đây là bắt buộc phải có để một nghiên cứu được coi là một thực nghiệm (Experiment)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q51" value="a"> a. Phải có ít nhất 3 biến số.</div>
+                    <div class="option"><input type="radio" name="q51" value="b"> b. Biến Phụ thuộc phải được giữ nguyên (hằng định).</div>
+                    <div class="option"><input type="radio" name="q51" value="c"> c. Biến Độc lập phải được thao túng (cố tình thay đổi mức độ) bởi nhà nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q51" value="d"> d. Nghiên cứu phải được thực hiện trong phòng thí nghiệm.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 52 -->
+            <div class="question">
+                <div class="question-number">52</div>
+                <div class="question-text">Biến Độc lập (Independent Variable - IV) là gì trong nghiên cứu thực nghiệm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q52" value="a"> a. Biến mà nhà nghiên cứu theo dõi và đo lường để xem nó thay đổi như thế nào.</div>
+                    <div class="option"><input type="radio" name="q52" value="b"> b. Biến được giữ nguyên (hằng định) trong suốt quá trình nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q52" value="c"> c. Biến mà nhà nghiên cứu cố tình thao túng (manipulate) để xem nó có tác động đến biến khác không.</div>
+                    <div class="option"><input type="radio" name="q52" value="d"> d. Các yếu tố về đặc điểm nghiệm thể (giới tính, độ tuổi) mà nhà nghiên cứu không thể gán ngẫu nhiên.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 53 -->
+            <div class="question">
+                <div class="question-number">53</div>
+                <div class="question-text">Trong nghiên cứu thực nghiệm, Biến Phụ thuộc (Dependent Variable - DV) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q53" value="a"> a. Biến được nhà nghiên cứu thao túng.</div>
+                    <div class="option"><input type="radio" name="q53" value="b"> b. Biến mà nhà nghiên cứu theo dõi và đo lường (observed) để xem nó có bị ảnh hưởng bởi Biến Độc lập không.</div>
+                    <div class="option"><input type="radio" name="q53" value="c"> c. Biến được loại bỏ hoàn toàn khỏi nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q53" value="d"> d. Biến chỉ có thể là kết quả của các thang đo tự báo cáo.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 54 -->
+            <div class="question">
+                <div class="question-number">54</div>
+                <div class="question-text">Để đảm bảo tính thực nghiệm, Biến Độc lập phải được thao túng để có ít nhất bao nhiêu tầng/nhóm (levels/conditions)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q54" value="a"> a. 1 tầng (chỉ có nhóm thực nghiệm).</div>
+                    <div class="option"><input type="radio" name="q54" value="b"> b. 2 tầng/nhóm (ví dụ: nhóm được can thiệp và nhóm đối chứng không can thiệp).</div>
+                    <div class="option"><input type="radio" name="q54" value="c"> c. 3 tầng/nhóm.</div>
+                    <div class="option"><input type="radio" name="q54" value="d"> d. 4 tầng/nhóm.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 55 -->
+            <div class="question">
+                <div class="question-number">55</div>
+                <div class="question-text">Nhóm đối chứng (Control Group) trong nghiên cứu thực nghiệm là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q55" value="a"> a. Nhóm nghiệm thể có kết quả đo lường cao nhất.</div>
+                    <div class="option"><input type="radio" name="q55" value="b"> b. Nhóm mà Biến Độc lập được thao túng ở mức độ cao nhất.</div>
+                    <div class="option"><input type="radio" name="q55" value="c"> c. Nhóm mà Biến Độc lập được thao túng ở mức độ '0' (ví dụ: không được can thiệp, không uống bia, không tập thể dục).</div>
+                    <div class="option"><input type="radio" name="q55" value="d"> d. Nhóm được nhà nghiên cứu lựa chọn ngẫu nhiên nhưng không được thông báo về mục đích nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 56 -->
+            <div class="question">
+                <div class="question-number">56</div>
+                <div class="question-text">Mục đích chính của việc xác định và giữ nguyên (held constant) Biến Kiểm soát (Control Variable) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q56" value="a"> a. Để đảm bảo rằng mọi điều kiện cho các nhóm đều khác nhau.</div>
+                    <div class="option"><input type="radio" name="q56" value="b"> b. Để tăng khả năng khái quát hóa kết quả nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q56" value="c"> c. Để loại bỏ ảnh hưởng của Biến Nhiễu, đảm bảo rằng sự thay đổi trong Biến Phụ thuộc chỉ do Biến Độc lập gây ra.</div>
+                    <div class="option"><input type="radio" name="q56" value="d"> d. Để làm cho quy trình thu thập dữ liệu trở nên phức tạp hơn.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 57 -->
+            <div class="question">
+                <div class="question-number">57</div>
+                <div class="question-text">Trong Thực nghiệm Thực (True Experiment), yêu cầu 'Phân nhóm ngẫu nhiên' (Random Assignment) có mục đích gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q57" value="a"> a. Đảm bảo rằng mọi người trong quần thể đều có cơ hội tham gia nghiên cứu như nhau.</div>
+                    <div class="option"><input type="radio" name="q57" value="b"> b. Đảm bảo rằng tất cả nghiệm thể có cơ hội tham gia vào các nhóm (thực nghiệm và đối chứng) như nhau, từ đó loại trừ sự khác biệt cá nhân có sẵn.</div>
+                    <div class="option"><input type="radio" name="q57" value="c"> c. Đảm bảo rằng các biến số độc lập được thao túng ở mức độ khác nhau.</div>
+                    <div class="option"><input type="radio" name="q57" value="d"> d. Đảm bảo rằng nhà nghiên cứu không biết nghiệm thể thuộc nhóm nào.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 58 -->
+            <div class="question">
+                <div class="question-number">58</div>
+                <div class="question-text">Các yếu tố về Giới tính, Độ tuổi, Trình độ học vấn được xếp vào loại Biến Nhiễu nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q58" value="a"> a. Biến Nhiễu Tình huống (Situational Variables).</div>
+                    <div class="option"><input type="radio" name="q58" value="b"> b. Biến Nhiễu Đặc điểm Nghiệm thể (Subject Characteristics).</div>
+                    <div class="option"><input type="radio" name="q58" value="c"> c. Biến Kiểm soát (Control Variables).</div>
+                    <div class="option"><input type="radio" name="q58" value="d"> d. Biến Độc lập (Independent Variables).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 59 -->
+            <div class="question">
+                <div class="question-number">59</div>
+                <div class="question-text">Yếu tố 'Thời gian thực nghiệm' (sáng/chiều/tối) được xếp vào loại Biến Nhiễu nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q59" value="a"> a. Biến Nhiễu Đặc điểm Nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q59" value="b"> b. Biến Phụ thuộc.</div>
+                    <div class="option"><input type="radio" name="q59" value="c"> c. Biến Nhiễu Tình huống (Situational Variables).</div>
+                    <div class="option"><input type="radio" name="q59" value="d"> d. Biến Cố định của Nghiệm thể.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 60 -->
+            <div class="question">
+                <div class="question-number">60</div>
+                <div class="question-text">Đặc điểm của Thực nghiệm trong phòng Lab (Lab Experiment) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q60" value="a"> a. Biến Độc lập được thao túng ở ngoài đời thực, nhưng đo lường Biến Phụ thuộc trong phòng Lab.</div>
+                    <div class="option"><input type="radio" name="q60" value="b"> b. Không có sự thao túng Biến Độc lập.</div>
+                    <div class="option"><input type="radio" name="q60" value="c"> c. Cả Biến Độc lập được thao túng và Biến Phụ thuộc được đo lường hoàn toàn trong phòng lab dưới điều kiện khống chế nghiêm ngặt.</div>
+                    <div class="option"><input type="radio" name="q60" value="d"> d. Không thể phân nhóm ngẫu nhiên đối tượng nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 61 -->
+            <div class="question">
+                <div class="question-number">61</div>
+                <div class="question-text">Thực nghiệm hiện trường (Field Experiment) được thực hiện khi nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q61" value="a"> a. Khi không thể thao túng Biến Độc lập vì lý do đạo đức trong phòng lab, nên thực hiện thao túng ở ngoài đời thực (giữ nguyên hiện trường).</div>
+                    <div class="option"><input type="radio" name="q61" value="b"> b. Khi nhà nghiên cứu không thể phân nhóm ngẫu nhiên đối tượng nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q61" value="c"> c. Khi chỉ có một nhóm thực nghiệm và không có nhóm đối chứng.</div>
+                    <div class="option"><input type="radio" name="q61" value="d"> d. Khi nghiên cứu chỉ sử dụng các biện pháp đo lường tự báo cáo.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 62 -->
+            <div class="question">
+                <div class="question-number">62</div>
+                <div class="question-text">Bán thực nghiệm (Quasi-experiment) khác biệt với Thực nghiệm Thực (True Experiment) ở yêu cầu nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q62" value="a"> a. Thiếu sự thao túng Biến Độc lập.</div>
+                    <div class="option"><input type="radio" name="q62" value="b"> b. Thiếu yêu cầu 'Phân nhóm ngẫu nhiên' (Random Assignment).</div>
+                    <div class="option"><input type="radio" name="q62" value="c"> c. Thiếu Biến Phụ thuộc.</div>
+                    <div class="option"><input type="radio" name="q62" value="d"> d. Chỉ có thể thực hiện trên động vật.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 63 -->
+            <div class="question">
+                <div class="question-number">63</div>
+                <div class="question-text">Các biến số không thể được gán/thao túng ngẫu nhiên cho nghiệm thể (ví dụ: Giới tính, Tình trạng hôn nhân) được gọi là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q63" value="a"> a. Biến Độc lập Cố định (Fixed Independent Variables).</div>
+                    <div class="option"><input type="radio" name="q63" value="b"> b. Biến Phụ thuộc Cố định (Fixed Dependent Variables).</div>
+                    <div class="option"><input type="radio" name="q63" value="c"> c. Biến Cố định của Nghiệm thể (Subject Variables).</div>
+                    <div class="option"><input type="radio" name="q63" value="d"> d. Biến Kiểm soát (Control Variables).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 64 -->
+            <div class="question">
+                <div class="question-number">64</div>
+                <div class="question-text">Đặc điểm nổi bật của Thiết kế Khác nhóm (Between-subject Design) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q64" value="a"> a. Tất cả nghiệm thể tham gia vào tất cả các điều kiện test khác nhau.</div>
+                    <div class="option"><input type="radio" name="q64" value="b"> b. Mỗi nhóm nghiệm thể được test trong một điều kiện khác nhau (ví dụ: Nhóm 1 xem bảng xanh, Nhóm 2 xem bảng đen).</div>
+                    <div class="option"><input type="radio" name="q64" value="c"> c. Nghiệm thể được phân nhóm theo cặp dựa trên đặc điểm cá nhân (Matching).</div>
+                    <div class="option"><input type="radio" name="q64" value="d"> d. Rủi ro cao bị ảnh hưởng bởi Hiệu ứng Chuyển tiếp (Carry-over effect).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 65 -->
+            <div class="question">
+                <div class="question-number">65</div>
+                <div class="question-text">Thiết kế Cùng nhóm/Lặp (Within-subject/Repeated Measures Design) có đặc điểm nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q65" value="a"> a. Mỗi nghiệm thể chỉ tham gia một điều kiện test duy nhất.</div>
+                    <div class="option"><input type="radio" name="q65" value="b"> b. Tất cả nghiệm thể tham gia vào tất cả các điều kiện test khác nhau (ví dụ: Mỗi người tham gia đều xem cả bảng xanh và bảng đen).</div>
+                    <div class="option"><input type="radio" name="q65" value="c"> c. Cần một mẫu lớn và chi phí cao.</div>
+                    <div class="option"><input type="radio" name="q65" value="d"> d. Hoàn toàn loại trừ được Hiệu ứng Chuyển tiếp (Carry-over effect).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 66 -->
+            <div class="question">
+                <div class="question-number">66</div>
+                <div class="question-text">Ưu điểm nổi bật của Thiết kế Khác nhóm (Between-subject Design) so với Thiết kế Cùng nhóm là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q66" value="a"> a. Chi phí thấp hơn và thời gian test ngắn hơn.</div>
+                    <div class="option"><input type="radio" name="q66" value="b"> b. Hoàn toàn loại trừ được sự khác biệt cá nhân (Individual differences) giữa các nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q66" value="c"> c. Loại trừ được Hiệu ứng Luyện tập (Practice effect) hoặc Hiệu ứng Chuyển tiếp (Carry-over effect).</div>
+                    <div class="option"><input type="radio" name="q66" value="d"> d. Sự so sánh kết quả chính xác hơn.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 67 -->
+            <div class="question">
+                <div class="question-number">67</div>
+                <div class="question-text">Nhược điểm lớn nhất của Thiết kế Cùng nhóm (Within-subject Design) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q67" value="a"> a. Cần một mẫu lớn và chi phí cao.</div>
+                    <div class="option"><input type="radio" name="q67" value="b"> b. Có thể bị ảnh hưởng bởi sự khác biệt cá nhân giữa các nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q67" value="c"> c. Có thể bị ảnh hưởng bởi Hiệu ứng Luyện tập (Practice effect) hoặc Hiệu ứng Chuyển tiếp (Carry-over effect).</div>
+                    <div class="option"><input type="radio" name="q67" value="d"> d. Không thể sử dụng kỹ thuật Đối trọng (Counter-balance) để giảm thiểu nhiễu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 68 -->
+            <div class="question">
+                <div class="question-number">68</div>
+                <div class="question-text">Kỹ thuật 'Phân nhóm theo cặp' (Matching) được sử dụng trong Thiết kế Khác nhóm để giảm thiểu Biến Nhiễu nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q68" value="a"> a. Hiệu ứng Chuyển tiếp (Carry-over effect).</div>
+                    <div class="option"><input type="radio" name="q68" value="b"> b. Đặc điểm nhu cầu (Demand Characteristics).</div>
+                    <div class="option"><input type="radio" name="q68" value="c"> c. Sự khác biệt cá nhân (Individual differences) giữa các nhóm.</div>
+                    <div class="option"><input type="radio" name="q68" value="d"> d. Biến Nhiễu Tình huống (Situational Variables).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 69 -->
+            <div class="question">
+                <div class="question-number">69</div>
+                <div class="question-text">Trong Thiết kế Cùng nhóm (Within-subject), kỹ thuật giảm thiểu nhiễu nào sau đây là phù hợp nhất để chống lại Hiệu ứng Chuyển tiếp (Carry-over effect)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q69" value="a"> a. Phân nhóm ngẫu nhiên (Random Assignment).</div>
+                    <div class="option"><input type="radio" name="q69" value="b"> b. Phân nhóm theo cặp (Matching).</div>
+                    <div class="option"><input type="radio" name="q69" value="c"> c. Đối trọng (Counter-balance).</div>
+                    <div class="option"><input type="radio" name="q69" value="d"> d. Kỹ thuật Mù đôi (Double-blind).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 70 -->
+            <div class="question">
+                <div class="question-number">70</div>
+                <div class="question-text">Hiệu ứng Chuyển tiếp (Carry-over effect) trong Thiết kế Cùng nhóm là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q70" value="a"> a. Sự khác biệt cá nhân giữa các nghiệm thể ảnh hưởng đến kết quả.</div>
+                    <div class="option"><input type="radio" name="q70" value="b"> b. Hiệu suất của nghiệm thể ở điều kiện thứ nhất ảnh hưởng đến hiệu suất của họ ở điều kiện thứ hai (ví dụ: cảm giác mệt mỏi, phản ứng còn sót lại).</div>
+                    <div class="option"><input type="radio" name="q70" value="c"> c. Sự mong đợi của nghiệm thể về kết quả nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q70" value="d"> d. Nhà nghiên cứu vô tình thiên vị kết quả nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 71 -->
+            <div class="question">
+                <div class="question-number">71</div>
+                <div class="question-text">Hiệu ứng Luyện tập (Practice effect) là một dạng của Hiệu ứng Chuyển tiếp, được hiểu là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q71" value="a"> a. Kết quả ở lần đo sau cao hơn do nghiệm thể đã học được kinh nghiệm từ lần đo trước.</div>
+                    <div class="option"><input type="radio" name="q71" value="b"> b. Kết quả ở lần đo sau thấp hơn do nghiệm thể cảm thấy mệt mỏi hoặc chán nản.</div>
+                    <div class="option"><input type="radio" name="q71" value="c"> c. Kết quả của một nhóm khác biệt so với nhóm còn lại.</div>
+                    <div class="option"><input type="radio" name="q71" value="d"> d. Sự thay đổi về hành vi của nghiệm thể do biết mình đang bị quan sát.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 72 -->
+            <div class="question">
+                <div class="question-number">72</div>
+                <div class="question-text">Đặc điểm nhu cầu (Demand Characteristics) là một loại biến nhiễu, xảy ra khi nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q72" value="a"> a. Nghiệm thể làm việc tốt hơn khi biết họ đang bị quan sát.</div>
+                    <div class="option"><input type="radio" name="q72" value="b"> b. Nghiệm thể cố gắng làm hài lòng nhà nghiên cứu bằng cách làm thí nghiệm theo cách mà họ nghĩ sẽ 'tốt' cho thí nghiệm.</div>
+                    <div class="option"><input type="radio" name="q72" value="c"> c. Nhà nghiên cứu vô tình đưa ra gợi ý vô thức cho nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q72" value="d"> d. Nghiệm thể được nhận tiền cho việc tham gia nghiên cứu.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 73 -->
+            <div class="question">
+                <div class="question-number">73</div>
+                <div class="question-text">Hiệu ứng Hawthorne được định nghĩa là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q73" value="a"> a. Nghiệm thể cố gắng làm hài lòng nhà nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q73" value="b"> b. Sự thay đổi tích cực trong hành vi của đối tượng khi họ nhận thức được mình đang là một phần của nghiên cứu hoặc đang bị quan sát.</div>
+                    <div class="option"><input type="radio" name="q73" value="c"> c. Sự suy giảm hiệu suất của nghiệm thể qua các lần đo lường.</div>
+                    <div class="option"><input type="radio" name="q73" value="d"> d. Sự thiên vị do Biến Độc lập được đo lường không chính xác.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 74 -->
+            <div class="question">
+                <div class="question-number">74</div>
+                <div class="question-text">Kỹ thuật 'Giấu kép' (Double-blind) được sử dụng để kiểm soát loại thiên vị nào trong nghiên cứu thực nghiệm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q74" value="a"> a. Thiên vị của nghiệm thể (Demand Characteristics) và Thiên vị của nhà nghiên cứu (Experimenter Characteristics).</div>
+                    <div class="option"><input type="radio" name="q74" value="b"> b. Chỉ Thiên vị của nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q74" value="c"> c. Chỉ Thiên vị của nhà nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q74" value="d"> d. Hiệu ứng Chuyển tiếp và Hiệu ứng Luyện tập.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 75 -->
+            <div class="question">
+                <div class="question-number">75</div>
+                <div class="question-text">Ưu điểm chính của Thiết kế Giai thừa (Factorial Design - ví dụ: 2×2 yếu tố) so với việc thực hiện nhiều nghiên cứu đơn lẻ là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q75" value="a"> a. Chỉ cần ít nghiệm thể hơn tổng số của các nghiên cứu đơn lẻ.</div>
+                    <div class="option"><input type="radio" name="q75" value="b"> b. Cho phép kiểm tra đồng thời Hiệu ứng Chính của từng biến độc lập VÀ Hiệu ứng Tương tác giữa các biến độc lập.</div>
+                    <div class="option"><input type="radio" name="q75" value="c"> c. Loại trừ hoàn toàn Biến Cố định của Nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q75" value="d"> d. Giảm thiểu Hiệu ứng Placebo.</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button type="button" onclick="scrollToPart(2)">Quay lại Phần 2</button>
+                <button type="button" onclick="scrollToPart(4)">Tiếp tục đến Phần 4</button>
+            </div>
+        </div>
+        
+        <!-- PHẦN 4 -->
+        <div class="part-container" id="part4">
+            <h2 class="part-title">PHẦN 4: TỪ CÂU 76 ĐẾN CÂU 100</h2>
+            <p style="margin-bottom: 20px; color: #555; font-style: italic;">Kiến thức: Bài 4 & Bài 5 - Thiết kế Giai thừa, Thiết kế Lâm sàng. Bài 6 - Đề cương NC, Đạo văn & APA</p>
+            
+            <!-- Câu 76 -->
+            <div class="question">
+                <div class="question-number">76</div>
+                <div class="question-text">Trong Thiết kế Giai thừa, Hiệu ứng Chính (Main Effect) của một Biến Độc lập là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q76" value="a"> a. Sự thay đổi trong Biến Phụ thuộc do một Biến Độc lập gây ra, không tính đến tác động của các Biến Độc lập khác.</div>
+                    <div class="option"><input type="radio" name="q76" value="b"> b. Tác động chung của tất cả các Biến Độc lập lên Biến Phụ thuộc.</div>
+                    <div class="option"><input type="radio" name="q76" value="c"> c. Sự khác biệt về kết quả khi Biến Độc lập này bị ảnh hưởng bởi một Biến Độc lập khác.</div>
+                    <div class="option"><input type="radio" name="q76" value="d"> d. Sự thay đổi về kết quả theo thời gian (ví dụ: từ T1 đến T2).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 77 -->
+            <div class="question">
+                <div class="question-number">77</div>
+                <div class="question-text">Hiệu ứng Tương tác (Interaction Effect) trong Thiết kế Giai thừa là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q77" value="a"> a. Tác động của một Biến Độc lập lên Biến Phụ thuộc là như nhau ở mọi cấp độ của Biến Độc lập khác.</div>
+                    <div class="option"><input type="radio" name="q77" value="b"> b. Các cấp độ của một Biến Độc lập bị ảnh hưởng theo cách khác nhau bởi các cấp độ của một Biến Độc lập khác.</div>
+                    <div class="option"><input type="radio" name="q77" value="c"> c. Chỉ xảy ra trong các nghiên cứu với 3 yếu tố trở lên.</div>
+                    <div class="option"><input type="radio" name="q77" value="d"> d. Luôn có ý nghĩa thống kê và là kết quả quan trọng nhất.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 78 -->
+            <div class="question">
+                <div class="question-number">78</div>
+                <div class="question-text">Thiết kế Giai thừa 2×2 bao gồm bao nhiêu Biến Độc lập và tạo ra bao nhiêu điều kiện (conditions) thử nghiệm?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q78" value="a"> a. 1 Biến Độc lập, 4 điều kiện.</div>
+                    <div class="option"><input type="radio" name="q78" value="b"> b. 2 Biến Độc lập, 2 điều kiện.</div>
+                    <div class="option"><input type="radio" name="q78" value="c"> c. 2 Biến Độc lập, 4 điều kiện (2 cấp độ của Biến ĐL1 × 2 cấp độ của Biến ĐL2).</div>
+                    <div class="option"><input type="radio" name="q78" value="d"> d. 4 Biến Độc lập, 2 điều kiện.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 79 -->
+            <div class="question">
+                <div class="question-number">79</div>
+                <div class="question-text">Thiết kế Độc lập (Independent Factorial Design) trong Thiết kế Giai thừa là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q79" value="a"> a. Cả hai Biến Độc lập đều có Thiết kế Lặp (Repeated Measures).</div>
+                    <div class="option"><input type="radio" name="q79" value="b"> b. Có ít nhất 1 Biến Độc lập là Độc lập và 1 Biến Độc lập là Lặp.</div>
+                    <div class="option"><input type="radio" name="q79" value="c"> c. Cả hai Biến Độc lập đều có Thiết kế Độc lập (Between-subject), nghĩa là mỗi nghiệm thể chỉ tham gia vào một điều kiện kết hợp.</div>
+                    <div class="option"><input type="radio" name="q79" value="d"> d. Chỉ bao gồm 1 Biến Độc lập duy nhất.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 80 -->
+            <div class="question">
+                <div class="question-number">80</div>
+                <div class="question-text">Đặc điểm của Thiết kế Lặp (Repeated Measures Factorial Design) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q80" value="a"> a. Các biến Độc lập đều được đo lường bằng cách sử dụng các thang đo thứ bậc.</div>
+                    <div class="option"><input type="radio" name="q80" value="b"> b. Cả hai Biến Độc lập đều có Thiết kế Lặp (Within-subject), nghĩa là tất cả nghiệm thể tham gia vào tất cả các điều kiện kết hợp.</div>
+                    <div class="option"><input type="radio" name="q80" value="c"> c. Chỉ có một nhóm đối chứng duy nhất.</div>
+                    <div class="option"><input type="radio" name="q80" value="d"> d. Không thể kiểm tra Hiệu ứng Tương tác.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 81 -->
+            <div class="question">
+                <div class="question-number">81</div>
+                <div class="question-text">Thiết kế Hỗn hợp (Mixed Design) trong Thiết kế Giai thừa là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q81" value="a"> a. Tất cả các Biến Độc lập đều là biến cố định của nghiệm thể (Subject Variables).</div>
+                    <div class="option"><input type="radio" name="q81" value="b"> b. Có ít nhất 1 Biến Độc lập có Thiết kế Độc lập (Between-subject) VÀ ít nhất 1 Biến Độc lập có Thiết kế Lặp (Within-subject).</div>
+                    <div class="option"><input type="radio" name="q81" value="c"> c. Chỉ được sử dụng cho các nghiên cứu với 3 yếu tố trở lên.</div>
+                    <div class="option"><input type="radio" name="q81" value="d"> d. Chỉ sử dụng để kiểm tra Hiệu ứng Chính, không kiểm tra Hiệu ứng Tương tác.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 82 -->
+            <div class="question">
+                <div class="question-number">82</div>
+                <div class="question-text">Hạn chế lớn nhất của Thiết kế Trước-Sau Không đối chứng (Uncontrolled Pretest-Posttest Design) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q82" value="a"> a. Không thể thực hiện can thiệp.</div>
+                    <div class="option"><input type="radio" name="q82" value="b"> b. Không tách biệt được Hiệu ứng của thời gian (Time effect), sự thay đổi giữa T1 và T2 có thể là tự nhiên mà không phải do can thiệp.</div>
+                    <div class="option"><input type="radio" name="q82" value="c"> c. Dễ bị ảnh hưởng bởi Hiệu ứng Placebo.</div>
+                    <div class="option"><input type="radio" name="q82" value="d"> d. Kết quả luôn là vô nghĩa.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 83 -->
+            <div class="question">
+                <div class="question-number">83</div>
+                <div class="question-text">Thiết kế Trước-Sau Có đối chứng (Controlled Pretest-Posttest Design) có ưu điểm nào so với thiết kế Không đối chứng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q83" value="a"> a. Giảm thiểu Thiên vị của Nhà nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q83" value="b"> b. Kiểm soát được Hiệu ứng của thời gian, vì sự thay đổi trong nhóm thực nghiệm không phải do thời gian gây ra.</div>
+                    <div class="option"><input type="radio" name="q83" value="c"> c. Đảm bảo tính ngẫu nhiên của mẫu nghiên cứu.</div>
+                    <div class="option"><input type="radio" name="q83" value="d"> d. Loại trừ hoàn toàn Hiệu ứng Placebo.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 84 -->
+            <div class="question">
+                <div class="question-number">84</div>
+                <div class="question-text">Hiệu ứng Placebo (Placebo Effect), còn được gọi là Hiệu ứng mong đợi (Expectancy Effect), xảy ra khi nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q84" value="a"> a. Nghiệm thể được phân nhóm ngẫu nhiên vào nhóm can thiệp và nhóm đối chứng.</div>
+                    <div class="option"><input type="radio" name="q84" value="b"> b. Nhà nghiên cứu đưa ra gợi ý vô thức cho nghiệm thể.</div>
+                    <div class="option"><input type="radio" name="q84" value="c"> c. Sự thay đổi trong nhóm thực nghiệm xảy ra chỉ vì họ tin rằng họ được can thiệp, chứ không phải do sự can thiệp thực sự gây ra.</div>
+                    <div class="option"><input type="radio" name="q84" value="d"> d. Nghiệm thể làm việc tốt hơn khi biết họ đang bị quan sát.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 85 -->
+            <div class="question">
+                <div class="question-number">85</div>
+                <div class="question-text">Thiết kế nghiên cứu nào được coi là tối ưu nhất (gold standard) để đánh giá tính hiệu quả và an toàn của các biện pháp can thiệp/điều trị trong nghiên cứu tâm lý (Lâm sàng)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q85" value="a"> a. Thiết kế Trước-Sau Không đối chứng (Uncontrolled Pretest-Posttest Design).</div>
+                    <div class="option"><input type="radio" name="q85" value="b"> b. Thử nghiệm lâm sàng ngẫu nhiên có đối chứng và có nhóm giả can thiệp (Randomized Placebo-Controlled Trial - RPCT) với kỹ thuật mù đôi.</div>
+                    <div class="option"><input type="radio" name="q85" value="c"> c. Thực nghiệm trong phòng Lab (Lab Experiment).</div>
+                    <div class="option"><input type="radio" name="q85" value="d"> d. Bán thực nghiệm (Quasi-experiment) với nhiều biến cố định.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 86 -->
+            <div class="question">
+                <div class="question-number">86</div>
+                <div class="question-text">Trong cấu trúc đề cương nghiên cứu theo chuẩn quốc tế chung, mục nào sau đây nằm trong phần Phương pháp (Method)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q86" value="a"> a. Dẫn luận (Introduction).</div>
+                    <div class="option"><input type="radio" name="q86" value="b"> b. Kế hoạch phân tích dữ liệu (Plan of data analysis).</div>
+                    <div class="option"><input type="radio" name="q86" value="c"> c. Tính cấp thiết của đề tài (Rationale/Societal relevance).</div>
+                    <div class="option"><input type="radio" name="q86" value="d"> d. Kết quả (Results).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 87 -->
+            <div class="question">
+                <div class="question-number">87</div>
+                <div class="question-text">Mục nào sau đây được tìm thấy trong Báo cáo Nghiên cứu toàn văn nhưng KHÔNG có trong Đề cương Nghiên cứu?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q87" value="a"> a. Cân nhắc đạo đức (Ethical considerations).</div>
+                    <div class="option"><input type="radio" name="q87" value="b"> b. Thiết kế nghiên cứu (Design).</div>
+                    <div class="option"><input type="radio" name="q87" value="c"> c. Kết quả (Results) và Thảo luận (Discussion).</div>
+                    <div class="option"><input type="radio" name="q87" value="d"> d. Tài liệu tham khảo (References).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 88 -->
+            <div class="question">
+                <div class="question-number">88</div>
+                <div class="question-text">Trong Đề cương Nghiên cứu, nhà nghiên cứu cần sử dụng thì văn phạm nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q88" value="a"> a. Thì quá khứ (Past tense) vì mô tả những thứ đã làm.</div>
+                    <div class="option"><input type="radio" name="q88" value="b"> b. Thì hiện tại (Present tense) để trình bày sự thật hiển nhiên.</div>
+                    <div class="option"><input type="radio" name="q88" value="c"> c. Thì tương lai (Future tense) để mô tả những điều sẽ được thực hiện (kế hoạch).</div>
+                    <div class="option"><input type="radio" name="q88" value="d"> d. Thì hiện tại hoàn thành (Present perfect tense).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 89 -->
+            <div class="question">
+                <div class="question-number">89</div>
+                <div class="question-text">Trong Báo cáo Nghiên cứu toàn văn, nhà nghiên cứu cần sử dụng thì văn phạm nào để mô tả quy trình đã thực hiện?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q89" value="a"> a. Thì hiện tại (Present tense).</div>
+                    <div class="option"><input type="radio" name="q89" value="b"> b. Thì tương lai (Future tense).</div>
+                    <div class="option"><input type="radio" name="q89" value="c"> c. Thì quá khứ (Past tense) vì mô tả những điều đã làm.</div>
+                    <div class="option"><input type="radio" name="q89" value="d"> d. Thì quá khứ hoàn thành (Past perfect tense).</div>
+                </div>
+            </div>
+            
+            <!-- Câu 90 -->
+            <div class="question">
+                <div class="question-number">90</div>
+                <div class="question-text">Đạo văn (Plagiarism) được định nghĩa là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q90" value="a"> a. Việc sử dụng lời nói và ý văn của người khác như là của mình, ngay cả khi đã diễn giải (paraphrase) câu nói đó nhưng không trích dẫn nguồn.</div>
+                    <div class="option"><input type="radio" name="q90" value="b"> b. Chỉ là việc sao chép y hệt một đoạn văn mà không sử dụng dấu ngoặc kép.</div>
+                    <div class="option"><input type="radio" name="q90" value="c"> c. Sử dụng lại nội dung đã viết trước đây của mình mà không trích dẫn (Tự đạo văn).</div>
+                    <div class="option"><input type="radio" name="q90" value="d"> d. Trích dẫn nguồn không có thật hoặc cung cấp thông tin nguồn dẫn sai lệch.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 91 -->
+            <div class="question">
+                <div class="question-number">91</div>
+                <div class="question-text">Kiểu đạo văn 'Tái chế' (Recycle) hay còn gọi là Tự đạo văn (Self-plagiarism) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q91" value="a"> a. Pha trộn các câu văn đã được viết lại từ nhiều nguồn khác nhau.</div>
+                    <div class="option"><input type="radio" name="q91" value="b"> b. Sử dụng lại nội dung đã viết trước đây của chính mình (trong các bài báo cáo, luận văn khác) mà không trích dẫn.</div>
+                    <div class="option"><input type="radio" name="q91" value="c"> c. Cắt dán nhiều đoạn từ nhiều người khác nhau.</div>
+                    <div class="option"><input type="radio" name="q91" value="d"> d. Đoạn văn được viết lại và trích dẫn đúng nhưng nội dung và cấu trúc rất giống với nguồn gốc.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 92 -->
+            <div class="question">
+                <div class="question-number">92</div>
+                <div class="question-text">Kiểu đạo văn 'Nguồn giả' (404 Error) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q92" value="a"> a. Cắt dán các đoạn văn mà không thay đổi từ ngữ nào.</div>
+                    <div class="option"><input type="radio" name="q92" value="b"> b. Trích dẫn nguồn không có thật, hoặc cung cấp thông tin nguồn dẫn bị sai lệch để người đọc không thể tìm thấy tài liệu gốc.</div>
+                    <div class="option"><input type="radio" name="q92" value="c"> c. Đoạn văn được viết lại và trích dẫn đúng nhưng không có ý mới.</div>
+                    <div class="option"><input type="radio" name="q92" value="d"> d. Có đoạn thì đạo văn kiểu cắt dán, có đoạn thì trích dẫn đúng.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 93 -->
+            <div class="question">
+                <div class="question-number">93</div>
+                <div class="question-text">Ba bước cơ bản để tránh đạo văn trong bài viết học thuật là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q93" value="a"> a. 1. Viết lại ý (Paraphrase) tất cả thông tin → 2. Không cần trích dẫn → 3. Viết thêm ý kiến riêng.</div>
+                    <div class="option"><input type="radio" name="q93" value="b"> b. 1. Dẫn lời trực tiếp hoặc gián tiếp → 2. Cung cấp nguồn dẫn trong văn bản và danh mục Tài liệu tham khảo → 3. Viết thêm các luận điểm của riêng mình sau đó.</div>
+                    <div class="option"><input type="radio" name="q93" value="c"> c. 1. Đọc và ghi nhớ → 2. Đóng tài liệu lại → 3. Viết lại theo cách hiểu của mình mà không cần trích dẫn.</div>
+                    <div class="option"><input type="radio" name="q93" value="d"> d. 1. Chỉ sử dụng nguồn có chỉ số DOI → 2. Chỉ trích dẫn tên tác giả → 3. Sử dụng thì tương lai.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 94 -->
+            <div class="question">
+                <div class="question-number">94</div>
+                <div class="question-text">Sự khác biệt chính giữa Dẫn lời trực tiếp (Quoting) và Viết lại ý (Paraphrasing) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q94" value="a"> a. Quoting phải trích dẫn tên tác giả và năm, Paraphrasing chỉ cần trích dẫn năm.</div>
+                    <div class="option"><input type="radio" name="q94" value="b"> b. Quoting sao chép y hệt lại, phải dùng dấu ngoặc kép và số trang/đoạn; Paraphrasing diễn giải lại bằng ngôn từ của mình, không dùng dấu ngoặc kép và số trang/đoạn không bắt buộc (theo APA 7th).</div>
+                    <div class="option"><input type="radio" name="q94" value="c"> c. Quoting chỉ dùng cho Định tính, Paraphrasing chỉ dùng cho Định lượng.</div>
+                    <div class="option"><input type="radio" name="q94" value="d"> d. Quoting là diễn giải chi tiết, Paraphrasing là tóm tắt ý chính.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 95 -->
+            <div class="question">
+                <div class="question-number">95</div>
+                <div class="question-text">Đặc điểm của Tóm tắt (Summarizing) so với Viết lại ý (Paraphrasing) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q95" value="a"> a. Tóm tắt là sự hiểu của bạn về ý chính tổng thể của một đoạn văn/chương sách, ngắn gọn hơn rất nhiều so với bản gốc.</div>
+                    <div class="option"><input type="radio" name="q95" value="b"> b. Tóm tắt phải sử dụng dấu ngoặc kép và số trang.</div>
+                    <div class="option"><input type="radio" name="q95" value="c"> c. Tóm tắt không cần trích dẫn nguồn.</div>
+                    <div class="option"><input type="radio" name="q95" value="d"> d. Tóm tắt chỉ thay đổi từ ngữ cho khác với từ gốc.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 96 -->
+            <div class="question">
+                <div class="question-number">96</div>
+                <div class="question-text">Năm bước cấu thành phần Dẫn luận (Introduction) của Đề cương Nghiên cứu là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q96" value="a"> a. 1. Tóm tắt (Abstract) → 2. Phương pháp → 3. Kết quả → 4. Thảo luận → 5. Tài liệu tham khảo</div>
+                    <div class="option"><input type="radio" name="q96" value="b"> b. 1. Định nghĩa các khái niệm → 2. Nêu tính cấp thiết → 3. Chỉ ra khoảng trống NC → 4. Hình thành câu hỏi NC → 5. Trình bày ngắn gọn PPNC và giả thuyết.</div>
+                    <div class="option"><input type="radio" name="q96" value="c"> c. 1. Giả thuyết → 2. Kiểm soát nhiễu → 3. Lựa chọn mẫu → 4. Phân tích dữ liệu → 5. Kết quả.</div>
+                    <div class="option"><input type="radio" name="q96" value="d"> d. 1. Giới thiệu bản thân → 2. Lời cảm ơn → 3. Tóm tắt → 4. Lời hứa → 5. Kết quả.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 97 -->
+            <div class="question">
+                <div class="question-number">97</div>
+                <div class="question-text">Định dạng Trích dẫn APA (American Psychological Association) bao gồm mấy phần chính?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q97" value="a"> a. Hai phần: Trích dẫn trong văn bản (in-text citation) và Danh mục tài liệu tham khảo (reference list).</div>
+                    <div class="option"><input type="radio" name="q97" value="b"> b. Ba phần: Tên tác giả, Năm xuất bản, và Tên bài viết.</div>
+                    <div class="option"><input type="radio" name="q97" value="c"> c. Một phần duy nhất: Danh mục Tài liệu tham khảo có ghi chú chân trang.</div>
+                    <div class="option"><input type="radio" name="q97" value="d"> d. Hai phần: Chỉ số DOI và URL.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 98 -->
+            <div class="question">
+                <div class="question-number">98</div>
+                <div class="question-text">Trích dẫn trong văn bản (in-text citation) theo định dạng APA phiên bản 6 hoặc 7 thường chứa những thông tin cốt lõi nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q98" value="a"> a. Tên cuối cùng của tác giả và năm xuất bản (ví dụ: Hallgren et al., 2016).</div>
+                    <div class="option"><input type="radio" name="q98" value="b"> b. Toàn bộ tên tác giả, năm xuất bản và tiêu đề bài viết.</div>
+                    <div class="option"><input type="radio" name="q98" value="c"> c. Chỉ số DOI hoặc URL.</div>
+                    <div class="option"><input type="radio" name="q98" value="d"> d. Tóm tắt ngắn gọn nội dung của tài liệu gốc.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 99 -->
+            <div class="question">
+                <div class="question-number">99</div>
+                <div class="question-text">Đặc điểm của phần Tóm tắt (Abstract/Summary) trong Đề cương Nghiên cứu là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q99" value="a"> a. Cấu trúc theo đoạn riêng biệt cho từng phần (Dẫn luận, Phương pháp, Kết quả...).</div>
+                    <div class="option"><input type="radio" name="q99" value="b"> b. Nên được viết đầu tiên để định hướng cho các phần sau.</div>
+                    <div class="option"><input type="radio" name="q99" value="c"> c. Có độ dài từ 150-250 từ, thể hiện tất cả các ý chính: tính cấp thiết, mục tiêu, giả thuyết, phương pháp, giúp người đọc có cái nhìn tổng thể ban đầu.</div>
+                    <div class="option"><input type="radio" name="q99" value="d"> d. Sử dụng thì quá khứ (Past tense) để mô tả những gì đã được làm.</div>
+                </div>
+            </div>
+            
+            <!-- Câu 100 -->
+            <div class="question">
+                <div class="question-number">100</div>
+                <div class="question-text">Theo APA phiên bản 7, một số thay đổi trong trích dẫn Danh mục tài liệu tham khảo đối với Sách (Book) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q100" value="a"> a. Bắt buộc phải bao gồm URL hoặc thông tin cơ sở dữ liệu cho tất cả các sách điện tử (e-books).</div>
+                    <div class="option"><input type="radio" name="q100" value="b"> b. Không bao gồm vị trí (location) của nhà xuất bản (ví dụ: New York, NY) và tách tên các nhà xuất bản bằng dấu chấm phẩy nếu có nhiều hơn một.</div>
+                    <div class="option"><input type="radio" name="q100" value="c"> c. Không cần thiết phải liệt kê tất cả các tác giả nếu có hơn 20 tác giả.</div>
+                    <div class="option"><input type="radio" name="q100" value="d"> d. Chỉ sử dụng chữ in hoa cho từ đầu tiên của tiêu đề sách.</div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button type="button" onclick="scrollToPart(3)">Quay lại Phần 3</button>
+            </div>
+        </div>
+        
+        <button type="button" id="submit-btn" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+    
+    <div class="result-container" id="result-container">
+        <h2 class="result-title">Kết quả bài làm</h2>
+        <div class="score" id="score">0/100</div>
+        <div id="part-scores"></div>
+        <div style="margin-top: 20px;">
+            <button onclick="resetQuiz()">Làm lại bài</button>
+        </div>
+    </div>
+
+    <script>
+        // Hàm cuộn đến phần cụ thể
+        function scrollToPart(partNumber) {
+            const partId = "part" + partNumber;
+            const element = document.getElementById(partId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Đáp án mẫu (cần cập nhật đáp án chính xác)
+        const correctAnswers = {
+            // Phần 1 (câu 1-25)
+            q1: "b", q2: "b", q3: "b", q4: "c", q5: "a", 
+            q6: "c", q7: "c", q8: "b", q9: "c", q10: "b",
+            q11: "c", q12: "c", q13: "b", q14: "c", q15: "b",
+            q16: "b", q17: "b", q18: "c", q19: "b", q20: "c",
+            q21: "c", q22: "b", q23: "c", q24: "b", q25: "c",
+            // Phần 2 (câu 26-50)
+            q26: "b", q27: "b", q28: "b", q29: "c", q30: "b",
+            q31: "b", q32: "b", q33: "c", q34: "c", q35: "d",
+            q36: "c", q37: "b", q38: "b", q39: "c", q40: "c",
+            q41: "d", q42: "b", q43: "c", q44: "b", q45: "c",
+            q46: "b", q47: "b", q48: "b", q49: "c", q50: "b",
+            // Phần 3 (câu 51-75)
+            q51: "c", q52: "c", q53: "b", q54: "b", q55: "c",
+            q56: "c", q57: "b", q58: "b", q59: "c", q60: "c",
+            q61: "a", q62: "b", q63: "c", q64: "b", q65: "b",
+            q66: "c", q67: "c", q68: "c", q69: "c", q70: "b",
+            q71: "a", q72: "b", q73: "b", q74: "a", q75: "b",
+            // Phần 4 (câu 76-100)
+            q76: "a", q77: "b", q78: "c", q79: "c", q80: "b",
+            q81: "b", q82: "b", q83: "b", q84: "c", q85: "b",
+            q86: "b", q87: "c", q88: "c", q89: "c", q90: "a",
+            q91: "b", q92: "b", q93: "b", q94: "b", q95: "a",
+            q96: "b", q97: "a", q98: "a", q99: "c", q100: "b"
+        };
+        
+        // Hàm tính điểm
+        function submitQuiz() {
+            let score = 0;
+            const totalQuestions = 100;
+            const partScores = {1: 0, 2: 0, 3: 0, 4: 0};
+            const partTotals = {1: 25, 2: 25, 3: 25, 4: 25};
+            
+            // Duyệt qua tất cả câu hỏi
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = "q" + i;
+                const selectedOption = document.querySelector(`input[name="${questionName}"]:checked`);
+                
+                // Xác định phần của câu hỏi
+                let partNumber;
+                if (i <= 25) partNumber = 1;
+                else if (i <= 50) partNumber = 2;
+                else if (i <= 75) partNumber = 3;
+                else partNumber = 4;
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[questionName]) {
+                        score++;
+                        partScores[partNumber]++;
+                    }
+                }
+            }
+            
+            // Hiển thị kết quả
+            const scoreElement = document.getElementById("score");
+            scoreElement.textContent = `${score}/${totalQuestions}`;
+            
+            // Hiển thị điểm từng phần
+            const partScoresElement = document.getElementById("part-scores");
+            let partScoresHTML = "<h3>Điểm từng phần:</h3>";
+            for (let part = 1; part <= 4; part++) {
+                partScoresHTML += `<div class="part-score">Phần ${part}: ${partScores[part]}/${partTotals[part]}</div>`;
+            }
+            partScoresElement.innerHTML = partScoresHTML;
+            
+            // Hiển thị container kết quả
+            document.getElementById("result-container").style.display = "block";
+            
+            // Cuộn đến kết quả
+            document.getElementById("result-container").scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Hàm reset bài quiz
+        function resetQuiz() {
+            // Xóa tất cả lựa chọn
+            const allRadios = document.querySelectorAll('input[type="radio"]');
+            allRadios.forEach(radio => {
+                radio.checked = false;
+            });
+            
+            // Ẩn kết quả
+            document.getElementById("result-container").style.display = "none";
+            
+            // Cuộn lên đầu trang
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Thêm sự kiện click cho các nút điều hướng
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const partNumber = this.textContent.match(/\d+/)[0];
+                    scrollToPart(partNumber);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
