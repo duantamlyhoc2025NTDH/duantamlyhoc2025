@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ôn tập Thống kê Tâm lý học - 100 câu trắc nghiệm</title>
+    <title>100 câu trắc nghiệm Thống kê Tâm lý học</title>
     <style>
         * {
             margin: 0;
@@ -11,63 +11,59 @@
             box-sizing: border-box;
         }
         body {
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            background: #f5f7fb;
-            color: #1e293b;
-            line-height: 1.6;
-            padding: 40px 20px;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            background: #eef2f7;
+            padding: 30px 20px;
+            color: #1e2e44;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             background: white;
-            border-radius: 32px;
-            box-shadow: 0 20px 40px -12px rgba(0,20,30,0.2);
-            overflow: hidden;
-            padding: 40px 40px 50px;
+            border-radius: 36px;
+            box-shadow: 0 25px 45px -12px #102b40;
+            padding: 40px 45px;
         }
         h1 {
-            font-size: 2.3rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #0f2b4b, #1e4a6f);
+            font-size: 2.6rem;
+            font-weight: 650;
+            background: linear-gradient(140deg, #0b3d5c, #1d6fa5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            border-left: 8px solid #1d6fa5;
+            padding-left: 28px;
             margin-bottom: 8px;
-            border-left: 6px solid #2563eb;
-            padding-left: 24px;
         }
         .subhead {
-            color: #475569;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            padding-left: 30px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 16px;
+            color: #2e5572;
+            margin-bottom: 35px;
+            padding-left: 36px;
+            font-style: italic;
+            font-size: 1.2rem;
         }
         .part {
-            margin-top: 40px;
-            background: #f8fafc;
-            border-radius: 24px;
+            background: #f5faff;
+            border-radius: 28px;
             padding: 25px 30px;
-            box-shadow: inset 0 1px 4px #ffffff, 0 8px 12px -8px #b0c4d9;
+            margin-top: 40px;
+            box-shadow: inset 0 2px 6px #ffffff, 0 12px 18px -12px #7f9fbb;
         }
-        .part-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #0b3b5c;
+        .part h2 {
+            font-size: 2rem;
+            color: #103f5e;
+            border-bottom: 3px dashed #a3c0da;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            border-bottom: 3px dashed #94a3b8;
-            padding-bottom: 8px;
+            gap: 12px;
         }
-        .part-title span {
-            background: #1e4a6f;
+        .part h2 span {
+            background: #1f6996;
             color: white;
-            font-size: 1.2rem;
-            width: 40px;
-            height: 40px;
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -75,290 +71,326 @@
         }
         .question-card {
             background: white;
-            border-radius: 20px;
-            padding: 20px 25px;
-            margin-bottom: 18px;
-            border: 1px solid #e9eef3;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            border-radius: 22px;
+            padding: 22px 28px;
+            margin-bottom: 25px;
+            border: 1px solid #d3e2f0;
+            box-shadow: 0 5px 12px rgba(0,36,66,0.05);
             transition: 0.15s;
         }
         .question-card:hover {
-            border-color: #b9d1f0;
-            box-shadow: 0 6px 14px rgba(35, 100, 210, 0.08);
+            border-color: #79b0dd;
+            box-shadow: 0 8px 18px rgba(23,96,172,0.1);
         }
-        .question-text {
+        .q-text {
             font-weight: 600;
-            font-size: 1.1rem;
-            margin-bottom: 12px;
-            color: #0c4a6e;
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+            color: #0d3c5e;
         }
         .options {
-            list-style: none;
-            margin-left: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 35px;
+            margin: 12px 0 18px;
         }
-        .options li {
-            padding: 6px 12px;
-            border-radius: 12px;
-            margin: 6px 0;
-            background: #f1f5f9;
-            border-left: 4px solid #b9c9e0;
-            font-weight: 500;
-            color: #1f3a5f;
-        }
-        .btn-answer {
-            background: none;
-            border: 1.5px solid #2563eb;
-            color: #2563eb;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: 0.2s;
-            display: inline-flex;
+        .option-item {
+            display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            background: #e9f0f9;
+            padding: 8px 24px;
+            border-radius: 50px;
+            border: 1px solid #bad2ed;
         }
-        .btn-answer:hover {
-            background: #2563eb;
-            color: white;
-            box-shadow: 0 8px 16px -6px #2563eb70;
+        .option-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1f6eaf;
+            margin-right: 6px;
         }
-        .answer-display {
-            margin-top: 12px;
-            padding: 14px 18px;
-            background: #e6f0ff;
-            border-radius: 18px;
+        .option-item label {
             font-weight: 500;
-            border-left: 6px solid #2563eb;
+            color: #123e5c;
+            font-size: 1rem;
+        }
+        .check-btn {
+            background: #1f6eaf;
+            color: white;
+            border: none;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 8px 14px -8px #1f6eaf;
+            margin-top: 5px;
+        }
+        .check-btn:hover {
+            background: #0d4d81;
+            transform: scale(1.02);
+        }
+        .feedback {
+            margin-top: 18px;
+            padding: 12px 22px;
+            border-radius: 50px;
+            font-weight: 500;
             display: none;
         }
-        .answer-display.show {
+        .feedback.correct {
+            background: #dbf3e5;
+            color: #0b6e48;
+            border-left: 8px solid #1e9b6b;
             display: block;
         }
-        .correct {
-            color: #0c6b4b;
-            background: #dff9f0;
-            padding: 2px 14px;
-            border-radius: 40px;
-            font-weight: 700;
-            display: inline-block;
-            margin-right: 10px;
+        .feedback.incorrect {
+            background: #ffe9e3;
+            color: #ba341f;
+            border-left: 8px solid #d4432a;
+            display: block;
         }
         .footer-keys {
-            margin-top: 50px;
-            background: #1e293b;
+            background: #1a2f42;
             color: white;
             border-radius: 32px;
-            padding: 30px 30px 20px;
+            padding: 28px 30px;
+            margin-top: 50px;
         }
         .footer-keys h3 {
-            color: #b0d4ff;
+            color: #c1dfff;
             font-weight: 500;
-            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
         .key-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(210px,1fr));
             gap: 12px;
-            margin: 25px 0;
         }
         .key-item {
-            background: #2d3b4f;
+            background: #28445e;
             padding: 8px 18px;
-            border-radius: 40px;
+            border-radius: 50px;
             font-family: 'Courier New', monospace;
-            font-weight: 500;
-            border: 1px solid #5f7a9a;
-            color: #dbeafe;
-        }
-        .note {
-            color: #aac8ff;
-            font-style: italic;
+            border: 1px solid #628bb0;
+            color: #e2f0ff;
         }
         hr {
-            border: 1px solid #d4dfed;
-            margin: 30px 0;
+            border: 1px solid #45698b;
+            margin: 25px 0;
         }
-        .small-note {
-            text-align: right;
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-top: 15px;
+        .note {
+            color: #b8d6ff;
+            font-style: italic;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>📘 100 CÂU TRẮC NGHIỆM ÔN TẬP</h1>
-    <div class="subhead">Môn: Thống kê trong Tâm lý học • 7 phần • Đề minh họa theo định dạng thầy</div>
+    <h1>📘 100 CÂU TRẮC NGHIỆM</h1>
+    <div class="subhead">Thống kê trong Tâm lý học • 7 phần • Chọn đáp án và kiểm tra ngay</div>
 
-    <!-- PHẦN 1 -->
-    <section class="part" id="part1">
-        <div class="part-title"><span>1</span> Nhập môn, thang đo & thống kê mô tả (1–20)</div>
-        <!-- câu 1 đến 20 -->
-        <div class="question-card" id="q1"><div class="question-text">1. Trong nghiên cứu tâm lý, biến "Giới tính" (Nam/Nữ) được đo lường bằng thang đo nào?</div><ul class="options"><li>A. Thang đo khoảng (Interval)</li><li>B. Thang đo tỷ lệ (Ratio)</li><li>C. Thang đo danh nghĩa (Nominal)</li><li>D. Thang đo thứ bậc (Ordinal)</li></ul><button class="btn-answer" onclick="toggleAnswer(1,'C')">🔍 Xem đáp án</button><div id="ans1" class="answer-display"></div></div>
-        <div class="question-card" id="q2"><div class="question-text">2. Điểm số của một bài test trí thông minh (IQ) được cho là thuộc thang đo khoảng vì:</div><ul class="options"><li>A. Nó có điểm 0 tuyệt đối.</li><li>B. Có thể xếp hạng thứ tự nhưng khoảng cách giữa các điểm không bằng nhau.</li><li>C. Khoảng cách giữa các điểm số là bằng nhau nhưng không có điểm 0 tuyệt đối.</li><li>D. Nó chỉ dùng để phân loại đối tượng.</li></ul><button class="btn-answer" onclick="toggleAnswer(2,'C')">🔍 Xem đáp án</button><div id="ans2" class="answer-display"></div></div>
-        <div class="question-card" id="q3"><div class="question-text">3. Một nhà nghiên cứu muốn đo lường mức độ đồng ý của sinh viên về một phát biểu với các lựa chọn: "Rất không đồng ý", "Không đồng ý", "Trung lập", "Đồng ý", "Rất đồng ý". Dữ liệu thu được thuộc loại thang đo gì?</div><ul class="options"><li>A. Danh nghĩa</li><li>B. Thứ bậc</li><li>C. Khoảng</li><li>D. Tỷ lệ</li></ul><button class="btn-answer" onclick="toggleAnswer(3,'B')">🔍 Xem đáp án</button><div id="ans3" class="answer-display"></div></div>
-        <div class="question-card" id="q4"><div class="question-text">4. Số liệu thống kê (statistic) và tham số (parameter) khác nhau như thế nào?</div><ul class="options"><li>A. Thống kê được tính từ tổng thể, tham số được tính từ mẫu.</li><li>B. Thống kê được tính từ mẫu, tham số được tính từ tổng thể.</li><li>C. Thống kê là giá trị cố định, tham số là giá trị ước lượng.</li><li>D. Không có gì khác nhau.</li></ul><button class="btn-answer" onclick="toggleAnswer(4,'B')">🔍 Xem đáp án</button><div id="ans4" class="answer-display"></div></div>
-        <div class="question-card" id="q5"><div class="question-text">5. Một nghiên cứu đo chiều cao của 100 sinh viên được chọn ngẫu nhiên từ một trường đại học và tính được chiều cao trung bình là 165 cm. "165 cm" ở đây được gọi là:</div><ul class="options"><li>A. Tham số</li><li>B. Thống kê</li><li>C. Hằng số</li><li>D. Giá trị lý thuyết</li></ul><button class="btn-answer" onclick="toggleAnswer(5,'B')">🔍 Xem đáp án</button><div id="ans5" class="answer-display"></div></div>
-        <div class="question-card" id="q6"><div class="question-text">6. Để đo lường mức độ phân tán của dữ liệu xung quanh giá trị trung bình, người ta thường dùng chỉ số nào nhất?</div><ul class="options"><li>A. Số trung vị</li><li>B. Độ lệch chuẩn</li><li>C. Số yếu vị</li><li>D. Độ nhọn</li></ul><button class="btn-answer" onclick="toggleAnswer(6,'B')">🔍 Xem đáp án</button><div id="ans6" class="answer-display"></div></div>
-        <div class="question-card" id="q7"><div class="question-text">7. Một phân phối có đuôi dài về bên phải, giá trị trung bình lớn hơn số trung vị. Đây là phân phối:</div><ul class="options"><li>A. Đối xứng</li><li>B. Lệch trái (Lệch âm)</li><li>C. Lệch phải (Lệch dương)</li><li>D. Nhọn bất thường</li></ul><button class="btn-answer" onclick="toggleAnswer(7,'C')">🔍 Xem đáp án</button><div id="ans7" class="answer-display"></div></div>
-        <div class="question-card" id="q8"><div class="question-text">8. Một người có điểm Z = -2 trong bài kiểm tra trầm cảm. Điều này có nghĩa là:</div><ul class="options"><li>A. Điểm số của họ cao hơn điểm trung bình 2 độ lệch chuẩn.</li><li>B. Điểm số của họ thấp hơn điểm trung bình 2 độ lệch chuẩn.</li><li>C. Họ có điểm số bằng -2.</li><li>D. 2% người có điểm số thấp hơn họ.</li></ul><button class="btn-answer" onclick="toggleAnswer(8,'B')">🔍 Xem đáp án</button><div id="ans8" class="answer-display"></div></div>
-        <div class="question-card" id="q9"><div class="question-text">9. Trong phân phối chuẩn, khoảng bao nhiêu phần trăm số quan sát nằm trong khoảng từ -1 đến +1 độ lệch chuẩn so với trung bình?</div><ul class="options"><li>A. 68%</li><li>B. 95%</li><li>C. 99%</li><li>D. 50%</li></ul><button class="btn-answer" onclick="toggleAnswer(9,'A')">🔍 Xem đáp án</button><div id="ans9" class="answer-display"></div></div>
-        <div class="question-card" id="q10"><div class="question-text">10. Kết quả kiểm định Shapiro-Wilk cho một biến có p = 0.02. Với mức ý nghĩa α = 0.05, ta kết luận gì?</div><ul class="options"><li>A. Dữ liệu có phân phối chuẩn.</li><li>B. Dữ liệu không có phân phối chuẩn.</li><li>C. Dữ liệu có phương sai đồng nhất.</li><li>D. Dữ liệu không có điểm dị biệt.</li></ul><button class="btn-answer" onclick="toggleAnswer(10,'B')">🔍 Xem đáp án</button><div id="ans10" class="answer-display"></div></div>
-        <div class="question-card" id="q11"><div class="question-text">11. Trong Jamovi, biểu đồ nào hữu ích nhất để phát hiện các điểm dị biệt (outliers)?</div><ul class="options"><li>A. Histogram</li><li>B. Biểu đồ thân lá</li><li>C. Biểu đồ hộp (Boxplot)</li><li>D. Biểu đồ thanh</li></ul><button class="btn-answer" onclick="toggleAnswer(11,'C')">🔍 Xem đáp án</button><div id="ans11" class="answer-display"></div></div>
-        <div class="question-card" id="q12"><div class="question-text">12. Một bộ dữ liệu có độ lệch chuẩn bằng 0. Điều đó cho biết:</div><ul class="options"><li>A. Tất cả các giá trị trong bộ dữ liệu đều bằng nhau.</li><li>B. Giá trị trung bình bằng 0.</li><li>C. Dữ liệu phân tán rất rộng.</li><li>D. Có một nửa giá trị âm, một nửa giá trị dương.</li></ul><button class="btn-answer" onclick="toggleAnswer(12,'A')">🔍 Xem đáp án</button><div id="ans12" class="answer-display"></div></div>
-        <div class="question-card" id="q13"><div class="question-text">13. Độ nhọn (Kurtosis) của một phân phối chuẩn có giá trị xấp xỉ bằng bao nhiêu?</div><ul class="options"><li>A. 0</li><li>B. 1</li><li>C. 2</li><li>D. 3</li></ul><button class="btn-answer" onclick="toggleAnswer(13,'D')">🔍 Xem đáp án</button><div id="ans13" class="answer-display"></div></div>
-        <div class="question-card" id="q14"><div class="question-text">14. Khi báo cáo kết quả thống kê mô tả theo APA, thông tin nào sau đây là quan trọng nhất cần được trình bày?</div><ul class="options"><li>A. Giá trị lớn nhất và nhỏ nhất.</li><li>B. Giá trị trung bình (M) và độ lệch chuẩn (SD).</li><li>C. Số lượng mẫu (N) và giá trị p.</li><li>D. Hệ số Skewness và Kurtosis.</li></ul><button class="btn-answer" onclick="toggleAnswer(14,'B')">🔍 Xem đáp án</button><div id="ans14" class="answer-display"></div></div>
-        <div class="question-card" id="q15"><div class="question-text">15. Một thang đo Likert 5 điểm thường được coi là thang đo khoảng trong phân tích thống kê, mặc dù về mặt lý thuyết nó là thang đo thứ bậc. Lý do chính là vì:</div><ul class="options"><li>A. Các nhà tâm lý học không quan tâm đến lý thuyết thang đo.</li><li>B. Khoảng cách giữa các lựa chọn được giả định là bằng nhau về mặt tâm lý và cho phép thực hiện các phép tính thống kê có ý nghĩa.</li><li>C. Nó có điểm 0 tuyệt đối.</li><li>D. Nó chỉ có hai giá trị.</li></ul><button class="btn-answer" onclick="toggleAnswer(15,'B')">🔍 Xem đáp án</button><div id="ans15" class="answer-display"></div></div>
-        <div class="question-card" id="q16"><div class="question-text">16. Khi dữ liệu bị lệch (skewed) nghiêm trọng, chỉ số nào sau đây là đại diện tốt nhất cho xu hướng tập trung?</div><ul class="options"><li>A. Số trung bình (Mean)</li><li>B. Số trung vị (Median)</li><li>C. Độ lệch chuẩn</li><li>D. Hệ số tương quan</li></ul><button class="btn-answer" onclick="toggleAnswer(16,'B')">🔍 Xem đáp án</button><div id="ans16" class="answer-display"></div></div>
-        <div class="question-card" id="q17"><div class="question-text">17. Trong thống kê, mục đích chính của việc biến đổi dữ liệu (ví dụ: log, căn bậc hai) là gì?</div><ul class="options"><li>A. Để làm cho dữ liệu trở nên phức tạp hơn.</li><li>B. Để giảm số lượng biến trong phân tích.</li><li>C. Để biến đổi phân phối dữ liệu về dạng gần với phân phối chuẩn hơn.</li><li>D. Để tăng giá trị trung bình của dữ liệu.</li></ul><button class="btn-answer" onclick="toggleAnswer(17,'C')">🔍 Xem đáp án</button><div id="ans17" class="answer-display"></div></div>
-        <div class="question-card" id="q18"><div class="question-text">18. "Internal Validity" (Độ giá trị nội tại) của một nghiên cứu đề cập đến:</div><ul class="options"><li>A. Khả năng khái quát hóa kết quả nghiên cứu ra ngoài mẫu.</li><li>B. Mức độ mà kết quả nghiên cứu phản ánh mối quan hệ nhân quả thực sự giữa biến độc lập và biến phụ thuộc.</li><li>C. Độ tin cậy của thang đo được sử dụng.</li><li>D. Sự phù hợp của phương pháp phân tích thống kê.</li></ul><button class="btn-answer" onclick="toggleAnswer(18,'B')">🔍 Xem đáp án</button><div id="ans18" class="answer-display"></div></div>
-        <div class="question-card" id="q19"><div class="question-text">19. Gán ngẫu nhiên (random assignment) đối tượng vào các nhóm nghiên cứu giúp tăng cường:</div><ul class="options"><li>A. External Validity</li><li>B. Reliability</li><li>C. Internal Validity</li><li>D. Ecological Validity</li></ul><button class="btn-answer" onclick="toggleAnswer(19,'C')">🔍 Xem đáp án</button><div id="ans19" class="answer-display"></div></div>
-        <div class="question-card" id="q20"><div class="question-text">20. Một nhà nghiên cứu muốn mô tả mối quan hệ giữa hai biến định lượng. Loại biểu đồ nào là phù hợp nhất?</div><ul class="options"><li>A. Biểu đồ tròn</li><li>B. Biểu đồ thanh</li><li>C. Biểu đồ tán xạ (Scatter plot)</li><li>D. Biểu đồ hộp</li></ul><button class="btn-answer" onclick="toggleAnswer(20,'C')">🔍 Xem đáp án</button><div id="ans20" class="answer-display"></div></div>
-    </section>
+    <div id="content"></div>
 
-    <!-- PHẦN 2 -->
-    <section class="part" id="part2">
-        <div class="part-title"><span>2</span> Độ tin cậy Cronbach’s Alpha (21–25)</div>
-        <div class="question-card" id="q21"><div class="question-text">21. Cronbach's Alpha được sử dụng để đo lường điều gì của một thang đo?</div><ul class="options"><li>A. Độ giá trị nội dung</li><li>B. Độ giá trị cấu trúc</li><li>C. Độ tin cậy nhất quán nội bộ</li><li>D. Độ ổn định qua thời gian</li></ul><button class="btn-answer" onclick="toggleAnswer(21,'C')">🔍 Xem đáp án</button><div id="ans21" class="answer-display"></div></div>
-        <div class="question-card" id="q22"><div class="question-text">22. Một thang đo có hệ số Cronbach's Alpha = 0.65. Dựa trên tài liệu, mức độ tin cậy này được đánh giá là:</div><ul class="options"><li>A. Rất tốt</li><li>B. Tốt</li><li>C. Chấp nhận được</li><li>D. Nghi ngờ/Không tốt</li></ul><button class="btn-answer" onclick="toggleAnswer(22,'D')">🔍 Xem đáp án</button><div id="ans22" class="answer-display"></div></div>
-        <div class="question-card" id="q23"><div class="question-text">23. Khi thực hiện kiểm định độ tin cậy Cronbach's Alpha trong Jamovi, nếu một item có giá trị "Cronbach's α if item dropped" cao hơn đáng kể so với Cronbach's α hiện tại của toàn thang đo, bạn nên làm gì?</div><ul class="options"><li>A. Giữ nguyên item đó vì nó rất quan trọng.</li><li>B. Cân nhắc loại bỏ item đó vì nó đang làm giảm độ tin cậy chung.</li><li>C. Tăng cỡ mẫu lên.</li><li>D. Chuyển sang dùng thang đo khác.</li></ul><button class="btn-answer" onclick="toggleAnswer(23,'B')">🔍 Xem đáp án</button><div id="ans23" class="answer-display"></div></div>
-        <div class="question-card" id="q24"><div class="question-text">24. Để kiểm tra độ tin cậy của một thang đo gồm 10 item (câu hỏi) trong Jamovi, ta chọn mục nào sau đây?</div><ul class="options"><li>A. T-Tests -> Paired T-Test</li><li>B. ANOVA -> One-Way ANOVA</li><li>C. Factor -> Reliability Analysis</li><li>D. Regression -> Correlation Matrix</li></ul><button class="btn-answer" onclick="toggleAnswer(24,'C')">🔍 Xem đáp án</button><div id="ans24" class="answer-display"></div></div>
-        <div class="question-card" id="q25"><div class="question-text">25. Giả sử một thang đo có hệ số Cronbach's Alpha rất thấp (< 0.5). Nguyên nhân có thể là do:</div><ul class="options"><li>A. Các item trong thang đo không đo lường cùng một khái niệm.</li><li>B. Số lượng người tham gia quá lớn.</li><li>C. Điểm trung bình của thang đo quá cao.</li><li>D. Thang đo có độ giá trị rất tốt.</li></ul><button class="btn-answer" onclick="toggleAnswer(25,'A')">🔍 Xem đáp án</button><div id="ans25" class="answer-display"></div></div>
-    </section>
-
-    <!-- PHẦN 3 : SUY LUẬN & KIỂM ĐỊNH GIẢ THUYẾT 26-40 -->
-    <section class="part" id="part3">
-        <div class="part-title"><span>3</span> Suy luận thống kê & kiểm định giả thuyết (26–40)</div>
-        <div class="question-card" id="q26"><div class="question-text">26. Giả thuyết không (H0) trong một nghiên cứu thường được phát biểu như thế nào?</div><ul class="options"><li>A. Có sự khác biệt giữa các nhóm.</li><li>B. Có mối quan hệ giữa các biến.</li><li>C. Không có sự khác biệt hoặc không có mối quan hệ.</li><li>D. Kết quả nghiên cứu sẽ thành công.</li></ul><button class="btn-answer" onclick="toggleAnswer(26,'C')">🔍 Xem đáp án</button><div id="ans26" class="answer-display"></div></div>
-        <div class="question-card" id="q27"><div class="question-text">27. Sai lầm loại I (Type I error) là:</div><ul class="options"><li>A. Bác bỏ H0 khi H0 đúng.</li><li>B. Không bác bỏ H0 khi H0 sai.</li><li>C. Chấp nhận H1 khi H1 sai.</li><li>D. Đặt mức ý nghĩa alpha quá thấp.</li></ul><button class="btn-answer" onclick="toggleAnswer(27,'A')">🔍 Xem đáp án</button><div id="ans27" class="answer-display"></div></div>
-        <div class="question-card" id="q28"><div class="question-text">28. Một nghiên cứu kết luận rằng "thuốc có tác dụng" trong khi thực tế thuốc không có tác dụng. Đây là ví dụ của:</div><ul class="options"><li>A. Sai lầm loại I (α)</li><li>B. Sai lầm loại II (β)</li><li>C. Quyết định đúng đắn</li><li>D. Sức mạnh thống kê (Power)</li></ul><button class="btn-answer" onclick="toggleAnswer(28,'A')">🔍 Xem đáp án</button><div id="ans28" class="answer-display"></div></div>
-        <div class="question-card" id="q29"><div class="question-text">29. Trong một kiểm định giả thuyết, giá trị p (p-value) nhận được là 0.03. Với mức ý nghĩa α = 0.05, kết luận nào sau đây là đúng?</div><ul class="options"><li>A. Bác bỏ H0, kết quả có ý nghĩa thống kê.</li><li>B. Không bác bỏ H0, kết quả không có ý nghĩa thống kê.</li><li>C. Chấp nhận H0.</li><li>D. Xác suất H0 đúng là 3%.</li></ul><button class="btn-answer" onclick="toggleAnswer(29,'A')">🔍 Xem đáp án</button><div id="ans29" class="answer-display"></div></div>
-        <div class="question-card" id="q30"><div class="question-text">30. Một kết quả "có ý nghĩa thống kê" (statistically significant) có nghĩa là:</div><ul class="options"><li>A. Kết quả rất quan trọng trong thực tiễn lâm sàng.</li><li>B. Kết quả này khó có thể xảy ra nếu giả thuyết không (H0) là đúng.</li><li>C. Cỡ mẫu của nghiên cứu là đủ lớn.</li><li>D. Không có sai sót nào trong quá trình nghiên cứu.</li></ul><button class="btn-answer" onclick="toggleAnswer(30,'B')">🔍 Xem đáp án</button><div id="ans30" class="answer-display"></div></div>
-        <div class="question-card" id="q31"><div class="question-text">31. Khi đọc một bài báo khoa học, một nhà lâm sàng cần quan tâm nhất đến điều gì từ kết quả thống kê để đánh giá ý nghĩa thực tiễn của can thiệp?</div><ul class="options"><li>A. Giá trị p nhỏ hơn 0.05.</li><li>B. Kích thước hiệu ứng (effect size) và khoảng tin cậy (confidence interval).</li><li>C. Giá trị của thống kê kiểm định (ví dụ: t, F).</li><li>D. Bậc tự do (degree of freedom).</li></ul><button class="btn-answer" onclick="toggleAnswer(31,'B')">🔍 Xem đáp án</button><div id="ans31" class="answer-display"></div></div>
-        <div class="question-card" id="q32"><div class="question-text">32. Khoảng tin cậy 95% (95% CI) cho sự khác biệt trung bình giữa hai nhóm là [1.2, 3.5]. Điều này có nghĩa là:</div><ul class="options"><li>A. Có 95% khả năng trung bình của nhóm 1 cao hơn nhóm 2 từ 1.2 đến 3.5 đơn vị.</li><li>B. Nếu lặp lại nghiên cứu 100 lần, 95 lần khoảng tin cậy tính được sẽ chứa giá trị chênh lệch thực sự của tổng thể.</li><li>C. Giá trị chênh lệch thực sự chắc chắn nằm trong khoảng 1.2 và 3.5.</li><li>D. Không có sự khác biệt giữa hai nhóm vì khoảng không chứa 0.</li></ul><button class="btn-answer" onclick="toggleAnswer(32,'B')">🔍 Xem đáp án</button><div id="ans32" class="answer-display"></div></div>
-        <div class="question-card" id="q33"><div class="question-text">33. Sức mạnh thống kê (Statistical Power) của một kiểm định là:</div><ul class="options"><li>A. Xác suất bác bỏ H0 khi H0 đúng.</li><li>B. Xác suất không bác bỏ H0 khi H0 sai.</li><li>C. Xác suất bác bỏ H0 khi H0 sai.</li><li>D. Xác suất không bác bỏ H0 khi H0 đúng.</li></ul><button class="btn-answer" onclick="toggleAnswer(33,'C')">🔍 Xem đáp án</button><div id="ans33" class="answer-display"></div></div>
-        <div class="question-card" id="q34"><div class="question-text">34. Để tăng sức mạnh thống kê cho một nghiên cứu, cách làm nào sau đây là hiệu quả và phổ biến nhất?</div><ul class="options"><li>A. Giảm mức ý nghĩa alpha (ví dụ từ 0.05 xuống 0.01).</li><li>B. Tăng kích thước mẫu (sample size).</li><li>C. Sử dụng kiểm định phi tham số thay vì tham số.</li><li>D. Giảm độ lệch chuẩn của mẫu bằng cách chọn đối tượng đồng nhất.</li></ul><button class="btn-answer" onclick="toggleAnswer(34,'B')">🔍 Xem đáp án</button><div id="ans34" class="answer-display"></div></div>
-        <div class="question-card" id="q35"><div class="question-text">35. Kiểm định một đuổi (one-tailed test) được sử dụng khi nào?</div><ul class="options"><li>A. Khi nhà nghiên cứu không chắc chắn về chiều hướng của sự khác biệt.</li><li>B. Khi nhà nghiên cứu muốn kiểm tra sự khác biệt theo cả hai hướng.</li><li>C. Khi nhà nghiên cứu có cơ sở lý thuyết vững chắc để dự đoán chiều hướng của sự khác biệt (ví dụ: nhóm A sẽ cao hơn nhóm B).</li><li>D. Khi cỡ mẫu nhỏ hơn 30.</li></ul><button class="btn-answer" onclick="toggleAnswer(35,'C')">🔍 Xem đáp án</button><div id="ans35" class="answer-display"></div></div>
-        <div class="question-card" id="q36"><div class="question-text">36. Một nghiên cứu báo cáo kết quả t-test với Cohen's d = 0.8. Theo quy ước của Cohen, đây là kích thước hiệu ứng ở mức độ nào?</div><ul class="options"><li>A. Nhỏ</li><li>B. Trung bình</li><li>C. Lớn</li><li>D. Không đáng kể</li></ul><button class="btn-answer" onclick="toggleAnswer(36,'C')">🔍 Xem đáp án</button><div id="ans36" class="answer-display"></div></div>
-        <div class="question-card" id="q37"><div class="question-text">37. Theo tài liệu, một bài kiểm định được coi là có sức mạnh thống kê tốt thường cần đạt ngưỡng nào trở lên?</div><ul class="options"><li>A. 50%</li><li>B. 60%</li><li>C. 80%</li><li>D. 95%</li></ul><button class="btn-answer" onclick="toggleAnswer(37,'C')">🔍 Xem đáp án</button><div id="ans37" class="answer-display"></div></div>
-        <div class="question-card" id="q38"><div class="question-text">38. Nếu chúng ta giảm mức ý nghĩa alpha từ 0.05 xuống 0.01, điều gì sẽ xảy ra với sai lầm loại I và sai lầm loại II?</div><ul class="options"><li>A. Giảm sai lầm loại I, tăng sai lầm loại II.</li><li>B. Tăng sai lầm loại I, giảm sai lầm loại II.</li><li>C. Cả hai loại sai lầm đều giảm.</li><li>D. Cả hai loại sai lầm đều tăng.</li></ul><button class="btn-answer" onclick="toggleAnswer(38,'A')">🔍 Xem đáp án</button><div id="ans38" class="answer-display"></div></div>
-        <div class="question-card" id="q39"><div class="question-text">39. Trong phân tích ANOVA, "giá trị F lớn" cho thấy điều gì?</div><ul class="options"><li>A. Phương sai giữa các nhóm lớn hơn nhiều so với phương sai trong nội bộ nhóm.</li><li>B. Phương sai trong nội bộ nhóm lớn hơn nhiều so với phương sai giữa các nhóm.</li><li>C. Các nhóm có cùng giá trị trung bình.</li><li>D. Cỡ mẫu không đủ lớn.</li></ul><button class="btn-answer" onclick="toggleAnswer(39,'A')">🔍 Xem đáp án</button><div id="ans39" class="answer-display"></div></div>
-        <div class="question-card" id="q40"><div class="question-text">40. Một nghiên cứu có kết quả với p = 0.04. Nhưng khi xem xét kỹ, nhà nghiên cứu thấy rằng cỡ mẫu rất lớn (N=1000) và kích thước hiệu ứng (effect size) rất nhỏ. Kết luận nào là hợp lý nhất?</div><ul class="options"><li>A. Đây là một phát hiện rất quan trọng vì nó có ý nghĩa thống kê.</li><li>B. Mặc dù có ý nghĩa thống kê, nhưng kết quả có thể không có ý nghĩa thực tiễn do kích thước hiệu ứng nhỏ.</li><li>C. Chắc chắn đã có sai lầm trong quá trình tính toán.</li><li>D. Cần phải thực hiện thêm kiểm định phi tham số.</li></ul><button class="btn-answer" onclick="toggleAnswer(40,'B')">🔍 Xem đáp án</button><div id="ans40" class="answer-display"></div></div>
-    </section>
-
-    <!-- PHẦN 4: T-TEST & ANOVA 41-60 -->
-    <section class="part" id="part4">
-        <div class="part-title"><span>4</span> So sánh trung bình (T‑test & ANOVA) 41–60</div>
-        <div class="question-card" id="q41"><div class="question-text">41. Để so sánh điểm trung bình về mức độ lo âu của một nhóm bệnh nhân trước và sau khi trị liệu, kiểm định nào sau đây là phù hợp nhất?</div><ul class="options"><li>A. Independent samples t-test</li><li>B. Paired samples t-test</li><li>C. One-way ANOVA</li><li>D. Chi-square test</li></ul><button class="btn-answer" onclick="toggleAnswer(41,'B')">🔍 Xem đáp án</button><div id="ans41" class="answer-display"></div></div>
-        <div class="question-card" id="q42"><div class="question-text">42. Một nghiên cứu muốn so sánh hiệu quả của hai liệu pháp tâm lý khác nhau trên hai nhóm bệnh nhân độc lập. Nhà nghiên cứu nên sử dụng kiểm định nào?</div><ul class="options"><li>A. Paired samples t-test</li><li>B. One-sample t-test</li><li>C. Independent samples t-test</li><li>D. Pearson correlation</li></ul><button class="btn-answer" onclick="toggleAnswer(42,'C')">🔍 Xem đáp án</button><div id="ans42" class="answer-display"></div></div>
-        <div class="question-card" id="q43"><div class="question-text">43. Trong Independent samples t-test, nếu kết quả kiểm định Levene (Levene's test) cho p < 0.05, điều này có nghĩa là gì và cần xử lý ra sao?</div><ul class="options"><li>A. Phương sai hai nhóm bằng nhau → sử dụng kết quả Student's t-test.</li><li>B. Phương sai hai nhóm KHÔNG bằng nhau → sử dụng kết quả Welch's t-test.</li><li>C. Dữ liệu không có phân phối chuẩn → sử dụng Mann-Whitney U.</li><li>D. Có điểm dị biệt trong dữ liệu → cần loại bỏ.</li></ul><button class="btn-answer" onclick="toggleAnswer(43,'B')">🔍 Xem đáp án</button><div id="ans43" class="answer-display"></div></div>
-        <div class="question-card" id="q44"><div class="question-text">44. Giá trị bậc tự do (df) trong một independent samples t-test với hai nhóm có kích thước lần lượt là n1 = 25 và n2 = 25 (giả định phương sai bằng nhau) là bao nhiêu?</div><ul class="options"><li>A. 24</li><li>B. 48</li><li>C. 49</li><li>D. 50</li></ul><button class="btn-answer" onclick="toggleAnswer(44,'B')">🔍 Xem đáp án</button><div id="ans44" class="answer-display"></div></div>
-        <div class="question-card" id="q45"><div class="question-text">45. ANOVA một chiều (One-way ANOVA) được sử dụng để:</div><ul class="options"><li>A. So sánh trung bình của hai nhóm.</li><li>B. So sánh trung bình của ba nhóm trở lên trên một biến độc lập.</li><li>C. So sánh phương sai của hai nhóm.</li><li>D. Phân tích mối quan hệ giữa hai biến định tính.</li></ul><button class="btn-answer" onclick="toggleAnswer(45,'B')">🔍 Xem đáp án</button><div id="ans45" class="answer-display"></div></div>
-        <div class="question-card" id="q46"><div class="question-text">46. Kết quả một One-way ANOVA cho thấy F(2, 45) = 5.12, p = 0.009. Với α = 0.05, kết luận nào sau đây là đúng?</div><ul class="options"><li>A. Không có sự khác biệt nào giữa các nhóm.</li><li>B. Có sự khác biệt có ý nghĩa thống kê giữa ít nhất hai nhóm.</li><li>C. Tất cả các nhóm đều khác biệt nhau.</li><li>D. Nhóm 1 khác nhóm 2, nhưng không khác nhóm 3.</li></ul><button class="btn-answer" onclick="toggleAnswer(46,'B')">🔍 Xem đáp án</button><div id="ans46" class="answer-display"></div></div>
-        <div class="question-card" id="q47"><div class="question-text">47. Sau khi có kết quả ANOVA một chiều có ý nghĩa, bước tiếp theo cần làm là gì?</div><ul class="options"><li>A. Kết luận ngay rằng các nhóm khác nhau.</li><li>B. Thực hiện phân tích hậu nghiệm (Post-hoc test) để xác định cặp nhóm nào khác nhau.</li><li>C. Chạy lại t-test cho từng cặp nhóm mà không cần hiệu chỉnh.</li><li>D. Báo cáo kết quả là đã hoàn tất.</li></ul><button class="btn-answer" onclick="toggleAnswer(47,'B')">🔍 Xem đáp án</button><div id="ans47" class="answer-display"></div></div>
-        <div class="question-card" id="q48"><div class="question-text">48. Nếu giả định phương sai đồng nhất (homogeneity of variance) trong One-way ANOVA bị vi phạm, kiểm định hậu nghiệm nào sau đây là phù hợp?</div><ul class="options"><li>A. Tukey's HSD</li><li>B. Bonferroni</li><li>C. Games-Howell</li><li>D. Scheffé</li></ul><button class="btn-answer" onclick="toggleAnswer(48,'C')">🔍 Xem đáp án</button><div id="ans48" class="answer-display"></div></div>
-        <div class="question-card" id="q49"><div class="question-text">49. Kiểm định Mauchly's Test of Sphericity được sử dụng trong loại ANOVA nào?</div><ul class="options"><li>A. One-way Independent ANOVA</li><li>B. Two-way Independent ANOVA</li><li>C. One-way Repeated Measures ANOVA</li><li>D. Tất cả các loại ANOVA</li></ul><button class="btn-answer" onclick="toggleAnswer(49,'C')">🔍 Xem đáp án</button><div id="ans49" class="answer-display"></div></div>
-        <div class="question-card" id="q50"><div class="question-text">50. Khi Mauchly's Test có p < 0.05, điều đó cho thấy giả định về tính tròn (sphericity) bị vi phạm. Giải pháp thường được sử dụng trong Jamovi là:</div><ul class="options"><li>A. Sử dụng kết quả của kiểm định Tukey.</li><li>B. Sử dụng hiệu chỉnh Greenhouse-Geisser hoặc Huynh-Feldt.</li><li>C. Chuyển sang làm Independent t-test.</li><li>D. Bỏ qua vì ANOVA rất mạnh với vi phạm này.</li></ul><button class="btn-answer" onclick="toggleAnswer(50,'B')">🔍 Xem đáp án</button><div id="ans50" class="answer-display"></div></div>
-        <div class="question-card" id="q51"><div class="question-text">51. Trong Two-way ANOVA, "hiệu ứng tương tác" (interaction effect) có nghĩa là:</div><ul class="options"><li>A. Cả hai biến độc lập đều có tác động riêng rẽ lên biến phụ thuộc.</li><li>B. Tác động của một biến độc lập lên biến phụ thuộc thay đổi tùy theo mức độ của biến độc lập kia.</li><li>C. Hai biến độc lập có tương quan với nhau.</li><li>D. Các nhóm trong thí nghiệm có kích thước bằng nhau.</li></ul><button class="btn-answer" onclick="toggleAnswer(51,'B')">🔍 Xem đáp án</button><div id="ans51" class="answer-display"></div></div>
-        <div class="question-card" id="q52"><div class="question-text">52. Một nghiên cứu 2x2 (giới tính: Nam, Nữ và loại trị liệu: CBT, Trị liệu thông thường) về hiệu quả giảm lo âu. Kết quả cho thấy hiệu ứng tương tác có ý nghĩa (p < 0.05). Điều này có thể được hiểu là:</div><ul class="options"><li>A. Nam giới đáp ứng với cả hai loại trị liệu như nhau, nữ giới cũng vậy.</li><li>B. CBT tốt hơn trị liệu thông thường cho cả nam và nữ.</li><li>C. Sự khác biệt về hiệu quả giữa CBT và trị liệu thông thường là không giống nhau ở nam và nữ.</li><li>D. Cần xem xét hiệu ứng chính của giới tính và loại trị liệu, bỏ qua hiệu ứng tương tác.</li></ul><button class="btn-answer" onclick="toggleAnswer(52,'C')">🔍 Xem đáp án</button><div id="ans52" class="answer-display"></div></div>
-        <div class="question-card" id="q53"><div class="question-text">53. Một nghiên cứu sử dụng Mixed ANOVA (một yếu tố giữa nhóm, một yếu tố lặp). Giả thuyết chính của nghiên cứu là "sự thay đổi theo thời gian là khác nhau giữa các nhóm". Thành phần nào trong kết quả là quan trọng nhất để kiểm tra giả thuyết này?</div><ul class="options"><li>A. Main effect của yếu tố thời gian.</li><li>B. Main effect của yếu tố nhóm.</li><li>C. Interaction effect giữa thời gian và nhóm.</li><li>D. Kết quả kiểm định Levene.</li></ul><button class="btn-answer" onclick="toggleAnswer(53,'C')">🔍 Xem đáp án</button><div id="ans53" class="answer-display"></div></div>
-        <div class="question-card" id="q54"><div class="question-text">54. Điểm khác biệt cơ bản giữa One-way Independent ANOVA và One-way Repeated Measures ANOVA là gì?</div><ul class="options"><li>A. Số lượng biến phụ thuộc.</li><li>B. Số lượng biến độc lập.</li><li>C. Mối quan hệ giữa các đối tượng tham gia ở các nhóm/mức điểm khác nhau (độc lập vs. cùng một nhóm).</li><li>D. Yêu cầu về phân phối chuẩn.</li></ul><button class="btn-answer" onclick="toggleAnswer(54,'C')">🔍 Xem đáp án</button><div id="ans54" class="answer-display"></div></div>
-        <div class="question-card" id="q55"><div class="question-text">55. Trong Jamovi, để thực hiện phân tích Two-way Mixed ANOVA, ta chọn mục nào?</div><ul class="options"><li>A. T-Tests -> Independent Samples T-Test</li><li>B. ANOVA -> One-Way ANOVA</li><li>C. ANOVA -> Repeated Measures ANOVA (và gán biến giữa nhóm vào ô Between Subjects Factors)</li><li>D. Regression -> Linear Regression</li></ul><button class="btn-answer" onclick="toggleAnswer(55,'C')">🔍 Xem đáp án</button><div id="ans55" class="answer-display"></div></div>
-        <div class="question-card" id="q56"><div class="question-text">56. Xem xét tình huống: Nghiên cứu đánh giá 3 phương pháp giảng dạy (PP A, B, C) lên điểm số của sinh viên. Điểm số được đo ở 3 thời điểm (đầu kỳ, giữa kỳ, cuối kỳ). Nhà nghiên cứu muốn biết phương pháp nào giúp sinh viên tiến bộ nhanh nhất theo thời gian. Phân tích thống kê nào là phù hợp nhất?</div><ul class="options"><li>A. Independent t-test cho từng thời điểm.</li><li>B. One-way ANOVA cho từng thời điểm.</li><li>C. Two-way Mixed ANOVA với PP là yếu tố giữa nhóm, Thời gian là yếu tố lặp.</li><li>D. Repeated Measures ANOVA cho từng nhóm riêng lẻ.</li></ul><button class="btn-answer" onclick="toggleAnswer(56,'C')">🔍 Xem đáp án</button><div id="ans56" class="answer-display"></div></div>
-        <div class="question-card" id="q57"><div class="question-text">57. Kiểm định phi tham số tương đương với Independent Samples t-test là:</div><ul class="options"><li>A. Wilcoxon Signed-Rank Test</li><li>B. Mann-Whitney U Test</li><li>C. Friedman Test</li><li>D. Kruskal-Wallis Test</li></ul><button class="btn-answer" onclick="toggleAnswer(57,'B')">🔍 Xem đáp án</button><div id="ans57" class="answer-display"></div></div>
-        <div class="question-card" id="q58"><div class="question-text">58. Kiểm định phi tham số tương đương với Paired Samples t-test là:</div><ul class="options"><li>A. Wilcoxon Signed-Rank Test</li><li>B. Mann-Whitney U Test</li><li>C. Kruskal-Wallis Test</li><li>D. Chi-square Test</li></ul><button class="btn-answer" onclick="toggleAnswer(58,'A')">🔍 Xem đáp án</button><div id="ans58" class="answer-display"></div></div>
-        <div class="question-card" id="q59"><div class="question-text">59. Kiểm định phi tham số tương đương với One-way Independent ANOVA là:</div><ul class="options"><li>A. Friedman Test</li><li>B. Mann-Whitney U Test</li><li>C. Kruskal-Wallis Test</li><li>D. Wilcoxon Signed-Rank Test</li></ul><button class="btn-answer" onclick="toggleAnswer(59,'C')">🔍 Xem đáp án</button><div id="ans59" class="answer-display"></div></div>
-        <div class="question-card" id="q60"><div class="question-text">60. Một nhà nghiên cứu muốn so sánh mức độ hài lòng (thang đo Likert 5 điểm, dạng thứ bậc) của sinh viên đối với ba phương pháp học khác nhau (các nhóm độc lập). Kiểm định thống kê nào là phù hợp nhất?</div><ul class="options"><li>A. One-way ANOVA</li><li>B. Kruskal-Wallis Test</li><li>C. Repeated Measures ANOVA</li><li>D. Friedman Test</li></ul><button class="btn-answer" onclick="toggleAnswer(60,'B')">🔍 Xem đáp án</button><div id="ans60" class="answer-display"></div></div>
-    </section>
-
-    <!-- PHẦN 5: CHI‑SQUARE (61–65) -->
-    <section class="part" id="part5">
-        <div class="part-title"><span>5</span> Kiểm định Chi‑square (61–65)</div>
-        <div class="question-card" id="q61"><div class="question-text">61. Kiểm định Chi-square (χ²) được sử dụng cho loại dữ liệu nào?</div><ul class="options"><li>A. Dữ liệu định lượng (khoảng/tỷ lệ).</li><li>B. Dữ liệu định tính (danh nghĩa/thứ bậc).</li><li>C. Dữ liệu chuỗi thời gian.</li><li>D. Dữ liệu từ các phép đo lặp.</li></ul><button class="btn-answer" onclick="toggleAnswer(61,'B')">🔍 Xem đáp án</button><div id="ans61" class="answer-display"></div></div>
-        <div class="question-card" id="q62"><div class="question-text">62. Một nghiên cứu muốn tìm hiểu xem có mối liên hệ giữa giới tính (Nam, Nữ) và tình trạng hút thuốc (Hút, Không hút) hay không. Kiểm định nào phù hợp?</div><ul class="options"><li>A. Independent t-test</li><li>B. Paired t-test</li><li>C. Pearson correlation</li><li>D. Chi-square test of independence</li></ul><button class="btn-answer" onclick="toggleAnswer(62,'D')">🔍 Xem đáp án</button><div id="ans62" class="answer-display"></div></div>
-        <div class="question-card" id="q63"><div class="question-text">63. Khi thực hiện kiểm định Chi-square, một trong những điều kiện quan trọng để kết quả đáng tin cậy là:</div><ul class="options"><li>A. Cỡ mẫu phải lớn hơn 100.</li><li>B. Tần số kỳ vọng (expected count) trong mỗi ô của bảng chéo tối thiểu phải là 5.</li><li>C. Dữ liệu phải có phân phối chuẩn.</li><li>D. Phương sai các nhóm phải đồng nhất.</li></ul><button class="btn-answer" onclick="toggleAnswer(63,'B')">🔍 Xem đáp án</button><div id="ans63" class="answer-display"></div></div>
-        <div class="question-card" id="q64"><div class="question-text">64. Một bảng chéo 2x2 cho kết quả Chi-square với p = 0.03. Với α = 0.05, kết luận nào đúng?</div><ul class="options"><li>A. Có mối liên hệ có ý nghĩa thống kê giữa hai biến định tính.</li><li>B. Không có mối liên hệ giữa hai biến.</li><li>C. Giá trị trung bình của hai nhóm là khác nhau.</li><li>D. Cần thực hiện kiểm định t-test để kiểm tra lại.</li></ul><button class="btn-answer" onclick="toggleAnswer(64,'A')">🔍 Xem đáp án</button><div id="ans64" class="answer-display"></div></div>
-        <div class="question-card" id="q65"><div class="question-text">65. "Kiểm định sự phù hợp" (Goodness of fit test) của Chi-square dùng để:</div><ul class="options"><li>A. Kiểm tra mối liên hệ giữa hai biến.</li><li>B. So sánh tỷ lệ quan sát được của một biến với tỷ lệ kỳ vọng về mặt lý thuyết.</li><li>C. So sánh trung bình của một mẫu với một giá trị chuẩn.</li><li>D. Kiểm tra phân phối chuẩn của dữ liệu.</li></ul><button class="btn-answer" onclick="toggleAnswer(65,'B')">🔍 Xem đáp án</button><div id="ans65" class="answer-display"></div></div>
-    </section>
-
-    <!-- PHẦN 6: TƯƠNG QUAN & HỒI QUY (66–90) 25 câu -->
-    <section class="part" id="part6">
-        <div class="part-title"><span>6</span> Tương quan & Hồi quy (66–90)</div>
-        <div class="question-card" id="q66"><div class="question-text">66. Hệ số tương quan Pearson (r) đo lường:</div><ul class="options"><li>A. Mối quan hệ nhân quả giữa hai biến.</li><li>B. Sự khác biệt trung bình giữa hai nhóm.</li><li>C. Cường độ và chiều hướng của mối quan hệ tuyến tính giữa hai biến định lượng.</li><li>D. Tỷ lệ phần trăm giữa các nhóm.</li></ul><button class="btn-answer" onclick="toggleAnswer(66,'C')">🔍 Xem đáp án</button><div id="ans66" class="answer-display"></div></div>
-        <div class="question-card" id="q67"><div class="question-text">67. Hệ số tương quan r = -0.85 cho biết điều gì?</div><ul class="options"><li>A. Mối tương quan thuận rất mạnh.</li><li>B. Mối tương quan nghịch rất mạnh.</li><li>C. Mối tương quan thuận yếu.</li><li>D. Mối tương quan nghịch yếu.</li></ul><button class="btn-answer" onclick="toggleAnswer(67,'B')">🔍 Xem đáp án</button><div id="ans67" class="answer-display"></div></div>
-        <div class="question-card" id="q68"><div class="question-text">68. Hệ số xác định R² (r²) có ý nghĩa là:</div><ul class="options"><li>A. Độ dốc của đường hồi quy.</li><li>B. Tỷ lệ phần trăm phương sai của biến này được giải thích bởi biến kia.</li><li>C. Sai số chuẩn của ước lượng.</li><li>D. Giá trị trung bình của tích hai biến.</li></ul><button class="btn-answer" onclick="toggleAnswer(68,'B')">🔍 Xem đáp án</button><div id="ans68" class="answer-display"></div></div>
-        <div class="question-card" id="q69"><div class="question-text">69. Nếu ta biết r = 0.6 giữa thời gian ôn tập và điểm thi, thì bao nhiêu phần trăm phương sai của điểm thi được giải thích bởi thời gian ôn tập?</div><ul class="options"><li>A. 60%</li><li>B. 36%</li><li>C. 40%</li><li>D. 6%</li></ul><button class="btn-answer" onclick="toggleAnswer(69,'B')">🔍 Xem đáp án</button><div id="ans69" class="answer-display"></div></div>
-        <div class="question-card" id="q70"><div class="question-text">70. Khi kiểm tra mối tương quan trên biểu đồ tán xạ (scatter plot), các điểm tạo thành một đường thẳng đi xuống từ trái sang phải. Đó là dấu hiệu của:</div><ul class="options"><li>A. Tương quan thuận mạnh.</li><li>B. Tương quan nghịch mạnh.</li><li>C. Không tương quan.</li><li>D. Tương quan phi tuyến.</li></ul><button class="btn-answer" onclick="toggleAnswer(70,'B')">🔍 Xem đáp án</button><div id="ans70" class="answer-display"></div></div>
-        <div class="question-card" id="q71"><div class="question-text">71. Khi nào nên sử dụng hệ số tương quan Spearman thay vì Pearson?</div><ul class="options"><li>A. Khi cả hai biến đều là định lượng và có phân phối chuẩn.</li><li>B. Khi một hoặc cả hai biến là thang đo thứ bậc, hoặc khi mối quan hệ là đơn điệu nhưng không tuyến tính.</li><li>C. Khi muốn so sánh trung bình của hai nhóm.</li><li>D. Khi muốn kiểm tra mối liên hệ giữa hai biến định tính.</li></ul><button class="btn-answer" onclick="toggleAnswer(71,'B')">🔍 Xem đáp án</button><div id="ans71" class="answer-display"></div></div>
-        <div class="question-card" id="q72"><div class="question-text">72. Mục đích chính của phân tích hồi quy tuyến tính là:</div><ul class="options"><li>A. Đo lường mức độ chặt chẽ của mối quan hệ giữa hai biến.</li><li>B. Dự đoán giá trị của một biến (phụ thuộc) dựa trên giá trị của một hoặc nhiều biến khác (độc lập).</li><li>C. So sánh trung bình nhiều nhóm.</li><li>D. Phân tích cấu trúc tiềm ẩn của một thang đo.</li></ul><button class="btn-answer" onclick="toggleAnswer(72,'B')">🔍 Xem đáp án</button><div id="ans72" class="answer-display"></div></div>
-        <div class="question-card" id="q73"><div class="question-text">73. Trong phương trình hồi quy tuyến tính đơn giản Y = a + bX, hệ số b (slope) cho biết:</div><ul class="options"><li>A. Giá trị của Y khi X = 0.</li><li>B. Khi X tăng lên 1 đơn vị thì Y thay đổi trung bình b đơn vị.</li><li>C. Mức độ phù hợp của mô hình.</li><li>D. Tương quan giữa X và Y.</li></ul><button class="btn-answer" onclick="toggleAnswer(73,'B')">🔍 Xem đáp án</button><div id="ans73" class="answer-display"></div></div>
-        <div class="question-card" id="q74"><div class="question-text">74. Một nghiên cứu hồi quy cho thấy điểm trung bình môn Thống kê có thể được dự đoán từ điểm lo âu với phương trình: `Điểm thi = 8.5 - 0.3 * (Điểm lo âu)`. Điều này có nghĩa là:</div><ul class="options"><li>A. Sinh viên có điểm lo âu càng cao thì điểm thi càng cao.</li><li>B. Sinh viên có điểm lo âu bằng 0 thì điểm thi là 8.5.</li><li>C. Khi điểm lo âu tăng 1 điểm, điểm thi dự đoán sẽ giảm 0.3 điểm.</li><li>D. Cả B và C đều đúng.</li></ul><button class="btn-answer" onclick="toggleAnswer(74,'D')">🔍 Xem đáp án</button><div id="ans74" class="answer-display"></div></div>
-        <div class="question-card" id="q75"><div class="question-text">75. Trong hồi quy đa biến, nếu một biến độc lập có chỉ số VIF (Variance Inflation Factor) lớn hơn 10, điều này cho thấy vấn đề gì?</div><ul class="options"><li>A. Biến này không có ý nghĩa trong mô hình.</li><li>B. Có hiện tượng đa cộng tuyến (multicollinearity) nghiêm trọng.</li><li>C. Phần dư của mô hình không có phân phối chuẩn.</li><li>D. Mô hình có hiện tượng phương sai thay đổi (heteroscedasticity).</li></ul><button class="btn-answer" onclick="toggleAnswer(75,'B')">🔍 Xem đáp án</button><div id="ans75" class="answer-display"></div></div>
-        <div class="question-card" id="q76"><div class="question-text">76. Giả định nào sau đây KHÔNG phải là giả định của hồi quy tuyến tính?</div><ul class="options"><li>A. Mối quan hệ tuyến tính (Linearity) giữa biến độc lập và biến phụ thuộc.</li><li>B. Phần dư có phân phối chuẩn (Normality of residuals).</li><li>C. Phương sai của phần dư không đổi (Homoscedasticity).</li><li>D. Các biến độc lập phải có tương quan chặt chẽ với nhau (High correlation among predictors).</li></ul><button class="btn-answer" onclick="toggleAnswer(76,'D')">🔍 Xem đáp án</button><div id="ans76" class="answer-display"></div></div>
-        <div class="question-card" id="q77"><div class="question-text">77. Kiểm định Durbin-Watson được sử dụng trong hồi quy để kiểm tra giả định gì?</div><ul class="options"><li>A. Đa cộng tuyến.</li><li>B. Tính độc lập của phần dư (tự tương quan).</li><li>C. Phân phối chuẩn của phần dư.</li><li>D. Tính tuyến tính.</li></ul><button class="btn-answer" onclick="toggleAnswer(77,'B')">🔍 Xem đáp án</button><div id="ans77" class="answer-display"></div></div>
-        <div class="question-card" id="q78"><div class="question-text">78. Để kiểm tra giả định phần dư có phân phối chuẩn trong hồi quy trên Jamovi, ta có thể sử dụng:</div><ul class="options"><li>A. Kiểm định Levene.</li><li>B. Biểu đồ Residuals Plots kết hợp với kiểm định Shapiro-Wilk trên phần dư.</li><li>C. Kiểm định Mauchly.</li><li>D. Chỉ số VIF.</li></ul><button class="btn-answer" onclick="toggleAnswer(78,'B')">🔍 Xem đáp án</button><div id="ans78" class="answer-display"></div></div>
-        <div class="question-card" id="q79"><div class="question-text">79. Trong hồi quy đa biến, hệ số hồi quy chuẩn hóa (Standardized coefficients - Beta) cho phép chúng ta:</div><ul class="options"><li>A. So sánh trực tiếp mức độ ảnh hưởng của các biến độc lập có đơn vị đo khác nhau lên biến phụ thuộc.</li><li>B. Tính toán giá trị dự đoán chính xác hơn.</li><li>C. Loại bỏ các biến không quan trọng.</li><li>D. Xác định ý nghĩa thống kê của từng hệ số.</li></ul><button class="btn-answer" onclick="toggleAnswer(79,'A')">🔍 Xem đáp án</button><div id="ans79" class="answer-display"></div></div>
-        <div class="question-card" id="q80"><div class="question-text">80. Một mô hình hồi quy với R² hiệu chỉnh (Adjusted R²) = 0.45 có nghĩa là:</div><ul class="options"><li>A. Mô hình dự đoán đúng 45% các trường hợp.</li><li>B. Các biến độc lập trong mô hình giải thích được 45% sự biến thiên của biến phụ thuộc, sau khi đã hiệu chỉnh cho số lượng biến và cỡ mẫu.</li><li>C. 45% phương sai của biến phụ thuộc không được giải thích.</li><li>D. Mô hình này kém phù hợp hơn mô hình có R² hiệu chỉnh = 0.50.</li></ul><button class="btn-answer" onclick="toggleAnswer(80,'B')">🔍 Xem đáp án</button><div id="ans80" class="answer-display"></div></div>
-        <div class="question-card" id="q81"><div class="question-text">81. Nếu đồ thị phân tán của phần dư (residuals) và giá trị dự đoán (predicted values) có dạng hình phễu (loe ra khi giá trị dự đoán tăng lên), điều này cho thấy vi phạm giả định nào?</div><ul class="options"><li>A. Tính tuyến tính</li><li>B. Phương sai không đổi (Homoscedasticity)</li><li>C. Phân phối chuẩn của phần dư</li><li>D. Độc lập của phần dư</li></ul><button class="btn-answer" onclick="toggleAnswer(81,'B')">🔍 Xem đáp án</button><div id="ans81" class="answer-display"></div></div>
-        <div class="question-card" id="q82"><div class="question-text">82. Hồi quy logistic được sử dụng khi:</div><ul class="options"><li>A. Biến phụ thuộc là biến định lượng.</li><li>B. Biến phụ thuộc là biến phân loại (ví dụ: nhị phân, thứ bậc).</li><li>C. Mối quan hệ giữa các biến là phi tuyến.</li><li>D. Có hiện tượng đa cộng tuyến.</li></ul><button class="btn-answer" onclick="toggleAnswer(82,'B')">🔍 Xem đáp án</button><div id="ans82" class="answer-display"></div></div>
-        <div class="question-card" id="q83"><div class="question-text">83. Sự khác biệt chính giữa hồi quy tuyến tính (OLS) và hồi quy logistic là gì?</div><ul class="options"><li>A. OLS dùng cho biến phụ thuộc liên tục, logistic dùng cho biến phụ thuộc phân loại.</li><li>B. OLS dùng phương pháp bình phương tối thiểu, logistic dùng phương pháp hợp lý tối đa (Maximum Likelihood).</li><li>C. Cả A và B đều đúng.</li><li>D. OLS dễ thực hiện hơn trên Jamovi.</li></ul><button class="btn-answer" onclick="toggleAnswer(83,'C')">🔍 Xem đáp án</button><div id="ans83" class="answer-display"></div></div>
-        <div class="question-card" id="q84"><div class="question-text">84. Trong hồi quy, nếu ta có một biến độc lập là biến định danh có 3 nhóm (ví dụ: "Phương pháp trị liệu A, B, C"), để đưa vào mô hình hồi quy, ta cần:</div><ul class="options"><li>A. Sử dụng trực tiếp biến đó với 3 giá trị 1, 2, 3.</li><li>B. Tạo ra hai biến giả (dummy variables).</li><li>C. Bỏ qua biến đó vì không thể dùng trong hồi quy.</li><li>D. Chuyển nó thành biến liên tục.</li></ul><button class="btn-answer" onclick="toggleAnswer(84,'B')">🔍 Xem đáp án</button><div id="ans84" class="answer-display"></div></div>
-        <div class="question-card" id="q85"><div class="question-text">85. Một nhà nghiên cứu xây dựng mô hình hồi quy gồm 5 biến độc lập. Kết quả cho thấy mô hình tổng thể có ý nghĩa (p < 0.05) nhưng không có biến độc lập riêng lẻ nào có ý nghĩa (p > 0.05). Hiện tượng này có thể là dấu hiệu của:</div><ul class="options"><li>A. Phương sai thay đổi.</li><li>B. Đa cộng tuyến.</li><li>C. Thiếu biến quan trọng.</li><li>D. Cỡ mẫu quá nhỏ.</li></ul><button class="btn-answer" onclick="toggleAnswer(85,'B')">🔍 Xem đáp án</button><div id="ans85" class="answer-display"></div></div>
-        <div class="question-card" id="q86"><div class="question-text">86. Trong hồi quy đa biến trên Jamovi, để kiểm tra giả định đa cộng tuyến, ta cần tick chọn ô nào?</div><ul class="options"><li>A. Normality test</li><li>B. Homogeneity test</li><li>C. Collinearity statistics</li><li>D. Durbin-Watson</li></ul><button class="btn-answer" onclick="toggleAnswer(86,'C')">🔍 Xem đáp án</button><div id="ans86" class="answer-display"></div></div>
-        <div class="question-card" id="q87"><div class="question-text">87. Một nghiên cứu muốn dự đoán điểm số "Hài lòng với cuộc sống" dựa trên 3 biến: Thu nhập, Số năm đi học, và Điểm lạc quan. Loại phân tích nào là phù hợp?</div><ul class="options"><li>A. Tương quan Pearson.</li><li>B. Hồi quy tuyến tính đa biến.</li><li>C. Independent t-test.</li><li>D. Chi-square.</li></ul><button class="btn-answer" onclick="toggleAnswer(87,'B')">🔍 Xem đáp án</button><div id="ans87" class="answer-display"></div></div>
-        <div class="question-card" id="q88"><div class="question-text">88. Chỉ số nào đánh giá mức độ phù hợp tổng quát của mô hình hồi quy, cho biết tỷ lệ phần trăm biến thiên của biến phụ thuộc được giải thích bởi các biến độc lập?</div><ul class="options"><li>A. Hệ số Beta</li><li>B. Hệ số B (unstandardized)</li><li>C. R² (R bình phương)</li><li>D. Giá trị F</li></ul><button class="btn-answer" onclick="toggleAnswer(88,'C')">🔍 Xem đáp án</button><div id="ans88" class="answer-display"></div></div>
-        <div class="question-card" id="q89"><div class="question-text">89. Một kết quả hồi quy cho biết biến "Lo âu" có hệ số Beta = 0.45 và p = 0.001, biến "Tự tin" có hệ số Beta = 0.20 và p = 0.04. Có thể kết luận rằng:</div><ul class="options"><li>A. "Lo âu" có ảnh hưởng mạnh hơn "Tự tin" lên biến phụ thuộc.</li><li>B. "Tự tin" không có ảnh hưởng thực sự lên biến phụ thuộc.</li><li>C. "Lo âu" và "Tự tin" không thể cùng nằm trong một mô hình.</li><li>D. Cả hai biến đều không quan trọng.</li></ul><button class="btn-answer" onclick="toggleAnswer(89,'A')">🔍 Xem đáp án</button><div id="ans89" class="answer-display"></div></div>
-        <div class="question-card" id="q90"><div class="question-text">90. Mô hình hồi quy có R² = 0.8 nhưng chỉ số VIF của một biến lên tới 15. Nhận định nào sau đây là đúng nhất?</div><ul class="options"><li>A. Đây là một mô hình rất tốt vì R² cao.</li><li>B. Mặc dù R² cao, mô hình có vấn đề về đa cộng tuyến nghiêm trọng, khiến các ước lượng hệ số không đáng tin cậy.</li><li>C. Cần loại bỏ ngay lập tức biến có VIF cao, bất kể nó quan trọng thế nào.</li><li>D. Không có vấn đề gì vì VIF không ảnh hưởng đến R².</li></ul><button class="btn-answer" onclick="toggleAnswer(90,'B')">🔍 Xem đáp án</button><div id="ans90" class="answer-display"></div></div>
-    </section>
-
-    <!-- PHẦN 7: Tình huống tổng hợp 91–100 -->
-    <section class="part" id="part7">
-        <div class="part-title"><span>7</span> Tình huống tổng hợp (91–100)</div>
-        <div class="question-card" id="q91"><div class="question-text">91. Một nghiên cứu kiểm tra hiệu quả của một liệu pháp mới giảm trầm cảm. 60 bệnh nhân được chia ngẫu nhiên vào 2 nhóm: nhóm trị liệu và nhóm đối chứng. Mức độ trầm cảm được đo ở 4 thời điểm: trước, sau 1,3,6 tháng. Để kiểm tra liệu pháp có hiệu quả theo thời gian hay không và hiệu quả có khác nhau giữa hai nhóm, phân tích phù hợp nhất là:</div><ul class="options"><li>A. Independent t-test từng thời điểm.</li><li>B. Two-way Mixed ANOVA với Nhóm (giữa nhóm) và Thời gian (lặp).</li><li>C. Repeated Measures ANOVA trên từng nhóm riêng biệt.</li><li>D. Pearson correlation giữa điểm trầm cảm và thời gian.</li></ul><button class="btn-answer" onclick="toggleAnswer(91,'B')">🔍 Xem đáp án</button><div id="ans91" class="answer-display"></div></div>
-        <div class="question-card" id="q92"><div class="question-text">92. Giả sử kết quả phân tích ở câu 91 cho thấy hiệu ứng tương tác (Nhóm * Thời gian) có p = 0.001 và biểu đồ cho thấy nhóm trị liệu giảm mạnh sau 3 tháng trong khi nhóm đối chứng gần như không đổi. Kết luận nào chính xác nhất?</div><ul class="options"><li>A. Có sự khác biệt về điểm trầm cảm giữa các thời điểm.</li><li>B. Liệu pháp có hiệu quả.</li><li>C. Tác động của liệu pháp thay đổi theo thời gian và sự thay đổi này khác biệt có ý nghĩa so với nhóm đối chứng. Cụ thể, liệu pháp giúp giảm trầm cảm rõ rệt sau 3 tháng.</li><li>D. Cần xem xét hiệu ứng chính của "Nhóm" vì nó quan trọng hơn.</li></ul><button class="btn-answer" onclick="toggleAnswer(92,'C')">🔍 Xem đáp án</button><div id="ans92" class="answer-display"></div></div>
-        <div class="question-card" id="q93"><div class="question-text">93. Một bài báo cáo: "Điểm hài lòng với cuộc sống của nhóm can thiệp (M = 7.5, SD = 1.2) cao hơn có ý nghĩa so với nhóm đối chứng (M = 6.8, SD = 1.5), t(78) = 2.45, p = 0.016, Cohen's d = 0.55." Con số "78" trong t(78) là gì?</div><ul class="options"><li>A. Cỡ mẫu của nghiên cứu.</li><li>B. Giá trị của thống kê t.</li><li>C. Bậc tự do (degrees of freedom).</li><li>D. Số lượng nhóm.</li></ul><button class="btn-answer" onclick="toggleAnswer(93,'C')">🔍 Xem đáp án</button><div id="ans93" class="answer-display"></div></div>
-        <div class="question-card" id="q94"><div class="question-text">94. Trong cùng báo cáo trên (câu 93), chỉ số Cohen's d = 0.55 cho biết điều gì?</div><ul class="options"><li>A. Xác suất xảy ra sai lầm loại I là 55%.</li><li>B. Kích thước hiệu ứng (effect size) ở mức trung bình.</li><li>C. Nhóm can thiệp có điểm số cao hơn 0.55 điểm.</li><li>D. Mức độ tương quan giữa hai nhóm.</li></ul><button class="btn-answer" onclick="toggleAnswer(94,'B')">🔍 Xem đáp án</button><div id="ans94" class="answer-display"></div></div>
-        <div class="question-card" id="q95"><div class="question-text">95. Một nghiên cứu muốn tìm hiểu các yếu tố ảnh hưởng đến "Hành vi sử dụng chất gây nghiện" (Có/Không). Các yếu tố dự kiến: Điểm trầm cảm, lo âu, áp lực bạn bè (liên tục), và Giới tính. Phân tích phù hợp nhất là?</div><ul class="options"><li>A. Tương quan Pearson.</li><li>B. Hồi quy tuyến tính đa biến.</li><li>C. Hồi quy logistic nhị phân.</li><li>D. Two-way ANOVA.</li></ul><button class="btn-answer" onclick="toggleAnswer(95,'C')">🔍 Xem đáp án</button><div id="ans95" class="answer-display"></div></div>
-        <div class="question-card" id="q96"><div class="question-text">96. Kết quả kiểm định Levene trong Independent t-test có p = 0.20. Vậy ta sẽ sử dụng kết quả ở dòng nào để báo cáo?</div><ul class="options"><li>A. Kết quả của kiểm định Student's t-test.</li><li>B. Kết quả của kiểm định Welch's t-test.</li><li>C. Cả hai đều giống nhau.</li><li>D. Kết quả của kiểm định Mann-Whitney U.</li></ul><button class="btn-answer" onclick="toggleAnswer(96,'A')">🔍 Xem đáp án</button><div id="ans96" class="answer-display"></div></div>
-        <div class="question-card" id="q97"><div class="question-text">97. Để kiểm tra độ tin cậy của một thang đo, sau khi chạy Cronbach's Alpha, bạn thấy có một item có tương quan biến-tổng (Corrected Item-Total Correlation) rất thấp và âm. Bạn nên làm gì?</div><ul class="options"><li>A. Giữ nguyên item đó vì nó vẫn quan trọng về mặt nội dung.</li><li>B. Xem xét loại bỏ item đó vì nó không đo lường cùng một khái niệm với các item khác.</li><li>C. Đảo ngược thang điểm của item đó.</li><li>D. Tăng cỡ mẫu lên gấp đôi.</li></ul><button class="btn-answer" onclick="toggleAnswer(97,'B')">🔍 Xem đáp án</button><div id="ans97" class="answer-display"></div></div>
-        <div class="question-card" id="q98"><div class="question-text">98. Một nhà nghiên cứu thực hiện nhiều kiểm định t-test liên tiếp để so sánh nhiều cặp nhóm (ví dụ: so sánh 4 nhóm với nhau). Nguy cơ tiềm ẩn của việc làm này là gì?</div><ul class="options"><li>A. Làm giảm sức mạnh thống kê.</li><li>B. Làm tăng sai lầm loại I (lỗi alpha tích lũy).</li><li>C. Không thể thực hiện được trên Jamovi.</li><li>D. Dữ liệu sẽ tự động vi phạm giả định phân phối chuẩn.</li></ul><button class="btn-answer" onclick="toggleAnswer(98,'B')">🔍 Xem đáp án</button><div id="ans98" class="answer-display"></div></div>
-        <div class="question-card" id="q99"><div class="question-text">99. Giải pháp cho vấn đề ở câu 98 là gì?</div><ul class="options"><li>A. Không có giải pháp, cứ làm bình thường.</li><li>B. Sử dụng ANOVA một chiều và kiểm định hậu nghiệm (post-hoc) có hiệu chỉnh (như Bonferroni, Tukey).</li><li>C. Giảm mức ý nghĩa alpha xuống 0.001 cho tất cả các test.</li><li>D. Chỉ so sánh hai cặp quan trọng nhất.</li></ul><button class="btn-answer" onclick="toggleAnswer(99,'B')">🔍 Xem đáp án</button><div id="ans99" class="answer-display"></div></div>
-        <div class="question-card" id="q100"><div class="question-text">100. Một nghiên cứu cho thấy mối tương quan rất cao (r = 0.9) giữa số giờ xem TV và hành vi bạo lực ở trẻ em. Kết luận nào sau đây là an toàn và chính xác nhất?</div><ul class="options"><li>A. Xem TV là nguyên nhân trực tiếp gây ra hành vi bạo lực ở trẻ em.</li><li>B. Có một mối liên hệ chặt chẽ giữa hai biến, nhưng chưa thể khẳng định mối quan hệ nhân quả.</li><li>C. Trẻ em xem TV nhiều là do bản tính bạo lực.</li><li>D. Không nên cho trẻ em xem TV.</li></ul><button class="btn-answer" onclick="toggleAnswer(100,'B')">🔍 Xem đáp án</button><div id="ans100" class="answer-display"></div></div>
-    </section>
-
-    <!-- BẢNG ĐÁP ÁN TỔNG HỢP -->
-    <div class="footer-keys">
-        <h3>📌 ĐÁP ÁN NHANH THEO TỪNG PHẦN</h3>
-        <div class="key-grid">
-            <div class="key-item">Phần 1: C C B B B / B C B A B / C A D B B / B C B C C</div>
-            <div class="key-item">Phần 2: C D B C A</div>
-            <div class="key-item">Phần 3: C A A A B / B B C B C / C A C A B / C A B</div>
-            <div class="key-item">Phần 4: B C B B B / B B C C B / B C C C / B C B C / B C</div>
-            <div class="key-item">Phần 5: B D B A B</div>
-            <div class="key-item">Phần 6: C B B B B / B B B D B / B B A D B / B B C A B / B C B B C / C B B A B</div>
-            <div class="key-item">Phần 7: B C C B C / A B B B B</div>
-        </div>
-        <p class="note">(Thứ tự đáp án theo đúng câu từ 1 đến 100, mỗi nhóm 5–25 câu)</p>
+    <!-- Bảng đáp án tổng hợp sẽ được điền bằng js -->
+    <div class="footer-keys" id="key-table">
+        <h3>📌 ĐÁP ÁN TỔNG HỢP</h3>
+        <div class="key-grid" id="keyGrid"></div>
         <hr>
-        <div class="small-note">✨ Chúc các bạn ôn tập tốt! Mọi thắc mắc vui lòng hỏi giảng viên.</div>
+        <div class="note">Click "Kiểm tra" sau khi chọn, nếu sai sẽ hiện đáp án đúng.</div>
     </div>
 </div>
 
 <script>
-    function toggleAnswer(questionId, correctAns) {
-        const answerDiv = document.getElementById('ans' + questionId);
-        if (!answerDiv) return;
-        if (answerDiv.classList.contains('show')) {
-            answerDiv.classList.remove('show');
-        } else {
-            answerDiv.innerHTML = `<span class="correct">✓ Đáp án: ${correctAns}</span> (chọn đáp án được bôi đậm)`;
-            answerDiv.classList.add('show');
+(function() {
+    // ---------- DỮ LIỆU 100 CÂU HỎI (theo đáp án từ bộ đề) ----------
+    const questions = [
+        // Phần 1: Nhập môn, thang đo & thống kê mô tả (1-20)
+        { part: 1, text: "1. Trong nghiên cứu tâm lý, biến \"Giới tính\" (Nam/Nữ) được đo lường bằng thang đo nào?", options: ["A. Thang đo khoảng (Interval)", "B. Thang đo tỷ lệ (Ratio)", "C. Thang đo danh nghĩa (Nominal)", "D. Thang đo thứ bậc (Ordinal)"], correct: "C" },
+        { part: 1, text: "2. Điểm số của một bài test trí thông minh (IQ) được cho là thuộc thang đo khoảng vì:", options: ["A. Nó có điểm 0 tuyệt đối.", "B. Có thể xếp hạng thứ tự nhưng khoảng cách giữa các điểm không bằng nhau.", "C. Khoảng cách giữa các điểm số là bằng nhau nhưng không có điểm 0 tuyệt đối.", "D. Nó chỉ dùng để phân loại đối tượng."], correct: "C" },
+        { part: 1, text: "3. Một nhà nghiên cứu muốn đo lường mức độ đồng ý của sinh viên về một phát biểu với các lựa chọn: \"Rất không đồng ý\", \"Không đồng ý\", \"Trung lập\", \"Đồng ý\", \"Rất đồng ý\". Dữ liệu thu được thuộc loại thang đo gì?", options: ["A. Danh nghĩa", "B. Thứ bậc", "C. Khoảng", "D. Tỷ lệ"], correct: "B" },
+        { part: 1, text: "4. Số liệu thống kê (statistic) và tham số (parameter) khác nhau như thế nào?", options: ["A. Thống kê được tính từ tổng thể, tham số được tính từ mẫu.", "B. Thống kê được tính từ mẫu, tham số được tính từ tổng thể.", "C. Thống kê là giá trị cố định, tham số là giá trị ước lượng.", "D. Không có gì khác nhau."], correct: "B" },
+        { part: 1, text: "5. Một nghiên cứu đo chiều cao của 100 sinh viên được chọn ngẫu nhiên từ một trường đại học và tính được chiều cao trung bình là 165 cm. \"165 cm\" ở đây được gọi là:", options: ["A. Tham số", "B. Thống kê", "C. Hằng số", "D. Giá trị lý thuyết"], correct: "B" },
+        { part: 1, text: "6. Để đo lường mức độ phân tán của dữ liệu xung quanh giá trị trung bình, người ta thường dùng chỉ số nào nhất?", options: ["A. Số trung vị", "B. Độ lệch chuẩn", "C. Số yếu vị", "D. Độ nhọn"], correct: "B" },
+        { part: 1, text: "7. Một phân phối có đuôi dài về bên phải, giá trị trung bình lớn hơn số trung vị. Đây là phân phối:", options: ["A. Đối xứng", "B. Lệch trái (Lệch âm)", "C. Lệch phải (Lệch dương)", "D. Nhọn bất thường"], correct: "C" },
+        { part: 1, text: "8. Một người có điểm Z = -2 trong bài kiểm tra trầm cảm. Điều này có nghĩa là:", options: ["A. Điểm số của họ cao hơn điểm trung bình 2 độ lệch chuẩn.", "B. Điểm số của họ thấp hơn điểm trung bình 2 độ lệch chuẩn.", "C. Họ có điểm số bằng -2.", "D. 2% người có điểm số thấp hơn họ."], correct: "B" },
+        { part: 1, text: "9. Trong phân phối chuẩn, khoảng bao nhiêu phần trăm số quan sát nằm trong khoảng từ -1 đến +1 độ lệch chuẩn so với trung bình?", options: ["A. 68%", "B. 95%", "C. 99%", "D. 50%"], correct: "A" },
+        { part: 1, text: "10. Kết quả kiểm định Shapiro-Wilk cho một biến có p = 0.02. Với mức ý nghĩa α = 0.05, ta kết luận gì?", options: ["A. Dữ liệu có phân phối chuẩn.", "B. Dữ liệu không có phân phối chuẩn.", "C. Dữ liệu có phương sai đồng nhất.", "D. Dữ liệu không có điểm dị biệt."], correct: "B" },
+        { part: 1, text: "11. Trong Jamovi, biểu đồ nào hữu ích nhất để phát hiện các điểm dị biệt (outliers)?", options: ["A. Histogram", "B. Biểu đồ thân lá", "C. Biểu đồ hộp (Boxplot)", "D. Biểu đồ thanh"], correct: "C" },
+        { part: 1, text: "12. Một bộ dữ liệu có độ lệch chuẩn bằng 0. Điều đó cho biết:", options: ["A. Tất cả các giá trị trong bộ dữ liệu đều bằng nhau.", "B. Giá trị trung bình bằng 0.", "C. Dữ liệu phân tán rất rộng.", "D. Có một nửa giá trị âm, một nửa giá trị dương."], correct: "A" },
+        { part: 1, text: "13. Độ nhọn (Kurtosis) của một phân phối chuẩn có giá trị xấp xỉ bằng bao nhiêu?", options: ["A. 0", "B. 1", "C. 2", "D. 3"], correct: "D" },
+        { part: 1, text: "14. Khi báo cáo kết quả thống kê mô tả theo APA, thông tin nào sau đây là quan trọng nhất cần được trình bày?", options: ["A. Giá trị lớn nhất và nhỏ nhất.", "B. Giá trị trung bình (M) và độ lệch chuẩn (SD).", "C. Số lượng mẫu (N) và giá trị p.", "D. Hệ số Skewness và Kurtosis."], correct: "B" },
+        { part: 1, text: "15. Một thang đo Likert 5 điểm thường được coi là thang đo khoảng trong phân tích thống kê, mặc dù về mặt lý thuyết nó là thang đo thứ bậc. Lý do chính là vì:", options: ["A. Các nhà tâm lý học không quan tâm đến lý thuyết thang đo.", "B. Khoảng cách giữa các lựa chọn được giả định là bằng nhau về mặt tâm lý và cho phép thực hiện các phép tính thống kê có ý nghĩa.", "C. Nó có điểm 0 tuyệt đối.", "D. Nó chỉ có hai giá trị."], correct: "B" },
+        { part: 1, text: "16. Khi dữ liệu bị lệch (skewed) nghiêm trọng, chỉ số nào sau đây là đại diện tốt nhất cho xu hướng tập trung?", options: ["A. Số trung bình (Mean)", "B. Số trung vị (Median)", "C. Độ lệch chuẩn", "D. Hệ số tương quan"], correct: "B" },
+        { part: 1, text: "17. Trong thống kê, mục đích chính của việc biến đổi dữ liệu (ví dụ: log, căn bậc hai) là gì?", options: ["A. Để làm cho dữ liệu trở nên phức tạp hơn.", "B. Để giảm số lượng biến trong phân tích.", "C. Để biến đổi phân phối dữ liệu về dạng gần với phân phối chuẩn hơn.", "D. Để tăng giá trị trung bình của dữ liệu."], correct: "C" },
+        { part: 1, text: "18. \"Internal Validity\" (Độ giá trị nội tại) của một nghiên cứu đề cập đến:", options: ["A. Khả năng khái quát hóa kết quả nghiên cứu ra ngoài mẫu.", "B. Mức độ mà kết quả nghiên cứu phản ánh mối quan hệ nhân quả thực sự giữa biến độc lập và biến phụ thuộc.", "C. Độ tin cậy của thang đo được sử dụng.", "D. Sự phù hợp của phương pháp phân tích thống kê."], correct: "B" },
+        { part: 1, text: "19. Gán ngẫu nhiên (random assignment) đối tượng vào các nhóm nghiên cứu giúp tăng cường:", options: ["A. External Validity", "B. Reliability", "C. Internal Validity", "D. Ecological Validity"], correct: "C" },
+        { part: 1, text: "20. Một nhà nghiên cứu muốn mô tả mối quan hệ giữa hai biến định lượng. Loại biểu đồ nào là phù hợp nhất?", options: ["A. Biểu đồ tròn", "B. Biểu đồ thanh", "C. Biểu đồ tán xạ (Scatter plot)", "D. Biểu đồ hộp"], correct: "C" },
+
+        // Phần 2: Cronbach (21-25)
+        { part: 2, text: "21. Cronbach's Alpha được sử dụng để đo lường điều gì của một thang đo?", options: ["A. Độ giá trị nội dung", "B. Độ giá trị cấu trúc", "C. Độ tin cậy nhất quán nội bộ", "D. Độ ổn định qua thời gian"], correct: "C" },
+        { part: 2, text: "22. Một thang đo có hệ số Cronbach's Alpha = 0.65. Dựa trên tài liệu, mức độ tin cậy này được đánh giá là:", options: ["A. Rất tốt", "B. Tốt", "C. Chấp nhận được", "D. Nghi ngờ/Không tốt"], correct: "D" },
+        { part: 2, text: "23. Khi thực hiện kiểm định độ tin cậy Cronbach's Alpha trong Jamovi, nếu một item có giá trị \"Cronbach's α if item dropped\" cao hơn đáng kể so với Cronbach's α hiện tại của toàn thang đo, bạn nên làm gì?", options: ["A. Giữ nguyên item đó vì nó rất quan trọng.", "B. Cân nhắc loại bỏ item đó vì nó đang làm giảm độ tin cậy chung.", "C. Tăng cỡ mẫu lên.", "D. Chuyển sang dùng thang đo khác."], correct: "B" },
+        { part: 2, text: "24. Để kiểm tra độ tin cậy của một thang đo gồm 10 item (câu hỏi) trong Jamovi, ta chọn mục nào sau đây?", options: ["A. T-Tests -> Paired T-Test", "B. ANOVA -> One-Way ANOVA", "C. Factor -> Reliability Analysis", "D. Regression -> Correlation Matrix"], correct: "C" },
+        { part: 2, text: "25. Giả sử một thang đo có hệ số Cronbach's Alpha rất thấp (< 0.5). Nguyên nhân có thể là do:", options: ["A. Các item trong thang đo không đo lường cùng một khái niệm.", "B. Số lượng người tham gia quá lớn.", "C. Điểm trung bình của thang đo quá cao.", "D. Thang đo có độ giá trị rất tốt."], correct: "A" },
+
+        // Phần 3: Suy luận & kiểm định giả thuyết (26-40)
+        { part: 3, text: "26. Giả thuyết không (H0) trong một nghiên cứu thường được phát biểu như thế nào?", options: ["A. Có sự khác biệt giữa các nhóm.", "B. Có mối quan hệ giữa các biến.", "C. Không có sự khác biệt hoặc không có mối quan hệ.", "D. Kết quả nghiên cứu sẽ thành công."], correct: "C" },
+        { part: 3, text: "27. Sai lầm loại I (Type I error) là:", options: ["A. Bác bỏ H0 khi H0 đúng.", "B. Không bác bỏ H0 khi H0 sai.", "C. Chấp nhận H1 khi H1 sai.", "D. Đặt mức ý nghĩa alpha quá thấp."], correct: "A" },
+        { part: 3, text: "28. Một nghiên cứu kết luận rằng \"thuốc có tác dụng\" trong khi thực tế thuốc không có tác dụng. Đây là ví dụ của:", options: ["A. Sai lầm loại I (α)", "B. Sai lầm loại II (β)", "C. Quyết định đúng đắn", "D. Sức mạnh thống kê (Power)"], correct: "A" },
+        { part: 3, text: "29. Trong một kiểm định giả thuyết, giá trị p (p-value) nhận được là 0.03. Với mức ý nghĩa α = 0.05, kết luận nào sau đây là đúng?", options: ["A. Bác bỏ H0, kết quả có ý nghĩa thống kê.", "B. Không bác bỏ H0, kết quả không có ý nghĩa thống kê.", "C. Chấp nhận H0.", "D. Xác suất H0 đúng là 3%."], correct: "A" },
+        { part: 3, text: "30. Một kết quả \"có ý nghĩa thống kê\" (statistically significant) có nghĩa là:", options: ["A. Kết quả rất quan trọng trong thực tiễn lâm sàng.", "B. Kết quả này khó có thể xảy ra nếu giả thuyết không (H0) là đúng.", "C. Cỡ mẫu của nghiên cứu là đủ lớn.", "D. Không có sai sót nào trong quá trình nghiên cứu."], correct: "B" },
+        { part: 3, text: "31. Khi đọc một bài báo khoa học, một nhà lâm sàng cần quan tâm nhất đến điều gì từ kết quả thống kê để đánh giá ý nghĩa thực tiễn của can thiệp?", options: ["A. Giá trị p nhỏ hơn 0.05.", "B. Kích thước hiệu ứng (effect size) và khoảng tin cậy (confidence interval).", "C. Giá trị của thống kê kiểm định (ví dụ: t, F).", "D. Bậc tự do (degree of freedom)."], correct: "B" },
+        { part: 3, text: "32. Khoảng tin cậy 95% (95% CI) cho sự khác biệt trung bình giữa hai nhóm là [1.2, 3.5]. Điều này có nghĩa là:", options: ["A. Có 95% khả năng trung bình của nhóm 1 cao hơn nhóm 2 từ 1.2 đến 3.5 đơn vị.", "B. Nếu lặp lại nghiên cứu 100 lần, 95 lần khoảng tin cậy tính được sẽ chứa giá trị chênh lệch thực sự của tổng thể.", "C. Giá trị chênh lệch thực sự chắc chắn nằm trong khoảng 1.2 và 3.5.", "D. Không có sự khác biệt giữa hai nhóm vì khoảng không chứa 0."], correct: "B" },
+        { part: 3, text: "33. Sức mạnh thống kê (Statistical Power) của một kiểm định là:", options: ["A. Xác suất bác bỏ H0 khi H0 đúng.", "B. Xác suất không bác bỏ H0 khi H0 sai.", "C. Xác suất bác bỏ H0 khi H0 sai.", "D. Xác suất không bác bỏ H0 khi H0 đúng."], correct: "C" },
+        { part: 3, text: "34. Để tăng sức mạnh thống kê cho một nghiên cứu, cách làm nào sau đây là hiệu quả và phổ biến nhất?", options: ["A. Giảm mức ý nghĩa alpha (ví dụ từ 0.05 xuống 0.01).", "B. Tăng kích thước mẫu (sample size).", "C. Sử dụng kiểm định phi tham số thay vì tham số.", "D. Giảm độ lệch chuẩn của mẫu bằng cách chọn đối tượng đồng nhất."], correct: "B" },
+        { part: 3, text: "35. Kiểm định một đuổi (one-tailed test) được sử dụng khi nào?", options: ["A. Khi nhà nghiên cứu không chắc chắn về chiều hướng của sự khác biệt.", "B. Khi nhà nghiên cứu muốn kiểm tra sự khác biệt theo cả hai hướng.", "C. Khi nhà nghiên cứu có cơ sở lý thuyết vững chắc để dự đoán chiều hướng của sự khác biệt (ví dụ: nhóm A sẽ cao hơn nhóm B).", "D. Khi cỡ mẫu nhỏ hơn 30."], correct: "C" },
+        { part: 3, text: "36. Một nghiên cứu báo cáo kết quả t-test với Cohen's d = 0.8. Theo quy ước của Cohen, đây là kích thước hiệu ứng ở mức độ nào?", options: ["A. Nhỏ", "B. Trung bình", "C. Lớn", "D. Không đáng kể"], correct: "C" },
+        { part: 3, text: "37. Theo tài liệu, một bài kiểm định được coi là có sức mạnh thống kê tốt thường cần đạt ngưỡng nào trở lên?", options: ["A. 50%", "B. 60%", "C. 80%", "D. 95%"], correct: "C" },
+        { part: 3, text: "38. Nếu chúng ta giảm mức ý nghĩa alpha từ 0.05 xuống 0.01, điều gì sẽ xảy ra với sai lầm loại I và sai lầm loại II?", options: ["A. Giảm sai lầm loại I, tăng sai lầm loại II.", "B. Tăng sai lầm loại I, giảm sai lầm loại II.", "C. Cả hai loại sai lầm đều giảm.", "D. Cả hai loại sai lầm đều tăng."], correct: "A" },
+        { part: 3, text: "39. Trong phân tích ANOVA, \"giá trị F lớn\" cho thấy điều gì?", options: ["A. Phương sai giữa các nhóm lớn hơn nhiều so với phương sai trong nội bộ nhóm.", "B. Phương sai trong nội bộ nhóm lớn hơn nhiều so với phương sai giữa các nhóm.", "C. Các nhóm có cùng giá trị trung bình.", "D. Cỡ mẫu không đủ lớn."], correct: "A" },
+        { part: 3, text: "40. Một nghiên cứu có kết quả với p = 0.04. Nhưng khi xem xét kỹ, nhà nghiên cứu thấy rằng cỡ mẫu rất lớn (N=1000) và kích thước hiệu ứng (effect size) rất nhỏ. Kết luận nào là hợp lý nhất?", options: ["A. Đây là một phát hiện rất quan trọng vì nó có ý nghĩa thống kê.", "B. Mặc dù có ý nghĩa thống kê, nhưng kết quả có thể không có ý nghĩa thực tiễn do kích thước hiệu ứng nhỏ.", "C. Chắc chắn đã có sai lầm trong quá trình tính toán.", "D. Cần phải thực hiện thêm kiểm định phi tham số."], correct: "B" },
+
+        // Phần 4: So sánh trung bình (41-60)
+        { part: 4, text: "41. Để so sánh điểm trung bình về mức độ lo âu của một nhóm bệnh nhân trước và sau khi trị liệu, kiểm định nào sau đây là phù hợp nhất?", options: ["A. Independent samples t-test", "B. Paired samples t-test", "C. One-way ANOVA", "D. Chi-square test"], correct: "B" },
+        { part: 4, text: "42. Một nghiên cứu muốn so sánh hiệu quả của hai liệu pháp tâm lý khác nhau trên hai nhóm bệnh nhân độc lập. Nhà nghiên cứu nên sử dụng kiểm định nào?", options: ["A. Paired samples t-test", "B. One-sample t-test", "C. Independent samples t-test", "D. Pearson correlation"], correct: "C" },
+        { part: 4, text: "43. Trong Independent samples t-test, nếu kết quả kiểm định Levene (Levene's test) cho p < 0.05, điều này có nghĩa là gì và cần xử lý ra sao?", options: ["A. Phương sai hai nhóm bằng nhau → sử dụng kết quả Student's t-test.", "B. Phương sai hai nhóm KHÔNG bằng nhau → sử dụng kết quả Welch's t-test.", "C. Dữ liệu không có phân phối chuẩn → sử dụng Mann-Whitney U.", "D. Có điểm dị biệt trong dữ liệu → cần loại bỏ."], correct: "B" },
+        { part: 4, text: "44. Giá trị bậc tự do (df) trong một independent samples t-test với hai nhóm có kích thước lần lượt là n1 = 25 và n2 = 25 (giả định phương sai bằng nhau) là bao nhiêu?", options: ["A. 24", "B. 48", "C. 49", "D. 50"], correct: "B" },
+        { part: 4, text: "45. ANOVA một chiều (One-way ANOVA) được sử dụng để:", options: ["A. So sánh trung bình của hai nhóm.", "B. So sánh trung bình của ba nhóm trở lên trên một biến độc lập.", "C. So sánh phương sai của hai nhóm.", "D. Phân tích mối quan hệ giữa hai biến định tính."], correct: "B" },
+        { part: 4, text: "46. Kết quả một One-way ANOVA cho thấy F(2, 45) = 5.12, p = 0.009. Với α = 0.05, kết luận nào sau đây là đúng?", options: ["A. Không có sự khác biệt nào giữa các nhóm.", "B. Có sự khác biệt có ý nghĩa thống kê giữa ít nhất hai nhóm.", "C. Tất cả các nhóm đều khác biệt nhau.", "D. Nhóm 1 khác nhóm 2, nhưng không khác nhóm 3."], correct: "B" },
+        { part: 4, text: "47. Sau khi có kết quả ANOVA một chiều có ý nghĩa, bước tiếp theo cần làm là gì?", options: ["A. Kết luận ngay rằng các nhóm khác nhau.", "B. Thực hiện phân tích hậu nghiệm (Post-hoc test) để xác định cặp nhóm nào khác nhau.", "C. Chạy lại t-test cho từng cặp nhóm mà không cần hiệu chỉnh.", "D. Báo cáo kết quả là đã hoàn tất."], correct: "B" },
+        { part: 4, text: "48. Nếu giả định phương sai đồng nhất (homogeneity of variance) trong One-way ANOVA bị vi phạm, kiểm định hậu nghiệm nào sau đây là phù hợp?", options: ["A. Tukey's HSD", "B. Bonferroni", "C. Games-Howell", "D. Scheffé"], correct: "C" },
+        { part: 4, text: "49. Kiểm định Mauchly's Test of Sphericity được sử dụng trong loại ANOVA nào?", options: ["A. One-way Independent ANOVA", "B. Two-way Independent ANOVA", "C. One-way Repeated Measures ANOVA", "D. Tất cả các loại ANOVA"], correct: "C" },
+        { part: 4, text: "50. Khi Mauchly's Test có p < 0.05, điều đó cho thấy giả định về tính tròn (sphericity) bị vi phạm. Giải pháp thường được sử dụng trong Jamovi là:", options: ["A. Sử dụng kết quả của kiểm định Tukey.", "B. Sử dụng hiệu chỉnh Greenhouse-Geisser hoặc Huynh-Feldt.", "C. Chuyển sang làm Independent t-test.", "D. Bỏ qua vì ANOVA rất mạnh với vi phạm này."], correct: "B" },
+        { part: 4, text: "51. Trong Two-way ANOVA, \"hiệu ứng tương tác\" (interaction effect) có nghĩa là:", options: ["A. Cả hai biến độc lập đều có tác động riêng rẽ lên biến phụ thuộc.", "B. Tác động của một biến độc lập lên biến phụ thuộc thay đổi tùy theo mức độ của biến độc lập kia.", "C. Hai biến độc lập có tương quan với nhau.", "D. Các nhóm trong thí nghiệm có kích thước bằng nhau."], correct: "B" },
+        { part: 4, text: "52. Một nghiên cứu 2x2 (giới tính: Nam, Nữ và loại trị liệu: CBT, Trị liệu thông thường) về hiệu quả giảm lo âu. Kết quả cho thấy hiệu ứng tương tác có ý nghĩa (p < 0.05). Điều này có thể được hiểu là:", options: ["A. Nam giới đáp ứng với cả hai loại trị liệu như nhau, nữ giới cũng vậy.", "B. CBT tốt hơn trị liệu thông thường cho cả nam và nữ.", "C. Sự khác biệt về hiệu quả giữa CBT và trị liệu thông thường là không giống nhau ở nam và nữ.", "D. Cần xem xét hiệu ứng chính của giới tính và loại trị liệu, bỏ qua hiệu ứng tương tác."], correct: "C" },
+        { part: 4, text: "53. Một nghiên cứu sử dụng Mixed ANOVA (một yếu tố giữa nhóm, một yếu tố lặp). Giả thuyết chính của nghiên cứu là \"sự thay đổi theo thời gian là khác nhau giữa các nhóm\". Thành phần nào trong kết quả là quan trọng nhất để kiểm tra giả thuyết này?", options: ["A. Main effect của yếu tố thời gian.", "B. Main effect của yếu tố nhóm.", "C. Interaction effect giữa thời gian và nhóm.", "D. Kết quả kiểm định Levene."], correct: "C" },
+        { part: 4, text: "54. Điểm khác biệt cơ bản giữa One-way Independent ANOVA và One-way Repeated Measures ANOVA là gì?", options: ["A. Số lượng biến phụ thuộc.", "B. Số lượng biến độc lập.", "C. Mối quan hệ giữa các đối tượng tham gia ở các nhóm/mức điểm khác nhau (độc lập vs. cùng một nhóm).", "D. Yêu cầu về phân phối chuẩn."], correct: "C" },
+        { part: 4, text: "55. Trong Jamovi, để thực hiện phân tích Two-way Mixed ANOVA, ta chọn mục nào?", options: ["A. T-Tests -> Independent Samples T-Test", "B. ANOVA -> One-Way ANOVA", "C. ANOVA -> Repeated Measures ANOVA (và gán biến giữa nhóm vào ô Between Subjects Factors)", "D. Regression -> Linear Regression"], correct: "C" },
+        { part: 4, text: "56. Xem xét tình huống: Nghiên cứu đánh giá 3 phương pháp giảng dạy (PP A, B, C) lên điểm số của sinh viên. Điểm số được đo ở 3 thời điểm (đầu kỳ, giữa kỳ, cuối kỳ). Nhà nghiên cứu muốn biết phương pháp nào giúp sinh viên tiến bộ nhanh nhất theo thời gian. Phân tích thống kê nào là phù hợp nhất?", options: ["A. Independent t-test cho từng thời điểm.", "B. One-way ANOVA cho từng thời điểm.", "C. Two-way Mixed ANOVA với PP là yếu tố giữa nhóm, Thời gian là yếu tố lặp.", "D. Repeated Measures ANOVA cho từng nhóm riêng lẻ."], correct: "C" },
+        { part: 4, text: "57. Kiểm định phi tham số tương đương với Independent Samples t-test là:", options: ["A. Wilcoxon Signed-Rank Test", "B. Mann-Whitney U Test", "C. Friedman Test", "D. Kruskal-Wallis Test"], correct: "B" },
+        { part: 4, text: "58. Kiểm định phi tham số tương đương với Paired Samples t-test là:", options: ["A. Wilcoxon Signed-Rank Test", "B. Mann-Whitney U Test", "C. Kruskal-Wallis Test", "D. Chi-square Test"], correct: "A" },
+        { part: 4, text: "59. Kiểm định phi tham số tương đương với One-way Independent ANOVA là:", options: ["A. Friedman Test", "B. Mann-Whitney U Test", "C. Kruskal-Wallis Test", "D. Wilcoxon Signed-Rank Test"], correct: "C" },
+        { part: 4, text: "60. Một nhà nghiên cứu muốn so sánh mức độ hài lòng (thang đo Likert 5 điểm, dạng thứ bậc) của sinh viên đối với ba phương pháp học khác nhau (các nhóm độc lập). Kiểm định thống kê nào là phù hợp nhất?", options: ["A. One-way ANOVA", "B. Kruskal-Wallis Test", "C. Repeated Measures ANOVA", "D. Friedman Test"], correct: "B" },
+
+        // Phần 5: Chi‑square (61-65)
+        { part: 5, text: "61. Kiểm định Chi-square (χ²) được sử dụng cho loại dữ liệu nào?", options: ["A. Dữ liệu định lượng (khoảng/tỷ lệ).", "B. Dữ liệu định tính (danh nghĩa/thứ bậc).", "C. Dữ liệu chuỗi thời gian.", "D. Dữ liệu từ các phép đo lặp."], correct: "B" },
+        { part: 5, text: "62. Một nghiên cứu muốn tìm hiểu xem có mối liên hệ giữa giới tính (Nam, Nữ) và tình trạng hút thuốc (Hút, Không hút) hay không. Kiểm định nào phù hợp?", options: ["A. Independent t-test", "B. Paired t-test", "C. Pearson correlation", "D. Chi-square test of independence"], correct: "D" },
+        { part: 5, text: "63. Khi thực hiện kiểm định Chi-square, một trong những điều kiện quan trọng để kết quả đáng tin cậy là:", options: ["A. Cỡ mẫu phải lớn hơn 100.", "B. Tần số kỳ vọng (expected count) trong mỗi ô của bảng chéo tối thiểu phải là 5.", "C. Dữ liệu phải có phân phối chuẩn.", "D. Phương sai các nhóm phải đồng nhất."], correct: "B" },
+        { part: 5, text: "64. Một bảng chéo 2x2 cho kết quả Chi-square với p = 0.03. Với α = 0.05, kết luận nào đúng?", options: ["A. Có mối liên hệ có ý nghĩa thống kê giữa hai biến định tính.", "B. Không có mối liên hệ giữa hai biến.", "C. Giá trị trung bình của hai nhóm là khác nhau.", "D. Cần thực hiện kiểm định t-test để kiểm tra lại."], correct: "A" },
+        { part: 5, text: "65. \"Kiểm định sự phù hợp\" (Goodness of fit test) của Chi-square dùng để:", options: ["A. Kiểm tra mối liên hệ giữa hai biến.", "B. So sánh tỷ lệ quan sát được của một biến với tỷ lệ kỳ vọng về mặt lý thuyết.", "C. So sánh trung bình của một mẫu với một giá trị chuẩn.", "D. Kiểm tra phân phối chuẩn của dữ liệu."], correct: "B" },
+
+        // Phần 6: Tương quan & Hồi quy (66-90)
+        { part: 6, text: "66. Hệ số tương quan Pearson (r) đo lường:", options: ["A. Mối quan hệ nhân quả giữa hai biến.", "B. Sự khác biệt trung bình giữa hai nhóm.", "C. Cường độ và chiều hướng của mối quan hệ tuyến tính giữa hai biến định lượng.", "D. Tỷ lệ phần trăm giữa các nhóm."], correct: "C" },
+        { part: 6, text: "67. Hệ số tương quan r = -0.85 cho biết điều gì?", options: ["A. Mối tương quan thuận rất mạnh.", "B. Mối tương quan nghịch rất mạnh.", "C. Mối tương quan thuận yếu.", "D. Mối tương quan nghịch yếu."], correct: "B" },
+        { part: 6, text: "68. Hệ số xác định R² (r²) có ý nghĩa là:", options: ["A. Độ dốc của đường hồi quy.", "B. Tỷ lệ phần trăm phương sai của biến này được giải thích bởi biến kia.", "C. Sai số chuẩn của ước lượng.", "D. Giá trị trung bình của tích hai biến."], correct: "B" },
+        { part: 6, text: "69. Nếu ta biết r = 0.6 giữa thời gian ôn tập và điểm thi, thì bao nhiêu phần trăm phương sai của điểm thi được giải thích bởi thời gian ôn tập?", options: ["A. 60%", "B. 36%", "C. 40%", "D. 6%"], correct: "B" },
+        { part: 6, text: "70. Khi kiểm tra mối tương quan trên biểu đồ tán xạ (scatter plot), các điểm tạo thành một đường thẳng đi xuống từ trái sang phải. Đó là dấu hiệu của:", options: ["A. Tương quan thuận mạnh.", "B. Tương quan nghịch mạnh.", "C. Không tương quan.", "D. Tương quan phi tuyến."], correct: "B" },
+        { part: 6, text: "71. Khi nào nên sử dụng hệ số tương quan Spearman thay vì Pearson?", options: ["A. Khi cả hai biến đều là định lượng và có phân phối chuẩn.", "B. Khi một hoặc cả hai biến là thang đo thứ bậc, hoặc khi mối quan hệ là đơn điệu nhưng không tuyến tính.", "C. Khi muốn so sánh trung bình của hai nhóm.", "D. Khi muốn kiểm tra mối liên hệ giữa hai biến định tính."], correct: "B" },
+        { part: 6, text: "72. Mục đích chính của phân tích hồi quy tuyến tính là:", options: ["A. Đo lường mức độ chặt chẽ của mối quan hệ giữa hai biến.", "B. Dự đoán giá trị của một biến (phụ thuộc) dựa trên giá trị của một hoặc nhiều biến khác (độc lập).", "C. So sánh trung bình nhiều nhóm.", "D. Phân tích cấu trúc tiềm ẩn của một thang đo."], correct: "B" },
+        { part: 6, text: "73. Trong phương trình hồi quy tuyến tính đơn giản Y = a + bX, hệ số b (slope) cho biết:", options: ["A. Giá trị của Y khi X = 0.", "B. Khi X tăng lên 1 đơn vị thì Y thay đổi trung bình b đơn vị.", "C. Mức độ phù hợp của mô hình.", "D. Tương quan giữa X và Y."], correct: "B" },
+        { part: 6, text: "74. Một nghiên cứu hồi quy cho thấy điểm trung bình môn Thống kê có thể được dự đoán từ điểm lo âu với phương trình: `Điểm thi = 8.5 - 0.3 * (Điểm lo âu)`. Điều này có nghĩa là:", options: ["A. Sinh viên có điểm lo âu càng cao thì điểm thi càng cao.", "B. Sinh viên có điểm lo âu bằng 0 thì điểm thi là 8.5.", "C. Khi điểm lo âu tăng 1 điểm, điểm thi dự đoán sẽ giảm 0.3 điểm.", "D. Cả B và C đều đúng."], correct: "D" },
+        { part: 6, text: "75. Trong hồi quy đa biến, nếu một biến độc lập có chỉ số VIF (Variance Inflation Factor) lớn hơn 10, điều này cho thấy vấn đề gì?", options: ["A. Biến này không có ý nghĩa trong mô hình.", "B. Có hiện tượng đa cộng tuyến (multicollinearity) nghiêm trọng.", "C. Phần dư của mô hình không có phân phối chuẩn.", "D. Mô hình có hiện tượng phương sai thay đổi (heteroscedasticity)."], correct: "B" },
+        { part: 6, text: "76. Giả định nào sau đây KHÔNG phải là giả định của hồi quy tuyến tính?", options: ["A. Mối quan hệ tuyến tính (Linearity) giữa biến độc lập và biến phụ thuộc.", "B. Phần dư có phân phối chuẩn (Normality of residuals).", "C. Phương sai của phần dư không đổi (Homoscedasticity).", "D. Các biến độc lập phải có tương quan chặt chẽ với nhau (High correlation among predictors)."], correct: "D" },
+        { part: 6, text: "77. Kiểm định Durbin-Watson được sử dụng trong hồi quy để kiểm tra giả định gì?", options: ["A. Đa cộng tuyến.", "B. Tính độc lập của phần dư (tự tương quan).", "C. Phân phối chuẩn của phần dư.", "D. Tính tuyến tính."], correct: "B" },
+        { part: 6, text: "78. Để kiểm tra giả định phần dư có phân phối chuẩn trong hồi quy trên Jamovi, ta có thể sử dụng:", options: ["A. Kiểm định Levene.", "B. Biểu đồ Residuals Plots kết hợp với kiểm định Shapiro-Wilk trên phần dư.", "C. Kiểm định Mauchly.", "D. Chỉ số VIF."], correct: "B" },
+        { part: 6, text: "79. Trong hồi quy đa biến, hệ số hồi quy chuẩn hóa (Standardized coefficients - Beta) cho phép chúng ta:", options: ["A. So sánh trực tiếp mức độ ảnh hưởng của các biến độc lập có đơn vị đo khác nhau lên biến phụ thuộc.", "B. Tính toán giá trị dự đoán chính xác hơn.", "C. Loại bỏ các biến không quan trọng.", "D. Xác định ý nghĩa thống kê của từng hệ số."], correct: "A" },
+        { part: 6, text: "80. Một mô hình hồi quy với R² hiệu chỉnh (Adjusted R²) = 0.45 có nghĩa là:", options: ["A. Mô hình dự đoán đúng 45% các trường hợp.", "B. Các biến độc lập trong mô hình giải thích được 45% sự biến thiên của biến phụ thuộc, sau khi đã hiệu chỉnh cho số lượng biến và cỡ mẫu.", "C. 45% phương sai của biến phụ thuộc không được giải thích.", "D. Mô hình này kém phù hợp hơn mô hình có R² hiệu chỉnh = 0.50."], correct: "B" },
+        { part: 6, text: "81. Nếu đồ thị phân tán của phần dư (residuals) và giá trị dự đoán (predicted values) có dạng hình phễu (loe ra khi giá trị dự đoán tăng lên), điều này cho thấy vi phạm giả định nào?", options: ["A. Tính tuyến tính", "B. Phương sai không đổi (Homoscedasticity)", "C. Phân phối chuẩn của phần dư", "D. Độc lập của phần dư"], correct: "B" },
+        { part: 6, text: "82. Hồi quy logistic được sử dụng khi:", options: ["A. Biến phụ thuộc là biến định lượng.", "B. Biến phụ thuộc là biến phân loại (ví dụ: nhị phân, thứ bậc).", "C. Mối quan hệ giữa các biến là phi tuyến.", "D. Có hiện tượng đa cộng tuyến."], correct: "B" },
+        { part: 6, text: "83. Sự khác biệt chính giữa hồi quy tuyến tính (OLS) và hồi quy logistic là gì?", options: ["A. OLS dùng cho biến phụ thuộc liên tục, logistic dùng cho biến phụ thuộc phân loại.", "B. OLS dùng phương pháp bình phương tối thiểu, logistic dùng phương pháp hợp lý tối đa (Maximum Likelihood).", "C. Cả A và B đều đúng.", "D. OLS dễ thực hiện hơn trên Jamovi."], correct: "C" },
+        { part: 6, text: "84. Trong hồi quy, nếu ta có một biến độc lập là biến định danh có 3 nhóm (ví dụ: \"Phương pháp trị liệu A, B, C\"), để đưa vào mô hình hồi quy, ta cần:", options: ["A. Sử dụng trực tiếp biến đó với 3 giá trị 1, 2, 3.", "B. Tạo ra hai biến giả (dummy variables).", "C. Bỏ qua biến đó vì không thể dùng trong hồi quy.", "D. Chuyển nó thành biến liên tục."], correct: "B" },
+        { part: 6, text: "85. Một nhà nghiên cứu xây dựng mô hình hồi quy gồm 5 biến độc lập. Kết quả cho thấy mô hình tổng thể có ý nghĩa (p < 0.05) nhưng không có biến độc lập riêng lẻ nào có ý nghĩa (p > 0.05). Hiện tượng này có thể là dấu hiệu của:", options: ["A. Phương sai thay đổi.", "B. Đa cộng tuyến.", "C. Thiếu biến quan trọng.", "D. Cỡ mẫu quá nhỏ."], correct: "B" },
+        { part: 6, text: "86. Trong hồi quy đa biến trên Jamovi, để kiểm tra giả định đa cộng tuyến, ta cần tick chọn ô nào?", options: ["A. Normality test", "B. Homogeneity test", "C. Collinearity statistics", "D. Durbin-Watson"], correct: "C" },
+        { part: 6, text: "87. Một nghiên cứu muốn dự đoán điểm số \"Hài lòng với cuộc sống\" dựa trên 3 biến: Thu nhập, Số năm đi học, và Điểm lạc quan. Loại phân tích nào là phù hợp?", options: ["A. Tương quan Pearson.", "B. Hồi quy tuyến tính đa biến.", "C. Independent t-test.", "D. Chi-square."], correct: "B" },
+        { part: 6, text: "88. Chỉ số nào đánh giá mức độ phù hợp tổng quát của mô hình hồi quy, cho biết tỷ lệ phần trăm biến thiên của biến phụ thuộc được giải thích bởi các biến độc lập?", options: ["A. Hệ số Beta", "B. Hệ số B (unstandardized)", "C. R² (R bình phương)", "D. Giá trị F"], correct: "C" },
+        { part: 6, text: "89. Một kết quả hồi quy cho biết biến \"Lo âu\" có hệ số Beta = 0.45 và p = 0.001, biến \"Tự tin\" có hệ số Beta = 0.20 và p = 0.04. Có thể kết luận rằng:", options: ["A. \"Lo âu\" có ảnh hưởng mạnh hơn \"Tự tin\" lên biến phụ thuộc.", "B. \"Tự tin\" không có ảnh hưởng thực sự lên biến phụ thuộc.", "C. \"Lo âu\" và \"Tự tin\" không thể cùng nằm trong một mô hình.", "D. Cả hai biến đều không quan trọng."], correct: "A" },
+        { part: 6, text: "90. Mô hình hồi quy có R² = 0.8 nhưng chỉ số VIF của một biến lên tới 15. Nhận định nào sau đây là đúng nhất?", options: ["A. Đây là một mô hình rất tốt vì R² cao.", "B. Mặc dù R² cao, mô hình có vấn đề về đa cộng tuyến nghiêm trọng, khiến các ước lượng hệ số không đáng tin cậy.", "C. Cần loại bỏ ngay lập tức biến có VIF cao, bất kể nó quan trọng thế nào.", "D. Không có vấn đề gì vì VIF không ảnh hưởng đến R²."], correct: "B" },
+
+        // Phần 7: Tình huống tổng hợp (91-100)
+        { part: 7, text: "91. Một nghiên cứu kiểm tra hiệu quả của một liệu pháp mới giảm trầm cảm. 60 bệnh nhân được chia ngẫu nhiên vào 2 nhóm: nhóm trị liệu và nhóm đối chứng. Mức độ trầm cảm được đo ở 4 thời điểm: trước, sau 1,3,6 tháng. Để kiểm tra liệu pháp có hiệu quả theo thời gian hay không và hiệu quả có khác nhau giữa hai nhóm, phân tích phù hợp nhất là:", options: ["A. Independent t-test từng thời điểm.", "B. Two-way Mixed ANOVA với Nhóm (giữa nhóm) và Thời gian (lặp).", "C. Repeated Measures ANOVA trên từng nhóm riêng biệt.", "D. Pearson correlation giữa điểm trầm cảm và thời gian."], correct: "B" },
+        { part: 7, text: "92. Giả sử kết quả phân tích ở câu 91 cho thấy hiệu ứng tương tác (Nhóm * Thời gian) có p = 0.001 và biểu đồ cho thấy nhóm trị liệu giảm mạnh sau 3 tháng trong khi nhóm đối chứng gần như không đổi. Kết luận nào chính xác nhất?", options: ["A. Có sự khác biệt về điểm trầm cảm giữa các thời điểm.", "B. Liệu pháp có hiệu quả.", "C. Tác động của liệu pháp thay đổi theo thời gian và sự thay đổi này khác biệt có ý nghĩa so với nhóm đối chứng. Cụ thể, liệu pháp giúp giảm trầm cảm rõ rệt sau 3 tháng.", "D. Cần xem xét hiệu ứng chính của \"Nhóm\" vì nó quan trọng hơn."], correct: "C" },
+        { part: 7, text: "93. Một bài báo cáo: \"Điểm hài lòng với cuộc sống của nhóm can thiệp (M = 7.5, SD = 1.2) cao hơn có ý nghĩa so với nhóm đối chứng (M = 6.8, SD = 1.5), t(78) = 2.45, p = 0.016, Cohen's d = 0.55.\" Con số \"78\" trong t(78) là gì?", options: ["A. Cỡ mẫu của nghiên cứu.", "B. Giá trị của thống kê t.", "C. Bậc tự do (degrees of freedom).", "D. Số lượng nhóm."], correct: "C" },
+        { part: 7, text: "94. Trong cùng báo cáo trên (câu 93), chỉ số Cohen's d = 0.55 cho biết điều gì?", options: ["A. Xác suất xảy ra sai lầm loại I là 55%.", "B. Kích thước hiệu ứng (effect size) ở mức trung bình.", "C. Nhóm can thiệp có điểm số cao hơn 0.55 điểm.", "D. Mức độ tương quan giữa hai nhóm."], correct: "B" },
+        { part: 7, text: "95. Một nghiên cứu muốn tìm hiểu các yếu tố ảnh hưởng đến \"Hành vi sử dụng chất gây nghiện\" (Có/Không). Các yếu tố dự kiến: Điểm trầm cảm, lo âu, áp lực bạn bè (liên tục), và Giới tính. Phân tích phù hợp nhất là?", options: ["A. Tương quan Pearson.", "B. Hồi quy tuyến tính đa biến.", "C. Hồi quy logistic nhị phân.", "D. Two-way ANOVA."], correct: "C" },
+        { part: 7, text: "96. Kết quả kiểm định Levene trong Independent t-test có p = 0.20. Vậy ta sẽ sử dụng kết quả ở dòng nào để báo cáo?", options: ["A. Kết quả của kiểm định Student's t-test.", "B. Kết quả của kiểm định Welch's t-test.", "C. Cả hai đều giống nhau.", "D. Kết quả của kiểm định Mann-Whitney U."], correct: "A" },
+        { part: 7, text: "97. Để kiểm tra độ tin cậy của một thang đo, sau khi chạy Cronbach's Alpha, bạn thấy có một item có tương quan biến-tổng (Corrected Item-Total Correlation) rất thấp và âm. Bạn nên làm gì?", options: ["A. Giữ nguyên item đó vì nó vẫn quan trọng về mặt nội dung.", "B. Xem xét loại bỏ item đó vì nó không đo lường cùng một khái niệm với các item khác.", "C. Đảo ngược thang điểm của item đó.", "D. Tăng cỡ mẫu lên gấp đôi."], correct: "B" },
+        { part: 7, text: "98. Một nhà nghiên cứu thực hiện nhiều kiểm định t-test liên tiếp để so sánh nhiều cặp nhóm (ví dụ: so sánh 4 nhóm với nhau). Nguy cơ tiềm ẩn của việc làm này là gì?", options: ["A. Làm giảm sức mạnh thống kê.", "B. Làm tăng sai lầm loại I (lỗi alpha tích lũy).", "C. Không thể thực hiện được trên Jamovi.", "D. Dữ liệu sẽ tự động vi phạm giả định phân phối chuẩn."], correct: "B" },
+        { part: 7, text: "99. Giải pháp cho vấn đề ở câu 98 là gì?", options: ["A. Không có giải pháp, cứ làm bình thường.", "B. Sử dụng ANOVA một chiều và kiểm định hậu nghiệm (post-hoc) có hiệu chỉnh (như Bonferroni, Tukey).", "C. Giảm mức ý nghĩa alpha xuống 0.001 cho tất cả các test.", "D. Chỉ so sánh hai cặp quan trọng nhất."], correct: "B" },
+        { part: 7, text: "100. Một nghiên cứu cho thấy mối tương quan rất cao (r = 0.9) giữa số giờ xem TV và hành vi bạo lực ở trẻ em. Kết luận nào sau đây là an toàn và chính xác nhất?", options: ["A. Xem TV là nguyên nhân trực tiếp gây ra hành vi bạo lực ở trẻ em.", "B. Có một mối liên hệ chặt chẽ giữa hai biến, nhưng chưa thể khẳng định mối quan hệ nhân quả.", "C. Trẻ em xem TV nhiều là do bản tính bạo lực.", "D. Không nên cho trẻ em xem TV."], correct: "B" }
+    ];
+
+    // render từng phần
+    const contentDiv = document.getElementById('content');
+    let currentPart = 0;
+    let html = '';
+    for (let i = 0; i < questions.length; i++) {
+        const q = questions[i];
+        if (q.part !== currentPart) {
+            if (currentPart !== 0) html += '</div>'; // đóng part cũ
+            currentPart = q.part;
+            html += `<div class="part"><h2><span>${currentPart}</span> ${tenPhan(currentPart)}</h2>`;
         }
+        html += `
+        <div class="question-card" id="cau${i}">
+            <div class="q-text">${q.text}</div>
+            <div class="options">
+                <div class="option-item"><input type="radio" name="q${i}" value="A" id="q${i}a"><label for="q${i}a">${q.options[0]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="B" id="q${i}b"><label for="q${i}b">${q.options[1]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="C" id="q${i}c"><label for="q${i}c">${q.options[2]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="D" id="q${i}d"><label for="q${i}d">${q.options[3]}</label></div>
+            </div>
+            <button class="check-btn" onclick="kiemTra(${i}, '${q.correct}')">🔍 Kiểm tra</button>
+            <div id="fb${i}" class="feedback"></div>
+        </div>
+        `;
     }
+    html += '</div>'; // đóng part cuối
+    contentDiv.innerHTML = html;
+
+    // Hàm kiểm tra
+    window.kiemTra = function(index, correct) {
+        const radios = document.getElementsByName('q' + index);
+        let selected = null;
+        for (let r of radios) if (r.checked) { selected = r.value; break; }
+        const fb = document.getElementById('fb' + index);
+        if (!selected) {
+            fb.className = 'feedback incorrect';
+            fb.innerText = '⚠️ Bạn chưa chọn đáp án!';
+            return;
+        }
+        if (selected === correct) {
+            fb.className = 'feedback correct';
+            fb.innerText = '✅ Chính xác! Đáp án ' + correct + ' đúng.';
+        } else {
+            fb.className = 'feedback incorrect';
+            fb.innerText = '❌ Sai. Đáp án đúng là ' + correct + '.';
+        }
+    };
+
+    // Bảng đáp án tổng hợp (dạng chuỗi các phần)
+    const keyGrid = document.getElementById('keyGrid');
+    const partKeys = [
+        "Phần 1 (1-20): C,C,B,B,B, B,C,B,A,B, C,A,D,B,B, B,C,B,C,C",
+        "Phần 2 (21-25): C,D,B,C,A",
+        "Phần 3 (26-40): C,A,A,A,B, B,B,C,B,C, C,A,C,A,B",
+        "Phần 4 (41-60): B,C,B,B,B, B,B,C,C,B, B,C,C,C,C, B,A,C,B",
+        "Phần 5 (61-65): B,D,B,A,B",
+        "Phần 6 (66-90): C,B,B,B,B, B,B,B,D,B, B,B,A,D,B, B,C,A,B,B, B,C,C,B,B",
+        "Phần 7 (91-100): B,C,C,B,C, A,B,B,B,B"
+    ];
+    partKeys.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'key-item';
+        div.textContent = p;
+        keyGrid.appendChild(div);
+    });
+
+    function tenPhan(p) {
+        const map = {1:"Nhập môn, thang đo & mô tả (1-20)", 2:"Độ tin cậy Cronbach (21-25)", 3:"Suy luận & kiểm định giả thuyết (26-40)", 4:"So sánh trung bình (41-60)", 5:"Chi‑square (61-65)", 6:"Tương quan & Hồi quy (66-90)", 7:"Tình huống tổng hợp (91-100)"};
+        return map[p] || '';
+    }
+})();
 </script>
 </body>
 </html>
