@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100 câu trắc nghiệm - Style đề thi Thống kê Tâm lý học</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            background: #e9f0f5;
+            padding: 30px 20px;
+            color: #1e2f40;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 45px -15px #0c273b;
+            padding: 40px 45px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 650;
+            background: linear-gradient(145deg, #0a405f, #1f679b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-left: 8px solid #2670b0;
+            padding-left: 30px;
+            margin-bottom: 8px;
+        }
+        .subhead {
+            color: #385f7a;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            padding-left: 38px;
+            font-style: italic;
+        }
+        .part {
+            background: #f6fafd;
+            border-radius: 30px;
+            padding: 25px 30px;
+            margin-top: 40px;
+            border: 1px solid #d0e2f0;
+            box-shadow: inset 0 2px 5px #ffffff, 0 12px 18px -16px #6689a8;
+        }
+        .part h2 {
+            font-size: 2rem;
+            color: #104267;
+            border-bottom: 3px dashed #b0cee9;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .part h2 span {
+            background: #1b6191;
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        .question-card {
+            background: white;
+            border-radius: 24px;
+            padding: 22px 28px;
+            margin-bottom: 25px;
+            border: 1px solid #d1e4f2;
+            box-shadow: 0 5px 12px rgba(0, 48, 84, 0.05);
+            transition: 0.15s;
+        }
+        .question-card:hover {
+            border-color: #7fb3da;
+            box-shadow: 0 10px 20px -10px #3270a8;
+        }
+        .q-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
+            color: #103c5b;
+            line-height: 1.5;
+        }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 35px;
+            margin: 12px 0 20px;
+        }
+        .option-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #ecf3f9;
+            padding: 8px 25px;
+            border-radius: 50px;
+            border: 1px solid #bcd2ea;
+        }
+        .option-item input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #1f6eaf;
+            margin-right: 6px;
+        }
+        .option-item label {
+            font-weight: 500;
+            color: #133e5c;
+            font-size: 1rem;
+        }
+        .check-btn {
+            background: #1f6eaf;
+            color: white;
+            border: none;
+            padding: 10px 35px;
+            border-radius: 60px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+            box-shadow: 0 8px 16px -8px #1f6eaf;
+            font-size: 0.95rem;
+        }
+        .check-btn:hover {
+            background: #0e4d81;
+            transform: scale(1.02);
+        }
+        .feedback {
+            margin-top: 18px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            display: none;
+        }
+        .feedback.correct {
+            background: #dcf5e8;
+            color: #0c7349;
+            border-left: 8px solid #0f9f68;
+            display: block;
+        }
+        .feedback.incorrect {
+            background: #ffe9e5;
+            color: #b13b28;
+            border-left: 8px solid #c94731;
+            display: block;
+        }
+        .footer-keys {
+            background: #1d3348;
+            color: white;
+            border-radius: 32px;
+            padding: 28px 30px;
+            margin-top: 50px;
+        }
+        .footer-keys h3 {
+            color: #c7e1ff;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .key-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .key-item {
+            background: #2d4560;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-family: 'Courier New', monospace;
+            border: 1px solid #6c8fb0;
+            color: #def0ff;
+        }
+        hr {
+            border: 1px solid #4e7192;
+            margin: 25px 0;
+        }
+        .note {
+            color: #c0daff;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📘 100 CÂU TRẮC NGHIỆM</h1>
+    <div class="subhead">Style bám sát 20 câu thi thử • Tình huống thực tế • Suy luận & phân tích</div>
+
+    <div id="content"></div>
+
+    <div class="footer-keys">
+        <h3>📌 ĐÁP ÁN TỔNG HỢP (theo đúng thứ tự 100 câu)</h3>
+        <div class="key-grid" id="keyGrid"></div>
+        <hr>
+        <div class="note">✅ Chọn đáp án → nhấn "Kiểm tra" → hiện ngay kết quả đúng/sai.</div>
+    </div>
+</div>
+
+<script>
+(function() {
+    // ----- 100 CÂU HỎI STYLE TÌNH HUỐNG (bám sát 20 câu thi thử) -----
+    const questions = [
+        // Phần 1: Nhập môn & Sai lầm (1-10)
+        { part:1, text:"1. Một nghiên cứu kiểm tra hiệu quả của một liệu pháp tâm lý mới. Nhà nghiên cứu đặt giả thuyết không (H0) là liệu pháp không có hiệu quả. Sau khi phân tích, ông ta bác bỏ H0 và kết luận liệu pháp có hiệu quả. Trên thực tế, liệu pháp không hề có tác dụng. Đây là ví dụ về loại sai lầm gì?", options:["A. Không có sai lầm, kết luận đúng.","B. Sai lầm loại I (α).","C. Sai lầm loại II (β).","D. Sai lầm do cỡ mẫu quá nhỏ."], correct:"B" },
+        { part:1, text:"2. Một bài báo cáo kết quả nghiên cứu cho biết: 'Điểm trung bình về trầm cảm của nhóm trị liệu (M = 10.2, SD = 2.5) thấp hơn có ý nghĩa so với nhóm đối chứng (M = 12.8, SD = 2.9) với t(58) = 3.21, p = 0.002, Cohen's d = 0.85.' Dựa vào thông tin trên, kích thước hiệu ứng (effect size) của nghiên cứu này được đánh giá là:", options:["A. Nhỏ (small).","B. Trung bình (medium).","C. Lớn (large).","D. Không đáng kể."], correct:"C" },
+        { part:1, text:"3. Một nhà nghiên cứu thực hiện kiểm định giả thuyết với mức ý nghĩa α = 0.05. Sau khi thu thập dữ liệu, anh ta tính được giá trị p = 0.07. Quyết định đúng đắn nhất của nhà nghiên cứu là:", options:["A. Bác bỏ H0 vì p cũng khá nhỏ.","B. Không bác bỏ H0, kết luận chưa có đủ bằng chứng thống kê để bác bỏ H0.","C. Chấp nhận H0, tức là khẳng định H0 đúng.","D. Tăng mức ý nghĩa lên 0.10 để có ý nghĩa thống kê."], correct:"B" },
+        { part:1, text:"4. Một nghiên cứu về mối liên hệ giữa điểm số bài kiểm tra IQ và điểm thi cuối kỳ của sinh viên cho thấy hệ số tương quan Pearson r = 0.3 với p = 0.04 (α = 0.05). Kết luận nào sau đây là hợp lý nhất?", options:["A. Có mối tương quan thuận, mức độ yếu và có ý nghĩa thống kê.","B. Có mối tương quan thuận, mức độ mạnh và có ý nghĩa thống kê.","C. Không có mối tương quan nào giữa hai biến.","D. IQ là nguyên nhân làm tăng điểm thi cuối kỳ."], correct:"A" },
+        { part:1, text:"5. Giả sử một kiểm định có sức mạnh thống kê (power) là 0.80. Con số này được hiểu là:", options:["A. Xác suất mắc sai lầm loại I là 20%.","B. Xác suất phát hiện đúng một hiệu ứng có thật là 80%.","C. Xác suất không bác bỏ H0 khi H0 đúng là 80%.","D. Xác suất bác bỏ H0 khi H0 đúng là 20%."], correct:"B" },
+        { part:1, text:"6. Trong một nghiên cứu đo lường độ tin cậy của thang đo lòng tự trọng, chỉ số Cronbach's Alpha thu được là 0.92. Kết luận nào sau đây là phù hợp?", options:["A. Thang đo có độ tin cậy rất cao, các item đo lường cùng một khái niệm một cách nhất quán.","B. Thang đo có độ giá trị rất cao.","C. Thang đo cần được điều chỉnh vì alpha quá cao.","D. Các item trong thang đo không liên quan đến nhau."], correct:"A" },
+        { part:1, text:"7. Một nhà nghiên cứu muốn tăng sức mạnh thống kê cho nghiên cứu của mình. Cách làm nào dưới đây là phù hợp và hiệu quả nhất?", options:["A. Giảm kích thước mẫu để tiết kiệm chi phí.","B. Sử dụng kiểm định hai đuổi thay vì một đuổi.","C. Tăng kích thước mẫu và tăng độ tin cậy của các phép đo.","D. Giảm mức ý nghĩa alpha từ 0.05 xuống 0.01."], correct:"C" },
+        { part:1, text:"8. Khi đọc một bài báo khoa học, một nhà lâm sàng muốn đánh giá ý nghĩa thực tiễn của một can thiệp. Chỉ số nào cung cấp thông tin tốt nhất cho mục đích này?", options:["A. Giá trị p.","B. Kích thước hiệu ứng (ví dụ: Cohen's d).","C. Giá trị thống kê t.","D. Bậc tự do (df)."], correct:"B" },
+        { part:1, text:"9. Nếu một nhà nghiên cứu thực hiện nhiều kiểm định t-test liên tiếp trên cùng một bộ dữ liệu (ví dụ: so sánh 4 nhóm với nhau từng cặp) mà không có hiệu chỉnh, nguy cơ chính mà họ phải đối mặt là:", options:["A. Giảm sức mạnh thống kê.","B. Làm tăng sai lầm loại I (lỗi alpha tích lũy).","C. Làm tăng sai lầm loại II.","D. Dữ liệu tự động vi phạm giả định phân phối chuẩn."], correct:"B" },
+        { part:1, text:"10. Một kết quả nghiên cứu cho thấy p = 0.045 và kích thước hiệu ứng rất nhỏ (Cohen's d = 0.1). Kết luận nào sau đây là chính xác nhất?", options:["A. Kết quả rất quan trọng vì có ý nghĩa thống kê.","B. Có ý nghĩa thống kê, nhưng ý nghĩa thực tiễn rất hạn chế do kích thước hiệu ứng nhỏ.","C. Chắc chắn có sai sót trong phân tích.","D. Cần loại bỏ các điểm dị biệt ngay lập tức."], correct:"B" },
+
+        // Phần 2: Kiểm định tham số & phi tham số (11-20)
+        { part:2, text:"11. Một nghiên cứu so sánh điểm hài lòng (thang đo Likert 5 điểm, dữ liệu có phân bố rất lệch) giữa hai nhóm sinh viên độc lập (nhóm học online và nhóm học offline). Kiểm định nào là phù hợp nhất?", options:["A. Independent samples t-test.","B. Paired samples t-test.","C. Mann-Whitney U test.","D. Chi-square test."], correct:"C" },
+        { part:2, text:"12. Một nhà nghiên cứu muốn đánh giá sự thay đổi về kiến thức của cùng một nhóm học viên trước và sau một khóa đào tạo. Kiểm định thống kê nào nên được sử dụng?", options:["A. Independent samples t-test.","B. Paired samples t-test.","C. One-way ANOVA.","D. Pearson correlation."], correct:"B" },
+        { part:2, text:"13. Khi thực hiện independent samples t-test trong Jamovi, nếu kết quả kiểm định Levene có p = 0.03, nhà nghiên cứu nên sử dụng kết quả ở dòng nào để báo cáo?", options:["A. Kết quả của kiểm định Student's t-test.","B. Kết quả của kiểm định Welch's t-test.","C. Kết quả của kiểm định Mann-Whitney U.","D. Cả hai đều giống nhau."], correct:"B" },
+        { part:2, text:"14. Một nghiên cứu muốn so sánh hiệu quả của ba phương pháp giảng dạy khác nhau lên điểm số của sinh viên (các nhóm độc lập). Phân tích thống kê phù hợp là gì?", options:["A. Ba independent t-test riêng biệt.","B. Paired t-test.","C. One-way ANOVA.","D. Chi-square."], correct:"C" },
+        { part:2, text:"15. Kết quả một One-way ANOVA cho thấy F(2, 57) = 4.89, p = 0.011. Với α = 0.05, kết luận nào sau đây là đúng?", options:["A. Cả ba nhóm có điểm trung bình bằng nhau.","B. Có sự khác biệt có ý nghĩa thống kê giữa ít nhất hai nhóm.","C. Nhóm 1 khác nhóm 2, nhưng không khác nhóm 3.","D. Cần chạy kiểm định Levene để kiểm tra lại."], correct:"B" },
+        { part:2, text:"16. Sau khi có kết quả ANOVA có ý nghĩa, để biết cụ thể nhóm nào khác nhóm nào, nhà nghiên cứu cần thực hiện bước nào tiếp theo?", options:["A. Kết luận rằng tất cả các nhóm đều khác nhau.","B. Thực hiện phân tích hậu nghiệm (post-hoc test).","C. Chạy lại t-test cho từng cặp mà không cần hiệu chỉnh.","D. Báo cáo kết quả ANOVA là đã đủ."], correct:"B" },
+        { part:2, text:"17. Nếu giả định phương sai đồng nhất (homogeneity of variance) trong One-way ANOVA bị vi phạm, kiểm định hậu nghiệm nào sau đây là thích hợp?", options:["A. Tukey's HSD.","B. Bonferroni.","C. Games-Howell.","D. Scheffé."], correct:"C" },
+        { part:2, text:"18. Trong phân tích One-way Repeated Measures ANOVA (đo lường cùng một nhóm ở 3 thời điểm), giả định quan trọng nhất cần kiểm tra là:", options:["A. Tính độc lập của các quan sát.","B. Tính tròn (sphericity) - sử dụng kiểm định Mauchly.","C. Phương sai đồng nhất giữa các nhóm.","D. Kích thước mẫu tối thiểu."], correct:"B" },
+        { part:2, text:"19. Nếu kiểm định Mauchly có p < 0.05, nhà nghiên cứu nên:", options:["A. Bỏ qua vì ANOVA rất mạnh.","B. Sử dụng hiệu chỉnh Greenhouse-Geisser hoặc Huynh-Feldt.","C. Chuyển sang làm independent t-test.","D. Kết luận ngay rằng có sự khác biệt."], correct:"B" },
+        { part:2, text:"20. Một nghiên cứu sử dụng thang đo Likert 4 mức độ để đánh giá mức độ hài lòng với dịch vụ (thứ bậc) và muốn so sánh giữa ba nhóm khách hàng độc lập. Kiểm định phi tham số nào là phù hợp?", options:["A. Mann-Whitney U.","B. Wilcoxon Signed-Rank.","C. Kruskal-Wallis H.","D. Friedman."], correct:"C" },
+
+        // Phần 3: Tương quan & Hồi quy (21-40)
+        { part:3, text:"21. Một nghiên cứu tìm thấy mối tương quan r = -0.75 giữa số giờ xem TV và điểm số môn học ở trẻ em. Phát biểu nào sau đây là chính xác?", options:["A. Xem TV nhiều là nguyên nhân trực tiếp làm giảm điểm số.","B. Có mối tương quan nghịch chặt chẽ, nhưng chưa thể kết luận về nhân quả.","C. Có mối tương quan thuận chặt chẽ.","D. Không có mối quan hệ nào."], correct:"B" },
+        { part:3, text:"22. Hệ số xác định R² (r²) của một mô hình hồi quy là 0.64. Điều này có nghĩa là:", options:["A. 64% giá trị của biến phụ thuộc được dự đoán chính xác.","B. Biến độc lập giải thích được 64% sự biến thiên của biến phụ thuộc.","C. Mô hình hồi quy là hoàn hảo.","D. Hệ số tương quan r = 0.64."], correct:"B" },
+        { part:3, text:"23. Trong một phân tích hồi quy đa biến với 5 biến độc lập, nhà nghiên cứu thấy R² hiệu chỉnh (Adjusted R²) thấp hơn đáng kể so với R². Điều này cho thấy:", options:["A. Mô hình rất phù hợp.","B. Một số biến độc lập có thể không đóng góp nhiều vào mô hình.","C. Có hiện tượng đa cộng tuyến hoặc các biến không cần thiết làm tăng R² một cách giả tạo.","D. Cả B và C đều có thể đúng."], correct:"D" },
+        { part:3, text:"24. Một nhà nghiên cứu muốn dự đoán điểm trung bình học tập (GPA) từ điểm số bài kiểm tra IQ và số giờ tự học mỗi tuần. Phân tích thống kê nào là phù hợp?", options:["A. Tương quan Pearson.","B. Hồi quy tuyến tính đa biến.","C. One-way ANOVA.","D. Chi-square."], correct:"B" },
+        { part:3, text:"25. Trong mô hình hồi quy tuyến tính đơn giản: 'Điểm lo âu dự đoán = 25 - 0.5 * (Số giờ thư giãn)'. Hệ số -0.5 có nghĩa là:", options:["A. Khi số giờ thư giãn bằng 0, điểm lo âu dự đoán là -0.5.","B. Khi số giờ thư giãn tăng lên 1 giờ, điểm lo âu dự đoán giảm trung bình 0.5 đơn vị.","C. Mối tương quan giữa lo âu và thư giãn là 0.5.","D. Mô hình này không phù hợp."], correct:"B" },
+        { part:3, text:"26. Một nhà nghiên cứu kiểm tra các giả định của hồi quy đa biến và phát hiện chỉ số VIF của một biến là 12. Hành động nào sau đây là hợp lý nhất?", options:["A. Giữ nguyên biến đó vì VIF > 10 là tốt.","B. Xem xét loại bỏ biến đó hoặc kết hợp với biến khác vì đây là dấu hiệu đa cộng tuyến nghiêm trọng.","C. Chuyển đổi biến phụ thuộc sang log.","D. Tăng cỡ mẫu lên gấp đôi."], correct:"B" },
+        { part:3, text:"27. Trong hồi quy logistic, biến phụ thuộc có đặc điểm gì?", options:["A. Là biến định lượng liên tục.","B. Là biến phân loại (ví dụ: có/không, nhóm A/B/C).","C. Là biến thời gian.","D. Là biến đếm."], correct:"B" },
+        { part:3, text:"28. Khi vẽ đồ thị phân tán của phần dư (residuals) so với giá trị dự đoán (predicted values), nếu thấy các điểm phân bố thành một hình phễu loe rộng dần, điều này vi phạm giả định nào của hồi quy tuyến tính?", options:["A. Tính tuyến tính.","B. Phương sai không đổi (homoscedasticity).","C. Phân phối chuẩn của phần dư.","D. Độc lập của phần dư."], correct:"B" },
+        { part:3, text:"29. Một nghiên cứu muốn tìm hiểu các yếu tố ảnh hưởng đến việc một người có hút thuốc lá hay không (Có/Không). Các yếu tố dự kiến bao gồm tuổi, thu nhập, trình độ học vấn. Loại phân tích hồi quy nào là phù hợp?", options:["A. Hồi quy tuyến tính đa biến.","B. Hồi quy logistic nhị phân.","C. Hồi quy Poisson.","D. Hồi quy đa thức."], correct:"B" },
+        { part:3, text:"30. Để kiểm tra giả định phần dư có phân phối chuẩn trong hồi quy trên Jamovi, bên cạnh biểu đồ Q-Q plot, ta có thể sử dụng kiểm định nào?", options:["A. Levene's test.","B. Shapiro-Wilk test trên phần dư.","C. Mauchly's test.","D. Durbin-Watson test."], correct:"B" },
+        { part:3, text:"31. Một kết quả hồi quy cho thấy biến 'Stress' có hệ số Beta chuẩn hóa = 0.50 (p < 0.001) và biến 'Hỗ trợ xã hội' có hệ số Beta = -0.30 (p = 0.01). Kết luận nào sau đây đúng?", options:["A. Cả hai biến đều không quan trọng.","B. 'Stress' có ảnh hưởng mạnh hơn 'Hỗ trợ xã hội' đến biến phụ thuộc.","C. 'Hỗ trợ xã hội' có ảnh hưởng mạnh hơn 'Stress'.","D. Không thể so sánh vì khác đơn vị đo."], correct:"B" },
+        { part:3, text:"32. Trong hồi quy, giả định về tính độc lập của phần dư (không có tự tương quan) thường được kiểm tra bằng chỉ số nào?", options:["A. VIF.","B. Tolerance.","C. Durbin-Watson.","D. R²."], correct:"C" },
+        { part:3, text:"33. Một mô hình hồi quy đa biến có ý nghĩa tổng thể (p < 0.05) nhưng tất cả các hệ số hồi quy riêng phần đều không có ý nghĩa (p > 0.05). Hiện tượng này có thể là dấu hiệu của:", options:["A. Phương sai thay đổi.","B. Đa cộng tuyến.","C. Phần dư không chuẩn.","D. Cỡ mẫu quá lớn."], correct:"B" },
+        { part:3, text:"34. Khi đưa một biến độc lập mới vào mô hình hồi quy, nếu R² hiệu chỉnh (Adjusted R²) giảm xuống, điều đó cho thấy:", options:["A. Biến mới rất quan trọng.","B. Biến mới không cải thiện mô hình và có thể nên loại bỏ.","C. Mô hình cũ đã hoàn hảo.","D. Cần tăng cỡ mẫu."], correct:"B" },
+        { part:3, text:"35. Một nhà nghiên cứu muốn dự đoán loại rối loạn tâm lý (3 loại: Lo âu, Trầm cảm, Rối loạn ăn uống) dựa trên các biến nhân khẩu học và điểm số các thang đo tâm lý. Loại hồi quy nào phù hợp?", options:["A. Hồi quy tuyến tính.","B. Hồi quy logistic nhị phân.","C. Hồi quy logistic đa thức (multinomial logistic).","D. Hồi quy Poisson."], correct:"C" },
+        { part:3, text:"36. Trong hồi quy, nếu đồ thị phần dư cho thấy một dạng đường cong (ví dụ hình parabol) thay vì ngẫu nhiên, giả định nào có thể bị vi phạm?", options:["A. Phương sai không đổi.","B. Phân phối chuẩn của phần dư.","C. Tính tuyến tính của mối quan hệ.","D. Đa cộng tuyến."], correct:"C" },
+        { part:3, text:"37. Giá trị Tolerance trong hồi quy đa biến được tính bằng 1 - R² của biến đó với các biến độc lập khác. Một Tolerance rất nhỏ (ví dụ < 0.1) cho thấy vấn đề gì?", options:["A. Biến đó có tương quan mạnh với biến phụ thuộc.","B. Biến đó có tương quan mạnh với các biến độc lập khác (đa cộng tuyến).","C. Biến đó không có ý nghĩa.","D. Phần dư của mô hình là tốt."], correct:"B" },
+        { part:3, text:"38. Một nghiên cứu hồi quy được thực hiện với cỡ mẫu là 30 và 5 biến độc lập. R² của mô hình là 0.50. Nhận xét nào sau đây là cần thiết?", options:["A. Mô hình rất tốt.","B. Có thể có hiện tượng overfitting (mô hình quá khớp) do cỡ mẫu nhỏ, cần thận trọng khi khái quát hóa.","C. Chắc chắn không có đa cộng tuyến.","D. R² hiệu chỉnh sẽ cao hơn R²."], correct:"B" },
+        { part:3, text:"39. Khi báo cáo kết quả phân tích hồi quy theo APA, thông tin nào sau đây là KHÔNG bắt buộc phải có?", options:["A. Hệ số hồi quy B (chưa chuẩn hóa) và Beta (chuẩn hóa).","B. Giá trị p của từng hệ số.","C. R² và R² hiệu chỉnh.","D. Kết quả kiểm định Chi-square của từng biến."], correct:"D" },
+        { part:3, text:"40. Nếu biến phụ thuộc là biến đếm (ví dụ: số lần tái phát bệnh) và có phân phối Poisson, loại hồi quy nào nên được cân nhắc?", options:["A. Hồi quy tuyến tính.","B. Hồi quy logistic.","C. Hồi quy Poisson.","D. Hồi quy phi tuyến."], correct:"C" },
+
+        // Phần 4: ANOVA nâng cao & Mixed ANOVA (41-55)
+        { part:4, text:"41. Một nghiên cứu 2x2 về ảnh hưởng của giới tính (nam, nữ) và loại thuốc (giả dược, thuốc thử) lên mức độ lo âu. Kết quả cho thấy hiệu ứng tương tác có ý nghĩa (p < 0.05). Điều này có nghĩa là:", options:["A. Nam và nữ có mức độ lo âu khác nhau.","B. Hai loại thuốc có hiệu quả khác nhau.","C. Tác động của loại thuốc lên lo âu là khác nhau giữa nam và nữ.","D. Không có kết luận nào."], correct:"C" },
+        { part:4, text:"42. Trong một Mixed ANOVA (yếu tố giữa nhóm: phương pháp học A và B; yếu tố lặp: thời điểm đo trước/sau). Nhà nghiên cứu muốn kiểm tra xem phương pháp nào giúp sinh viên tiến bộ nhiều hơn. Thành phần nào trong kết quả là quan trọng nhất để trả lời câu hỏi này?", options:["A. Main effect của phương pháp học.","B. Main effect của thời gian.","C. Interaction effect giữa phương pháp học và thời gian.","D. Kết quả kiểm định Levene."], correct:"C" },
+        { part:4, text:"43. Một nghiên cứu đánh giá hiệu quả của chương trình can thiệp cho 30 bệnh nhân trầm cảm. Họ được đo điểm trầm cảm tại 4 thời điểm: trước can thiệp, sau 1 tháng, sau 3 tháng, sau 6 tháng. Phân tích ANOVA nào phù hợp để xem sự thay đổi theo thời gian?", options:["A. One-way Independent ANOVA.","B. One-way Repeated Measures ANOVA.","C. Two-way Independent ANOVA.","D. Mixed ANOVA."], correct:"B" },
+        { part:4, text:"44. Trong bối cảnh câu 43, nếu kết quả Mauchly's test có p = 0.001, nhà nghiên cứu nên:", options:["A. Báo cáo kết quả ANOVA mà không cần hiệu chỉnh.","B. Sử dụng hiệu chỉnh Greenhouse-Geisser và báo cáo giá trị p đã hiệu chỉnh.","C. Chuyển sang dùng independent t-test cho từng cặp thời điểm.","D. Kết luận ngay rằng không có sự khác biệt."], correct:"B" },
+        { part:4, text:"45. Một phân tích hậu nghiệm (post-hoc) với hiệu chỉnh Bonferroni cho kết quả so sánh cặp giữa 3 nhóm. Nếu có 3 cặp so sánh và mức ý nghĩa ban đầu là α = 0.05, thì mỗi cặp so sánh sẽ được đánh giá ở mức α mới là bao nhiêu?", options:["A. 0.05.","B. 0.017 (xấp xỉ 0.05/3).","C. 0.10.","D. 0.025."], correct:"B" },
+        { part:4, text:"46. Một nghiên cứu sử dụng Two-way Independent ANOVA với hai biến độc lập, mỗi biến có 2 mức độ. Tổng số điều kiện thí nghiệm (ô) trong nghiên cứu này là:", options:["A. 2","B. 4","C. 6","D. 8"], correct:"B" },
+        { part:4, text:"47. Khi vẽ biểu đồ tương tác (interaction plot) trong Two-way ANOVA, nếu hai đường thẳng song song với nhau, điều đó cho thấy:", options:["A. Có tương tác mạnh.","B. Không có tương tác.","C. Có tương tác yếu.","D. Biểu đồ bị lỗi."], correct:"B" },
+        { part:4, text:"48. Một nghiên cứu có biến phụ thuộc là 'điểm kiểm tra', biến độc lập 1 là 'phương pháp học' (A, B) và biến độc lập 2 là 'trình độ' (cao, thấp). Kết quả cho thấy main effect của phương pháp học có ý nghĩa. Điều này có nghĩa là:", options:["A. Điểm trung bình của nhóm A và B là khác nhau, bất kể trình độ.","B. Ảnh hưởng của phương pháp học phụ thuộc vào trình độ.","C. Có sự tương tác giữa hai biến.","D. Phương sai của hai nhóm là khác nhau."], correct:"A" },
+        { part:4, text:"49. Để kiểm tra giả định phân phối chuẩn trong Two-way Independent ANOVA cho từng ô (nhóm), ta có thể sử dụng:", options:["A. Kiểm định Levene.","B. Kiểm định Shapiro-Wilk cho từng ô riêng biệt.","C. Kiểm định Mauchly.","D. Biểu đồ hộp."], correct:"B" },
+        { part:4, text:"50. Một nghiên cứu có 3 nhóm độc lập và điểm số không phân phối chuẩn. Nhà nghiên cứu nên sử dụng kiểm định nào thay cho One-way ANOVA?", options:["A. Kruskal-Wallis H test.","B. Friedman test.","C. Mann-Whitney U test (làm 3 lần).","D. Wilcoxon signed-rank test."], correct:"A" },
+        { part:4, text:"51. Một nghiên cứu sử dụng Mixed ANOVA với yếu tố lặp có 3 mức độ. Giả định về 'sphericity' có nghĩa là:", options:["A. Phương sai của các nhóm là bằng nhau.","B. Phương sai của sự khác biệt giữa các cặp thời điểm đo là bằng nhau.","C. Dữ liệu có phân phối chuẩn.","D. Các quan sát độc lập."], correct:"B" },
+        { part:4, text:"52. Trong Jamovi, để thực hiện Mixed ANOVA, sau khi chọn Repeated Measures ANOVA, ta cần gán biến nào vào ô 'Between Subjects Factors'?", options:["A. Biến phụ thuộc.","B. Biến độc lập có các nhóm độc lập (ví dụ: giới tính, nhóm can thiệp).","C. Biến độc lập đo lặp (ví dụ: thời gian).","D. Tất cả các biến."], correct:"B" },
+        { part:4, text:"53. Một nghiên cứu so sánh 4 phương pháp điều trị (độc lập). Kết quả ANOVA có ý nghĩa. Bước tiếp theo để xác định phương pháp nào tốt hơn phương pháp nào là:", options:["A. Xem xét giá trị trung bình và chọn ra phương pháp cao nhất.","B. Thực hiện phân tích hậu nghiệm (post-hoc) với hiệu chỉnh thích hợp.","C. Chạy t-test cho cặp có vẻ khác nhất.","D. Kết luận phương pháp 1 và 4 khác nhau."], correct:"B" },
+        { part:4, text:"54. Nếu một nghiên cứu có biến phụ thuộc là thang đo tỷ lệ (ratio) và muốn so sánh 3 nhóm độc lập, nhưng dữ liệu có nhiều điểm dị biệt (outliers) và nhà nghiên cứu không muốn loại bỏ chúng. Lựa chọn tốt nhất là:", options:["A. Vẫn dùng One-way ANOVA vì nó mạnh.","B. Sử dụng kiểm định Kruskal-Wallis H.","C. Chuyển đổi dữ liệu để loại bỏ outliers.","D. Sử dụng t-test cho từng cặp."], correct:"B" },
+        { part:4, text:"55. Khi đọc kết quả một bài báo có sử dụng Mixed ANOVA, để hiểu được 'sự thay đổi theo thời gian có thực sự khác nhau giữa các nhóm hay không', bạn cần tìm giá trị p của thành phần nào?", options:["A. Main effect của nhóm.","B. Main effect của thời gian.","C. Interaction (Nhóm * Thời gian).","D. Hệ số Eta bình phương."], correct:"C" },
+
+        // Phần 5: Chi-square, độ tin cậy, các vấn đề khác (56-70)
+        { part:5, text:"56. Một nghiên cứu khảo sát mối liên hệ giữa giới tính (nam, nữ) và quan điểm về một chính sách mới (ủng hộ, phản đối, không ý kiến). Phân tích thống kê phù hợp nhất là:", options:["A. Tương quan Pearson.","B. Independent t-test.","C. Chi-square test of independence.","D. One-way ANOVA."], correct:"C" },
+        { part:5, text:"57. Khi thực hiện kiểm định Chi-square, một điều kiện để kết quả có giá trị là:", options:["A. Cỡ mẫu tối thiểu phải là 30.","B. Tần số kỳ vọng (expected count) trong mỗi ô của bảng chéo nên từ 5 trở lên.","C. Dữ liệu phải có phân phối chuẩn.","D. Phương sai các nhóm phải đồng nhất."], correct:"B" },
+        { part:5, text:"58. Một bảng chéo 2x3 (2 hàng, 3 cột) về mối liên hệ giữa tình trạng hút thuốc (hút/không hút) và mức độ căng thẳng (thấp/trung bình/cao) cho kết quả Chi-square với p = 0.04 (α = 0.05). Kết luận nào đúng?", options:["A. Có mối liên hệ có ý nghĩa thống kê giữa hút thuốc và mức độ căng thẳng.","B. Không có mối liên hệ.","C. Người hút thuốc có căng thẳng cao hơn.","D. Cần kiểm định lại bằng t-test."], correct:"A" },
+        { part:5, text:"59. Khi xây dựng một thang đo mới về 'sự kiên cường', nhà nghiên cứu muốn kiểm tra độ tin cậy nhất quán nội bộ. Chỉ số nào cần được tính toán?", options:["A. Hệ số tương quan Pearson.","B. Cronbach's Alpha.","C. Hệ số Kappa.","D. Giá trị p từ ANOVA."], correct:"B" },
+        { part:5, text:"60. Một thang đo mới có hệ số Cronbach's Alpha = 0.58. Đánh giá nào sau đây là phù hợp?", options:["A. Thang đo có độ tin cậy rất tốt.","B. Thang đo có độ tin cậy ở mức chấp nhận được.","C. Thang đo có độ tin cậy kém, cần xem xét điều chỉnh hoặc loại bỏ các item.","D. Thang đo có độ giá trị cao."], correct:"C" },
+        { part:5, text:"61. Trong quá trình kiểm tra độ tin cậy Cronbach's Alpha, nếu loại bỏ một item làm cho Alpha tăng lên đáng kể, nhà nghiên cứu nên:", options:["A. Giữ item đó lại vì nó quan trọng.","B. Cân nhắc loại bỏ item đó vì nó làm giảm độ tin cậy chung.","C. Giữ nguyên và báo cáo Alpha ban đầu.","D. Tăng cỡ mẫu."], correct:"B" },
+        { part:5, text:"62. Một nghiên cứu sử dụng thang đo Likert 5 điểm để đo 'sự hài lòng công việc'. Để đánh giá độ tin cậy của thang đo này trong phần mềm Jamovi, chức năng nào được sử dụng?", options:["A. T-Tests.","B. ANOVA.","C. Factor -> Reliability Analysis.","D. Regression -> Correlation Matrix."], correct:"C" },
+        { part:5, text:"63. 'Độ giá trị nội dung' (content validity) của một bài kiểm tra tâm lý được đảm bảo tốt nhất bằng cách nào?", options:["A. Tính tương quan với một bài kiểm tra khác đã có độ giá trị.","B. Nhờ các chuyên gia trong lĩnh vực đánh giá các item có bao phủ hết khía cạnh của khái niệm không.","C. Tính Cronbach's Alpha.","D. Sử dụng phân tích nhân tố (factor analysis)."], correct:"B" },
+        { part:5, text:"64. Một nhà nghiên cứu muốn đánh giá sự đồng thuận giữa hai bác sĩ lâm sàng trong việc chẩn đoán một loại rối loạn (Có/Không) cho cùng một nhóm bệnh nhân. Chỉ số thống kê nào là phù hợp nhất?", options:["A. Tương quan Pearson.","B. Cronbach's Alpha.","C. Cohen's Kappa.","D. Chi-square."], correct:"C" },
+        { part:5, text:"65. Một thang đo có hệ số Cronbach's Alpha = 0.91. Có thể kết luận:", options:["A. Các item trong thang đo rất nhất quán với nhau.","B. Thang đo có thể có một số item trùng lắp về nội dung.","C. Độ tin cậy là rất tốt.","D. Tất cả các ý trên đều có thể đúng."], correct:"D" },
+        { part:5, text:"66. Nếu hai biến định tính có mối liên hệ hoàn toàn độc lập trong kiểm định Chi-square, giá trị kỳ vọng (expected count) trong mỗi ô sẽ:", options:["A. Bằng với tần số quan sát (observed count).","B. Rất khác so với tần số quan sát.","C. Bằng 0.","D. Lớn hơn 5."], correct:"A" },
+        { part:5, text:"67. Một nhà nghiên cứu muốn so sánh điểm trung bình về kiến thức của cùng một nhóm sinh viên ở ba thời điểm (trước học, sau học 1 tuần, sau học 1 tháng). Dữ liệu không đáp ứng giả định phân phối chuẩn. Kiểm định phi tham số nào nên được sử dụng?", options:["A. Kruskal-Wallis H.","B. Friedman test.","C. Mann-Whitney U.","D. Wilcoxon Signed-Rank."], correct:"B" },
+        { part:5, text:"68. Kết quả kiểm định Friedman cho thấy p = 0.02. Bước tiếp theo nên làm là gì?", options:["A. Kết luận tất cả các thời điểm đều khác nhau.","B. Thực hiện các so sánh cặp (post-hoc) với hiệu chỉnh thích hợp (ví dụ: Wilcoxon Signed-Rank với hiệu chỉnh Bonferroni).","C. Báo cáo kết quả là đã đủ.","D. Chuyển sang dùng ANOVA."], correct:"B" },
+        { part:5, text:"69. Trong Jamovi, để kiểm tra các điểm dị biệt (outliers) trước khi chạy Independent t-test, loại biểu đồ nào là hữu ích nhất?", options:["A. Histogram.","B. Bar chart.","C. Box plot.","D. Scatter plot."], correct:"C" },
+        { part:5, text:"70. Một nghiên cứu có biến phụ thuộc là 'thời gian phản ứng' (mili giây). Để kiểm tra phân phối chuẩn cho biến này, kiểm định nào thường được sử dụng trong Jamovi?", options:["A. Levene's test.","B. Shapiro-Wilk test.","C. Mauchly's test.","D. Durbin-Watson test."], correct:"B" },
+
+        // Phần 6: Tổng hợp tình huống lâm sàng & nghiên cứu (71-90)
+        { part:6, text:"71. Một nhà tâm lý học lâm sàng muốn đánh giá hiệu quả của liệu pháp CBT cho 20 bệnh nhân ám ảnh sợ xã hội. Ông đo mức độ lo âu của họ trước và sau 12 tuần trị liệu. Kiểm định nào phù hợp?", options:["A. Independent t-test.","B. Paired t-test.","C. One-way ANOVA.","D. Chi-square."], correct:"B" },
+        { part:6, text:"72. Một nghiên cứu muốn tìm hiểu xem có sự khác biệt về mức độ đồng cảm giữa ba nhóm: sinh viên y khoa, sinh viên tâm lý, và sinh viên kỹ thuật. Phân tích nào là phù hợp?", options:["A. Ba independent t-test riêng biệt.","B. One-way ANOVA.","C. Paired t-test.","D. Pearson correlation."], correct:"B" },
+        { part:6, text:"73. Một chuyên gia nhân sự muốn dự đoán hiệu suất công việc của nhân viên dựa trên điểm số bài kiểm tra tính cách (5 thang điểm) và số năm kinh nghiệm. Phân tích nào phù hợp?", options:["A. Tương quan Pearson.","B. Hồi quy tuyến tính đa biến.","C. One-way ANOVA.","D. Chi-square."], correct:"B" },
+        { part:6, text:"74. Một nhà nghiên cứu phát triển một thang đo mới về 'khả năng phục hồi sau sang chấn' và muốn kiểm tra xem thang đo này có tương quan cao với một thang đo 'lạc quan' đã được chuẩn hóa hay không. Đây là bước kiểm tra loại độ giá trị nào?", options:["A. Độ giá trị nội dung.","B. Độ giá trị hội tụ (convergent validity).","C. Độ giá trị phân biệt (discriminant validity).","D. Độ giá trị tiêu đoán."], correct:"B" },
+        { part:6, text:"75. Một nghiên cứu dài hạn theo dõi 200 trẻ em từ 5 tuổi đến 15 tuổi, đo lường hành vi hung tính hàng năm. Nhà nghiên cứu muốn xem sự phát triển của hành vi hung tính theo thời gian có khác nhau giữa trẻ trai và trẻ gái hay không. Phân tích nào phù hợp nhất?", options:["A. Independent t-test tại năm 15 tuổi.","B. Repeated Measures ANOVA với giới tính là yếu tố giữa nhóm.","C. Tương quan Pearson giữa tuổi và hung tính.","D. Chi-square test."], correct:"B" },
+        { part:6, text:"76. Một bệnh viện muốn so sánh tỷ lệ hài lòng của bệnh nhân giữa ba khoa: Nội, Ngoại, Nhi. Dữ liệu thu được là số lượng bệnh nhân hài lòng và không hài lòng ở mỗi khoa. Kiểm định nào phù hợp?", options:["A. One-way ANOVA.","B. Chi-square test of independence.","C. Independent t-test.","D. Hồi quy logistic."], correct:"B" },
+        { part:6, text:"77. Một nhà nghiên cứu thực hiện một phân tích hồi quy với biến phụ thuộc là 'điểm trầm cảm' và biến độc lập là 'điểm lo âu'. Kết quả cho thấy R² = 0.25, p < 0.001. Điều này có nghĩa là:", options:["A. Lo âu giải thích được 25% sự thay đổi của trầm cảm.","B. Lo âu là nguyên nhân của trầm cảm.","C. 25% người tham gia có lo âu và trầm cảm.","D. Mô hình hồi quy không phù hợp."], correct:"A" },
+        { part:6, text:"78. Một nghiên cứu sử dụng thang đo 10 item. Cronbach's Alpha tính được là 0.72. Sau khi xem xét, một item có tương quan biến-tổng rất thấp (0.1). Hành động nào là hợp lý nhất?", options:["A. Giữ nguyên item vì alpha tổng thể đã chấp nhận được.","B. Cân nhắc loại bỏ item đó và tính lại alpha.","C. Đảo ngược mã hóa item đó.","D. Tăng cỡ mẫu lên gấp đôi."], correct:"B" },
+        { part:6, text:"79. Kết quả kiểm định Levene trong Independent t-test có p = 0.15. Nhà nghiên cứu sẽ:", options:["A. Sử dụng kết quả của Welch's t-test.","B. Sử dụng kết quả của Student's t-test.","C. Chuyển sang dùng Mann-Whitney U.","D. Loại bỏ các điểm dị biệt."], correct:"B" },
+        { part:6, text:"80. Một nhà nghiên cứu báo cáo: 'Kết quả cho thấy điểm trung bình của nhóm A (M = 5.2, SD = 1.1) cao hơn nhóm B (M = 4.5, SD = 1.3), t(58) = 2.5, p = 0.015.' Giá trị 58 là:", options:["A. Cỡ mẫu của nhóm A.","B. Cỡ mẫu của nhóm B.","C. Tổng cỡ mẫu của cả hai nhóm.","D. Bậc tự do (degrees of freedom)."], correct:"D" },
+        { part:6, text:"81. Một nghiên cứu về hiệu quả của ba loại thuốc an thần khác nhau. Bệnh nhân được chia ngẫu nhiên vào ba nhóm, mỗi nhóm dùng một loại thuốc. Mức độ lo âu được đo sau 1 tháng. Nếu giả định phương sai đồng nhất bị vi phạm, kiểm định hậu nghiệm nào nên được sử dụng sau One-way ANOVA?", options:["A. Tukey's HSD.","B. Bonferroni.","C. Games-Howell.","D. Scheffé."], correct:"C" },
+        { part:6, text:"82. Trong phân tích tương quan, nếu muốn kiểm tra mối quan hệ giữa thứ hạng tốt nghiệp (1,2,3,...) và điểm số thang đo lo âu, nên sử dụng hệ số tương quan nào?", options:["A. Pearson.","B. Spearman.","C. Point-biserial.","D. Phi-coefficient."], correct:"B" },
+        { part:6, text:"83. Một nghiên cứu có biến phụ thuộc là 'số lần tham gia hoạt động ngoại khóa' (biến đếm). Nhà nghiên cứu muốn xem liệu biến này có phân phối chuẩn không. Kết quả Shapiro-Wilk cho p < 0.001. Nhận xét nào đúng?", options:["A. Dữ liệu có phân phối chuẩn.","B. Dữ liệu không có phân phối chuẩn.","C. Phương sai các nhóm bằng nhau.","D. Có điểm dị biệt."], correct:"B" },
+        { part:6, text:"84. Một nhà nghiên cứu muốn tìm hiểu ảnh hưởng của 'phong cách lãnh đạo' (dân chủ, độc đoán, tự do) và 'quy mô nhóm' (nhỏ, lớn) lên 'năng suất làm việc'. Phân tích nào phù hợp?", options:["A. Two-way Independent ANOVA.","B. One-way Independent ANOVA.","C. Mixed ANOVA.","D. Hồi quy đa biến."], correct:"A" },
+        { part:6, text:"85. Khi đọc kết quả Two-way ANOVA, nếu thấy p của hiệu ứng tương tác > 0.05, nhà nghiên cứu nên làm gì tiếp theo?", options:["A. Bỏ qua và kết luận không có gì.","B. Xem xét các hiệu ứng chính (main effects).","C. Vẫn phân tích tương tác chi tiết.","D. Loại bỏ một biến độc lập."], correct:"B" },
+        { part:6, text:"86. Một nghiên cứu hồi quy đa biến cho thấy biến 'stress' có hệ số B = 0.5, p = 0.03 và biến 'hỗ trợ' có hệ số B = -0.3, p = 0.20. Với α = 0.05, kết luận nào đúng?", options:["A. Cả hai biến đều ảnh hưởng đến biến phụ thuộc.","B. 'Stress' có ảnh hưởng có ý nghĩa, 'hỗ trợ' không có ảnh hưởng có ý nghĩa trong mô hình.","C. 'Hỗ trợ' có ảnh hưởng mạnh hơn 'stress'.","D. Cả hai biến đều không có ý nghĩa."], correct:"B" },
+        { part:6, text:"87. Một thang đo 'trí tuệ cảm xúc' mới có hệ số tương quan rất thấp với thang đo 'IQ' (r = 0.05). Điều này cung cấp bằng chứng cho loại độ giá trị nào?", options:["A. Độ giá trị hội tụ.","B. Độ giá trị phân biệt.","C. Độ giá trị nội dung.","D. Độ giá trị tiêu đoán."], correct:"B" },
+        { part:6, text:"88. Trước khi chạy phân tích Paired t-test cho dữ liệu trước-sau, nhà nghiên cứu cần kiểm tra giả định về:", options:["A. Phân phối chuẩn của hiệu số (difference score) giữa hai thời điểm.","B. Phân phối chuẩn của từng thời điểm riêng rẽ.","C. Phương sai đồng nhất.","D. Tính tròn (sphericity)."], correct:"A" },
+        { part:6, text:"89. Một nhà nghiên cứu muốn so sánh điểm hài lòng giữa hai nhóm nhân viên (làm việc từ xa và làm việc tại văn phòng) nhưng dữ liệu có phân phối lệch nặng. Kiểm định nào sau đây là lựa chọn tốt nhất?", options:["A. Independent t-test.","B. Mann-Whitney U test.","C. Paired t-test.","D. Chi-square."], correct:"B" },
+        { part:6, text:"90. Kết quả một nghiên cứu cho thấy R² hiệu chỉnh = 0.30, p của mô hình < 0.001. Nhận xét nào đúng?", options:["A. Mô hình giải thích được 30% phương sai của biến phụ thuộc.","B. 70% phương sai còn lại do các yếu tố khác hoặc sai số.","C. Mô hình có ý nghĩa thống kê.","D. Tất cả các ý trên."], correct:"D" },
+
+        // Phần 7: Tình huống đặc thù & Câu hỏi mở rộng (91-100)
+        { part:7, text:"91. Một luận văn thạc sĩ sử dụng Mixed ANOVA để đánh giá hiệu quả của hai phương pháp can thiệp cho trẻ tự kỷ qua 4 thời điểm. Kết quả cho thấy tương tác 'Phương pháp * Thời gian' có p = 0.03. Điều này có nghĩa là:", options:["A. Cả hai phương pháp đều có hiệu quả như nhau.","B. Sự tiến bộ theo thời gian của trẻ ở hai phương pháp là khác nhau.","C. Có sự khác biệt giữa hai phương pháp ở thời điểm cuối.","D. Không có kết luận gì."], correct:"B" },
+        { part:7, text:"92. Một nghiên cứu khảo sát trên 500 người về mối liên hệ giữa tình trạng hôn nhân (độc thân, kết hôn, ly hôn) và sự hài lòng với cuộc sống (thang đo khoảng). Để phân tích, nhà nghiên cứu có thể sử dụng:", options:["A. One-way ANOVA.","B. Chi-square test.","C. Tương quan Spearman.","D. Hồi quy logistic."], correct:"A" },
+        { part:7, text:"93. Một nhà nghiên cứu muốn chắc chắn rằng các câu hỏi trong bảng khảo sát của mình thực sự đo lường 'lòng tự trọng' chứ không phải 'sự tự tin' hay 'tính hướng ngoại'. Loại độ giá trị nào đang được quan tâm?", options:["A. Độ giá trị nội dung.","B. Độ giá trị hội tụ và phân biệt (cấu trúc).","C. Độ giá trị dự báo.","D. Độ giá trị đồng thời."], correct:"B" },
+        { part:7, text:"94. Khi thực hiện một nghiên cứu thực nghiệm với hai nhóm, việc gán ngẫu nhiên (random assignment) đối tượng vào các nhóm giúp tăng cường:", options:["A. Độ giá trị ngoại tại (external validity).","B. Độ giá trị nội tại (internal validity).","C. Độ tin cậy của thang đo.","D. Sức mạnh thống kê."], correct:"B" },
+        { part:7, text:"95. Một phân tích hồi quy cho thấy biến 'lo âu' có hệ số Beta = 0.60 và biến 'kiểm soát' có hệ số Beta = -0.20. Cả hai đều có ý nghĩa. Kết luận nào về mức độ ảnh hưởng là đúng?", options:["A. 'Lo âu' có ảnh hưởng mạnh gấp 3 lần 'kiểm soát' đến biến phụ thuộc.","B. 'Lo âu' ảnh hưởng thuận, 'kiểm soát' ảnh hưởng nghịch.","C. Không thể so sánh vì chưa chuẩn hóa.","D. Cả A và B đều đúng nếu Beta là hệ số chuẩn hóa."], correct:"D" },
+        { part:7, text:"96. Một nghiên cứu tìm thấy mối tương quan r = 0.4 (p < 0.001) giữa sự hài lòng trong công việc và năng suất làm việc. Kết luận nào sau đây KHÔNG được phép?", options:["A. Có mối quan hệ tuyến tính thuận giữa hai biến.","B. Sự hài lòng trong công việc giải thích 16% phương sai của năng suất.","C. Sự hài lòng trong công việc là nguyên nhân làm tăng năng suất.","D. Mối quan hệ có ý nghĩa thống kê."], correct:"C" },
+        { part:7, text:"97. Một nhà nghiên cứu báo cáo kết quả kiểm định Chi-square với 2 bậc tự do và giá trị χ² = 7.8, p = 0.02. Kích thước của bảng chéo (số hàng x số cột) có thể là:", options:["A. 2x2","B. 2x3","C. 3x3","D. Cả B và C đều có thể cho 2 df."], correct:"D" },
+        { part:7, text:"98. Trong quá trình kiểm tra giả định của hồi quy, bạn thấy biểu đồ phân tán phần dư có dạng hình nón (narrow ở đầu, rộng ở cuối). Giả định nào bị vi phạm?", options:["A. Tính tuyến tính.","B. Phương sai không đổi (heteroscedasticity).","C. Phân phối chuẩn của phần dư.","D. Độc lập của phần dư."], correct:"B" },
+        { part:7, text:"99. Một nhóm nghiên cứu muốn so sánh điểm trung bình môn Tâm lý học của sinh viên năm nhất giữa ba trường đại học khác nhau. Họ thu thập điểm của 100 sinh viên mỗi trường. Kiểm định nào phù hợp để so sánh đồng thời cả ba trường?", options:["A. Ba independent t-test.","B. One-way ANOVA.","C. Paired t-test.","D. Chi-square."], correct:"B" },
+        { part:7, text:"100. Một bài báo cáo khoa học kết luận: 'Kết quả phân tích cho thấy mô hình hồi quy với các biến dự báo là lo âu, trầm cảm và stress giải thích được 45% phương sai của chất lượng cuộc sống (F(3, 96) = 26.5, p < 0.001).' Con số 96 ở đây là gì?", options:["A. Số lượng biến độc lập.","B. Bậc tự do của mô hình.","C. Bậc tự do của phần dư/sai số.","D. Cỡ mẫu trừ đi 1."], correct:"C" }
+    ];
+
+    const contentDiv = document.getElementById('content');
+    let currentPart = 0;
+    let html = '';
+    for (let i = 0; i < questions.length; i++) {
+        const q = questions[i];
+        if (q.part !== currentPart) {
+            if (currentPart !== 0) html += '</div>';
+            currentPart = q.part;
+            let partTitle = '';
+            if (currentPart === 1) partTitle = 'Nhập môn, Sai lầm & Power (1-10)';
+            else if (currentPart === 2) partTitle = 'Lựa chọn kiểm định & Phi tham số (11-20)';
+            else if (currentPart === 3) partTitle = 'Tương quan & Hồi quy (21-40)';
+            else if (currentPart === 4) partTitle = 'ANOVA nâng cao & Mixed (41-55)';
+            else if (currentPart === 5) partTitle = 'Chi‑square, Độ tin cậy (56-70)';
+            else if (currentPart === 6) partTitle = 'Tình huống lâm sàng & Nghiên cứu (71-90)';
+            else if (currentPart === 7) partTitle = 'Tình huống đặc thù (91-100)';
+            html += `<div class="part"><h2><span>${currentPart}</span> ${partTitle}</h2>`;
+        }
+        html += `
+        <div class="question-card" id="cau${i}">
+            <div class="q-text">${q.text}</div>
+            <div class="options">
+                <div class="option-item"><input type="radio" name="q${i}" value="A" id="q${i}a"><label for="q${i}a">${q.options[0]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="B" id="q${i}b"><label for="q${i}b">${q.options[1]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="C" id="q${i}c"><label for="q${i}c">${q.options[2]}</label></div>
+                <div class="option-item"><input type="radio" name="q${i}" value="D" id="q${i}d"><label for="q${i}d">${q.options[3]}</label></div>
+            </div>
+            <button class="check-btn" onclick="kiemTra(${i}, '${q.correct}')">🔍 Kiểm tra đáp án</button>
+            <div id="fb${i}" class="feedback"></div>
+        </div>
+        `;
+    }
+    html += '</div>';
+    contentDiv.innerHTML = html;
+
+    window.kiemTra = function(index, correct) {
+        const radios = document.getElementsByName('q' + index);
+        let selected = null;
+        for (let r of radios) if (r.checked) { selected = r.value; break; }
+        const fb = document.getElementById('fb' + index);
+        if (!selected) {
+            fb.className = 'feedback incorrect';
+            fb.innerText = '⚠️ Bạn chưa chọn đáp án!';
+            return;
+        }
+        if (selected === correct) {
+            fb.className = 'feedback correct';
+            fb.innerText = '✅ Chính xác! Đáp án ' + correct + ' là đúng.';
+        } else {
+            fb.className = 'feedback incorrect';
+            fb.innerText = '❌ Sai. Đáp án đúng là ' + correct + '.';
+        }
+    };
+
+    // Tạo bảng đáp án tổng hợp (mỗi phần một dòng)
+    const keyGrid = document.getElementById('keyGrid');
+    const partAnswers = [
+        "Phần 1 (1-10): B, C, B, A, B, A, C, B, B, B",
+        "Phần 2 (11-20): C, B, B, C, B, B, C, B, B, C",
+        "Phần 3 (21-40): B, B, D, B, B, B, B, B, B, B, B, C, B, B, C, C, B, B, D, C",
+        "Phần 4 (41-55): C, C, B, B, B, B, B, A, B, A, B, B, B, B, C",
+        "Phần 5 (56-70): C, B, A, B, C, B, C, B, C, D, A, B, B, C, B",
+        "Phần 6 (71-90): B, B, B, B, B, B, A, B, B, D, C, B, B, A, B, B, B, A, B, D",
+        "Phần 7 (91-100): B, A, B, B, D, C, D, B, B, C"
+    ];
+    partAnswers.forEach(p => {
+        let div = document.createElement('div');
+        div.className = 'key-item';
+        div.textContent = p;
+        keyGrid.appendChild(div);
+    });
+})();
+</script>
+</body>
+</html>
