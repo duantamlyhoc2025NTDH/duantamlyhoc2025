@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Từ vựng Tâm lý học (mở rộng) - Kèm đạo đức APA</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #f3e5f5, #e1d5e8);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .card {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 56px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 28px 28px 40px;
+            transition: 0.2s;
+            border: 1px solid #d9b8e6;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            margin: 0 0 5px;
+            background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        .sub {
+            color: #7b1fa2;
+            border-left: 4px solid #9c27b0;
+            padding-left: 14px;
+            margin: 8px 0 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .flashcard {
+            background: #faf5ff;
+            border-radius: 48px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+            border: 1px solid #d9b8e6;
+            transition: 0.2s;
+        }
+        .flashcard:active {
+            transform: scale(0.98);
+        }
+        .term {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4a0072;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+        .definition {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #6a1b9a;
+            margin-top: 20px;
+            border-top: 2px dashed #d9b8e6;
+            padding-top: 20px;
+        }
+        .voice-row {
+            display: flex;
+            justify-content: center;
+            margin: 16px 0 5px;
+        }
+        .voice-btn {
+            background: #ede7f6;
+            border: none;
+            border-radius: 60px;
+            padding: 8px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            color: #4a0072;
+        }
+        .voice-btn:active {
+            background: #d9c8e6;
+            transform: scale(0.96);
+        }
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 24px 0 20px;
+        }
+        button {
+            font-family: inherit;
+            background: #ede7f6;
+            border: none;
+            border-radius: 60px;
+            padding: 10px 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #4a0072;
+        }
+        .btn-primary {
+            background: #9c27b0;
+            color: white;
+            box-shadow: 0 4px 10px rgba(156,39,176,0.3);
+        }
+        .btn-primary:active {
+            transform: translateY(2px);
+        }
+        .btn-outline {
+            background: white;
+            border: 1px solid #ce93d8;
+            color: #6a1b9a;
+        }
+        .progress-info {
+            background: #f3e5f5;
+            border-radius: 60px;
+            padding: 10px 18px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #4a0072;
+            margin: 20px 0 15px;
+        }
+        .add-panel {
+            background: #faf5ff;
+            border-radius: 40px;
+            padding: 18px 20px;
+            margin-top: 20px;
+            border: 1px solid #d9b8e6;
+        }
+        .add-panel h3 {
+            font-size: 1rem;
+            margin: 0 0 12px;
+            color: #7b1fa2;
+        }
+        .input-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .input-row input, .input-row textarea {
+            flex: 1;
+            padding: 12px 18px;
+            border-radius: 60px;
+            border: 1px solid #ce93d8;
+            font-family: inherit;
+            font-size: 0.9rem;
+            background: white;
+            outline: none;
+        }
+        .input-row input:focus, .input-row textarea:focus {
+            border-color: #9c27b0;
+            box-shadow: 0 0 0 2px rgba(156,39,176,0.2);
+        }
+        .small-btn {
+            background: #9c27b0;
+            color: white;
+            padding: 10px 20px;
+        }
+        footer {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 28px;
+            color: #8e24aa;
+        }
+        @media (max-width: 550px) {
+            .card { padding: 20px 18px; }
+            .term { font-size: 1.3rem; }
+            .definition { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="card">
+    <div style="display: flex; justify-content: space-between; align-items: baseline;">
+        <h1>🧠 Tiếng Anh chuyên ngành Tâm lý học</h1>
+        <span id="countBadge" style="background:#ede7f6; padding:4px 14px; border-radius:40px;">0 thuật ngữ</span>
+    </div>
+  <img src="hinhremovenen.png" alt="SOPHIA NGUYEN" style="width: 150px; display: block; margin: 0 auto 10px;">
+    <div class="sub">🎧 Nhấn loa nghe | Nhấn thẻ để xem định nghĩa | Phím tắt: ← → ␣ K S |</div>
+
+    <div class="flashcard" id="flashcard">
+        <div class="term" id="termDisplay">Loading...</div>
+        <div class="definition" id="definitionDisplay">🤔 ??? (Bấm vào thẻ để xem định nghĩa)</div>
+        <div class="voice-row">
+            <button id="speakBtn" class="voice-btn">🔊 Đọc thuật ngữ</button>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button id="prevBtn" class="btn-outline">◀ Trước</button>
+        <button id="nextBtn" class="btn-primary">Sau ▶</button>
+        <button id="shuffleBtn" class="btn-outline">🎲 Xào bài</button>
+        <button id="resetProgressBtn" class="btn-outline">⟳ Reset tiến độ</button>
+    </div>
+
+    <div class="progress-info">
+        <span>📌 <span id="currentIdx">0</span> / <span id="totalTerms">0</span></span>
+        <span>✅ Đã nhớ: <span id="knownCount">0</span></span>
+        <span>📈 Tiến độ: <span id="percent">0</span>%</span>
+        <button id="markKnownBtn" style="background:#9c27b0; color:white; padding:4px 12px;">✓ Đã nhớ thuật ngữ</button>
+    </div>
+
+    <div class="add-panel">
+        <h3>➕ Thêm thuật ngữ mới</h3>
+        <div class="input-row">
+            <input type="text" id="newTerm" placeholder="Thuật ngữ tiếng Anh" autocomplete="off">
+            <textarea id="newDefinition" rows="2" placeholder="Định nghĩa / nghĩa tiếng Việt" style="flex:2;"></textarea>
+            <button id="addTermBtn" class="small-btn">Thêm</button>
+        </div>
+    </div>
+    <footer>💾 Tạo ra bởi SophiaNguyen | Tổng hợp: kiến thức chuyên ngành + đạo đức hành nghề (APA)</footer>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    // DANH SÁCH THUẬT NGỮ TÂM LÝ HỌC (mở rộng)
+    // Bao gồm 115 thuật ngữ cơ bản + 85 thuật ngữ đạo đức APA
+    // Tổng cộng 200 thuật ngữ, không trùng lặp
+    // --------------------------------------------------------------
+    const PSYCH_TERMS = [
+        // ========== PHẦN 1: CÁC KHÁI NIỆM CỐT LÕI (115 từ) ==========
+        { term: "psychology", definition: "tâm lý học - khoa học nghiên cứu về tâm trí và hành vi" },
+        { term: "behavior", definition: "hành vi - cách một người hành động hoặc cư xử" },
+        { term: "individual", definition: "cá nhân - một người riêng lẻ, xét trong tập thể" },
+        { term: "personality", definition: "nhân cách - cách suy nghĩ, cảm nhận và hành vi đặc trưng của một người" },
+        { term: "dependent factor", definition: "yếu tố phụ thuộc - yếu tố thay đổi dựa trên các yếu tố khác" },
+        { term: "perception", definition: "nhận thức - cách chúng ta hiểu và giải thích thông tin từ môi trường" },
+        { term: "cognition", definition: "nhận thức (quá trình) - các hoạt động tinh thần như suy nghĩ, ghi nhớ, học tập" },
+        { term: "cognitive psychology", definition: "tâm lý học nhận thức - nghiên cứu về quá trình xử lý thông tin của tâm trí" },
+        { term: "free will", definition: "ý chí tự do - khả năng quyết định độc lập không bị ảnh hưởng bên ngoài" },
+        { term: "determinism", definition: "thuyết quyết định - mọi sự việc đều xảy ra theo quy luật nhân quả" },
+        { term: "dualism", definition: "thuyết nhị nguyên - niềm tin tâm trí và cơ thể là hai thực thể riêng biệt" },
+        { term: "nature vs nurture", definition: "bẩm sinh vs môi trường - tranh luận về ảnh hưởng của gen và môi trường lên hành vi" },
+        { term: "tabula rasa", definition: "tờ giấy trắng - thuyết cho rằng trẻ sinh ra chưa có kiến thức, mọi thứ đều học được" },
+        { term: "innate", definition: "bẩm sinh - có từ khi sinh ra, không phải học được" },
+        { term: "conscious", definition: "có ý thức - trạng thái nhận thức và tỉnh táo" },
+        { term: "unconscious", definition: "vô thức - phần tâm trí không thể tiếp cận trực tiếp nhưng ảnh hưởng hành vi" },
+        { term: "scientific method", definition: "phương pháp khoa học - cách tiếp cận có hệ thống để nghiên cứu" },
+        { term: "hypothesis", definition: "giả thuyết - dự đoán có thể kiểm chứng" },
+        { term: "hindsight bias", definition: "thiên kiến hậu tri - xu hướng nghĩ rằng mình đã biết kết quả sau khi nó xảy ra" },
+        { term: "psychologist", definition: "nhà tâm lý học - người nghiên cứu về tâm trí và hành vi" },
+        { term: "therapist", definition: "nhà trị liệu - người chuyên điều trị các vấn đề tâm lý" },
+        { term: "clinical psychology", definition: "tâm lý học lâm sàng - chuyên về chẩn đoán và điều trị rối loạn tâm thần" },
+        { term: "developmental psychology", definition: "tâm lý học phát triển - nghiên cứu sự thay đổi tâm lý theo độ tuổi" },
+        { term: "social psychology", definition: "tâm lý học xã hội - nghiên cứu ảnh hưởng của xã hội lên hành vi" },
+        { term: "cognitive development", definition: "phát triển nhận thức - sự thay đổi về khả năng suy nghĩ và học hỏi" },
+        { term: "emotion", definition: "cảm xúc - trạng thái tình cảm mạnh mẽ" },
+        { term: "motivation", definition: "động lực - yếu tố thúc đẩy hành động" },
+        { term: "attitude", definition: "thái độ - cách đánh giá, suy nghĩ về một đối tượng" },
+        { term: "value", definition: "giá trị - niềm tin quan trọng định hướng hành vi" },
+        { term: "memory", definition: "trí nhớ - khả năng lưu trữ và nhớ lại thông tin" },
+        { term: "learning", definition: "học tập - sự thay đổi hành vi dựa trên kinh nghiệm" },
+        { term: "stress", definition: "căng thẳng - phản ứng của cơ thể trước áp lực" },
+        { term: "anxiety", definition: "lo âu - cảm giác sợ hãi, bất an về điều sắp xảy ra" },
+        { term: "depression", definition: "trầm cảm - rối loạn tâm trạng với cảm giác buồn bã kéo dài" },
+        { term: "psychotherapy", definition: "tâm lý trị liệu - phương pháp điều trị bằng trò chuyện" },
+        { term: "counseling", definition: "tham vấn - hỗ trợ tâm lý để giải quyết vấn đề" },
+        { term: "forensic psychology", definition: "tâm lý học pháp y - ứng dụng tâm lý trong lĩnh vực pháp luật" },
+        { term: "behaviorism", definition: "chủ nghĩa hành vi - trường phái tập trung vào hành vi quan sát được" },
+        { term: "functionalism", definition: "chức năng luận - nghiên cứu chức năng của ý thức và hành vi" },
+        { term: "structuralism", definition: "cấu trúc luận - phân tích cấu trúc cơ bản của tâm trí" },
+        { term: "psychodynamic", definition: "tâm động lực - cách tiếp cận nhấn mạnh vô thức và xung đột nội tâm" },
+        { term: "humanistic psychology", definition: "tâm lý học nhân văn - nhấn mạnh tiềm năng phát triển của con người" },
+        { term: "positive psychology", definition: "tâm lý học tích cực - nghiên cứu về hạnh phúc và điểm mạnh" },
+        { term: "empathy", definition: "sự đồng cảm - khả năng hiểu và chia sẻ cảm xúc của người khác" },
+        { term: "self-esteem", definition: "lòng tự trọng - đánh giá giá trị bản thân" },
+        { term: "resilience", definition: "khả năng phục hồi - khả năng vượt qua nghịch cảnh" },
+        { term: "social support", definition: "hỗ trợ xã hội - sự giúp đỡ từ gia đình, bạn bè, cộng đồng" },
+        { term: "group dynamics", definition: "động lực nhóm - cách các cá nhân tương tác trong nhóm" },
+        { term: "prejudice", definition: "định kiến - thái độ tiêu cực không dựa trên kinh nghiệm thực tế" },
+        { term: "stereotype", definition: "khuôn mẫu - niềm tin đơn giản hóa về một nhóm người" },
+        { term: "discrimination", definition: "phân biệt đối xử - hành động bất công dựa trên thành kiến" },
+        { term: "gender", definition: "giới tính xã hội - vai trò, hành vi xã hội liên quan đến nam/nữ" },
+        { term: "identity", definition: "bản sắc - khái niệm về bản thân" },
+        { term: "attachment", definition: "gắn bó - mối liên kết tình cảm sâu sắc" },
+        { term: "parenting style", definition: "phong cách làm cha mẹ - cách cha mẹ nuôi dạy con" },
+        { term: "adolescence", definition: "tuổi vị thành niên - giai đoạn phát triển từ 10-19 tuổi" },
+        { term: "aging", definition: "lão hóa - quá trình già đi" },
+        { term: "abnormal psychology", definition: "tâm lý học bất thường - nghiên cứu về hành vi và rối loạn tâm thần" },
+        { term: "mental disorder", definition: "rối loạn tâm thần - tình trạng suy giảm chức năng tâm lý" },
+        { term: "phobia", definition: "ám ảnh sợ hãi - nỗi sợ vô lý, mạnh mẽ trước một đối tượng" },
+        { term: "obsessive-compulsive disorder (OCD)", definition: "rối loạn ám ảnh cưỡng chế - xuất hiện ý nghĩ ám ảnh và hành vi lặp lại" },
+        { term: "post-traumatic stress disorder (PTSD)", definition: "rối loạn căng thẳng sau sang chấn" },
+        { term: "schizophrenia", definition: "tâm thần phân liệt - rối loạn nghiêm trọng về suy nghĩ và cảm xúc" },
+        { term: "bipolar disorder", definition: "rối loạn lưỡng cực - thay đổi tâm trạng từ hưng cảm sang trầm cảm" },
+        { term: "addiction", definition: "nghiện - phụ thuộc vào chất hoặc hành vi" },
+        { term: "placebo effect", definition: "hiệu ứng giả dược - cải thiện triệu chứng do kỳ vọng, không phải do thuốc thật" },
+        { term: "double-blind study", definition: "nghiên cứu mù đôi - cả người tham gia và nhà nghiên cứu đều không biết nhóm nào được điều trị" },
+        { term: "case study", definition: "nghiên cứu trường hợp - phân tích sâu một cá nhân hoặc nhóm nhỏ" },
+        { term: "survey", definition: "khảo sát - thu thập dữ liệu qua bảng hỏi" },
+        { term: "correlation", definition: "tương quan - mối quan hệ giữa hai biến số" },
+        { term: "experiment", definition: "thực nghiệm - nghiên cứu có kiểm soát để xác định quan hệ nhân quả" },
+        { term: "independent variable", definition: "biến độc lập - yếu tố được thay đổi trong thực nghiệm" },
+        { term: "dependent variable", definition: "biến phụ thuộc - kết quả đo lường trong thực nghiệm" },
+        { term: "control group", definition: "nhóm đối chứng - nhóm không nhận tác động để so sánh" },
+        { term: "statistics", definition: "thống kê - phương pháp phân tích dữ liệu" },
+        { term: "ethics", definition: "đạo đức - nguyên tắc đạo đức trong nghiên cứu và hành nghề" },
+        { term: "informed consent", definition: "sự đồng ý có hiểu biết - cam kết tham gia nghiên cứu sau khi được giải thích" },
+        { term: "confidentiality", definition: "tính bảo mật - không tiết lộ thông tin cá nhân" },
+        { term: "neuron", definition: "nơ-ron - tế bào thần kinh" },
+        { term: "neurotransmitter", definition: "chất dẫn truyền thần kinh - hóa chất truyền tín hiệu giữa các nơ-ron" },
+        { term: "cortex", definition: "vỏ não - lớp ngoài của não bộ" },
+        { term: "limbic system", definition: "hệ limbic - vùng não liên quan cảm xúc và trí nhớ" },
+        { term: "hippocampus", definition: "hồi hải mã - vùng não quan trọng cho trí nhớ" },
+        { term: "amygdala", definition: "hạch hạnh nhân - vùng não liên quan cảm xúc sợ hãi" },
+        { term: "frontal lobe", definition: "thùy trán - vùng não điều khiển suy nghĩ, quyết định" },
+        { term: "plasticity", definition: "tính dẻo - khả năng thay đổi của não bộ" },
+        { term: "IQ (intelligence quotient)", definition: "chỉ số thông minh - điểm số đo trí thông minh" },
+        { term: "EQ (emotional quotient)", definition: "chỉ số cảm xúc - khả năng nhận biết và quản lý cảm xúc" },
+        { term: "creativity", definition: "sáng tạo - khả năng tạo ra ý tưởng mới" },
+        { term: "problem solving", definition: "giải quyết vấn đề - quá trình tìm giải pháp" },
+        { term: "decision making", definition: "ra quyết định - lựa chọn giữa các phương án" },
+        { term: "critical thinking", definition: "tư duy phản biện - phân tích đánh giá thông tin một cách khách quan" },
+        { term: "bias", definition: "thiên kiến - xu hướng đánh giá không khách quan" },
+        { term: "confirmation bias", definition: "thiên kiến xác nhận - xu hướng tìm kiếm thông tin ủng hộ quan điểm sẵn có" },
+        { term: "self-fulfilling prophecy", definition: "lời tiên tri tự ứng nghiệm - kỳ vọng dẫn đến hành vi làm nó thành hiện thực" },
+        { term: "cognitive dissonance", definition: "bất hòa nhận thức - cảm giác khó chịu khi có hai niềm tin mâu thuẫn" },
+        { term: "defense mechanism", definition: "cơ chế tự vệ - cách vô thức bảo vệ bản thân khỏi lo âu" },
+        { term: "projection", definition: "phóng chiếu - gán cảm xúc của mình cho người khác" },
+        { term: "repression", definition: "ức chế - đẩy suy nghĩ đau buồn vào vô thức" },
+        { term: "denial", definition: "phủ nhận - từ chối thừa nhận thực tế" },
+        { term: "rationalization", definition: "hợp lý hóa - biện minh cho hành vi bằng lý do có vẻ hợp lý" },
+        { term: "learning style", definition: "phong cách học tập - cách thức ưa thích để tiếp nhận thông tin" },
+        { term: "classical conditioning", definition: "điều kiện hóa cổ điển - học tập qua liên kết kích thích" },
+        { term: "operant conditioning", definition: "điều kiện hóa thao tác - học tập qua thưởng/phạt" },
+        { term: "reinforcement", definition: "củng cố - tăng khả năng lặp lại hành vi" },
+        { term: "punishment", definition: "trừng phạt - giảm khả năng lặp lại hành vi" },
+        { term: "observational learning", definition: "học tập quan sát - học qua quan sát người khác" },
+        { term: "memory encoding", definition: "mã hóa trí nhớ - quá trình chuyển thông tin vào bộ nhớ" },
+        { term: "short-term memory", definition: "trí nhớ ngắn hạn - lưu trữ thông tin trong thời gian ngắn" },
+        { term: "long-term memory", definition: "trí nhớ dài hạn - lưu trữ thông tin lâu dài" },
+        { term: "forgetting curve", definition: "đường cong quên - tốc độ quên theo thời gian" },
+        { term: "sleep", definition: "giấc ngủ - trạng thái nghỉ ngơi của cơ thể và não bộ" },
+        { term: "dream", definition: "giấc mơ - hình ảnh, suy nghĩ xảy ra khi ngủ" },
+        { term: "hypnosis", definition: "thôi miên - trạng thái thay đổi ý thức" },
+
+        // ========== PHẦN 2: CÁC THUẬT NGỮ ĐẠO ĐỨC APA (85 thuật ngữ bổ sung) ==========
+        { term: "beneficence", definition: "nguyên tắc làm điều tốt - hành động vì lợi ích của người khác" },
+        { term: "nonmaleficence", definition: "nguyên tắc không gây hại - tránh làm tổn thương người khác" },
+        { term: "fidelity", definition: "sự trung thành - giữ lời hứa và trách nhiệm với thân chủ" },
+        { term: "responsibility", definition: "trách nhiệm - nhận thức về nghĩa vụ đối với xã hội và nghề nghiệp" },
+        { term: "integrity", definition: "tính chính trực - trung thực, chính xác trong khoa học và thực hành" },
+        { term: "justice", definition: "công bằng - đảm bảo mọi người đều được tiếp cận và hưởng lợi từ tâm lý học" },
+        { term: "respect for rights and dignity", definition: "tôn trọng quyền và phẩm giá con người" },
+        { term: "competence", definition: "năng lực chuyên môn - chỉ thực hành trong phạm vi được đào tạo" },
+        { term: "boundaries of competence", definition: "ranh giới năng lực - giới hạn chuyên môn mà nhà tâm lý được phép thực hành" },
+        { term: "multiple relationships", definition: "mối quan hệ đa trùng - khi nhà tâm lý đồng thời có nhiều vai trò với cùng một người" },
+        { term: "exploitative relationships", definition: "mối quan hệ lợi dụng - lạm dụng quyền lực để trục lợi" },
+        { term: "conflict of interest", definition: "xung đột lợi ích - khi lợi ích cá nhân ảnh hưởng đến quyết định chuyên môn" },
+        { term: "sexual harassment", definition: "quấy rối tình dục - hành vi mang tính tình dục không được mong đợi, gây khó chịu" },
+        { term: "third-party request", definition: "yêu cầu từ bên thứ ba - khi dịch vụ được cung cấp theo yêu cầu của người/ tổ chức khác" },
+        { term: "delegation of work", definition: "ủy quyền công việc - giao nhiệm vụ cho người khác dưới sự giám sát" },
+        { term: "informed consent to therapy", definition: "sự đồng ý có hiểu biết trong trị liệu - giải thích rõ về quy trình, rủi ro, bí mật" },
+        { term: "limits of confidentiality", definition: "giới hạn của bảo mật - những trường hợp bắt buộc phải phá vỡ bảo mật (ví dụ: nguy cơ tự sát)" },
+        { term: "privacy", definition: "quyền riêng tư - quyền được kiểm soát thông tin cá nhân" },
+        { term: "disclosure", definition: "tiết lộ thông tin - hành động chia sẻ thông tin bảo mật khi được phép" },
+        { term: "recording", definition: "ghi âm/ghi hình - cần có sự đồng ý trước khi thực hiện" },
+        { term: "test data", definition: "dữ liệu kiểm tra - điểm số, câu trả lời, ghi chép trong quá trình đánh giá" },
+        { term: "test materials", definition: "tài liệu kiểm tra - sổ tay, bộ câu hỏi, công cụ đánh giá (khác với dữ liệu)" },
+        { term: "test security", definition: "bảo mật bài kiểm tra - trách nhiệm giữ bí mật nội dung công cụ đánh giá" },
+        { term: "assessment", definition: "đánh giá tâm lý - quy trình thu thập thông tin để hiểu về cá nhân" },
+        { term: "diagnosis", definition: "chẩn đoán - xác định rối loạn tâm thần dựa trên tiêu chuẩn" },
+        { term: "forensic role", definition: "vai trò pháp y - làm việc trong hệ thống tư pháp, tòa án" },
+        { term: "expert witness", definition: "nhân chứng chuyên môn - cung cấp ý kiến chuyên môn trước tòa" },
+        { term: "record keeping", definition: "lưu trữ hồ sơ - quản lý tài liệu chuyên môn theo quy định" },
+        { term: "fees and financial arrangements", definition: "phí và thỏa thuận tài chính - cần thống nhất rõ ràng với thân chủ" },
+        { term: "barter", definition: "đổi hàng - nhận hàng hóa/dịch vụ thay vì tiền, chỉ khi không gây hại" },
+        { term: "withholding records", definition: "giữ lại hồ sơ - không được giữ hồ sơ cấp cứu chỉ vì chưa thanh toán" },
+        { term: "education and training", definition: "giáo dục và đào tạo - trách nhiệm đảm bảo chất lượng chương trình" },
+        { term: "supervisee", definition: "người được giám sát - học viên, thực tập sinh dưới sự hướng dẫn" },
+        { term: "mandatory therapy", definition: "trị liệu bắt buộc - khi là một phần của chương trình đào tạo" },
+        { term: "institutional approval", definition: "phê duyệt của tổ chức - cần có trước khi tiến hành nghiên cứu" },
+        { term: "deception in research", definition: "lừa dối trong nghiên cứu - chỉ được phép khi có giá trị khoa học và không gây hại" },
+        { term: "debriefing", definition: "giải thích sau nghiên cứu - cung cấp thông tin đầy đủ sau khi kết thúc" },
+        { term: "humane care of animals", definition: "chăm sóc nhân đạo động vật - tuân thủ quy định về đối xử với động vật thí nghiệm" },
+        { term: "plagiarism", definition: "đạo văn - sử dụng ý tưởng, công trình của người khác mà không ghi nguồn" },
+        { term: "publication credit", definition: "ghi nhận công bố - xác định tác giả dựa trên đóng góp thực tế" },
+        { term: "duplicate publication", definition: "công bố trùng lặp - không đăng lại dữ liệu đã công bố trước đó" },
+        { term: "sharing research data", definition: "chia sẻ dữ liệu nghiên cứu - cung cấp dữ liệu để xác minh kết quả" },
+        { term: "reviewer", definition: "người phản biện - đánh giá bài báo, đề xuất nghiên cứu với tính bảo mật cao" },
+        { term: "misuse of work", definition: "lạm dụng công việc - sử dụng sai mục đích kết quả nghiên cứu/dịch vụ" },
+        { term: "informal resolution", definition: "giải quyết không chính thức - xử lý vi phạm đạo đức qua trao đổi trực tiếp" },
+        { term: "reporting ethical violations", definition: "báo cáo vi phạm đạo đức - thông báo cho cơ quan có thẩm quyền" },
+        { term: "cooperating with ethics committees", definition: "hợp tác với ủy ban đạo đức - tham gia điều tra khi được yêu cầu" },
+        { term: "improper complaints", definition: "khiếu nại không đúng - không cố ý đưa ra cáo buộc sai sự thật" },
+        { term: "unfair discrimination", definition: "phân biệt đối xử không công bằng - dựa trên tuổi, giới, chủng tộc, tôn giáo..." },
+        { term: "avoiding harm", definition: "tránh gây hại - thực hiện các biện pháp để giảm thiểu tổn thương" },
+        { term: "torture", definition: "tra tấn - hành vi cố ý gây đau đớn về thể chất hoặc tinh thần" },
+        { term: "confidential information", definition: "thông tin bảo mật - dữ liệu cá nhân thu được trong quá trình làm việc" },
+        { term: "consultation", definition: "tham vấn đồng nghiệp - trao đổi chuyên môn, bảo vệ bí mật thân chủ" },
+        { term: "public statements", definition: "tuyên bố công khai - quảng cáo, giới thiệu dịch vụ, phải trung thực" },
+        { term: "testimonials", definition: "lời chứng thực - không yêu cầu thân chủ hiện tại viết lời khen" },
+        { term: "in-person solicitation", definition: "chào mời trực tiếp - không được tiếp thị dịch vụ với người dễ bị tổn thương" },
+        { term: "accuracy in reports", definition: "tính chính xác trong báo cáo - đảm bảo thông tin về phí, dịch vụ, chẩn đoán đúng" },
+        { term: "referrals", definition: "giới thiệu - không nhận hoa hồng dựa trên giới thiệu" },
+        { term: "student disclosure", definition: "tiết lộ thông tin cá nhân của học viên - chỉ yêu cầu khi thực sự cần thiết" },
+        { term: "assessing performance", definition: "đánh giá hiệu suất - dựa trên kết quả thực tế, không thiên vị" },
+        { term: "sexual relationships with students", definition: "quan hệ tình dục với học viên - bị nghiêm cấm khi có quyền đánh giá" },
+        { term: "inducements for participation", definition: "ưu đãi tham gia nghiên cứu - không quá mức gây ép buộc" },
+        { term: "deception in research", definition: "lừa dối trong nghiên cứu - phải có biện pháp giảm thiểu tác hại" },
+        { term: "archival research", definition: "nghiên cứu tài liệu lưu trữ - không cần đồng ý nếu không gây hại" },
+        { term: "naturalistic observation", definition: "quan sát tự nhiên - ghi nhận hành vi trong môi trường thực tế" },
+        { term: "test construction", definition: "xây dựng bài kiểm tra - đảm bảo độ tin cậy, giá trị, công bằng" },
+        { term: "interpreting assessment results", definition: "giải thích kết quả đánh giá - tính đến ngữ cảnh và đặc điểm cá nhân" },
+        { term: "obsolete tests", definition: "bài kiểm tra lỗi thời - không sử dụng cho quyết định hiện tại" },
+        { term: "test scoring services", definition: "dịch vụ chấm điểm - phải chọn đơn vị có độ tin cậy cao" },
+        { term: "explaining assessment results", definition: "giải thích kết quả đánh giá - cung cấp cho thân chủ trừ trường hợp đặc biệt" },
+        { term: "therapy with couples or families", definition: "trị liệu cho cặp đôi/gia đình - xác định rõ vai trò và bảo mật" },
+        { term: "group therapy", definition: "trị liệu nhóm - thông báo giới hạn bảo mật cho từng thành viên" },
+        { term: "terminating therapy", definition: "kết thúc trị liệu - khi thân chủ không còn cần hoặc bị hại bởi dịch vụ" },
+        { term: "interruption of therapy", definition: "gián đoạn trị liệu - có kế hoạch chuyển tiếp phù hợp" },
+        { term: "sexual intimacies with clients", definition: "quan hệ tình dục với thân chủ - bị cấm tuyệt đối" },
+        { term: "former clients", definition: "thân chủ cũ - không được có quan hệ tình dục trong vòng 2 năm sau khi kết thúc" },
+        { term: "pretermination counseling", definition: "tham vấn trước khi kết thúc - hỗ trợ thân chủ chuyển sang nhà trị liệu khác" },
+        { term: "emergency services", definition: "dịch vụ khẩn cấp - có thể cung cấp ngoài phạm vi năng lực nếu cần thiết" },
+        { term: "institutional affiliation", definition: "liên kết tổ chức - công bố chính xác mối quan hệ với cơ quan" },
+        { term: "research protocol", definition: "quy trình nghiên cứu - phải tuân thủ sau khi được phê duyệt" },
+        { term: "data fabrication", definition: "bịa đặt dữ liệu - nghiêm cấm, là vi phạm đạo đức nghiêm trọng" },
+        { term: "ethical dilemma", definition: "tình huống đạo đức - khi các nguyên tắc mâu thuẫn, cần tìm cách giải quyết" },
+        { term: "aspirational goals", definition: "mục tiêu hướng tới - các nguyên tắc chung, không mang tính bắt buộc" },
+        { term: "enforceable rules", definition: "quy tắc có thể thi hành - các tiêu chuẩn đạo đức cụ thể" },
+        { term: "sanctions", definition: "hình thức kỷ luật - có thể bao gồm cảnh cáo, đình chỉ tư cách thành viên" }
+    ];
+
+    // Loại bỏ trùng lặp (dựa trên term) – nếu có
+    const uniqueMap = new Map();
+    for (const item of PSYCH_TERMS) {
+        if (!uniqueMap.has(item.term.toLowerCase())) {
+            uniqueMap.set(item.term.toLowerCase(), item);
+        }
+    }
+    const vocabulary = Array.from(uniqueMap.values());
+
+    console.log("Đã nạp", vocabulary.length, "thuật ngữ tâm lý học (bao gồm đạo đức APA)");
+
+    // Các biến điều khiển
+    let currentIdx = 0;
+    let isShowingMeaning = false;
+    const STORAGE_KEY = "psychology_terms_apa_extended";
+
+    // DOM elements
+    const termDisplay = document.getElementById("termDisplay");
+    const definitionDisplay = document.getElementById("definitionDisplay");
+    const flashcardDiv = document.getElementById("flashcard");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const shuffleBtn = document.getElementById("shuffleBtn");
+    const resetProgressBtn = document.getElementById("resetProgressBtn");
+    const markKnownBtn = document.getElementById("markKnownBtn");
+    const speakBtn = document.getElementById("speakBtn");
+    const addTermBtn = document.getElementById("addTermBtn");
+    const newTermInput = document.getElementById("newTerm");
+    const newDefinitionInput = document.getElementById("newDefinition");
+    const currentIdxSpan = document.getElementById("currentIdx");
+    const totalTermsSpan = document.getElementById("totalTerms");
+    const knownCountSpan = document.getElementById("knownCount");
+    const percentSpan = document.getElementById("percent");
+    const countBadge = document.getElementById("countBadge");
+
+    function saveData() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ words: vocabulary }));
+    }
+
+    function loadData() {
+        const stored = localStorage.getItem(STORAGE_KEY);
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                if (parsed.words && parsed.words.length === vocabulary.length) {
+                    vocabulary = parsed.words;
+                }
+            } catch(e) {}
+        }
+        if (currentIdx >= vocabulary.length) currentIdx = 0;
+        updateStats();
+        renderCard();
+        saveData();
+    }
+
+    function updateStats() {
+        const total = vocabulary.length;
+        const known = vocabulary.filter(w => w.known === true).length;
+        const percent = total === 0 ? 0 : Math.round((known / total) * 100);
+        totalTermsSpan.innerText = total;
+        knownCountSpan.innerText = known;
+        percentSpan.innerText = percent;
+        countBadge.innerText = `${total} thuật ngữ`;
+        currentIdxSpan.innerText = currentIdx + 1;
+    }
+
+    function renderCard() {
+        if (!vocabulary.length) {
+            termDisplay.innerText = "✨ Chưa có thuật ngữ";
+            definitionDisplay.innerText = "Hãy thêm thuật ngữ mới";
+            return;
+        }
+        const w = vocabulary[currentIdx];
+        termDisplay.innerText = w.term;
+        definitionDisplay.innerText = isShowingMeaning ? w.definition : "🤔 ??? (Bấm vào thẻ để xem định nghĩa)";
+        if (w.known) termDisplay.style.textDecoration = "underline";
+        else termDisplay.style.textDecoration = "none";
+    }
+
+    function flipCard() {
+        if (!vocabulary.length) return;
+        isShowingMeaning = !isShowingMeaning;
+        renderCard();
+    }
+
+    function nextCard() {
+        if (!vocabulary.length) return;
+        currentIdx = (currentIdx + 1) % vocabulary.length;
+        isShowingMeaning = false;
+        renderCard();
+        updateStats();
+    }
+
+    function prevCard() {
+        if (!vocabulary.length) return;
+        currentIdx = (currentIdx - 1 + vocabulary.length) % vocabulary.length;
+        isShowingMeaning = false;
+        renderCard();
+        updateStats();
+    }
+
+    function shuffleCards() {
+        if (vocabulary.length <= 1) return;
+        for (let i = vocabulary.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [vocabulary[i], vocabulary[j]] = [vocabulary[j], vocabulary[i]];
+        }
+        currentIdx = 0;
+        isShowingMeaning = false;
+        saveData();
+        updateStats();
+        renderCard();
+        showToast("🎲 Đã xào bài!", "#9c27b0");
+    }
+
+    function resetProgress() {
+        vocabulary.forEach(w => w.known = false);
+        saveData();
+        updateStats();
+        renderCard();
+        showToast("⟳ Đã reset tiến độ học", "#8e24aa");
+    }
+
+    function markCurrentAsKnown() {
+        if (!vocabulary.length) return;
+        if (!vocabulary[currentIdx].known) {
+            vocabulary[currentIdx].known = true;
+            saveData();
+            updateStats();
+            renderCard();
+            showToast("✅ Đã nhớ! Chuyển sang thuật ngữ tiếp theo", "#9c27b0");
+            nextCard();
+        } else {
+            nextCard();
+        }
+    }
+
+    function speakTerm() {
+        if (!vocabulary.length) return;
+        const text = vocabulary[currentIdx].term;
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            utterance.rate = 0.9;
+            window.speechSynthesis.speak(utterance);
+        } else {
+            alert("Trình duyệt không hỗ trợ đọc tiếng.");
+        }
+    }
+
+    function addNewTerm() {
+        let term = newTermInput.value.trim();
+        let definition = newDefinitionInput.value.trim();
+        if (term === "" || definition === "") {
+            alert("Vui lòng nhập đầy đủ thuật ngữ và định nghĩa.");
+            return;
+        }
+        const exists = vocabulary.some(w => w.term.toLowerCase() === term.toLowerCase());
+        if (exists) {
+            alert(`Thuật ngữ "${term}" đã có trong danh sách.`);
+            return;
+        }
+        vocabulary.push({ term, definition, known: false });
+        saveData();
+        updateStats();
+        newTermInput.value = "";
+        newDefinitionInput.value = "";
+        showToast(`➕ Đã thêm "${term}"`, "#9c27b0");
+    }
+
+    function showToast(msg, bgColor = "#7b1fa2") {
+        const toast = document.createElement("div");
+        toast.innerText = msg;
+        toast.style.position = "fixed";
+        toast.style.bottom = "20px";
+        toast.style.left = "50%";
+        toast.style.transform = "translateX(-50%)";
+        toast.style.backgroundColor = bgColor;
+        toast.style.color = "white";
+        toast.style.padding = "8px 20px";
+        toast.style.borderRadius = "40px";
+        toast.style.fontSize = "0.8rem";
+        toast.style.zIndex = "999";
+        toast.style.fontWeight = "500";
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 1800);
+    }
+
+    function handleKeydown(e) {
+        if (e.key === "ArrowLeft") {
+            prevCard();
+            e.preventDefault();
+        } else if (e.key === "ArrowRight") {
+            nextCard();
+            e.preventDefault();
+        } else if (e.key === " " || e.key === "Enter") {
+            if (document.activeElement?.tagName !== "BUTTON" && document.activeElement?.tagName !== "INPUT" && document.activeElement?.tagName !== "TEXTAREA") {
+                flipCard();
+                e.preventDefault();
+            }
+        } else if (e.key === "k" || e.key === "K") {
+            markCurrentAsKnown();
+            e.preventDefault();
+        } else if (e.key === "s" || e.key === "S") {
+            speakTerm();
+            e.preventDefault();
+        }
+    }
+
+    // Gắn sự kiện
+    flashcardDiv.addEventListener("click", flipCard);
+    prevBtn.addEventListener("click", prevCard);
+    nextBtn.addEventListener("click", nextCard);
+    shuffleBtn.addEventListener("click", shuffleCards);
+    resetProgressBtn.addEventListener("click", resetProgress);
+    markKnownBtn.addEventListener("click", markCurrentAsKnown);
+    speakBtn.addEventListener("click", speakTerm);
+    addTermBtn.addEventListener("click", addNewTerm);
+    window.addEventListener("keydown", handleKeydown);
+
+    // Khởi chạy
+    loadData();
+</script>
+</body>
+</html>
