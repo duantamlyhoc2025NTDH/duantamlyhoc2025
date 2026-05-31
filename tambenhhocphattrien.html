@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ôn Tập – Tâm Bệnh Phát Triển | File 1</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --cream: #faf7f2;
+    --warm: #f0ebe0;
+    --teal: #2a7f7f;
+    --teal-light: #3a9f9f;
+    --coral: #d45f3c;
+    --gold: #c49a2a;
+    --correct: #2d7a4f;
+    --wrong: #b53a2a;
+    --correct-bg: #e8f5ee;
+    --wrong-bg: #fcecea;
+    --shadow: 0 4px 24px rgba(26,26,46,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 56px 40px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 80px);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 5px 18px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.7;
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+  .stats-row {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+  .stat-label { font-size: 12px; opacity: 0.6; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* NAV TABS */
+  .tabs {
+    display: flex;
+    background: white;
+    border-bottom: 2px solid var(--warm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 16px 12px;
+    border: none;
+    background: none;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+  }
+  .tab-btn.active {
+    color: var(--teal);
+    border-bottom-color: var(--teal);
+  }
+  .tab-btn:hover { color: var(--teal); background: var(--warm); }
+
+  /* SECTIONS */
+  .section { display: none; padding: 32px 24px 60px; max-width: 860px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* QUIZ SECTION */
+  .quiz-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .quiz-meta { font-size: 13px; color: #888; font-style: italic; }
+  .score-display {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .score-display span { color: var(--gold); }
+
+  .question-card {
+    background: white;
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid transparent;
+    transition: border-color 0.3s;
+    animation: fadeUp 0.4s ease both;
+  }
+  .question-card.answered-correct { border-left-color: var(--correct); }
+  .question-card.answered-wrong { border-left-color: var(--wrong); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .q-num {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-size: 15.5px;
+    font-weight: 600;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    border: 1.5px solid #e0dcd4;
+    border-radius: 8px;
+    background: var(--warm);
+    cursor: pointer;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    text-align: left;
+    transition: all 0.2s;
+    line-height: 1.5;
+  }
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--teal);
+    background: #e8f5f5;
+  }
+  .option-btn .opt-label {
+    min-width: 24px; height: 24px;
+    background: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700;
+    border: 1.5px solid #ccc;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .option-btn.correct {
+    background: var(--correct-bg);
+    border-color: var(--correct);
+    color: var(--correct);
+  }
+  .option-btn.correct .opt-label { background: var(--correct); border-color: var(--correct); color: white; }
+  .option-btn.wrong {
+    background: var(--wrong-bg);
+    border-color: var(--wrong);
+    color: var(--wrong);
+  }
+  .option-btn.wrong .opt-label { background: var(--wrong); border-color: var(--wrong); color: white; }
+  .option-btn:disabled { cursor: default; }
+
+  .explanation {
+    margin-top: 14px;
+    padding: 12px 16px;
+    background: #f0f7f7;
+    border-left: 3px solid var(--teal);
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px;
+    color: #333;
+    display: none;
+    line-height: 1.6;
+  }
+  .explanation.show { display: block; }
+  .explanation strong { color: var(--teal); }
+
+  .progress-bar-wrap {
+    background: var(--warm);
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 28px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--teal-light));
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  /* SELF LUẬN SECTION */
+  .situation-card {
+    background: white;
+    border-radius: 14px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+  }
+  .sit-header {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .sit-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 48px;
+  }
+  .sit-title { font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; opacity: 0.85; }
+  .sit-subtitle { font-size: 13px; opacity: 0.5; font-style: italic; margin-top: 2px; }
+
+  .sit-body { padding: 28px; }
+  .sit-case {
+    background: var(--warm);
+    border-radius: 10px;
+    padding: 20px 22px;
+    font-size: 14.5px;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    border-left: 4px solid var(--gold);
+  }
+  .sit-case strong { color: var(--coral); }
+
+  .questions-list { display: flex; flex-direction: column; gap: 20px; }
+  .q-item {}
+  .q-item-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .q-badge {
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .q-item-text { font-size: 14.5px; font-weight: 600; color: var(--ink); }
+
+  .hint-toggle {
+    background: none;
+    border: 1.5px solid var(--teal);
+    color: var(--teal);
+    padding: 7px 18px;
+    border-radius: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .hint-toggle:hover { background: var(--teal); color: white; }
+
+  .hint-box {
+    display: none;
+    margin-top: 12px;
+    padding: 18px 20px;
+    background: #f0f7f7;
+    border-radius: 10px;
+    border: 1px solid #c5e0e0;
+    font-size: 13.5px;
+    line-height: 1.75;
+  }
+  .hint-box.show { display: block; }
+  .hint-box h4 {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+  .hint-box ul { padding-left: 18px; }
+  .hint-box li { margin-bottom: 6px; }
+  .hint-box .note {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: #fff8e8;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #7a5a10;
+    font-style: italic;
+  }
+
+  /* RESULT MODAL */
+  .result-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(26,26,46,0.6);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .result-overlay.show { display: flex; }
+  .result-box {
+    background: white;
+    border-radius: 20px;
+    padding: 48px 40px;
+    text-align: center;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  }
+  .result-emoji { font-size: 56px; margin-bottom: 16px; }
+  .result-box h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .result-score {
+    font-size: 52px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    color: var(--teal);
+    line-height: 1;
+    margin: 16px 0;
+  }
+  .result-msg { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.6; }
+  .result-close {
+    background: var(--ink);
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 30px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .result-close:hover { background: var(--teal); }
+
+  /* DIVIDER */
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .section-desc { font-size: 13px; color: #888; font-style: italic; margin-bottom: 24px; }
+
+  /* RESET BTN */
+  .reset-btn {
+    background: var(--coral);
+    color: white;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 20px;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .reset-btn:hover { opacity: 0.85; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 20px 32px; }
+    .stats-row { gap: 20px; }
+    .section { padding: 24px 14px 50px; }
+    .sit-body { padding: 18px; }
+    .sit-header { padding: 16px 18px; }
+    .question-card { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">FILE 1 · 2026</div>
+  <h1>Ôn Tập <span>Tâm Bệnh</span><br>Phát Triển</h1>
+  <p>"Con người là một huyền nhiệm, không phải một vấn đề." — Gabriel Marcel</p>
+  <div class="stats-row">
+    <div class="stat"><span class="stat-num">100</span><div class="stat-label">Câu Trắc Nghiệm</div></div>
+    <div class="stat"><span class="stat-num">10</span><div class="stat-label">Tình Huống Tự Luận</div></div>
+    <div class="stat"><span class="stat-num">2</span><div class="stat-label">Phần Ôn Tập</div></div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" onclick="showTab('quiz')">📝 Trắc Nghiệm (100 câu)</button>
+  <button class="tab-btn" onclick="showTab('tl')">🧠 Tự Luận (10 tình huống)</button>
+</div>
+
+<!-- QUIZ SECTION -->
+<div class="section active" id="quiz">
+  <div class="quiz-controls">
+    <div>
+      <div class="section-title">100 Câu Trắc Nghiệm</div>
+      <div class="section-desc">Nhấn vào đáp án để kiểm tra — có giải thích chi tiết</div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <div class="score-display">Đúng: <span id="scoreNum">0</span> / <span id="totalAnswered">0</span></div>
+      <button class="reset-btn" onclick="resetQuiz()">↺ Làm lại</button>
+    </div>
+  </div>
+  <div class="progress-bar-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+  <div id="quizContainer"></div>
+</div>
+
+<!-- TỰ LUẬN SECTION -->
+<div class="section" id="tl">
+  <div class="section-title">10 Tình Huống Tự Luận</div>
+  <div class="section-desc">Mỗi tình huống có 3 câu hỏi + gợi ý trả lời theo cấu trúc của thầy</div>
+  <div id="tlContainer"></div>
+</div>
+
+<!-- RESULT OVERLAY -->
+<div class="result-overlay" id="resultOverlay">
+  <div class="result-box">
+    <div class="result-emoji" id="resultEmoji">🎉</div>
+    <h2 id="resultTitle">Kết Quả</h2>
+    <div class="result-score" id="resultScore">0/100</div>
+    <div class="result-msg" id="resultMsg"></div>
+    <button class="result-close" onclick="closeResult()">Xem lại bài làm</button>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// DATA: 100 CÂU TRẮC NGHIỆM
+// ============================================================
+const questions = [
+  // PHẦN 1: NHẬP MÔN (1-15)
+  {
+    q: "Theo tiêu chí 4D, đâu KHÔNG phải là tiêu chí xác định hành vi bất thường trong tâm bệnh học?",
+    opts: ["Distress (Đau buồn)", "Deviance (Lệch lạc)", "Diagnosis (Chẩn đoán)", "Danger (Nguy hại)"],
+    ans: 2,
+    exp: "4D gồm: Distress, Deviance, Dysfunction, Danger. 'Diagnosis' (chẩn đoán) không phải là một trong 4 tiêu chí này — chẩn đoán là kết quả của quá trình đánh giá, không phải tiêu chí xác định bất thường."
+  },
+  {
+    q: "Mô hình Sinh học – Tâm lý – Xã hội (Biopsychosocial model) được George L. Engel đề xuất vào năm nào?",
+    opts: ["1967", "1977", "1987", "1957"],
+    ans: 1,
+    exp: "George L. Engel đề xuất mô hình Sinh học – Tâm lý – Xã hội vào năm 1977, thay thế cho mô hình y sinh học thuần túy, nhấn mạnh tầm quan trọng của cả ba yếu tố trong việc hiểu bệnh tật."
+  },
+  {
+    q: "Tâm bệnh phát triển (Developmental Psychopathology) tập trung nghiên cứu điều gì?",
+    opts: ["Chỉ các rối loạn tâm thần ở người lớn", "Các rối loạn tâm lý ở trẻ em và vị thành niên trong bối cảnh phát triển", "Các bệnh thể chất ảnh hưởng đến tâm lý", "Chỉ các rối loạn di truyền"],
+    ans: 1,
+    exp: "Tâm bệnh phát triển nghiên cứu các vấn đề tâm lý ở trẻ em và vị thành niên, xem xét chúng trong bối cảnh phát triển theo độ tuổi — không thể đánh giá hành vi trẻ mà không hiểu đặc điểm phát triển bình thường của lứa tuổi đó."
+  },
+  {
+    q: "Trong DSM-5, hệ thống chẩn đoán được thay đổi như thế nào so với DSM-IV-TR?",
+    opts: ["Thêm trục VI mới", "Bỏ hệ thống 5 trục, chuyển sang tiếp cận phi trục", "Giữ nguyên 5 trục nhưng đổi tên", "Thêm trục VI về văn hóa"],
+    ans: 1,
+    exp: "DSM-5 (2013) bỏ hệ thống 5 trục của DSM-IV-TR, chuyển sang tiếp cận 'phi trục' (nonaxial system). Các chẩn đoán được ghi trong một danh sách thay vì chia thành 5 trục riêng biệt."
+  },
+  {
+    q: "Mục tiêu nghiên cứu tâm bệnh học bao gồm 4 mục tiêu chính, đâu là sự sắp xếp đúng theo trình tự logic?",
+    opts: ["Can thiệp → Giải thích → Mô tả → Dự đoán", "Mô tả → Giải thích → Dự đoán → Can thiệp", "Dự đoán → Mô tả → Can thiệp → Giải thích", "Giải thích → Dự đoán → Mô tả → Can thiệp"],
+    ans: 1,
+    exp: "Trình tự logic trong nghiên cứu tâm bệnh học: (1) Mô tả — biểu hiện, tiêu chí; (2) Giải thích — căn nguyên, cơ chế; (3) Dự đoán — tiên lượng, nguy cơ; (4) Can thiệp — trị liệu, điều chỉnh."
+  },
+  {
+    q: "Một học sinh 10 tuổi thường xuyên lo lắng về kết quả học tập nhưng vẫn đi học bình thường, quan hệ bạn bè tốt. Theo tiêu chí 4D, đây có phải là tâm bệnh không?",
+    opts: ["Có, vì trẻ có biểu hiện lo âu rõ ràng", "Chưa đủ cơ sở, vì không có Dysfunction rõ ràng", "Có, vì đã có Distress", "Không, trẻ em không thể bị tâm bệnh"],
+    ans: 1,
+    exp: "Để xác định tâm bệnh cần xem xét tổng hợp 4D. Trường hợp này có Distress nhẹ nhưng không có Dysfunction (chức năng bình thường), không có Danger, không lệch lạc đáng kể. Cần đánh giá thêm chứ chưa đủ cơ sở chẩn đoán."
+  },
+  {
+    q: "Yếu tố nào thuộc về nhóm 'Sinh học' trong mô hình Sinh học – Tâm lý – Xã hội?",
+    opts: ["Kỹ năng đối phó", "Bắt nạt học đường", "Chất dẫn truyền thần kinh", "Nhận thức tiêu cực"],
+    ans: 2,
+    exp: "Yếu tố sinh học gồm: gen di truyền, bất thường não bộ, chất dẫn truyền thần kinh, bệnh lý cơ thể. Kỹ năng đối phó và nhận thức tiêu cực thuộc tâm lý; bắt nạt học đường thuộc xã hội."
+  },
+  {
+    q: "3 câu hỏi quan trọng khi phân tích case lâm sàng tâm bệnh phát triển gồm câu nào dưới đây?",
+    opts: ["Trẻ học trường nào? IQ bao nhiêu? Cha mẹ nghề gì?", "Triệu chứng gợi ý rối loạn gì? Ở độ tuổi này có phù hợp phát triển không? Cần phân biệt với rối loạn nào?", "Thuốc nào phù hợp? Liệu pháp nào tốt nhất? Tiên lượng ra sao?", "Cha mẹ có đồng ý không? Chi phí điều trị bao nhiêu? Bảo hiểm có chi trả không?"],
+    ans: 1,
+    exp: "3 câu hỏi lâm sàng cốt lõi: (1) Triệu chứng gợi ý rối loạn gì? (2) Ở độ tuổi này, biểu hiện đó có phù hợp phát triển không? (3) Cần phân biệt với những rối loạn nào khác? Đây là nền tảng để xây dựng giả thuyết lâm sàng."
+  },
+  {
+    q: "Khi phân tích case tự luận, nhà tâm lý nên dùng cách diễn đạt nào để thể hiện giả thuyết lâm sàng phù hợp?",
+    opts: ["'Trẻ bị ASD' hoặc 'Trẻ mắc ADHD'", "'Có thể giả thuyết...' hoặc 'Cần nghĩ đến...' hoặc 'Có nguy cơ...'", "'Chắc chắn là...' hoặc 'Rõ ràng trẻ có...'", "'Tôi không biết...' hoặc 'Không thể xác định'"],
+    ans: 1,
+    exp: "Nhà tâm lý không đưa ra chẩn đoán khẳng định từ thông tin sơ bộ. Nên dùng ngôn ngữ giả thuyết: 'Có thể giả thuyết...', 'Cần nghĩ đến...', 'Có nguy cơ...', 'Cần phân biệt...' — thể hiện tư duy lâm sàng thận trọng và cần đánh giá thêm."
+  },
+  {
+    q: "ICD là viết tắt của gì và do tổ chức nào ban hành?",
+    opts: ["International Classification of Diseases — WHO", "International Clinical Diagnosis — APA", "Integrated Clinical Disorder — DSM", "International Code of Diseases — CDC"],
+    ans: 0,
+    exp: "ICD (International Classification of Diseases) là bảng phân loại bệnh quốc tế do WHO (Tổ chức Y tế Thế giới) ban hành. DSM (Diagnostic and Statistical Manual) do APA (Hiệp hội Tâm thần Mỹ) ban hành. Cả hai đều được sử dụng rộng rãi trong lâm sàng."
+  },
+  {
+    q: "Phân tích case tự luận cần xem xét các triệu chứng ở mấy nhóm chính?",
+    opts: ["2 nhóm: hành vi và cảm xúc", "3 nhóm: nhận thức, cảm xúc, hành vi", "4 nhóm: nhận thức, cảm xúc, hành vi, cơ thể", "5 nhóm: ngôn ngữ, nhận thức, cảm xúc, hành vi, xã hội"],
+    ans: 2,
+    exp: "Khi phân tích case, cần tìm triệu chứng ở 4 nhóm: (1) Nhận thức, (2) Cảm xúc, (3) Hành vi, (4) Cơ thể. Đây là cách tiếp cận toàn diện theo mô hình sinh-tâm-xã hội."
+  },
+  {
+    q: "Trục IV trong DSM-IV-TR ghi nhận điều gì?",
+    opts: ["Rối loạn nhân cách", "Các bệnh lý y khoa tổng quát", "Các vấn đề tâm lý-xã hội và môi trường", "Đánh giá mức độ chức năng GAF"],
+    ans: 2,
+    exp: "Trục IV ghi nhận các vấn đề tâm lý-xã hội và môi trường: thất nghiệp, nghèo đói, xung đột gia đình, mất người thân, bị bắt nạt... Trục V là GAF; Trục III là bệnh lý y khoa; Trục II là rối loạn nhân cách."
+  },
+  {
+    q: "Thang GAF (Global Assessment of Functioning) có thang điểm từ:",
+    opts: ["0 đến 50", "1 đến 100", "0 đến 10", "1 đến 10"],
+    ans: 1,
+    exp: "GAF dùng thang điểm 1 đến 100. Điểm càng cao thì chức năng càng tốt: 91-100 là không có triệu chứng, hoạt động tốt mọi lĩnh vực. Điểm càng thấp thể hiện suy giảm chức năng càng nặng."
+  },
+  {
+    q: "Định hướng can thiệp trong case tự luận thường bao gồm mấy hệ thống?",
+    opts: ["1: Nhà chuyên môn", "2: Gia đình và nhà trường", "3: Gia đình, nhà trường, xã hội", "4: Gia đình, nhà trường, xã hội, nhà chuyên môn"],
+    ans: 3,
+    exp: "Định hướng can thiệp toàn diện cần nhắm đến 4 hệ thống: (1) Gia đình, (2) Nhà trường, (3) Xã hội, (4) Nhà chuyên môn. Cách tiếp cận hệ thống này giúp can thiệp đồng bộ và hiệu quả hơn."
+  },
+  {
+    q: "Điểm GAF 61–70 có ý nghĩa gì?",
+    opts: ["Không có triệu chứng, hoạt động tốt", "Triệu chứng nhẹ nhưng vẫn hoạt động bình thường", "Một vài vấn đề nhưng chức năng xã hội vẫn ổn", "Suy giảm chức năng đáng kể trong nhiều lĩnh vực"],
+    ans: 2,
+    exp: "GAF 61-70: có một vài vấn đề nhưng chức năng xã hội và nghề nghiệp vẫn ổn. GAF 71-80: triệu chứng nhẹ vẫn hoạt động bình thường. GAF 81-90: ít triệu chứng hoạt động tốt."
+  },
+
+  // PHẦN 2: RỐI LOẠN PHÁT TRIỂN THẦN KINH (16-35)
+  {
+    q: "Rối loạn phổ tự kỷ (ASD) có 3 lĩnh vực khiếm khuyết đặc trưng là:",
+    opts: ["IQ thấp, ngôn ngữ chậm, vận động kém", "Tương tác xã hội, giao tiếp, hành vi/sở thích lặp lại", "Lo âu, trầm cảm, hành vi cưỡng chế", "Kém tập trung, tăng động, bốc đồng"],
+    ans: 1,
+    exp: "ASD có 3 lĩnh vực khiếm khuyết: (1) Tương tác xã hội, (2) Giao tiếp (ngôn ngữ và phi ngôn ngữ), (3) Hành vi/sở thích lặp lại rập khuôn. Đây là tam giác chẩn đoán ASD theo DSM-5."
+  },
+  {
+    q: "Công cụ M-CHAT-R/F được dùng để sàng lọc điều gì?",
+    opts: ["ADHD ở trẻ em", "Nguy cơ Rối loạn phổ tự kỷ (ASD)", "Trầm cảm sau sinh", "Chậm phát triển trí tuệ"],
+    ans: 1,
+    exp: "M-CHAT-R/F (Modified Checklist for Autism in Toddlers, Revised with Follow-up) là công cụ 2 giai đoạn sàng lọc nguy cơ ASD dựa trên ý kiến cha mẹ. Được tải miễn phí cho mục đích lâm sàng, nghiên cứu và giáo dục."
+  },
+  {
+    q: "CARS là công cụ đánh giá:",
+    opts: ["Mức độ lo âu ở trẻ", "Mức độ tự kỷ của trẻ", "Chỉ số IQ của trẻ", "Hành vi tăng động của trẻ"],
+    ans: 1,
+    exp: "CARS (Childhood Autism Rating Scale) là thang đánh giá mức độ tự kỷ ở trẻ em, được sử dụng như công cụ chẩn đoán. Khác với M-CHAT-R/F (sàng lọc), CARS đánh giá chi tiết mức độ biểu hiện ASD."
+  },
+  {
+    q: "Trẻ tự kỷ biết nói nhưng thường lặp lại ngôn ngữ của người khác một cách máy móc. Hiện tượng này gọi là:",
+    opts: ["Apraxia", "Echolalia (nhại lời)", "Câm nín chọn lọc", "Rối loạn ngôn ngữ diễn đạt"],
+    ans: 1,
+    exp: "Echolalia (nhại lời/ngôn ngữ rập khuôn) là đặc trưng của ASD — trẻ lặp lại y nguyên câu nói của người khác mà không hiểu ý nghĩa, hoặc dùng câu rập khuôn không phù hợp ngữ cảnh."
+  },
+  {
+    q: "Nếu gia đình đã có 1 trẻ tự kỷ, nguy cơ trẻ thứ hai mắc ASD là:",
+    opts: ["1-2%", "5-10%", "25-30%", "50-60%"],
+    ans: 1,
+    exp: "Nếu gia đình đã có 1 trẻ ASD, nguy cơ trẻ thứ hai là 5-10%. Nếu đã có 2 trẻ ASD thì nguy cơ trẻ thứ ba tăng lên 25-30%. Trẻ sinh đôi cùng trứng có nguy cơ 64%."
+  },
+  {
+    q: "Đâu KHÔNG phải là lĩnh vực hạn chế đặc trưng ở tất cả trẻ ASD?",
+    opts: ["Tương tác xã hội", "Giao tiếp ngôn ngữ và phi ngôn ngữ", "Vận động thô", "Thiết lập tương quan với người cùng độ tuổi"],
+    ans: 2,
+    exp: "Vận động thô không phải lĩnh vực khiếm khuyết đặc trưng của ASD. Trẻ ASD có thể vận động bình thường hoặc thậm chí rất khéo léo trong một số lĩnh vực. 3 lĩnh vực cốt lõi là: tương tác xã hội, giao tiếp, hành vi lặp lại."
+  },
+  {
+    q: "Chẩn đoán Chậm phát triển trí tuệ (Intellectual Disability) cần có đặc điểm nào dưới đây?",
+    opts: ["IQ dưới 70, khởi phát trước 18 tuổi, hành vi thích ứng kém", "IQ dưới 100, khởi phát trước 21 tuổi", "IQ dưới 70, chỉ cần đánh giá IQ", "IQ dưới 65, cha mẹ có tiền sử bệnh"],
+    ans: 0,
+    exp: "Chẩn đoán Chậm phát triển trí tuệ cần 3 tiêu chí: (1) IQ dưới 70, (2) Hành vi thích ứng kém trong các lĩnh vực thực tiễn, xã hội, khái niệm, (3) Khởi phát trước 18 tuổi."
+  },
+  {
+    q: "3 nhóm triệu chứng chính của ADHD là:",
+    opts: ["Tăng động, trầm cảm, lo âu", "Kém tập trung, tăng động, bốc đồng (xung động)", "Cưỡng chế, ám ảnh, lo âu", "Chậm ngôn ngữ, ít giao tiếp, hành vi lặp lại"],
+    ans: 1,
+    exp: "ADHD có 3 nhóm triệu chứng: (1) Kém tập trung — quên, dễ phân tâm, không hoàn thành nhiệm vụ; (2) Tăng động — không ngồi yên, chạy nhảy quá mức; (3) Bốc đồng/Xung động — hành động trước suy nghĩ."
+  },
+  {
+    q: "Trẻ hay quên nhiệm vụ hàng ngày, thường xuyên làm mất đồ dùng học tập thuộc nhóm triệu chứng nào của ADHD?",
+    opts: ["Tăng động", "Xung động", "Kém tập trung", "Rối loạn điều hành"],
+    ans: 2,
+    exp: "Hay quên và làm mất đồ thuộc nhóm triệu chứng Kém tập trung (Inattention) của ADHD. Các biểu hiện kém tập trung: không chú ý chi tiết, khó duy trì tập trung, không nghe khi được nói chuyện trực tiếp, không hoàn thành nhiệm vụ, tránh nhiệm vụ cần nỗ lực tinh thần."
+  },
+  {
+    q: "Điểm khác biệt quan trọng giữa ADHD và ODD trong hành vi chống đối là:",
+    opts: ["ADHD có IQ thấp hơn ODD", "Trong ADHD, hành vi chống đối thường không cố ý do khó kiểm soát hành vi; trong ODD thì có ý thức chống đối", "ODD chỉ xảy ra ở nam giới", "Không có sự khác biệt nào"],
+    ans: 1,
+    exp: "Phân biệt quan trọng: trong ADHD, trẻ không cố ý — do khó kiểm soát hành vi và xung động, không thể tuân theo quy tắc dù muốn. Trong ODD, trẻ có ý thức chống đối, cố tình không tuân theo, thách thức người có thẩm quyền."
+  },
+  {
+    q: "Tiền chất nào trong thời kỳ mang thai được một số nghiên cứu liên kết với tăng nguy cơ tự kỷ hoặc ADHD?",
+    opts: ["Vitamin D", "Sắt (iron)", "Acetaminophen/Paracetamol", "Folic acid"],
+    ans: 2,
+    exp: "Một số nghiên cứu tìm thấy mối liên hệ (association — không phải nhân quả) giữa sử dụng acetaminophen/paracetamol trong thời kỳ mang thai và tăng nguy cơ rối loạn phát triển thần kinh như ASD hay ADHD. FDA đang xem xét bổ sung cảnh báo."
+  },
+  {
+    q: "Rối loạn ngôn ngữ có 2 loại chính là:",
+    opts: ["Rối loạn phát âm và rối loạn nhịp điệu", "Rối loạn diễn đạt và rối loạn cảm nhận (tiếp nhận)", "Rối loạn ngữ pháp và rối loạn từ vựng", "Câm nín chọn lọc và apraxia"],
+    ans: 1,
+    exp: "Rối loạn ngôn ngữ có 2 loại: (1) Rối loạn diễn đạt (Expressive) — khó biểu đạt ý nghĩ bằng lời; (2) Rối loạn cảm nhận/tiếp nhận (Receptive) — khó hiểu ngôn ngữ người khác nói."
+  },
+  {
+    q: "Trẻ tự kỷ 'thiên tài' (Savant Syndrome) thường có khả năng đặc biệt trong lĩnh vực nào?",
+    opts: ["Thể thao và nghệ thuật biểu diễn", "Khoa học, âm nhạc, nghệ thuật hoặc có trí nhớ học vẹt đặc biệt", "Ngôn ngữ và giao tiếp xã hội", "Lãnh đạo và tổ chức nhóm"],
+    ans: 1,
+    exp: "Một số trẻ ASD có khả năng đặc biệt (Savant) trong khoa học, âm nhạc, hội họa hoặc trí nhớ học vẹt (rote memory) xuất sắc — gọi là tự kỷ thiên tài. Đây là biểu hiện của não bộ xử lý thông tin khác biệt."
+  },
+  {
+    q: "Câm nín chọn lọc (Selective Mutism) khác với rối loạn ngôn ngữ ở điểm nào?",
+    opts: ["Trẻ không có khả năng nói", "Trẻ có khả năng nói bình thường nhưng không nói trong một số bối cảnh xã hội nhất định", "Trẻ chỉ nói được một ngôn ngữ", "Trẻ nói quá nhiều trong mọi tình huống"],
+    ans: 1,
+    exp: "Câm nín chọn lọc: trẻ CÓ khả năng nói (thường nói tốt ở nhà) nhưng từ chối/không thể nói trong bối cảnh xã hội nhất định (ví dụ: ở trường). Khác với rối loạn ngôn ngữ là khó khăn về mặt ngôn ngữ học."
+  },
+  {
+    q: "Trẻ bị chậm phát triển trí tuệ có IQ ở mức dưới:",
+    opts: ["100", "85", "70", "50"],
+    ans: 2,
+    exp: "IQ dưới 70 là một trong 3 tiêu chí chẩn đoán Chậm phát triển trí tuệ. IQ trung bình dân số là 100 (±15). IQ 85-115 là bình thường. IQ 70-85 là ranh giới (borderline) — chưa đủ tiêu chí CPTTT."
+  },
+  {
+    q: "Khi trẻ chậm nói, nhà tâm lý cần phân biệt với những nguyên nhân nào?",
+    opts: ["Chỉ cần kiểm tra thính giác", "Rối loạn ngôn ngữ, ASD, Chậm phát triển trí tuệ, Apraxia, Câm nín chọn lọc", "Chỉ là vấn đề gia đình", "Trẻ lười nói, không cần lo"],
+    ans: 1,
+    exp: "Chậm nói cần phân biệt chẩn đoán (differential diagnosis) với: Rối loạn ngôn ngữ, Rối loạn phổ tự kỷ, Chậm phát triển trí tuệ, Apraxia lời nói, Câm nín chọn lọc. Mỗi rối loạn có cơ chế và hướng can thiệp khác nhau."
+  },
+
+  // PHẦN 3: RỐI LOẠN LO ÂU (36-50)
+  {
+    q: "Lo âu chia tách (Separation Anxiety) đặc trưng bởi:",
+    opts: ["Sợ những con vật cụ thể", "Lo lắng quá mức khi phải xa người thân/người chăm sóc chính", "Lo âu về nhiều vấn đề khác nhau", "Cơn hoảng loạn đột ngột không rõ nguyên nhân"],
+    ans: 1,
+    exp: "Lo âu chia tách đặc trưng bởi lo lắng quá mức và không phù hợp với độ tuổi khi phải xa người thân (thường là mẹ). Trẻ có thể từ chối đi học, có triệu chứng thể chất (đau bụng, buồn nôn), sợ xảy ra điều tệ với người thân."
+  },
+  {
+    q: "Ám sợ chuyên biệt (Specific Phobia) khác với Lo âu Lan tỏa (GAD) ở điểm nào?",
+    opts: ["Ám sợ chuyên biệt chỉ có ở trẻ em", "Ám sợ chuyên biệt là sợ hãi tập trung vào một đối tượng/tình huống cụ thể; GAD là lo âu lan rộng nhiều lĩnh vực", "GAD chỉ xảy ra ở người lớn", "Không có sự khác biệt"],
+    ans: 1,
+    exp: "Ám sợ chuyên biệt: sợ hãi/lo âu tập trung vào một đối tượng hoặc tình huống cụ thể (nhện, máy bay, kim tiêm...). Lo âu Lan tỏa (GAD): lo lắng quá mức về nhiều lĩnh vực khác nhau (học tập, sức khỏe, tương lai...) kéo dài ≥6 tháng."
+  },
+  {
+    q: "Cơn hoảng loạn (Panic Attack) bao gồm những triệu chứng thể chất điển hình nào?",
+    opts: ["Ngủ nhiều, ăn ngon, thư giãn", "Tim đập nhanh, khó thở, chóng mặt, cảm giác sắp chết hoặc mất kiểm soát", "Chỉ buồn và khóc", "Tăng động và khó ngồi yên"],
+    ans: 1,
+    exp: "Cơn hoảng loạn bao gồm: tim đập nhanh/mạnh, khó thở, chóng mặt, đổ mồ hôi, run rẩy, buồn nôn, tê liệt, cảm giác phi thực, sợ mất kiểm soát hoặc 'sắp chết'. Cơn thường đạt đỉnh trong 10 phút và thường không có nguyên nhân rõ ràng."
+  },
+  {
+    q: "Lo âu xã hội (Social Anxiety Disorder) ở trẻ em biểu hiện điển hình như thế nào?",
+    opts: ["Sợ một loại vật cụ thể", "Sợ và tránh né các tình huống xã hội vì sợ bị đánh giá, xấu hổ trước người khác", "Lo lắng về sức khỏe của bản thân", "Không muốn xa mẹ khi đến trường"],
+    ans: 1,
+    exp: "Lo âu xã hội: sợ và né tránh các tình huống xã hội vì sợ bị đánh giá tiêu cực, xấu hổ, bối rối trước người khác. Ở trẻ, biểu hiện là khó phát biểu trước lớp, sợ gặp người mới, né tránh hoạt động nhóm."
+  },
+  {
+    q: "Câm nín chọn lọc (Selective Mutism) trong nhóm rối loạn lo âu có đặc điểm gì?",
+    opts: ["Trẻ không bao giờ nói", "Trẻ nói bình thường ở nhà nhưng không nói trong các tình huống xã hội nhất định như trường học", "Trẻ chỉ nói khi được yêu cầu", "Trẻ chỉ nói bằng ngôn ngữ thứ hai"],
+    ans: 1,
+    exp: "Câm nín chọn lọc: trẻ có khả năng nói bình thường (thường nói nhiều ở nhà) nhưng không nói được trong bối cảnh xã hội nhất định. Được xếp vào nhóm rối loạn lo âu vì cơ chế là lo âu xã hội, không phải rối loạn ngôn ngữ."
+  },
+  {
+    q: "Lo âu Lan tỏa (GAD) cần có triệu chứng lo lắng quá mức kéo dài ít nhất bao lâu để chẩn đoán?",
+    opts: ["2 tuần", "1 tháng", "6 tháng", "1 năm"],
+    ans: 2,
+    exp: "GAD cần lo lắng quá mức về nhiều vấn đề kéo dài ít nhất 6 tháng, khó kiểm soát, kèm ít nhất 3 triệu chứng thể chất/tâm lý (mệt mỏi, khó tập trung, căng cơ, khó ngủ...). Ở trẻ em, chỉ cần 1 triệu chứng kèm theo."
+  },
+  {
+    q: "Đâu là điểm phân biệt quan trọng giữa lo âu bình thường và rối loạn lo âu?",
+    opts: ["Lo âu bình thường không có triệu chứng thể chất", "Lo âu rối loạn gây Dysfunction — ảnh hưởng đáng kể đến chức năng học tập, xã hội, gia đình", "Chỉ người lớn mới có rối loạn lo âu", "Lo âu bình thường chỉ kéo dài 1 ngày"],
+    ans: 1,
+    exp: "Lo âu là cảm xúc bình thường và thậm chí có lợi (chuẩn bị tốt hơn). Lo âu trở thành rối loạn khi: (1) Không tương xứng với tình huống, (2) Khó kiểm soát, (3) Gây suy giảm chức năng (Dysfunction) đáng kể trong cuộc sống."
+  },
+  {
+    q: "Trẻ 7 tuổi không chịu đi học, khóc lóc, đau bụng mỗi buổi sáng vì sợ xa mẹ. Đây là dấu hiệu của rối loạn nào?",
+    opts: ["Ám sợ chuyên biệt (sợ trường học)", "Lo âu chia tách (Separation Anxiety Disorder)", "Lo âu lan tỏa (GAD)", "Rối loạn thích ứng"],
+    ans: 1,
+    exp: "Lo âu chia tách điển hình: trẻ không chịu đi học vì sợ xa người chăm sóc (mẹ), có triệu chứng thể chất khi phải chia tách (đau bụng). Cần phân biệt với ám sợ trường học (sợ tình huống cụ thể ở trường như bị bắt nạt, sợ thầy giáo)."
+  },
+  {
+    q: "Rối loạn lo âu phổ biến nhất ở trẻ em và vị thành niên là:",
+    opts: ["Rối loạn hoảng loạn", "Lo âu chia tách và ám sợ chuyên biệt", "Lo âu xã hội và OCD", "Tất cả đều ngang nhau"],
+    ans: 1,
+    exp: "Lo âu chia tách và ám sợ chuyên biệt là hai rối loạn lo âu phổ biến nhất ở trẻ em. Lo âu chia tách thường gặp ở trẻ nhỏ hơn; ám sợ chuyên biệt có thể xuất hiện từ rất nhỏ và kéo dài đến tuổi vị thành niên."
+  },
+  {
+    q: "Yếu tố môi trường nào có thể góp phần hình thành rối loạn lo âu ở trẻ?",
+    opts: ["Chỉ do gen di truyền", "Cha mẹ lo âu quá mức, kinh nghiệm sang chấn, môi trường không an toàn", "Chỉ do não bộ bất thường", "Chế độ ăn không lành mạnh"],
+    ans: 1,
+    exp: "Rối loạn lo âu có nguồn gốc đa yếu tố: di truyền (gen, khí chất nhạy cảm), tâm lý (nhận thức tiêu cực về mối đe dọa), xã hội (cha mẹ lo âu quá mức hoặc quá bảo vệ, sang chấn, bị bắt nạt, môi trường không an toàn)."
+  },
+
+  // PHẦN 4: OCD & PTSD (51-60)
+  {
+    q: "Vòng lặp OCD (Obsessive-Compulsive Disorder) bao gồm:",
+    opts: ["Buồn bã → Khóc → Mất ngủ → Mệt mỏi", "Ám ảnh (suy nghĩ xâm nhập) → Lo âu tăng → Cưỡng chế (hành vi) → Giảm lo âu tạm thời → Ám ảnh quay lại", "Tức giận → Hành vi chống đối → Hậu quả → Hối hận", "Sợ hãi → Né tránh → Cô lập xã hội"],
+    ans: 1,
+    exp: "Vòng lặp OCD: Ám ảnh (suy nghĩ/hình ảnh xâm nhập không mong muốn) → Gây ra lo âu/khó chịu → Cưỡng chế (hành vi hoặc nghi lễ tinh thần để giảm lo âu) → Giảm lo âu tạm thời → Ám ảnh quay lại. Cưỡng chế củng cố ám ảnh, tạo thành vòng lặp."
+  },
+  {
+    q: "Điểm khác biệt chính giữa OCD và ám sợ chuyên biệt là:",
+    opts: ["OCD chỉ có ở người lớn", "OCD có sự kết hợp ám ảnh (suy nghĩ) và cưỡng chế (hành vi); ám sợ là sợ đối tượng/tình huống cụ thể", "Ám sợ có cưỡng chế còn OCD thì không", "Không có sự khác biệt"],
+    ans: 1,
+    exp: "OCD có hai thành phần: Ám ảnh (Obsession) — suy nghĩ/hình ảnh xâm nhập không mong muốn; Cưỡng chế (Compulsion) — hành vi hoặc nghi lễ để trung hòa ám ảnh. Ám sợ chuyên biệt là sợ và né tránh đối tượng/tình huống cụ thể, không có cưỡng chế."
+  },
+  {
+    q: "PTSD (Post-Traumatic Stress Disorder) có mấy nhóm triệu chứng chính?",
+    opts: ["2 nhóm: Ký ức xâm nhập và né tránh", "3 nhóm: Xâm nhập, né tránh, kích ứng", "4 nhóm: Ký ức xâm nhập, né tránh, kích ứng quá mức, thay đổi nhận thức và tâm trạng tiêu cực", "5 nhóm"],
+    ans: 2,
+    exp: "PTSD (DSM-5) có 4 nhóm triệu chứng: (1) Xâm nhập — flashback, ác mộng; (2) Né tránh — tránh kích thích liên quan sang chấn; (3) Thay đổi nhận thức và tâm trạng tiêu cực; (4) Thay đổi kích ứng và phản ứng — dễ giật mình, hung hăng, cảnh giác cao."
+  },
+  {
+    q: "Trẻ chứng kiến tai nạn giao thông nghiêm trọng, sau đó thường xuyên 'thấy lại' hình ảnh tai nạn trong đầu dù không muốn. Đây là triệu chứng nào của PTSD?",
+    opts: ["Né tránh", "Ký ức xâm nhập (Intrusive memories/Flashback)", "Kích ứng quá mức", "Phân ly"],
+    ans: 1,
+    exp: "Ký ức xâm nhập (intrusive memories) hay flashback là triệu chứng đặc trưng của nhóm 'Xâm nhập' trong PTSD — ký ức về sang chấn xuất hiện không tự chủ, sống động như đang xảy ra lại. Đây là triệu chứng cốt lõi của PTSD."
+  },
+  {
+    q: "Tiêu chí thời gian tối thiểu để chẩn đoán PTSD là các triệu chứng kéo dài ít nhất:",
+    opts: ["2 ngày", "1 tuần", "1 tháng", "6 tháng"],
+    ans: 2,
+    exp: "PTSD cần triệu chứng kéo dài hơn 1 tháng, gây suy giảm chức năng đáng kể, và xuất hiện sau sự kiện sang chấn. Nếu dưới 1 tháng gọi là Rối loạn Stress Cấp (Acute Stress Disorder — ASD nhưng khác với Autism Spectrum Disorder)."
+  },
+  {
+    q: "Liệu pháp hiệu quả nhất được chứng minh cho PTSD là:",
+    opts: ["Thuốc an thần đơn thuần", "Liệu pháp nhận thức hành vi tập trung sang chấn (Trauma-Focused CBT) và EMDR", "Chỉ cần thời gian để hồi phục", "Chỉ cần hỗ trợ xã hội"],
+    ans: 1,
+    exp: "Liệu pháp có bằng chứng mạnh nhất cho PTSD: Trauma-Focused CBT (TF-CBT) và EMDR (Eye Movement Desensitization and Reprocessing). Các liệu pháp này giúp xử lý ký ức sang chấn, thay đổi nhận thức tiêu cực và giảm né tránh."
+  },
+  {
+    q: "Điều gì phân biệt OCD khỏi 'cầu kỳ bình thường' hay 'thói quen'?",
+    opts: ["Không có gì khác biệt", "OCD gây khó chịu đáng kể, mất nhiều thời gian (>1 giờ/ngày), và ảnh hưởng đến chức năng sống", "Chỉ người lớn mới có OCD", "OCD luôn có ám ảnh về vi khuẩn"],
+    ans: 1,
+    exp: "Điểm phân biệt OCD với thói quen: (1) Tốn nhiều thời gian (>1 giờ/ngày), (2) Gây khó chịu đáng kể (người bệnh nhận ra là vô lý nhưng không kiểm soát được), (3) Ảnh hưởng đáng kể đến chức năng hàng ngày, học tập, quan hệ xã hội."
+  },
+  {
+    q: "Trong PTSD, 'né tránh' (avoidance) có nghĩa là gì?",
+    opts: ["Trẻ trở nên hung hăng", "Trẻ tránh né các kích thích (người, nơi, suy nghĩ) liên quan đến sự kiện sang chấn", "Trẻ không thể nhớ sự kiện sang chấn", "Trẻ cô lập hoàn toàn"],
+    ans: 1,
+    exp: "Né tránh trong PTSD: cố tình tránh né các kích thích liên quan đến sang chấn — có thể là né tránh bên ngoài (người, nơi, tình huống) hoặc bên trong (suy nghĩ, cảm xúc về sự kiện). Né tránh làm duy trì PTSD vì ngăn cản xử lý sang chấn."
+  },
+  {
+    q: "Khi trẻ có triệu chứng OCD, điều gì quan trọng cần lưu ý khi can thiệp?",
+    opts: ["Chỉ cần khen ngợi khi trẻ không thực hiện cưỡng chế", "ERP (Exposure Response Prevention) — tiếp xúc kích thích mà không thực hiện cưỡng chế, là liệu pháp nền tảng", "Cho phép thực hiện cưỡng chế để trẻ bình tĩnh", "Chỉ cần thuốc, không cần liệu pháp tâm lý"],
+    ans: 1,
+    exp: "ERP (Exposure and Response Prevention) là liệu pháp nền tảng cho OCD: tiếp xúc có kiểm soát với kích thích gây ám ảnh, trong khi ngăn không thực hiện cưỡng chế. Điều này phá vỡ vòng lặp OCD, giúp não học rằng lo âu sẽ tự giảm mà không cần cưỡng chế."
+  },
+  {
+    q: "Trẻ em và vị thành niên mắc PTSD thường biểu hiện khác người lớn ở điểm nào?",
+    opts: ["Trẻ em không thể bị PTSD", "Trẻ có thể biểu hiện qua chơi tái diễn sang chấn, ác mộng không rõ nội dung, thay đổi hành vi đột ngột", "Trẻ luôn có flashback rõ ràng như người lớn", "Không có sự khác biệt"],
+    ans: 1,
+    exp: "PTSD ở trẻ em có thể biểu hiện khác người lớn: chơi đóng vai tái diễn sang chấn, ác mộng không nhất thiết về sự kiện cụ thể, thoái lui (regression) hành vi (đái dầm trở lại), từ chối đến nơi/gặp người liên quan đến sang chấn, thay đổi hành vi đột ngột."
+  },
+
+  // PHẦN 5: RỐI LOẠN KHÍ SẮC (61-72)
+  {
+    q: "Triệu chứng cốt lõi của trầm cảm gồm:",
+    opts: ["Tăng động và khó ngủ", "Khí sắc buồn hoặc trống rỗng, mất hứng thú/khoái cảm kéo dài", "Lo âu và tim đập nhanh", "Tức giận và chống đối"],
+    ans: 1,
+    exp: "Hai triệu chứng cốt lõi của trầm cảm: (1) Khí sắc buồn/trống rỗng/vô vọng hầu hết thời gian; (2) Mất hứng thú hoặc khoái cảm (anhedonia) với hầu hết các hoạt động. Ít nhất một trong hai phải có mặt để chẩn đoán trầm cảm."
+  },
+  {
+    q: "Ở trẻ em, khí sắc trầm cảm thường biểu hiện như thế nào khác so với người lớn?",
+    opts: ["Trẻ thường khóc nhiều hơn người lớn", "Trẻ thường có khí sắc cáu kỉnh (irritability) thay vì buồn bã rõ ràng", "Trẻ không thể bị trầm cảm", "Trẻ luôn nói về cảm giác buồn"],
+    ans: 1,
+    exp: "Điểm khác biệt quan trọng: trẻ em và vị thành niên thường biểu hiện trầm cảm qua cáu kỉnh (irritability) hơn là buồn bã rõ ràng. DSM-5 công nhận điều này và cho phép chẩn đoán trầm cảm với triệu chứng cáu kỉnh kéo dài ở trẻ."
+  },
+  {
+    q: "Triệu chứng nhận thức trong trầm cảm bao gồm:",
+    opts: ["Tăng tự tin, lạc quan quá mức", "Tự đánh giá thấp, bi quan, cảm giác vô dụng, khó tập trung", "Suy nghĩ nhanh và sáng tạo", "Hoang tưởng và ảo giác"],
+    ans: 1,
+    exp: "Triệu chứng nhận thức của trầm cảm: tự đánh giá thấp bản thân, bi quan về tương lai, cảm giác vô dụng/tội lỗi không thực tế, khó tập trung, khó ra quyết định, trong trường hợp nặng có thể có ý tưởng tự sát."
+  },
+  {
+    q: "Tình trạng buồn bã và bất ổn cảm xúc trong 2 tuần đầu sau sinh, tự hết không cần điều trị, gọi là:",
+    opts: ["Trầm cảm sau sinh", "Loạn thần sau sinh", "Trầm buồn thoáng qua sau sinh (Baby Blues)", "Rối loạn lo âu sau sinh"],
+    ans: 2,
+    exp: "Trầm buồn thoáng qua sau sinh (Baby Blues/Postpartum Blues): xảy ra trong 2 tuần đầu sau sinh, gây cảm xúc bất ổn, dễ khóc, lo lắng nhẹ — thường tự hết sau 2 tuần. Khác với Trầm cảm sau sinh (kéo dài >2 tuần, cần điều trị) và Loạn thần sau sinh (nặng hơn, có triệu chứng loạn thần)."
+  },
+  {
+    q: "Triệu chứng cơ thể của trầm cảm bao gồm:",
+    opts: ["Tăng cân và ngủ nhiều chỉ", "Mệt mỏi, rối loạn giấc ngủ (mất ngủ hoặc ngủ quá nhiều), thay đổi cảm giác ngon miệng, đau cơ thể", "Chỉ đau đầu", "Chỉ giảm cân"],
+    ans: 1,
+    exp: "Triệu chứng cơ thể trong trầm cảm rất đa dạng: mệt mỏi, mất năng lượng, mất ngủ hoặc ngủ quá nhiều, ăn ít hoặc ăn nhiều, sụt cân hoặc tăng cân, đau đầu, đau cơ thể mơ hồ. Triệu chứng cơ thể thường nổi bật hơn ở trẻ em."
+  },
+  {
+    q: "Điều kiện tối thiểu để chẩn đoán Trầm cảm Chủ yếu (Major Depressive Disorder) là các triệu chứng kéo dài ít nhất:",
+    opts: ["1 tuần", "2 tuần", "1 tháng", "6 tháng"],
+    ans: 1,
+    exp: "Trầm cảm Chủ yếu (MDD) cần: ≥5 triệu chứng trong 2 tuần liên tục, trong đó ít nhất 1 triệu chứng là khí sắc buồn hoặc mất hứng thú. Các triệu chứng phải gây suy giảm chức năng đáng kể và không do chất hoặc bệnh lý y khoa."
+  },
+  {
+    q: "Trẻ trầm cảm có hành vi 'thu mình xã hội' có nghĩa là:",
+    opts: ["Trẻ không có bạn bè", "Trẻ tránh né tiếp xúc xã hội, rút lui khỏi các hoạt động và mối quan hệ từng thích", "Trẻ không biết cách giao tiếp", "Trẻ bị bạn bè xa lánh"],
+    ans: 1,
+    exp: "Thu mình xã hội (social withdrawal) trong trầm cảm: trẻ chủ động rút lui khỏi bạn bè, gia đình, các hoạt động từng yêu thích. Đây là hệ quả của mất hứng thú (anhedonia) và năng lượng thấp — khác với thiếu kỹ năng xã hội."
+  },
+  {
+    q: "Đâu là yếu tố nguy cơ của trầm cảm ở trẻ em và vị thành niên?",
+    opts: ["Chỉ do gen di truyền", "Đa yếu tố: di truyền, sang chấn, bắt nạt, mất mát, cha mẹ trầm cảm, thiếu hỗ trợ xã hội", "Chỉ do cha mẹ không quan tâm", "Chỉ do học tập căng thẳng"],
+    ans: 1,
+    exp: "Trầm cảm ở trẻ có nguồn gốc đa yếu tố theo mô hình sinh-tâm-xã hội: di truyền (cha mẹ trầm cảm tăng nguy cơ 2-3 lần), sang chấn/mất mát, bắt nạt, khó khăn học tập, thiếu kỹ năng điều hòa cảm xúc, thiếu hỗ trợ xã hội."
+  },
+  {
+    q: "Anhedonia trong trầm cảm có nghĩa là:",
+    opts: ["Cảm giác vô dụng", "Mất hứng thú và niềm vui với các hoạt động từng yêu thích", "Suy nghĩ về cái chết", "Khó tập trung"],
+    ans: 1,
+    exp: "Anhedonia (mất khoái cảm) là một trong hai triệu chứng cốt lõi của trầm cảm — mất khả năng trải nghiệm niềm vui với các hoạt động từng yêu thích (sở thích, bạn bè, gia đình). Đây là triệu chứng phân biệt quan trọng với buồn bình thường."
+  },
+  {
+    q: "Rối loạn khí sắc dạng Cyclothymia khác với Rối loạn Lưỡng cực ở điểm nào?",
+    opts: ["Không có sự khác biệt", "Cyclothymia có dao động khí sắc nhẹ hơn (chưa đủ tiêu chí hưng cảm hoặc trầm cảm chủ yếu), kéo dài ≥2 năm", "Cyclothymia chỉ có trầm cảm không có hưng cảm", "Cyclothymia chỉ xảy ra ở người lớn"],
+    ans: 1,
+    exp: "Cyclothymia: dao động khí sắc mãn tính nhưng nhẹ hơn — có giai đoạn hưng phấn nhẹ (hypomanic) và giai đoạn trầm buồn nhẹ, không đủ tiêu chí cho hưng cảm hoặc trầm cảm chủ yếu, kéo dài ≥2 năm (≥1 năm ở trẻ)."
+  },
+  {
+    q: "Khi trẻ có ý tưởng tự sát, điều đầu tiên nhà tâm lý cần làm là:",
+    opts: ["Giữ bí mật vì trẻ yêu cầu", "Đánh giá mức độ nguy hiểm và đảm bảo an toàn ngay lập tức, liên hệ gia đình và chuyên gia", "Tiếp tục điều trị bình thường, không cần lo", "Chỉ nói chuyện an ủi"],
+    ans: 1,
+    exp: "Khi trẻ có ý tưởng tự sát: ưu tiên số 1 là đánh giá nguy cơ và đảm bảo an toàn — xác định có kế hoạch không, có phương tiện không. Cần liên hệ gia đình, hội chẩn với bác sĩ tâm thần. Bảo mật có giới hạn khi có nguy cơ nguy hiểm cho tính mạng."
+  },
+  {
+    q: "Trẻ giảm kết quả học tập đột ngột mà không có giải thích rõ ràng có thể là dấu hiệu của:",
+    opts: ["Chỉ là lười học", "Trầm cảm, lo âu, ADHD hoặc vấn đề gia đình — cần đánh giá toàn diện", "Trẻ quá thông minh nên nhàm chán", "Vấn đề thị lực"],
+    ans: 1,
+    exp: "Giảm kết quả học tập đột ngột là dấu hiệu cần đánh giá tâm lý: có thể là trầm cảm (khó tập trung, mất hứng thú), lo âu (sợ thất bại), ADHD (khó tập trung), vấn đề gia đình (bạo lực, ly hôn), bắt nạt học đường, hoặc vấn đề thể chất."
+  },
+
+  // PHẦN 6: ODD & RỐI LOẠN CƯ XỬ (73-82)
+  {
+    q: "ODD (Oppositional Defiant Disorder) được chẩn đoán khi hành vi chống đối kéo dài ít nhất:",
+    opts: ["1 tháng", "3 tháng", "6 tháng", "1 năm"],
+    ans: 2,
+    exp: "ODD cần kiểu mẫu hành vi tức giận/cãi vã/thách thức/thù địch hướng đến người có thẩm quyền kéo dài ít nhất 6 tháng. Đây là tiêu chí quan trọng để phân biệt với hành vi chống đối bình thường hoặc tạm thời."
+  },
+  {
+    q: "Rối loạn Cư xử (CD — Conduct Disorder) được chẩn đoán khi có ít nhất bao nhiêu hành vi vi phạm trong 12 tháng?",
+    opts: ["1 hành vi", "2 hành vi", "3 hành vi", "5 hành vi"],
+    ans: 2,
+    exp: "CD cần ≥3 hành vi vi phạm trong 12 tháng, cộng với ít nhất 1 hành vi trong 6 tháng gần nhất. Các nhóm hành vi: hung hăng với người/động vật, phá hoại tài sản, lừa dối/trộm cắp, vi phạm nghiêm trọng quy tắc."
+  },
+  {
+    q: "Mối quan hệ giữa ODD và CD là:",
+    opts: ["ODD và CD là hai rối loạn hoàn toàn độc lập", "CD thường được xem là tiếp nối phát triển của ODD nếu không được can thiệp sớm", "ODD luôn tiến triển thành CD", "CD thường xuất hiện trước ODD"],
+    ans: 1,
+    exp: "CD thường được xem là tiếp nối phát triển của ODD khi không được can thiệp sớm (Frick & Viding, 2009). Không phải tất cả ODD đều thành CD — chỉ những trường hợp nặng, không được can thiệp, có yếu tố nguy cơ cao."
+  },
+  {
+    q: "Theo Patterson (1982), ODD và CD thường phát sinh từ:",
+    opts: ["Gen di truyền đơn thuần", "Chuỗi tương tác tiêu cực giữa cha mẹ và con cái, trong đó cha mẹ củng cố hành vi chống đối bằng cách nhượng bộ", "Chỉ do bạn bè xấu", "Thiếu dinh dưỡng"],
+    ans: 1,
+    exp: "Patterson (1982) — Coercive Family Process: ODD/CD thường phát sinh từ chuỗi tương tác tiêu cực: trẻ chống đối → cha mẹ nhượng bộ → hành vi chống đối được củng cố và trở thành chiến lược kiểm soát môi trường hiệu quả của trẻ."
+  },
+  {
+    q: "Tỷ lệ hiện mắc ODD ở trẻ em và vị thành niên ước tính là:",
+    opts: ["1-2%", "5-8%", "Lên đến 15%", "30-40%"],
+    ans: 2,
+    exp: "Tỷ lệ hiện mắc ODD ước tính lên đến 15% ở trẻ em và vị thành niên — khá phổ biến. Lưu ý tiêu chuẩn chẩn đoán ODD khá chủ quan và cần phân biệt với hành vi chống đối bình thường theo độ tuổi."
+  },
+  {
+    q: "Yếu tố thần kinh nào liên quan đến ODD và CD?",
+    opts: ["Vỏ não thùy đỉnh và tiểu não", "Sự bất thường ở vỏ não trước trán (PFC) và hạch hạnh nhân (amygdala) làm giảm khả năng ức chế hành vi", "Chỉ do hệ thống dopamine", "Chỉ do gen MAOA"],
+    ans: 1,
+    exp: "Nghiên cứu hình ảnh thần kinh cho thấy: bất thường ở vỏ não trước trán (giảm kiểm soát xung động) và hạch hạnh nhân (giảm điều hòa cảm xúc, giảm cảm thông) liên quan đến ODD/CD. Yếu tố di truyền giải thích 40-60% biến thiên hành vi."
+  },
+  {
+    q: "Để phân biệt ODD với hành vi chống đối bình thường ở trẻ, điều quan trọng nhất cần xem xét là:",
+    opts: ["Số lần chống đối trong ngày", "Tần suất, mức độ, thời gian kéo dài và ảnh hưởng đến chức năng sống", "Tuổi của trẻ", "Giới tính của trẻ"],
+    ans: 1,
+    exp: "Để phân biệt ODD với hành vi chống đối bình thường: cần xem tần suất (xảy ra thường xuyên, dai dẳng), mức độ (không tương xứng với tình huống), thời gian (≥6 tháng), và ảnh hưởng đến chức năng (gia đình, học đường, xã hội)."
+  },
+  {
+    q: "Trẻ mắc Rối loạn Cư xử (CD) thường thiếu điều gì quan trọng về mặt cảm xúc?",
+    opts: ["Khả năng nói chuyện", "Nhạy cảm với cảm xúc và hạnh phúc của người khác (thiếu cảm thông)", "Khả năng học tập", "Kỹ năng thể thao"],
+    ans: 1,
+    exp: "Trẻ CD thường thiếu nhạy cảm với cảm xúc và hạnh phúc của người khác (callous-unemotional traits), đôi khi hiểu lầm hành vi của người khác là đe dọa. Đây là yếu tố nguy cơ cao tiến triển đến Rối loạn Nhân cách Chống đối Xã hội ở người lớn."
+  },
+  {
+    q: "Trừng phạt thể chất (corporal punishment) có liên quan đến điều gì theo nghiên cứu?",
+    opts: ["Giảm hành vi chống đối", "Tăng hành vi chống đối và hung hăng ở trẻ em", "Không có ảnh hưởng", "Chỉ ảnh hưởng đến trẻ ở các nước phương Tây"],
+    ans: 1,
+    exp: "Straus & Donnelly (1994) cho thấy trừng phạt thể chất liên quan đến tăng hành vi chống đối và hung hăng. Tuy nhiên, nghiên cứu Lansford et al. (2005) cho thấy mức độ ảnh hưởng khác nhau tùy văn hóa — nhấn mạnh cần tiếp cận văn hóa bối cảnh."
+  },
+  {
+    q: "Rối loạn cư xử (CD) phổ biến ở giới nào và thường khởi phát khi nào?",
+    opts: ["Nữ nhiều hơn, thường ở tuổi vị thành niên muộn", "Nam nhiều hơn nữ, thường khởi phát trong thời thơ ấu hoặc đầu vị thành niên", "Ngang nhau ở cả hai giới", "Chỉ ở người lớn"],
+    ans: 1,
+    exp: "CD phổ biến hơn ở nam giới; khởi phát thường trong thời thơ ấu hoặc đầu vị thành niên. Nam thường biểu hiện qua đánh nhau, ăn cắp, phá hoại; nữ có xu hướng dối trá, trốn học, quan hệ xã hội phức tạp."
+  },
+
+  // PHẦN 7: RỐI LOẠN ĂN UỐNG & DẠNG CƠ THỂ (83-92)
+  {
+    q: "Ba đặc trưng của Chán ăn tâm thần (Anorexia Nervosa) là:",
+    opts: ["Ăn vô độ, nôn mửa, tập thể dục quá mức", "Hạn chế ăn nghiêm trọng, sợ tăng cân mạnh mẽ, nhận thức sai lệch về cơ thể", "Ăn nhiều mà không tăng cân, ăn đồ lạ", "Ăn theo giờ giấc cứng nhắc, lo lắng về chất dinh dưỡng"],
+    ans: 1,
+    exp: "Anorexia Nervosa có 3 đặc trưng: (1) Restriction — hạn chế ăn dẫn đến cân nặng thấp đáng kể; (2) Fear of weight gain — sợ tăng cân mạnh mẽ dù đang thiếu cân; (3) Body image disturbance — nhận thức sai lệch về hình thể."
+  },
+  {
+    q: "Bulimia Nervosa (Chứng ăn - ói) khác với Binge Eating Disorder ở điểm nào?",
+    opts: ["Bulimia ăn ít hơn", "Bulimia có hành vi bù trừ (nôn, nhịn ăn, tập quá mức); BED không có hành vi bù trừ", "BED nguy hiểm hơn", "Không có sự khác biệt"],
+    ans: 1,
+    exp: "Điểm phân biệt quan trọng: Bulimia = ăn vô độ + hành vi bù trừ (nôn, nhịn ăn, tập quá mức); BED (Binge Eating Disorder) = ăn vô độ + không có hành vi bù trừ, kèm cảm giác mất kiểm soát, tội lỗi, xấu hổ."
+  },
+  {
+    q: "Pica là rối loạn ăn uống đặc trưng bởi:",
+    opts: ["Ăn quá ít", "Ăn các chất không phải thực phẩm (đất, đá, giấy, tóc...) kéo dài", "Ăn quá nhiều vào ban đêm", "Sợ ăn thức ăn mới"],
+    ans: 1,
+    exp: "Pica: ăn dai dẳng các chất không phải thực phẩm (đất, phấn, sơn, giấy, tóc, xà phòng...) trong ít nhất 1 tháng, không phù hợp với mức độ phát triển. Thường gặp ở trẻ em, người có CPTTT, phụ nữ mang thai thiếu vi chất."
+  },
+  {
+    q: "Rối loạn Triệu chứng Cơ thể (Somatic Symptom Disorder) đặc trưng bởi:",
+    opts: ["Giả vờ bệnh để trốn trách nhiệm", "Triệu chứng cơ thể gây khổ sở hoặc ảnh hưởng chức năng, kèm suy nghĩ/cảm xúc/hành vi không bình thường về những triệu chứng đó", "Triệu chứng tâm lý không có triệu chứng cơ thể", "Chỉ lo lắng về bệnh tật mà không có triệu chứng"],
+    ans: 1,
+    exp: "Rối loạn Triệu chứng Cơ thể: có triệu chứng cơ thể thực sự gây khổ sở/ảnh hưởng chức năng, kèm suy nghĩ quá mức, cảm xúc lo âu dai dẳng, và/hoặc hành vi quá mức liên quan đến triệu chứng — không nhất thiết phải thiếu giải thích y khoa."
+  },
+  {
+    q: "Rối loạn Lo âu Bệnh tật (Illness Anxiety Disorder, trước đây gọi là Hypochondriasis) đặc trưng bởi:",
+    opts: ["Có nhiều triệu chứng cơ thể thực sự", "Lo lắng dai dẳng về việc đang hoặc sẽ bị bệnh nghiêm trọng dù không có triệu chứng thực thể", "Tạo ra triệu chứng có chủ ý", "Chỉ sợ bệnh viện"],
+    ans: 1,
+    exp: "Illness Anxiety Disorder: bận tâm dai dẳng về việc mắc hoặc có nguy cơ mắc bệnh nghiêm trọng dù triệu chứng cơ thể nhẹ hoặc không có. Lo lắng dai dẳng dù được bác sĩ trấn an. Trước đây gọi là Hypochondriasis."
+  },
+  {
+    q: "Rối loạn Chuyển dạng (Conversion Disorder) đặc trưng bởi:",
+    opts: ["Chuyển đổi giữa trầm cảm và hưng cảm", "Triệu chứng thần kinh không giải thích được (liệt, mù, co giật) không tương ứng với bệnh lý thần kinh", "Chuyển đổi giữa nhiều nhân cách", "Chuyển sang dùng chất gây nghiện"],
+    ans: 1,
+    exp: "Conversion Disorder (FND — Functional Neurological Disorder): triệu chứng thần kinh chức năng (liệt, mù, điếc, co giật, mất cảm giác) không giải thích được bằng bệnh lý thần kinh. Cơ chế: stress affects brain network functioning (Edwards et al., 2012)."
+  },
+  {
+    q: "Rối loạn Giả bệnh (Factitious Disorder) khác với rối loạn dạng cơ thể ở điểm nào?",
+    opts: ["Không có sự khác biệt", "Trong giả bệnh, người bệnh CỐ Ý tạo ra hoặc giả mạo triệu chứng; trong rối loạn dạng cơ thể, triệu chứng là thực sự (không cố ý)", "Giả bệnh nhẹ hơn", "Chỉ xảy ra ở phụ nữ"],
+    ans: 1,
+    exp: "Factitious Disorder: cố tình tạo ra, giả mạo hoặc phóng đại triệu chứng bệnh — có ý thức, có mục đích (thường để đóng vai 'người bệnh'). Rối loạn dạng cơ thể: triệu chứng là thực, không cố ý. Malingering (giả vờ): cố ý vì lợi ích bên ngoài."
+  },
+  {
+    q: "Mối liên hệ giữa Bulimia Nervosa và cảm xúc là:",
+    opts: ["Ăn vô độ giúp cải thiện tâm trạng lâu dài", "Ăn vô độ thường là cơ chế đối phó với cảm xúc tiêu cực, sau đó gây xấu hổ và tội lỗi", "Không có mối liên hệ", "Ăn vô độ giúp giảm lo âu hiệu quả"],
+    ans: 1,
+    exp: "Vòng lặp Bulimia: cảm xúc tiêu cực/căng thẳng → ăn vô độ (giảm tạm thời) → cảm giác mất kiểm soát, xấu hổ, tội lỗi → hành vi bù trừ → tạm thời nhẹ hơn → cảm xúc tiêu cực trở lại. Điều trị cần giải quyết cả cơ chế điều hòa cảm xúc."
+  },
+  {
+    q: "Yếu tố nguy cơ nào được nghiên cứu liên quan đến rối loạn ăn uống?",
+    opts: ["Chỉ do gen di truyền", "Đa yếu tố: áp lực ngoại hình văn hóa, hoàn hảo chủ nghĩa, lo âu, trầm cảm, sang chấn, gia đình có vấn đề ăn uống", "Chỉ do xem mạng xã hội", "Chỉ do thiếu vitamin"],
+    ans: 1,
+    exp: "Rối loạn ăn uống có nguồn gốc đa yếu tố: áp lực văn hóa về ngoại hình/cân nặng, đặc điểm nhân cách (hoàn hảo chủ nghĩa, lo âu cao), rối loạn tâm lý đồng mắc (trầm cảm, lo âu, PTSD), sang chấn, tiền sử gia đình, ảnh hưởng mạng xã hội."
+  },
+  {
+    q: "Khi làm việc với trẻ bị rối loạn ăn uống, điều quan trọng nhất nhà tâm lý cần nhớ là:",
+    opts: ["Tập trung vào cân nặng và chế độ ăn", "Rối loạn ăn uống không chỉ là về thức ăn — cần xem xét cơ thể, cảm xúc và nhận thức về bản thân; có thể nguy hiểm đến tính mạng", "Chỉ cần giáo dục dinh dưỡng", "Để trẻ tự giải quyết"],
+    ans: 1,
+    exp: "Rối loạn ăn uống không chỉ là về thức ăn — liên quan đến cơ thể (kiểm soát), cảm xúc (shame, lo âu), nhận thức (self-worth gắn ngoại hình). Anorexia có tỷ lệ tử vong cao nhất trong các rối loạn tâm thần — cần đánh giá y tế song song với tâm lý."
+  },
+
+  // PHẦN 8: TỔNG HỢP & ỨNG DỤNG LÂM SÀNG (93-100)
+  {
+    q: "Khi nhận một ca trẻ, nhà tâm lý cần tìm hiểu các yếu tố liên quan đến:",
+    opts: ["Chỉ gia đình", "Gia đình, học đường, bạn bè, xã hội — tiếp cận hệ thống", "Chỉ nhà trường", "Chỉ bạn bè"],
+    ans: 1,
+    exp: "Tiếp cận hệ thống trong tâm bệnh phát triển: cần đánh giá toàn diện các hệ thống ảnh hưởng — gia đình (phong cách nuôi dưỡng, xung đột), học đường (thầy cô, bạn bè, kết quả), bạn bè (bắt nạt, cô lập), và bối cảnh xã hội rộng hơn."
+  },
+  {
+    q: "Giới hạn của nhà tâm lý trong thực hành lâm sàng với trẻ em bao gồm:",
+    opts: ["Không có giới hạn nào", "Không kê đơn thuốc (trừ khi có bằng cấp đặc biệt), không chẩn đoán y khoa, cần chuyển gửi khi cần thiết", "Chỉ giới hạn về thời gian", "Chỉ cần quan tâm đến bảo mật"],
+    ans: 1,
+    exp: "Nhà tâm lý cần hiểu rõ giới hạn nghề nghiệp: không kê đơn thuốc (ở đa số quốc gia), không chẩn đoán y khoa, chuyển gửi khi cần hội chẩn tâm thần hoặc điều trị y tế. Biết khi nào cần chuyển gửi là kỹ năng quan trọng."
+  },
+  {
+    q: "Trong phân tích case tự luận, tại sao có thể có nhiều hơn 1 giả thuyết chẩn đoán?",
+    opts: ["Vì nhà tâm lý không chắc chắn", "Vì tâm bệnh học phát triển thường có tính đồng mắc (comorbidity) — nhiều rối loạn có thể cùng tồn tại", "Vì đề bài yêu cầu", "Vì chưa đủ thông tin"],
+    ans: 1,
+    exp: "Comorbidity (đồng mắc) rất phổ biến trong tâm bệnh phát triển — ADHD thường đồng mắc lo âu, trầm cảm; ASD có thể kèm lo âu, ADHD; ODD thường kèm ADHD. Ngoài ra, cùng một triệu chứng có thể gợi ý nhiều rối loạn khác nhau cần phân biệt."
+  },
+  {
+    q: "Khi đánh giá trẻ, điều gì đặc biệt quan trọng trong tâm bệnh học phát triển mà tâm bệnh học người lớn ít nhấn mạnh hơn?",
+    opts: ["Chỉ xem xét triệu chứng hiện tại", "Hiểu biết về đặc điểm phát triển bình thường theo độ tuổi — hành vi 'bất thường' cần đánh giá trong bối cảnh phát triển", "Chỉ dùng test IQ", "Luôn điều trị bằng thuốc trước"],
+    ans: 1,
+    exp: "Nguyên tắc cốt lõi của tâm bệnh học phát triển: không thể đánh giá hành vi trẻ mà không có hiểu biết về phát triển bình thường. Ví dụ: trẻ 2 tuổi ăn vạ là bình thường; trẻ 12 tuổi ăn vạ là đáng lo. Cần đặt hành vi trong bối cảnh phát triển."
+  },
+  {
+    q: "PHQ-9 là công cụ đánh giá:",
+    opts: ["Mức độ tự kỷ", "Mức độ trầm cảm (Patient Health Questionnaire-9)", "Mức độ lo âu", "Chỉ số IQ"],
+    ans: 1,
+    exp: "PHQ-9 (Patient Health Questionnaire-9) là công cụ tầm soát và đánh giá mức độ trầm cảm gồm 9 câu hỏi tương ứng 9 tiêu chí DSM. DASS-21Y đánh giá trầm cảm, lo âu, stress. M-CHAT-R/F và CARS đánh giá ASD."
+  },
+  {
+    q: "DASS-21-Y được sử dụng để đánh giá điều gì?",
+    opts: ["Chỉ trầm cảm", "Trầm cảm, lo âu và stress (3 thang đo trong 1 công cụ), phiên bản dành cho thanh thiếu niên", "Chỉ lo âu", "Rối loạn ăn uống"],
+    ans: 1,
+    exp: "DASS-21 (Depression Anxiety Stress Scales) gồm 21 câu đo 3 chiều cạnh: Trầm cảm, Lo âu, Stress. Phiên bản DASS-21-Y dành cho thanh thiếu niên (Youth). Là công cụ tầm soát hữu ích trong thực hành lâm sàng."
+  },
+  {
+    q: "Tiếp cận nào lý giải nguồn gốc tâm bệnh trẻ em – vị thành niên phần lớn do các yếu tố nuôi dưỡng từ môi trường một cách có ý thức?",
+    opts: ["Sinh học", "Hành vi", "Phân tâm cổ điển", "Nhân văn"],
+    ans: 2,
+    exp: "Phân tâm cổ điển (Freud) nhấn mạnh vai trò của trải nghiệm thời thơ ấu và mối quan hệ với người chăm sóc có ý thức và vô thức trong hình thành nhân cách và tâm bệnh. Tiếp cận hành vi nhấn mạnh học tập có điều kiện; sinh học nhấn mạnh yếu tố thể chất."
+  },
+  {
+    q: "Câu nào dưới đây thể hiện đúng thái độ của nhà tâm lý khi làm việc với trẻ và gia đình?",
+    opts: ["'Trẻ bị ASD, chắc chắn rồi' — thông báo ngay cho cha mẹ", "'Con người là một huyền nhiệm — cần được sống và hiểu, không chỉ được dán nhãn'; tiếp cận với sự tôn trọng và khiêm tốn", "'Cha mẹ là nguyên nhân của mọi vấn đề của trẻ'", "'Chỉ cần chẩn đoán đúng, còn lại không quan trọng'"],
+    ans: 1,
+    exp: "Câu trích từ Gabriel Marcel nhắc nhở: mỗi con người là một huyền nhiệm độc đáo, không phải bài toán cần giải quyết. Nhà tâm lý cần tiếp cận với sự tôn trọng, không vội dán nhãn, và luôn xem xét toàn diện bối cảnh của trẻ và gia đình."
+  }
+];
+
+// ============================================================
+// DATA: 10 TÌNH HUỐNG TỰ LUẬN
+// ============================================================
+const situations = [
+  {
+    title: "Bé gái 9 tuổi – Khó khăn giao tiếp và lo âu học đường",
+    tags: "ASD · Lo âu xã hội · Rối loạn ngôn ngữ",
+    caseText: `<strong>Tình huống:</strong> Em N.T.A, nữ, 9 tuổi, lớp 3. Cha mẹ đưa đến do cô giáo phản ánh bé rất ít tương tác với bạn, thường chơi một mình, khó khăn khi phải trình bày bài trước lớp đến mức khóc và không nói được gì. Ở nhà, bé nói chuyện bình thường với cha mẹ nhưng ít nói với khách lạ. Bé học tốt các môn toán và vẽ nhưng điểm tiếng Việt và kể chuyện thấp hơn trung bình. Cha mẹ cho biết từ nhỏ bé đã "hay lo", sợ tiếng động lớn, thích chơi một mình. Gần đây bé hay kêu đau bụng mỗi sáng trước giờ đi học.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng cụ thể từ tình huống.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Lo âu xã hội (Social Anxiety Disorder):</strong> Bằng chứng: khóc và không nói được khi trình bày trước lớp; ít tương tác bạn bè; sợ tình huống xã hội; đau bụng sáng (triệu chứng thể chất của lo âu) → lo âu xã hội điển hình.",
+            "<strong>Giả thuyết 2 — Cần nghĩ đến Câm nín chọn lọc (Selective Mutism):</strong> Bằng chứng: nói bình thường ở nhà, không nói được ở trường trước đám đông — mẫu 'nói ở một số bối cảnh nhưng không ở bối cảnh khác'.",
+            "<strong>Giả thuyết 3 — Có thể giả thuyết về đặc điểm phổ tự kỷ (ASD spectrum):</strong> Bằng chứng: từ nhỏ thích chơi một mình, sợ tiếng động lớn, kỹ năng ngôn ngữ diễn đạt yếu hơn nhận thức (toán giỏi, Tiếng Việt yếu).",
+            "<strong>Cần phân biệt với:</strong> Rối loạn ngôn ngữ diễn đạt (khó biểu đạt dù hiểu), hoặc chỉ là tính rụt rè khí chất.",
+          ],
+          note: "Dùng ngôn ngữ giả thuyết: 'Có thể giả thuyết...', 'Cần nghĩ đến...', 'Cần phân biệt...'"
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp cho bé và gia đình.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> Đánh giá tâm lý toàn diện (thang đo lo âu, đánh giá ASD, đánh giá ngôn ngữ). Liệu pháp CBT cho lo âu xã hội; luyện tập tiếp xúc dần dần (exposure). Nếu câm nín chọn lọc: can thiệp theo protocol SM.",
+            "<strong>Gia đình:</strong> Tâm lý giáo dục cha mẹ — hiểu lo âu không phải là 'lười biếng' hay 'thái độ'. Hỗ trợ bé thực hành giao tiếp an toàn ở nhà. Không ép buộc hoặc trừng phạt vì không nói.",
+            "<strong>Nhà trường:</strong> Trao đổi với giáo viên về điều chỉnh môi trường lớp học — không gọi lên bảng đột ngột, tạo cơ hội nói nhỏ nhóm đôi trước. Phối hợp theo dõi tiến triển.",
+            "<strong>Xã hội:</strong> Tạo môi trường xã hội an toàn, ít áp lực — câu lạc bộ vẽ, nhóm nhỏ theo sở thích."
+          ],
+          note: "Can thiệp phải đồng bộ 4 hệ thống: gia đình, nhà trường, nhà chuyên môn, xã hội."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý trong quá trình làm việc.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không vội chẩn đoán khẳng định:</strong> Cần đánh giá thêm bằng các công cụ chuẩn hóa, quan sát nhiều bối cảnh, phỏng vấn nhiều nguồn (cha mẹ, giáo viên, bản thân bé).",
+            "<strong>Hiểu giới hạn nghề nghiệp:</strong> Nếu nghi ngờ ASD, cần chuyển gửi đánh giá chẩn đoán chính thức. Không kê đơn thuốc.",
+            "<strong>Xây dựng liên minh trị liệu:</strong> Bé lo âu xã hội sẽ rất khó tin tưởng ngay — cần xây dựng mối quan hệ trị liệu từng bước, không ép buộc.",
+            "<strong>Làm việc với cha mẹ song song:</strong> Cha mẹ đóng vai trò quan trọng — cần tránh vô tình củng cố lo âu bằng cách quá bảo vệ hoặc ép buộc.",
+            "<strong>Văn hóa và bối cảnh:</strong> Ở Việt Nam, 'rụt rè' đôi khi được xem là đức tính tốt — cần tâm lý giáo dục giúp gia đình hiểu sự khác biệt."
+          ],
+          note: "Lưu ý giới hạn của nhà tâm lý — biết khi nào cần chuyển gửi là kỹ năng quan trọng."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé trai 8 tuổi – Tăng động, bốc đồng, học kém",
+    tags: "ADHD · ODD · Rối loạn học tập",
+    caseText: `<strong>Tình huống:</strong> Em T.M.K, nam, 8 tuổi, lớp 2. Giáo viên phàn nàn K thường xuyên không ngồi yên, đứng dậy giữa giờ học, nói leo, ngắt lời bạn và thầy cô. Điểm số rất thấp dù cha mẹ và giáo viên đều xác nhận K rất thông minh và nhanh nhạy trong giao tiếp. K hay quên đồ dùng học tập, không hoàn thành bài về nhà. Ở nhà, K tranh cãi với cha mẹ thường xuyên, hay nổi giận khi không được đáp ứng yêu cầu ngay lập tức. Cha mẹ áp dụng kỷ luật nghiêm nhưng K không thay đổi, dẫn đến cha mẹ ngày càng kiệt sức.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng cụ thể.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — ADHD (Dạng phối hợp):</strong> Bằng chứng: không ngồi yên (tăng động), đứng giữa giờ, nói leo (bốc đồng), quên đồ dùng, không hoàn thành bài (kém tập trung) → đủ cả 3 nhóm triệu chứng.",
+            "<strong>Giả thuyết 2 — Cần nghĩ đến ODD đồng mắc:</strong> Bằng chứng: tranh cãi thường xuyên với cha mẹ, hay nổi giận, không tuân thủ — Tuy nhiên cần phân biệt: trong ADHD hành vi chống đối thường KHÔNG CỐ Ý do khó kiểm soát.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn học tập đặc hiệu (nếu khó khăn học tập không giải thích hoàn toàn bằng ADHD); khí chất khó nuôi; môi trường gia đình và kỷ luật không nhất quán.",
+          ],
+          note: "Trong ADHD, hành vi chống đối thường không cố ý — do khó kiểm soát hành vi, không phải thù địch có ý thức như ODD."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp cho K và gia đình.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> Đánh giá ADHD toàn diện (thang Conners, SNAP-IV, phỏng vấn đa nguồn). Liệu pháp hành vi nhận thức cho trẻ ADHD. Hội chẩn tâm thần nhi về thuốc nếu cần.",
+            "<strong>Gia đình:</strong> Parent Management Training (PMT) — dạy cha mẹ kỹ thuật kỷ luật tích cực: thưởng hành vi tốt, hệ thống điểm thưởng, phân chia nhiệm vụ thành bước nhỏ. Giảm xung đột cha mẹ-con.",
+            "<strong>Nhà trường:</strong> Điều chỉnh môi trường học: cho phép ngồi ở vị trí thuận lợi, giao bài ngắn hơn chia nhiều lần, cho phép ngh휴 ngắn. Trao đổi giáo viên về ADHD.",
+            "<strong>Xã hội:</strong> Hoạt động thể chất đúng mức (thể thao, nghệ thuật) giúp giải phóng năng lượng. Nhóm kỹ năng xã hội."
+          ],
+          note: "Điều trị ADHD hiệu quả nhất là kết hợp thuốc (nếu cần) + can thiệp hành vi + hỗ trợ học đường."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Tránh gán nhãn tiêu cực:</strong> K thông minh và nhanh nhạy — ADHD không phải là thiếu thông minh hay thiếu đạo đức. Tâm lý giáo dục cha mẹ và giáo viên là ưu tiên.",
+            "<strong>Hỗ trợ cha mẹ kiệt sức:</strong> Cha mẹ đang kiệt sức — cần đánh giá wellbeing của cha mẹ và cung cấp hỗ trợ cho họ.",
+            "<strong>Chuyển gửi kịp thời:</strong> Nếu xác nhận ADHD, cần hội chẩn tâm thần nhi để xem xét thuốc — nhà tâm lý không kê đơn.",
+            "<strong>Theo dõi liên tục:</strong> ADHD cần can thiệp dài hạn — không phải 'chữa khỏi' trong vài buổi. Cần đặt mục tiêu thực tế với gia đình."
+          ],
+          note: "Hành vi của K xuất phát từ khó kiểm soát thần kinh học — không phải 'hư' hay 'lười'. Cần thay đổi nhận thức của cha mẹ và giáo viên trước."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé gái 13 tuổi – Buồn bã, thu mình, giảm học tập",
+    tags: "Trầm cảm thiếu niên · Rối loạn lo âu · Rủi ro tự hại",
+    caseText: `<strong>Tình huống:</strong> Em P.H.L, nữ, 13 tuổi, lớp 7. Mẹ đưa đến vì L gần đây thay đổi nhiều: từ học sinh giỏi trở nên ít học bài, điểm số sụt giảm rõ rệt, không còn chơi với bạn thân, thường xuyên ở trong phòng. L nói với mẹ "con mệt mỏi, không muốn làm gì cả". Mẹ phát hiện trong nhật ký của L có những câu như "không ai hiểu con", "con là gánh nặng". L ăn ít hơn, ngủ khó, thường thức đêm nhìn điện thoại. Gia đình gần đây có biến cố: cha mẹ li dị 6 tháng trước, L ở với mẹ. L không muốn gặp nhà tâm lý ban đầu.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Rối loạn Trầm cảm Chủ yếu (MDD):</strong> Bằng chứng: khí sắc buồn ('mệt mỏi, không muốn làm gì'), mất hứng thú (không chơi với bạn, bỏ học), triệu chứng nhận thức tiêu cực ('gánh nặng'), rối loạn giấc ngủ (thức đêm), giảm cảm giác ngon miệng, thu mình xã hội, giảm kết quả học tập.",
+            "<strong>Nguy cơ tự hại cần đánh giá ngay:</strong> Câu 'con là gánh nặng' là dấu hiệu đỏ cần đánh giá ý tưởng tự sát một cách thận trọng và đồng cảm — đây là ưu tiên trong buổi đầu tiên.",
+            "<strong>Giả thuyết 2 — Phản ứng thích ứng/Rối loạn thích ứng:</strong> Biến cố ly hôn cha mẹ 6 tháng trước trùng với thời điểm thay đổi — có thể là yếu tố kích hoạt chính.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn lo âu đồng mắc, Rối loạn thích ứng đơn thuần (nhẹ hơn), hoặc phản ứng bình thường với mất mát cần được xác nhận."
+          ],
+          note: "Câu 'con là gánh nặng' cần đánh giá ý tưởng tự sát ngay trong buổi đầu tiên — đây là ưu tiên số 1 về an toàn."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Ưu tiên đánh giá an toàn:</strong> Đánh giá ý tưởng tự sát trong buổi đầu — tạo không gian an toàn, không phán xét. Nếu có nguy cơ cao, cần hội chẩn tâm thần ngay.",
+            "<strong>Nhà chuyên môn:</strong> Liệu pháp CBT cho thanh thiếu niên trầm cảm. Liệu pháp giải quyết vấn đề, kích hoạt hành vi (behavioral activation). Nếu nặng: hội chẩn thuốc chống trầm cảm với bác sĩ tâm thần.",
+            "<strong>Gia đình:</strong> Làm việc với mẹ — giúp mẹ hiểu trầm cảm, cách hỗ trợ không phán xét. Giảm áp lực kết quả học tập tạm thời. Xem xét liệu pháp gia đình sau ly hôn.",
+            "<strong>Nhà trường:</strong> Thông báo cho nhà trường (với sự đồng ý phù hợp) để có điều chỉnh tạm thời về áp lực học tập."
+          ],
+          note: "Với vị thành niên không muốn gặp: cần xây dựng niềm tin trước — không ép, không phán xét, lắng nghe trước giải thích."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Liên minh trị liệu với vị thành niên:</strong> L không muốn gặp ban đầu — không ép, bắt đầu bằng lắng nghe, tôn trọng sự tự chủ của L, tránh 'đồng minh' với cha mẹ quá mức.",
+            "<strong>Bảo mật và giới hạn:</strong> Giải thích rõ với L về bảo mật và các tình huống cần chia sẻ với cha mẹ (nguy cơ tính mạng). Đây là yếu tố quan trọng để xây dựng tin tưởng.",
+            "<strong>Đánh giá liên tục nguy cơ tự sát:</strong> Theo dõi ý tưởng tự hại suốt quá trình can thiệp, không chỉ buổi đầu.",
+            "<strong>Hiểu bối cảnh phát triển:</strong> 13 tuổi là giai đoạn vị thành niên sớm — đặc điểm bình thường (tìm kiếm độc lập, nhạy cảm với đánh giá của bạn bè) cần phân biệt với triệu chứng bệnh lý."
+          ],
+          note: "Trầm cảm ở vị thành niên cần được xem nghiêm túc — không phải 'tuổi teen nổi loạn bình thường'. Nhưng cũng cần tránh quá bệnh lý hóa mọi cảm xúc bình thường của giai đoạn phát triển."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé trai 6 tuổi – Chậm nói, ít giao tiếp, hành vi lặp lại",
+    tags: "ASD · Chậm phát triển trí tuệ · Rối loạn ngôn ngữ",
+    caseText: `<strong>Tình huống:</strong> Em N.Q.A, nam, 6 tuổi, chuẩn bị vào lớp 1. Cha mẹ lo lắng vì A chưa nói được câu hoàn chỉnh, chủ yếu dùng 2-3 từ. A ít nhìn vào mắt người đối diện, không hưởng ứng khi được gọi tên. Bé thích xếp các vật theo đường thẳng, xoay bánh xe đồ chơi hàng giờ, và phản ứng mạnh (la hét, đập đầu) khi lịch sinh hoạt thay đổi đột ngột. A không thích ôm hôn và né tránh tiếp xúc da. Cha mẹ cho biết A đạt các mốc vận động đúng tuổi nhưng ngôn ngữ rất chậm từ 18 tháng.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Rối loạn phổ tự kỷ (ASD) — giả thuyết hàng đầu:</strong> Bằng chứng đủ 3 lĩnh vực: (1) Tương tác xã hội: ít nhìn mắt, không hưởng ứng gọi tên, né tránh tiếp xúc; (2) Giao tiếp: chỉ 2-3 từ, không có giao tiếp phi ngôn ngữ bù đắp; (3) Hành vi lặp lại: xếp vật theo đường thẳng, xoay bánh xe, kháng cự thay đổi lịch trình.",
+            "<strong>Giả thuyết 2 — Cần phân biệt với Chậm phát triển trí tuệ đồng mắc:</strong> ¾ trẻ ASD có kèm CPTTT — cần đánh giá IQ và thích nghi. Nếu có, điều này ảnh hưởng đến hướng can thiệp.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn ngôn ngữ đơn thuần (có tương tác xã hội tốt), Điếc/khiếm thính (cần loại trừ bằng thính học đồ), Chậm phát triển trí tuệ không kèm ASD."
+          ],
+          note: "Trong trường hợp này, bức tranh lâm sàng gợi mạnh ASD. Cần đánh giá bằng M-CHAT hoặc CARS và chuyển gửi chẩn đoán chính thức."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> Đánh giá ASD chính thức (CARS, ADOS-2). Kiểm tra thính giác (audiometry) để loại trừ điếc. Đánh giá phát triển toàn diện (ngôn ngữ, nhận thức, hành vi thích nghi). Can thiệp sớm ABA/EIBI, trị liệu ngôn ngữ, trị liệu hoạt động (OT cho cảm giác).",
+            "<strong>Gia đình:</strong> Tâm lý giáo dục cha mẹ về ASD — đây là rối loạn phát triển thần kinh, không phải lỗi của cha mẹ. Huấn luyện cha mẹ các kỹ thuật giao tiếp phù hợp (PECS, AAC nếu cần). Chuẩn bị tâm lý cho hành trình dài.",
+            "<strong>Nhà trường:</strong> Chuẩn bị hồ sơ chuyển tiếp lớp 1 — cần lớp hòa nhập có hỗ trợ hoặc lớp chuyên biệt tùy mức độ. Giáo viên cần được tập huấn.",
+            "<strong>Xã hội:</strong> Kết nối cha mẹ với cộng đồng hỗ trợ ASD. Giảm kỳ thị."
+          ],
+          note: "Can thiệp sớm trước 6 tuổi cho ASD có hiệu quả tốt nhất — thời điểm hiện tại là quan trọng."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không dán nhãn vội vàng nhưng cũng không trì hoãn đánh giá:</strong> Cha mẹ cần được thông tin để tiếp cận can thiệp sớm. Không nên vì sợ 'lo cha mẹ' mà trì hoãn đánh giá.",
+            "<strong>Hỗ trợ cảm xúc cha mẹ:</strong> Nhận tin con có ASD có thể là cú sốc lớn — cha mẹ cần được hỗ trợ tâm lý song song.",
+            "<strong>Tiếp cận điểm mạnh (strength-based):</strong> A có thể có điểm mạnh (trí nhớ thị giác, nhất quán) — can thiệp hiệu quả khi xây dựng trên điểm mạnh, không chỉ tập trung vào khiếm khuyết.",
+            "<strong>Giới hạn chuyên môn:</strong> Chẩn đoán ASD chính thức cần đội ngũ đa ngành — nhà tâm lý chuyển gửi đến bác sĩ tâm thần nhi hoặc trung tâm chuyên biệt."
+          ],
+          note: "Ngôn ngữ identity-first ('trẻ tự kỷ') vs person-first ('trẻ có tự kỷ') — hỏi gia đình họ muốn dùng từ nào để tôn trọng quan điểm của họ."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé gái 11 tuổi – Rửa tay liên tục, sợ vi khuẩn",
+    tags: "OCD · Lo âu · Rối loạn dạng cơ thể",
+    caseText: `<strong>Tình huống:</strong> Em T.K.N, nữ, 11 tuổi, lớp 5. Cha mẹ đưa đến vì N rửa tay rất nhiều lần trong ngày, đặc biệt sau khi chạm vào bất kỳ vật gì ở nơi công cộng. Mỗi lần rửa, N rửa theo một quy trình cố định và phải rửa ít nhất 5 lần mới cảm thấy "sạch". Nếu bị ngắt quãng, N rất khó chịu và phải bắt đầu lại từ đầu. N biết "điều này vô lý" nhưng không thể dừng lại. Việc này tốn khoảng 2-3 giờ mỗi ngày. N cũng thường xuyên lo sợ bị bệnh, hay yêu cầu cha mẹ xác nhận "con có bị bệnh không" nhiều lần trong ngày.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — OCD (Rối loạn ám ảnh cưỡng chế) — giả thuyết hàng đầu:</strong> Bằng chứng rõ ràng: ám ảnh (sợ vi khuẩn/bệnh tật — suy nghĩ xâm nhập) → lo âu tăng → cưỡng chế (rửa tay 5 lần, quy trình cố định) → giảm lo âu tạm thời → vòng lặp. Tốn >1 giờ/ngày (2-3 giờ). N nhận biết là vô lý nhưng không kiểm soát được — đặc điểm của OCD.",
+            "<strong>Giả thuyết 2 — Lo âu bệnh tật (Illness Anxiety) đồng mắc:</strong> Bằng chứng: thường xuyên lo sợ bị bệnh, yêu cầu xác nhận (reassurance-seeking) nhiều lần — hành vi tìm kiếm trấn an là cưỡng chế theo kiểu khác của OCD.",
+            "<strong>Cần phân biệt với:</strong> Lo âu lan tỏa (không có cưỡng chế cụ thể), rối loạn lo âu bệnh tật đơn thuần, hành vi cẩn thận bình thường về vệ sinh."
+          ],
+          note: "Hành vi tìm kiếm trấn an (reassurance-seeking) của cha mẹ thực ra CỦNG CỐ OCD của N — cần giải thích cho cha mẹ."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> ERP (Exposure and Response Prevention) — liệu pháp nền tảng cho OCD: tiếp xúc kích thích gây ám ảnh (sự bẩn) + ngăn không rửa tay — thực hiện từng bước nhỏ, theo thang phân cấp lo âu. Hội chẩn tâm thần về thuốc SSRI nếu cần.",
+            "<strong>Gia đình:</strong> Giáo dục cha mẹ: KHÔNG trả lời câu hỏi 'con có bị bệnh không' — reassurance-seeking duy trì OCD. Dạy cha mẹ cách phản hồi khác ('Con đang trải qua OCD, con có thể vượt qua'). Không giúp N thực hiện cưỡng chế.",
+            "<strong>Nhà trường:</strong> Nếu OCD ảnh hưởng đến trường (tốn thời gian rửa tay ở trường), thông báo cho giáo viên để phối hợp.",
+            "<strong>N:</strong> Giáo dục N về OCD — bình thường hóa nhưng không xuất chiều. Xây dựng kế hoạch ERP cùng N."
+          ],
+          note: "ERP gây khó chịu ban đầu — cần xây dựng liên minh tốt với N và cha mẹ trước khi bắt đầu."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Tránh trở thành nguồn reassurance:</strong> Nhà tâm lý cũng phải cẩn thận không trả lời câu hỏi lo âu của N theo cách củng cố OCD.",
+            "<strong>Tốc độ ERP phải phù hợp:</strong> ERP quá nhanh có thể gây bỏ trị liệu. Cần bắt đầu từ kích thích ít lo âu nhất, tiến dần.",
+            "<strong>Theo dõi tác động lên gia đình (Family accommodation):</strong> Cha mẹ thường vô tình giúp N thực hiện cưỡng chế — cần can thiệp cha mẹ là bắt buộc.",
+            "<strong>Chuyển gửi kịp thời:</strong> OCD nặng (>3 giờ/ngày) cần hội chẩn tâm thần về SSRI — kết hợp thuốc và ERP hiệu quả hơn đơn trị."
+          ],
+          note: "OCD là rối loạn có thể điều trị tốt bằng ERP — tiên lượng tốt nếu can thiệp đúng phương pháp."
+        }
+      }
+    ]
+  },
+  {
+    title: "Thiếu niên 15 tuổi – Chứng kiến bạo lực gia đình",
+    tags: "PTSD · Trầm cảm · Rối loạn thích ứng",
+    caseText: `<strong>Tình huống:</strong> Em L.M.H, nữ, 15 tuổi. Mẹ đưa đến vì H thay đổi rõ rệt sau khi chứng kiến cha đánh mẹ nghiêm trọng 3 tháng trước (cha đã rời đi sau đó). H hay giật mình với tiếng động lớn, tránh xem phim có cảnh bạo lực, và thỉnh thoảng "thấy lại" cảnh đó trong đầu dù không muốn. H ngủ khó, hay ác mộng, cảnh giác cao khi ở nhà một mình. H trở nên lạnh lùng hơn với mẹ, ít nói chuyện, và cho rằng "đàn ông đều như vậy cả". Kết quả học tập giảm, thường xuyên mất tập trung trong lớp.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — PTSD:</strong> Bằng chứng đủ 4 nhóm triệu chứng: (1) Xâm nhập: thấy lại cảnh bạo lực (flashback), ác mộng; (2) Né tránh: tránh xem phim bạo lực; (3) Kích ứng: giật mình tiếng động, cảnh giác cao; (4) Thay đổi nhận thức/tâm trạng tiêu cực: nhận thức tiêu cực về đàn ông, lạnh lùng với mẹ. Sự kiện sang chấn rõ ràng (3 tháng trước). Triệu chứng >1 tháng → đủ tiêu chí PTSD.",
+            "<strong>Giả thuyết 2 — Trầm cảm đồng mắc:</strong> Lạnh lùng, ít nói, giảm học tập, có thể có anhedonia — cần đánh giá thêm.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn thích ứng (nếu triệu chứng nhẹ hơn), Rối loạn Stress Cấp (nếu <1 tháng — nhưng đã 3 tháng), phản ứng đau buồn bình thường."
+          ],
+          note: "3 tháng sau sang chấn, triệu chứng đủ 4 nhóm → gợi mạnh PTSD, không phải chỉ là 'phản ứng bình thường'."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> TF-CBT (Trauma-Focused CBT) — liệu pháp nền tảng cho PTSD ở trẻ em/vị thành niên: xây dựng kỹ năng, xử lý sang chấn, điều chỉnh nhận thức. EMDR có thể bổ sung. Đánh giá trầm cảm đồng mắc.",
+            "<strong>Gia đình:</strong> TF-CBT có thành phần làm việc với cha mẹ/người chăm sóc — làm việc với mẹ song song: giúp mẹ hiểu PTSD, cải thiện giao tiếp mẹ-con. Đảm bảo môi trường an toàn hiện tại.",
+            "<strong>An toàn:</strong> Đảm bảo H và mẹ an toàn, cha không còn đe dọa. Kết nối với dịch vụ bảo vệ bạo lực gia đình nếu cần.",
+            "<strong>Nhà trường:</strong> Trao đổi để có hỗ trợ học tập tạm thời trong quá trình phục hồi."
+          ],
+          note: "Đảm bảo an toàn vật lý trước khi bắt đầu xử lý sang chấn là nguyên tắc quan trọng trong trị liệu sang chấn."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không ép H kể lại sự kiện sớm:</strong> Stabilization (ổn định) phải trước xử lý sang chấn — kể lại quá sớm có thể tái sang chấn.",
+            "<strong>Nhận thức tiêu cực cần được hiểu theo bối cảnh:</strong> 'Đàn ông đều như vậy' là nhận thức bị bóp méo bởi sang chấn — không đối đầu trực tiếp mà xử lý qua liệu pháp.",
+            "<strong>Quan hệ mẹ-con:</strong> H lạnh lùng với mẹ có thể là né tránh liên quan sang chấn — cần làm việc cả hai để không gây rạn nứt thêm.",
+            "<strong>Kỳ thị văn hóa về PTSD:</strong> Ở Việt Nam, sang chấn tâm lý từ bạo lực gia đình có thể bị xem nhẹ — cần tâm lý giáo dục."
+          ],
+          note: "Trị liệu sang chấn hiệu quả cần: an toàn → ổn định → xử lý sang chấn → hội nhập. Không bỏ qua bước nào."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé trai 10 tuổi – Chống đối người lớn, hay nổi giận",
+    tags: "ODD · ADHD · Rối loạn khí sắc",
+    caseText: `<strong>Tình huống:</strong> Em V.H.D, nam, 10 tuổi, lớp 4. Cô giáo và cha mẹ đều phàn nàn D rất khó bảo. D thường xuyên tranh cãi với thầy cô, từ chối làm bài khi không thích, cố tình làm ngược lại những gì được yêu cầu. D hay tìm cách chọc tức bạn và sau đó đổ lỗi cho bạn khi bị phạt. Ở nhà, D thách thức cha mẹ mọi quy tắc. Tình trạng này kéo dài hơn 8 tháng. Cha mẹ áp dụng kỷ luật cứng nhắc kèm trừng phạt thể chất khi D không nghe lời, nhưng D ngày càng phản ứng dữ dội hơn.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — ODD (Rối loạn thách thức chống đối):</strong> Bằng chứng: tranh cãi với người có thẩm quyền, từ chối tuân thủ có ý thức, cố tình làm phiền người khác, đổ lỗi cho người khác, kéo dài >6 tháng (8 tháng), ảnh hưởng cả gia đình lẫn nhà trường.",
+            "<strong>Giả thuyết 2 — Cần phân biệt với ADHD đồng mắc:</strong> Nếu có ADHD, điều trị ADHD có thể giảm hành vi chống đối không cố ý.",
+            "<strong>Yếu tố gia đình quan trọng:</strong> Trừng phạt thể chất kèm cứng nhắc → theo Patterson (1982), cha mẹ có thể đang củng cố hành vi chống đối. Mô hình Coercive Family Process.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn khí sắc (trầm cảm ở trẻ biểu hiện qua cáu kỉnh), lo âu khi bị ngăn cản (như trong OCD hoặc lo âu)."
+          ],
+          note: "Trừng phạt thể chất khi đứa trẻ đã chống đối thường LEO THANG xung đột chứ không giải quyết — cần thay đổi cách tiếp cận cha mẹ."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Ưu tiên can thiệp cha mẹ trước:</strong> Parent Management Training (PMT) — dạy cha mẹ kỹ thuật kỷ luật tích cực, hệ thống thưởng nhất quán, phong cách giao tiếp phi xung đột. DỪNG trừng phạt thể chất.",
+            "<strong>Nhà chuyên môn:</strong> Liệu pháp cho D — Problem-Solving Skills Training (PSST): dạy D kỹ năng giải quyết vấn đề và điều hòa cảm xúc. Collaborative Problem Solving (CPS — Ross Greene).",
+            "<strong>Nhà trường:</strong> Trao đổi với giáo viên về chiến lược không leo thang xung đột với D. Tạo cơ hội D có quyền kiểm soát tích cực trong lớp.",
+            "<strong>Xã hội:</strong> Hoạt động thể thao, kỹ năng xã hội, giúp D tìm nguồn lực cảm xúc tích cực."
+          ],
+          note: "Can thiệp cha mẹ hiệu quả hơn can thiệp chỉ với trẻ trong ODD — thay đổi tương tác hệ thống là chìa khóa."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không chỉ tập trung vào trẻ:</strong> ODD là rối loạn của hệ thống tương tác — cần thay đổi cha mẹ, giáo viên, không chỉ điều chỉnh trẻ.",
+            "<strong>Trừng phạt thể chất:</strong> Cần đề cập thẳng thắn nhưng không phán xét — giúp cha mẹ hiểu vì sao điều này leo thang tình huống và có tác hại lâu dài.",
+            "<strong>Phát hiện điểm mạnh:</strong> D có thể có kỹ năng lãnh đạo, năng lượng cao — cần hướng sang các kênh tích cực.",
+            "<strong>Theo dõi nguy cơ tiến triển CD:</strong> ODD không được can thiệp có thể tiến triển thành CD — giám sát liên tục là cần thiết."
+          ],
+          note: "Mục tiêu không phải là 'bẻ gãy ý chí' của D mà là giúp D học cách thể hiện nhu cầu kiểm soát và tự chủ theo cách xã hội chấp nhận."
+        }
+      }
+    ]
+  },
+  {
+    title: "Thiếu niên 14 tuổi – Lo lắng thái quá về sức khỏe, đau khắp người",
+    tags: "Rối loạn dạng cơ thể · Lo âu bệnh tật · GAD",
+    caseText: `<strong>Tình huống:</strong> Em N.T.M, nữ, 14 tuổi. Mẹ đưa đến sau khi đã đi khám nhiều bác sĩ nội khoa không tìm thấy nguyên nhân. M thường xuyên kêu đau đầu, đau bụng, mệt mỏi, nhưng tất cả kết quả xét nghiệm đều bình thường. M không muốn đi học vì sợ bệnh nặng thêm. M hay hỏi mẹ và bác sĩ "con có bị bệnh nặng không" nhiều lần trong ngày. Trên mạng, M tự tìm kiếm triệu chứng và thường kết luận mình bị bệnh nguy hiểm. Tình trạng bắt đầu sau khi có người thân mắc ung thư cách đây 1 năm.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Rối loạn Lo âu Bệnh tật (Illness Anxiety Disorder):</strong> Bằng chứng: lo sợ dai dẳng mắc bệnh nghiêm trọng, tự tìm kiếm thông tin (cyberchondria), tìm kiếm trấn an nhiều lần, không giảm lo dù xét nghiệm bình thường, khởi phát sau sự kiện (người thân bệnh ung thư).",
+            "<strong>Giả thuyết 2 — Rối loạn Triệu chứng Cơ thể (Somatic Symptom Disorder):</strong> Có triệu chứng cơ thể thực sự (đau đầu, đau bụng, mệt) gây khổ sở dù không có bệnh lý y khoa giải thích → cần phân biệt hai rối loạn này.",
+            "<strong>Giả thuyết 3 — Lo âu Lan tỏa (GAD) đồng mắc:</strong> Lo lắng về nhiều lĩnh vực ngoài bệnh tật không?",
+            "<strong>Cần phân biệt với:</strong> Né tránh học đường (nếu có áp lực học đường), bệnh lý y khoa chưa phát hiện (cần loại trừ hoàn toàn trước), trầm cảm với triệu chứng cơ thể."
+          ],
+          note: "Triệu chứng cơ thể của M là THỰC — không phải 'giả vờ'. Cần tránh nói 'con không có bệnh gì hết' vì sẽ làm M cảm thấy không được tin."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> CBT cho lo âu bệnh tật: thách thức nhận thức thảm họa hóa, giảm tìm kiếm trấn an (response prevention), tăng chịu đựng sự không chắc chắn. Liệu pháp xử lý nỗi sợ mất người thân.",
+            "<strong>Gia đình:</strong> Giáo dục mẹ: KHÔNG trả lời câu hỏi lo âu nhiều lần (củng cố), tránh đồng hành quá mức với né tránh trường học. Xử lý lo lắng của mẹ về bệnh của người thân.",
+            "<strong>Hợp tác y tế:</strong> Kết hợp với bác sĩ gia đình — không làm thêm xét nghiệm không cần thiết (củng cố hành vi kiểm tra), nhưng không bác bỏ triệu chứng của M.",
+            "<strong>Nhà trường:</strong> Kế hoạch từng bước quay lại trường học."
+          ],
+          note: "Tránh bẫy reassurance: mỗi lần trả lời 'con không sao đâu' chỉ giảm lo âu tạm thời và tăng cường vòng lặp hỏi-trả lời."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không phủ nhận triệu chứng cơ thể:</strong> Triệu chứng là thực dù không có bệnh lý giải thích — xác nhận trải nghiệm của M trước khi giải thích cơ chế tâm lý-cơ thể.",
+            "<strong>Khám phá yếu tố khởi phát:</strong> Người thân bị ung thư là yếu tố quan trọng — M có thể đang xử lý nỗi sợ mất mát và cái chết theo cách trở thành lo lắng về bệnh tật bản thân.",
+            "<strong>Tránh quá nhiều thăm khám y khoa:</strong> Phối hợp với bác sĩ để không làm thêm xét nghiệm không cần thiết.",
+            "<strong>Đánh giá né tránh trường học:</strong> Nếu né tránh học đường trở nên cố hữu, cần can thiệp hành vi tích cực."
+          ],
+          note: "Sự chuyển đổi từ lo lắng về người thân bệnh sang lo lắng về bệnh của bản thân là cơ chế tâm lý phổ biến — không phải 'bệnh giả'."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé gái 12 tuổi – Ăn kiêng cực đoan, ám ảnh cân nặng",
+    tags: "Rối loạn ăn uống · Anorexia · Lo âu · Trầm cảm",
+    caseText: `<strong>Tình huống:</strong> Em T.N.B, nữ, 12 tuổi, lớp 6. Mẹ đưa đến vì lo lắng B giảm cân nhiều trong 4 tháng qua. B từ chối ăn cơm, nói "con béo quá", dù thực tế B rất gầy. B kiểm tra cân nặng nhiều lần trong ngày, mặc quần áo rộng để không ai thấy cơ thể. B hay so sánh mình với bạn bè và người nổi tiếng trên mạng. Gần đây B hay mệt mỏi, không có kinh (bắt đầu mất kinh 2 tháng trước), tóc rụng nhiều. Bạn bè B hay nói đùa về ngoại hình từ năm ngoái.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Chán ăn tâm thần (Anorexia Nervosa) — ưu tiên đánh giá y khoa ngay:</strong> Bằng chứng: (1) Hạn chế ăn nghiêm trọng → giảm cân; (2) Sợ tăng cân ('con béo quá' dù gầy); (3) Nhận thức sai lệch về cơ thể (body image disturbance). Dấu hiệu thể chất nghiêm trọng: mất kinh (amenorrhea), rụng tóc, mệt mỏi → cần đánh giá y khoa khẩn cấp.",
+            "<strong>Yếu tố nguy cơ:</strong> Bắt nạt về ngoại hình (so sánh với bạn), áp lực mạng xã hội/hình tượng đẹp, giai đoạn dậy thì.",
+            "<strong>Cần phân biệt với:</strong> Rối loạn né tránh/hạn chế tiếp nhận thức ăn (ARFID — không sợ tăng cân, né tránh vì cảm giác), rối loạn lo âu về hình thể (BDD), trầm cảm kèm giảm cảm giác ngon miệng."
+          ],
+          note: "KHẨN CẤP: mất kinh, rụng tóc là dấu hiệu suy dinh dưỡng nghiêm trọng — cần đánh giá y khoa NGAY TRƯỚC KHI bắt đầu tâm lý trị liệu."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Ưu tiên số 1 — Y tế:</strong> Chuyển gửi ngay đến bác sĩ nhi/nội tiết để đánh giá tình trạng thể chất, bổ sung dinh dưỡng nếu cần. Anorexia có tỷ lệ tử vong cao nhất trong các rối loạn tâm thần.",
+            "<strong>Nhà chuyên môn:</strong> FBT (Family-Based Treatment/Maudsley Approach) — phương pháp hiệu quả nhất cho Anorexia ở thanh thiếu niên: cha mẹ chịu trách nhiệm cho ăn giai đoạn đầu. CBT sau khi cân nặng ổn định.",
+            "<strong>Gia đình:</strong> Tâm lý giáo dục — không bình luận về ngoại hình, tạo môi trường ăn uống bình thường không áp lực. Tránh vô tình khen 'gầy là đẹp'.",
+            "<strong>Nhà trường/Xã hội:</strong> Giải quyết bắt nạt về ngoại hình. Giảm tiếp cận nội dung mạng xã hội độc hại về hình thể."
+          ],
+          note: "Trong Anorexia, tâm lý trị liệu không thể hiệu quả nếu não bộ đang bị suy dinh dưỡng — phục hồi thể chất phải đi trước tâm lý."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Ego-syntonic — B có thể không muốn điều trị:</strong> Trong Anorexia, trẻ thường không nhận ra mình bệnh và không muốn thay đổi cân nặng. Xây dựng động lực thay đổi là thách thức lớn.",
+            "<strong>Không tập trung vào cân nặng khi giao tiếp:</strong> Tránh câu hỏi về cân nặng trong buổi trị liệu, tập trung vào cảm xúc và cuộc sống.",
+            "<strong>Giới hạn nhà tâm lý:</strong> Anorexia cần đội ngũ đa ngành: tâm lý, bác sĩ, dinh dưỡng viên. Nhà tâm lý không thể làm một mình.",
+            "<strong>Đánh giá nguy cơ tự sát:</strong> Anorexia có nguy cơ tự sát cao — cần đánh giá định kỳ."
+          ],
+          note: "Anorexia là một trong các rối loạn tâm thần nguy hiểm nhất — cần tiếp cận khẩn trương và đa ngành."
+        }
+      }
+    ]
+  },
+  {
+    title: "Bé trai 7 tuổi – Chứng kiến tai nạn, ác mộng, sợ xe cộ",
+    tags: "PTSD trẻ nhỏ · Lo âu · Rối loạn thích ứng",
+    caseText: `<strong>Tình huống:</strong> Em H.T.N, nam, 7 tuổi, lớp 1. Mẹ đưa đến vì N thay đổi rõ rệt sau khi chứng kiến tai nạn giao thông nghiêm trọng (người bị thương nặng) cách đây 2 tháng. N hay giật mình, la hét trong giấc ngủ, thường thức dậy khóc. N sợ đi bộ gần đường và từ chối đi xe máy với cha mẹ (trước đây N rất thích). N chơi lại cảnh tai nạn nhiều lần với đồ chơi xe cộ. N trở nên bám mẹ hơn, sợ mẹ ra ngoài một mình. Ở trường, N không tập trung, thường nhìn ra cửa sổ.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — PTSD ở trẻ nhỏ:</strong> Bằng chứng đặc trưng của PTSD ở trẻ nhỏ: (1) Xâm nhập: chơi tái diễn sang chấn (traumatic play), ác mộng; (2) Né tránh: tránh xe cộ, đường phố; (3) Kích ứng: giật mình, bám mẹ quá mức, không tập trung; (4) Thay đổi nhận thức: sợ mẹ bị tai nạn. Sự kiện sang chấn rõ ràng, triệu chứng >1 tháng (2 tháng).",
+            "<strong>Lưu ý PTSD ở trẻ nhỏ:</strong> Chơi tái diễn sang chấn là cách trẻ 7 tuổi 'xử lý' sang chấn thay vì flashback của người lớn — đây là biểu hiện PTSD đặc trưng tuổi nhỏ.",
+            "<strong>Cần phân biệt với:</strong> Lo âu chia tách (bám mẹ), Rối loạn thích ứng (nếu nhẹ hơn), phản ứng sợ hãi bình thường ngắn hạn."
+          ],
+          note: "Chơi tái diễn sang chấn ở trẻ nhỏ là triệu chứng PTSD đặc trưng tuổi nhỏ — không phải trò chơi bình thường hay 'chỉ là vô tình'."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> TF-CBT cho trẻ nhỏ — có thành phần phù hợp lứa tuổi: nghệ thuật trị liệu, chơi trị liệu, kể chuyện sang chấn thông qua đồ chơi. Liệu pháp EMDR có thể phù hợp.",
+            "<strong>Gia đình — trọng tâm:</strong> Cha mẹ đóng vai trò rất quan trọng với trẻ 7 tuổi. TF-CBT cho trẻ nhỏ luôn có thành phần cha mẹ. Dạy cha mẹ cách phản ứng khi N chơi tái diễn hoặc có ác mộng (không bác bỏ, không phủ nhận cảm xúc, không ép quên).",
+            "<strong>Nhà trường:</strong> Thông báo giáo viên để hỗ trợ N — không gọi N đột ngột, tạo cảm giác an toàn.",
+            "<strong>Từng bước tiếp xúc xe cộ:</strong> Không ép N tiếp xúc xe cộ ngay mà tiếp xúc dần dần có kiểm soát."
+          ],
+          note: "Với trẻ 7 tuổi, can thiệp qua cha mẹ là cực kỳ quan trọng — trẻ sống trong môi trường cha mẹ tạo ra."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không ép N 'quên đi' hay 'can đảm lên':</strong> Né tránh được hiểu là yếu đuối trong văn hóa Việt Nam — cần giáo dục cha mẹ về bản chất sinh học của PTSD.",
+            "<strong>Chơi trị liệu là liệu pháp hợp lệ:</strong> Nhà chuyên môn cần giải thích với cha mẹ rằng 'chơi' trong phòng trị liệu là phương pháp điều trị, không phải 'chỉ chơi'.",
+            "<strong>Theo dõi phát triển:</strong> PTSD ở tuổi 7 nếu không được điều trị có thể ảnh hưởng đến sự gắn bó, phát triển nhận thức và cảm xúc lâu dài.",
+            "<strong>Hiểu giới hạn:</strong> Nếu triệu chứng không cải thiện sau can thiệp ban đầu, cần hội chẩn tâm thần nhi."
+          ],
+          note: "Trẻ nhỏ phục hồi tốt hơn người lớn khi được can thiệp sớm và đúng phương pháp — tiên lượng tốt nếu can thiệp kịp thời."
+        }
+      }
+    ]
+  },
+  {
+    title: "Thiếu niên 16 tuổi – Ăn vô độ, che giấu, xấu hổ",
+    tags: "Bulimia · BED · Trầm cảm · Lo âu",
+    caseText: `<strong>Tình huống:</strong> Em P.T.H, nữ, 16 tuổi, lớp 10. H tự đến gặp nhà tâm lý sau khi tìm kiếm thông tin trên internet. H kể rằng trong 6 tháng qua, H thường xuyên ăn rất nhiều trong thời gian ngắn (một mình, vào buổi tối) — nhiều hơn bình thường rất nhiều và cảm thấy không kiểm soát được. Sau đó H cảm thấy xấu hổ, tội lỗi và tự gây nôn. H giấu điều này với cha mẹ vì sợ bị la mắng. H biết điều này "không tốt" nhưng không thể dừng lại. H cho biết mình hay căng thẳng vì áp lực học thi vào đại học và cha mẹ kỳ vọng cao.`,
+    questions: [
+      {
+        q: "Câu 1 (2 điểm): Nêu các giả thuyết tâm bệnh/vấn đề tâm lý và dẫn chứng.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Giả thuyết 1 — Bulimia Nervosa:</strong> Bằng chứng đủ tiêu chí: (1) Ăn vô độ (binge) — ăn nhiều bất thường trong thời gian ngắn, cảm giác mất kiểm soát; (2) Hành vi bù trừ (purging) — tự gây nôn; (3) Lặp lại; (4) Xảy ra ít nhất 1 lần/tuần trong 3 tháng; (5) Gây khổ sở (xấu hổ, tội lỗi). Giấu bí mật, ăn một mình là đặc trưng.",
+            "<strong>Yếu tố kích hoạt:</strong> Căng thẳng học thi, áp lực kỳ vọng → ăn như cơ chế đối phó cảm xúc.",
+            "<strong>Giả thuyết 2 — Lo âu và/hoặc Trầm cảm đồng mắc:</strong> Áp lực, lo âu rõ ràng — cần đánh giá mức độ trầm cảm và lo âu đồng mắc.",
+            "<strong>Cần phân biệt với:</strong> BED (không có hành vi bù trừ), ăn nhiều theo cảm xúc đơn thuần chưa đến mức rối loạn."
+          ],
+          note: "H tự tìm kiếm giúp đỡ là dấu hiệu tốt về insight và động lực thay đổi — cần trân trọng và xây dựng trên đó."
+        }
+      },
+      {
+        q: "Câu 2 (1.5 điểm): Định hướng trợ giúp.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Nhà chuyên môn:</strong> CBT cho Bulimia — hiệu quả nhất được chứng minh: điều chỉnh nhận thức về hình thể/giá trị bản thân, lập kế hoạch ăn uống điều độ, phát triển kỹ năng điều hòa cảm xúc không dùng thức ăn. DBT nếu có vấn đề điều hòa cảm xúc nặng.",
+            "<strong>Gia đình:</strong> Với sự đồng ý của H, cân nhắc chia sẻ với cha mẹ — giáo dục cha mẹ về Bulimia, giảm kỳ vọng gây áp lực. Tuy nhiên H 16 tuổi có quyền một phần về bảo mật.",
+            "<strong>Áp lực học tập:</strong> Xem xét nguồn gốc stress — liệu pháp giải quyết vấn đề, quản lý stress, đặt ranh giới lành mạnh.",
+            "<strong>Hội chẩn y khoa:</strong> Tự gây nôn kéo dài có thể gây hậu quả y khoa (mất điện giải, hại men răng) — cần đánh giá thể chất."
+          ],
+          note: "H 16 tuổi, tự đến tìm kiếm giúp đỡ — tôn trọng tự chủ của H, đàm phán về chia sẻ cha mẹ thay vì quyết định thay H."
+        }
+      },
+      {
+        q: "Câu 3 (1.5 điểm): Điều quan trọng nhà tâm lý cần lưu ý.",
+        hint: {
+          title: "GỢI Ý TRẢ LỜI",
+          points: [
+            "<strong>Không phán xét hành vi ăn uống:</strong> Xấu hổ và tội lỗi là cảm xúc duy trì Bulimia — thêm phán xét từ nhà tâm lý sẽ làm tệ hơn. Cần tiếp cận không phán xét, đồng cảm.",
+            "<strong>Bảo mật với vị thành niên 16 tuổi:</strong> Cần thảo luận rõ về bảo mật và giới hạn — H cần biết khi nào nhà tâm lý phải chia sẻ với cha mẹ.",
+            "<strong>Theo dõi sức khỏe thể chất:</strong> Tự gây nôn có thể gây biến chứng y khoa — cần phối hợp với bác sĩ.",
+            "<strong>Nhận biết điểm mạnh:</strong> H có insight tốt (biết là 'không tốt'), tự tìm giúp đỡ — xây dựng trên điểm mạnh này trong liệu pháp."
+          ],
+          note: "Bulimia có thể điều trị tốt với CBT — tiên lượng khá tốt so với Anorexia, đặc biệt khi người bệnh có insight và động lực như H."
+        }
+      }
+    ]
+  }
+];
+
+// ============================================================
+// QUIZ LOGIC
+// ============================================================
+let score = 0;
+let answered = 0;
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = '';
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = `qcard-${i}`;
+    card.style.animationDelay = `${i * 0.04}s`;
+
+    const opts = q.opts.map((opt, j) => `
+      <button class="option-btn" id="opt-${i}-${j}" onclick="selectAnswer(${i}, ${j})">
+        <span class="opt-label">${['A','B','C','D'][j]}</span>
+        <span>${opt}</span>
+      </button>
+    `).join('');
+
+    card.innerHTML = `
+      <div class="q-num">Câu ${i+1} / ${questions.length}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options">${opts}</div>
+      <div class="explanation" id="exp-${i}">
+        <strong>✅ Giải thích:</strong> ${q.exp}
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function selectAnswer(qIdx, optIdx) {
+  const q = questions[qIdx];
+  const card = document.getElementById(`qcard-${qIdx}`);
+  if (card.classList.contains('answered-correct') || card.classList.contains('answered-wrong')) return;
+
+  for (let j = 0; j < q.opts.length; j++) {
+    const btn = document.getElementById(`opt-${qIdx}-${j}`);
+    btn.disabled = true;
+    if (j === q.ans) btn.classList.add('correct');
+    if (j === optIdx && j !== q.ans) btn.classList.add('wrong');
+  }
+
+  const isCorrect = optIdx === q.ans;
+  card.classList.add(isCorrect ? 'answered-correct' : 'answered-wrong');
+  document.getElementById(`exp-${qIdx}`).classList.add('show');
+
+  if (isCorrect) score++;
+  answered++;
+
+  document.getElementById('scoreNum').textContent = score;
+  document.getElementById('totalAnswered').textContent = answered;
+  document.getElementById('progressBar').style.width = `${(answered/questions.length)*100}%`;
+
+  if (answered === questions.length) {
+    setTimeout(showResult, 600);
+  }
+}
+
+function showResult() {
+  const pct = Math.round((score / questions.length) * 100);
+  let emoji = '🎯', title = 'Kết quả của bạn', msg = '';
+  if (pct >= 90) { emoji = '🏆'; title = 'Xuất sắc!'; msg = 'Chị nắm vững kiến thức Tâm bệnh phát triển rất tốt! Tiếp tục phát huy nhé!'; }
+  else if (pct >= 75) { emoji = '🌟'; title = 'Rất tốt!'; msg = 'Chị đã nắm được phần lớn nội dung. Xem lại những câu sai để củng cố nhé!'; }
+  else if (pct >= 60) { emoji = '📚'; title = 'Khá tốt!'; msg = 'Cần ôn thêm một số phần. Đọc lại giải thích các câu sai và thử lại!'; }
+  else { emoji = '💪'; title = 'Cố lên!'; msg = 'Đừng nản lòng — ôn lại tài liệu và thử lại. Mỗi lần sai là cơ hội học!'; }
+
+  document.getElementById('resultEmoji').textContent = emoji;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultScore').textContent = `${score}/${questions.length}`;
+  document.getElementById('resultMsg').textContent = msg;
+  document.getElementById('resultOverlay').classList.add('show');
+}
+
+function closeResult() {
+  document.getElementById('resultOverlay').classList.remove('show');
+}
+
+function resetQuiz() {
+  score = 0; answered = 0;
+  document.getElementById('scoreNum').textContent = 0;
+  document.getElementById('totalAnswered').textContent = 0;
+  document.getElementById('progressBar').style.width = '0%';
+  renderQuiz();
+}
+
+// ============================================================
+// TỰ LUẬN LOGIC
+// ============================================================
+function renderTL() {
+  const container = document.getElementById('tlContainer');
+  container.innerHTML = '';
+  situations.forEach((sit, si) => {
+    const card = document.createElement('div');
+    card.className = 'situation-card';
+    card.style.animationDelay = `${si * 0.08}s`;
+
+    const qsHtml = sit.questions.map((q, qi) => `
+      <div class="q-item">
+        <div class="q-item-header">
+          <span class="q-badge">${['Câu 1','Câu 2','Câu 3'][qi]}</span>
+          <div class="q-item-text">${q.q}</div>
+        </div>
+        <button class="hint-toggle" onclick="toggleHint('hint-${si}-${qi}', this)">
+          💡 Xem gợi ý trả lời
+        </button>
+        <div class="hint-box" id="hint-${si}-${qi}">
+          <h4>${q.hint.title}</h4>
+          <ul>${q.hint.points.map(p => `<li>${p}</li>`).join('')}</ul>
+          ${q.hint.note ? `<div class="note">📌 ${q.hint.note}</div>` : ''}
+        </div>
+      </div>
+    `).join('<hr style="border:none;border-top:1px solid #e8e4db;margin:16px 0">');
+
+    card.innerHTML = `
+      <div class="sit-header">
+        <div class="sit-num">${si+1}</div>
+        <div>
+          <div class="sit-title">${sit.title}</div>
+          <div class="sit-subtitle">${sit.tags}</div>
+        </div>
+      </div>
+      <div class="sit-body">
+        <div class="sit-case">${sit.caseText}</div>
+        <div class="questions-list">${qsHtml}</div>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function toggleHint(id, btn) {
+  const box = document.getElementById(id);
+  const showing = box.classList.contains('show');
+  box.classList.toggle('show');
+  btn.textContent = showing ? '💡 Xem gợi ý trả lời' : '🔼 Ẩn gợi ý';
+}
+
+// ============================================================
+// TAB LOGIC
+// ============================================================
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// INIT
+renderQuiz();
+renderTL();
+</script>
+</body>
+</html>
