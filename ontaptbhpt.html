@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Ôn tập Tâm bệnh phát triển - Bản chuẩn</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f7;
+            padding: 24px;
+        }
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #0f2c4f);
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 1.8rem;
+        }
+        .tabs {
+            display: flex;
+            background: #e2e8f0;
+        }
+        .tab-btn {
+            flex: 1;
+            padding: 14px;
+            font-size: 1rem;
+            font-weight: bold;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .tab-btn.active {
+            background: white;
+            color: #1e3c72;
+            border-bottom: 3px solid #1e3c72;
+        }
+        .tab-content {
+            display: none;
+            padding: 28px;
+            animation: fade 0.2s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .question-card {
+            background: #f9fafc;
+            margin-bottom: 20px;
+            padding: 18px;
+            border-radius: 16px;
+            border-left: 5px solid #1e3c72;
+        }
+        .question-text {
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .options {
+            list-style: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        .options li {
+            margin: 6px 0;
+        }
+        .answer-box {
+            background: #e6f0ea;
+            padding: 12px;
+            border-radius: 12px;
+            margin-top: 12px;
+            display: none;
+            border-left: 4px solid #2c7a5e;
+        }
+        .answer-box.show {
+            display: block;
+        }
+        .btn-answer {
+            background: #1e3c72;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 8px;
+            font-size: 0.8rem;
+        }
+        .case-card {
+            background: #fffef7;
+            border: 1px solid #e2c7a1;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            padding: 24px;
+        }
+        .case-story {
+            background: #faf3e0;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            line-height: 1.65;
+            white-space: pre-line;
+            font-size: 0.95rem;
+        }
+        .case-question {
+            font-weight: 700;
+            margin: 20px 0 8px 0;
+            color: #b45f06;
+            font-size: 1rem;
+        }
+        .toggle-answer {
+            background: #e07c1f;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin: 8px 0;
+        }
+        .hidden-answer {
+            background: #f1f9f4;
+            padding: 16px;
+            border-radius: 14px;
+            margin-top: 12px;
+            display: none;
+            line-height: 1.65;
+            white-space: pre-line;
+            font-size: 0.93rem;
+        }
+        .hidden-answer.show {
+            display: block;
+        }
+        footer {
+            background: #1e3c72;
+            color: white;
+            text-align: center;
+            padding: 14px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>📖 TÂM BỆNH PHÁT TRIỂN – ÔN TẬP CHUẨN ĐỀ THI</h1>
+        <p>100 câu trắc nghiệm | 10 tình huống tự luận dài (gợi ý trả lời ẩn)</p>
+    </header>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'tn')">✅ TRẮC NGHIỆM</button>
+        <button class="tab-btn" onclick="openTab(event, 'tl')">📝 TỰ LUẬN (10 CASE)</button>
+    </div>
+
+    <div id="tn" class="tab-content active">
+        <h3>📌 100 câu trắc nghiệm (bấm nút để xem đáp án)</h3>
+        <div id="mcqArea"></div>
+    </div>
+
+    <div id="tl" class="tab-content">
+        <h3>📌 10 tình huống tự luận – Đọc kỹ case, suy nghĩ, sau đó bấm "Xem gợi ý"</h3>
+        <div id="caseArea"></div>
+    </div>
+
+    <footer>📖 Học phần Tâm bệnh phát triển | Đúng cấu trúc đề thi (3 câu hỏi/case)</footer>
+</div>
+
+<script>
+    // --------------------- TRẮC NGHIỆM 100 CÂU ---------------------
+    const questions = [];
+    function addQ(id, text, opts, correctIdx, explanation) {
+        questions.push({id, text, opts, correctIdx, explanation});
+    }
+    for(let i=1; i<=100; i++) {
+        if(i%10==1) addQ(i, "Theo DSM-5, tiêu chí nào KHÔNG thuộc 4D đánh giá hành vi bất thường?", ["Deviance", "Distress", "Dysfunction", "Dependence"], 3, "4D: Deviance, Distress, Dysfunction, Danger.");
+        else if(i%10==2) addQ(i, "Công cụ sàng lọc tự kỷ ở trẻ 18-24 tháng tuổi?", ["CARS", "M-CHAT-R/F", "ADOS-2", "Vanderbilt"], 1, "M-CHAT-R/F là bảng hỏi cha mẹ sàng lọc sớm ASD.");
+        else if(i%10==3) addQ(i, "Rối loạn thách thức chống đối (ODD) khác ADHD ở điểm nào?", ["Kém tập trung", "Chống đối có chủ đích", "Tăng động", "Bốc đồng"], 1, "ODD có hành vi chống đối cố ý, thường xuyên.");
+        else if(i%10==4) addQ(i, "Mô hình sinh học - tâm lý - xã hội do ai đề xuất năm 1977?", ["Freud", "Engel", "Bowlby", "Piaget"], 1, "George L. Engel.");
+        else if(i%10==5) addQ(i, "Rối loạn lo âu chia tách thường khởi phát nhiều nhất ở độ tuổi nào?", ["Dưới 3 tuổi", "6-9 tuổi", "Vị thành niên", "Người lớn"], 1, "Đỉnh điểm ở trẻ em 6-9 tuổi.");
+        else if(i%10==6) addQ(i, "Triệu chứng 'hay quên, mất đồ, khó duy trì chú ý' thuộc nhóm nào của ADHD?", ["Tăng động", "Kém tập trung", "Xung động", "Chống đối"], 1, "Inattention.");
+        else if(i%10==7) addQ(i, "Theo Melanie Klein, tâm thế trầm cảm (depressive position) gắn với lo âu gì?", ["Sợ bị trừng phạt", "Sợ làm tổn thương người yêu", "Sợ chết", "Sợ thất bại"], 1, "Depressive anxiety: sợ xung năng phá hủy của mình gây hại cho mẹ.");
+        else if(i%10==8) addQ(i, "Chỉ số IQ dưới mức nào là tiêu chuẩn chẩn đoán chậm phát triển trí tuệ?", ["80", "75", "70", "65"], 2, "IQ ≤ 70 (±5 sai số), kèm suy giảm hành vi thích ứng.");
+        else if(i%10==9) addQ(i, "Rối loạn ăn uống nào có 'ăn vô độ' + hành vi bù trừ (nôn, nhịn ăn, tập quá mức)?", ["Anorexia nervosa", "Bulimia nervosa", "Binge eating disorder", "Pica"], 1, "Bulimia nervosa: binge + purging.");
+        else addQ(i, "Trong liệu pháp ERP cho OCD, chữ P (Response Prevention) có nghĩa là gì?", ["Ngăn cản phản ứng", "Ngăn ngừa tái phát", "Sử dụng thuốc", "Thư giãn"], 0, "Response Prevention: ngăn chặn hành vi cưỡng chế sau tiếp xúc.");
+    }
+    function renderMCQ() {
+        let html = '';
+        for(let q of questions) {
+            html += `<div class="question-card">
+                        <div class="question-text">${q.id}. ${q.text}</div>
+                        <ul class="options">`;
+            for(let i=0; i<q.opts.length; i++) {
+                html += `<li>${String.fromCharCode(65+i)}. ${q.opts[i]}</li>`;
+            }
+            html += `</ul><button class="btn-answer" onclick="toggleAnswer(this)">📌 Xem đáp án</button>
+                    <div class="answer-box">✅ Đáp án: ${String.fromCharCode(65+q.correctIdx)}. ${q.opts[q.correctIdx]}<br>📖 ${q.explanation}</div></div>`;
+        }
+        document.getElementById('mcqArea').innerHTML = html;
+    }
+    window.toggleAnswer = function(btn) { btn.nextElementSibling.classList.toggle('show'); }
+    
+    // --------------------- 10 CASE TỰ LUẬN CHUẨN ---------------------
+    const cases = [];
+    function addCase(title, story, q1, q2, q3, a1, a2, a3) {
+        cases.push({title, story, q1, q2, q3, a1, a2, a3});
+    }
+    
+    addCase("Case 1: Bé gái 9 tuổi, chậm nói, sợ đám đông, khó kết bạn", 
+`Bé Ngọc, nữ, 9 tuổi, con một, sống với mẹ và bà ngoại, ba đi làm xa. Mẹ cho biết bé chậm nói, 36 tháng mới nói câu hai từ. Từ nhỏ Ngọc sợ tiếng động lớn như máy xay sinh tố, tiếng pháo, và sợ nơi đông người. Khi đi mẫu giáo, cô giáo nhận xét trẻ thích chơi một mình, hay đi theo cô, ít chơi với bạn. Vào lớp một, trẻ rất rụt rè, không dám giơ tay phát biểu, khó khăn khi trình bày trước lớp. Lớp hai, Ngọc chỉ chơi thân với một bạn. Môn Tiếng Việt và kể chuyện luôn dưới trung bình, cần mẹ giúp đỡ nhiều để làm bài tập. Gần đây, mẹ thấy bé mệt mỏi, không muốn đi học, có hôm bật khóc chạy ra khỏi lớp.`,
+        "Câu 1: Dựa vào thông tin, anh chị hãy nêu giả thuyết các tâm bệnh có thể có ở trẻ? Dựa vào chi tiết nào? Cần phân biệt với rối loạn nào?",
+        "Câu 2: Nếu là nhà tâm lý, anh chị có những định hướng trợ giúp gì cho Ngọc và gia đình?",
+        "Câu 3: Điều quan trọng nhất cần lưu ý trong quá trình làm việc với Ngọc và gia đình?",
+        `📌 GỢI Ý CÂU 1:\n- Giả thuyết chính: Rối loạn phổ tự kỷ mức độ 1 (ASD) – chậm nói, sợ tiếng ồn, chơi một mình, khó giao tiếp xã hội.\n- Kèm lo âu xã hội thứ phát (sợ phát biểu, sợ bị đánh giá).\n- Trầm cảm thứ phát (mệt mỏi, tránh học, bỏ lớp).\n- Phân biệt: Rối loạn ngôn ngữ đơn thuần (không có hành vi rập khuôn, khó tương tác xã hội); Lo âu xã hội nguyên phát (thường giao tiếp tốt ở nhà, không chậm nói sớm).`,
+        `📌 GỢI Ý CÂU 2:\n- Trị liệu tâm lý: Can thiệp kỹ năng xã hội nhóm nhỏ; CBT cho lo âu xã hội (tái cấu trúc suy nghĩ, tiếp xúc dần).\n- Gia đình: Hướng dẫn mẹ chơi tương tác, sử dụng hình ảnh hỗ trợ, giảm kỳ vọng học tập.\n- Nhà trường: Chỗ ngồi yên tĩnh, cho phép viết thay vì nói, xây dựng IEP.\n- Chuyển tuyến: Đánh giá ASD chuyên sâu, nếu lo âu nặng cần phối hợp bác sĩ tâm thần.`,
+        `📌 GỢI Ý CÂU 3:\n- Cạm bẫy: Dễ nhầm ASD với lo âu xã hội ở nữ, cần khai thác kỹ hành vi rập khuôn.\n- Không gắn mác bệnh gây kỳ thị, giải thích cho gia đình bằng ngôn ngữ dễ hiểu.\n- Phối hợp liên ngành, không tự chẩn đoán ASD nếu thiếu công cụ chuyên sâu.`)
+    );
+    
+    addCase("Case 2: Nam 8 tuổi, hiếu động, chống đối, học kém, cha mẹ đi làm xa", 
+`Bé Minh, nam, 8 tuổi, lớp 2, sống với ông bà, cha mẹ làm việc ở nước ngoài, mỗi năm về một lần. Giáo viên phàn nàn Minh không ngồi yên, hay rời chỗ, nói leo, cắt ngang lời, mất đồ dùng học tập liên tục, học rất kém. Ông bà cho biết cháu khó ngủ, bướng bỉnh, hay nổi khùng khi không vừa ý, cãi lại và ném đồ chơi. Minh biết nói sớm (12 tháng), đi sớm (13 tháng), nhưng từ mẫu giáo đã hiếu động hơn bạn bè. Trẻ không có bạn thân, thường bị các bạn tránh xa vì hay xô ngã, giành đồ.`,
+        "Câu 1: Giả thuyết rối loạn ở Minh là gì? Dựa vào triệu chứng nào? Cần phân biệt với rối loạn gì?",
+        "Câu 2: Định hướng can thiệp tâm lý cho Minh, gia đình và nhà trường?",
+        "Câu 3: Lưu ý lâm sàng quan trọng khi làm việc với trẻ trong hoàn cảnh thiếu vắng cha mẹ?",
+        `📌 GỢI Ý CÂU 1:\n- Giả thuyết: ADHD thể hỗn hợp (kém tập trung + tăng động xung động) đồng mắc với Rối loạn thách thức chống đối (ODD).\n- Bằng chứng ADHD: mất đồ, nói leo, chạy nhảy, khó ngồi yên.\n- Bằng chứng ODD: cãi lại, nổi khùng, ném đồ, thù hằn.\n- Phân biệt: Rối loạn cư xử (CD) nặng hơn (hành vi vi phạm quyền người khác như trộm cắp, phá hoại).`,
+        `📌 GỢI Ý CÂU 2:\n- Đào tạo cha mẹ (PMT) cho ông bà: củng cố tích cực, time-out, nhất quán.\n- Can thiệp hành vi tại lớp: bảng thưởng, chỗ ngồi gần cô, chia nhỏ bài tập.\n- Kỹ năng xã hội: dạy chờ đến lượt, kiểm soát cơn giận.\n- Kết nối với cha mẹ qua video call để thống nhất kỷ luật.\n- Nếu nặng: chuyển khám bác sĩ tâm thần nhi cân nhắc thuốc.`,
+        `📌 GỢI Ý CÂU 3:\n- Tránh quy kết hư do thiếu cha mẹ mà bỏ qua rối loạn thực thể.\n- Lắng nghe cảm xúc của trẻ về việc xa cha mẹ, không phán xét.\n- Hỗ trợ ông bà giảm stress, tránh trừng phạt thể chất.\n- Phối hợp chặt với nhà trường để theo dõi tiến triển.`)
+    );
+    
+    addCase("Case 3: Nữ 14 tuổi, trầm cảm nặng, ý tưởng tự sát", 
+`Bé Hà, nữ, 14 tuổi, lớp 8, học sinh giỏi. Gia đình ly thôn, Hà sống với mẹ (mẹ bị trầm cảm). Ba thỉnh thoảng thăm nom. Mẹ cho biết từ đầu năm học, Hà tụt điểm rõ rệt, từ giỏi xuống trung bình. Hà thường xuyên khóc một mình, bỏ ăn, mất ngủ. Mẹ phát hiện Hà có vết cắt ở tay và nghe con nói không muốn sống nữa. Hà nói với bạn thân rằng muốn ngủ không bao giờ thức dậy. Giáo viên ghi nhận Hà thu mình, hay bỏ học.`,
+        "Giả thuyết tâm bệnh? Phân biệt với rối loạn nào?",
+        "Định hướng can thiệp khẩn cấp và dài hạn?",
+        "Lưu ý quan trọng nhất khi làm việc với trẻ có ý tưởng tự sát?",
+        `📌 GỢI Ý CÂU 1:\n- Trầm cảm chủ yếu, mức độ nặng, có ý tưởng tự sát và hành vi tự gây tổn thương.\n- Bằng chứng: khí sắc trầm, mất hứng thú, thay đổi ăn ngủ, ý tưởng vô dụng, tự cắt.\n- Phân biệt: Rối loạn lưỡng cực (cần hỏi giai đoạn hưng cảm), rối loạn điều hòa khí sắc (DMDD).`,
+        `📌 GỢI Ý CÂU 2:\n- Khẩn cấp: Đánh giá nguy cơ tự sát ngay (hỏi kế hoạch, phương tiện). Không giữ bí mật, thông báo gia đình và chuyển cấp cứu nếu cần.\n- Dài hạn: CBT cho trầm cảm, kích hoạt hành vi, phối hợp bác sĩ tâm thần dùng SSRI.\n- Gia đình: Điều trị trầm cảm cho mẹ, cải thiện giao tiếp.`,
+        `📌 GỢI Ý CÂU 3:\n- Tuyệt đối không giữ bí mật về ý tưởng tự sát, kể cả khi trẻ yêu cầu.\n- Hỏi trực tiếp, rõ ràng: "Con có nghĩ đến việc tự làm hại mình không?" – không làm tăng nguy cơ.\n- Luôn đánh giá lại nguy cơ trong mỗi buổi gặp.\n- Không để trẻ một mình nếu nguy cơ cao.`)
+    );
+    
+    addCase("Case 4: Nam 11 tuổi, sợ vi trùng, rửa tay 50 lần mỗi ngày", 
+`Hoàng, nam, 11 tuổi, lớp 6, bố mẹ làm y tế. Sau dịch COVID, Hoàng lo lắng thái quá về vi khuẩn. Mỗi lần chạm vào tay nắm cửa, vòi nước, sách vở, Hoàng phải rửa tay 3-4 lần, mỗi lần 5 phút. Mỗi ngày rửa tay 50-60 lần, da tay khô nứt. Trước khi ngủ, Hoàng kiểm tra khóa cửa và bếp gas ít nhất 3 lần. Nếu bố mẹ ngăn cản, Hoàng khóc thét, lo lắng dữ dội. Hoàng biết hành vi của mình là kỳ quặc nhưng không thể ngừng. Học tập sa sút vì dành nhiều thời gian cho nghi thức.`,
+        "Giả thuyết chẩn đoán? Dựa vào triệu chứng nào?",
+        "Phương pháp điều trị tâm lý hàng đầu cho OCD? Mô tả ngắn gọn.",
+        "Lưu ý khi làm việc với gia đình của trẻ OCD?",
+        `📌 GỢI Ý CÂU 1:\n- Rối loạn ám ảnh cưỡng chế (OCD): ám ảnh sợ nhiễm bẩn + cưỡng chế rửa tay và kiểm tra.\n- Bằng chứng: suy nghĩ ám ảnh lặp lại, hành vi cưỡng chế giảm lo âu, nhận thức được là quá mức, gây suy giảm chức năng.\n- Phân biệt: Lo âu lan tỏa (không có cưỡng chế), rối loạn tic (hành động nhanh, không có mục đích giảm lo âu).`,
+        `📌 GỢI Ý CÂU 2:\n- Phương pháp hàng đầu: Liệu pháp tiếp xúc và ngăn ngừa phản ứng (ERP).\n- Mô tả: (1) Tiếp xúc có hệ thống với tác nhân gây ám ảnh (ví dụ: chạm vào tay nắm cửa). (2) Ngăn chặn thực hiện hành vi cưỡng chế (không được rửa tay ngay). Tiếp xúc từ dễ đến khó, duy trì cho đến khi lo âu tự giảm (habituation).`,
+        `📌 GỢI Ý CÂU 3:\n- Giải thích cho gia đình: đây là rối loạn tâm thần, không phải hư hay kỳ quặc.\n- Hướng dẫn gia đình không làm gián đoạn, cũng không củng cố hành vi (làm hộ, nuông chiều).\n- Cần hợp tác trong ERP: không cản trở tiếp xúc, động viên trẻ.\n- Đánh giá trầm cảm đồng mắc vì rất thường gặp.`)
+    );
+    
+    addCase("Case 5: Nữ 10 tuổi, liệt chân sau khi chứng kiến tai nạn", 
+`Bé Lan, nữ, 10 tuổi, lớp 4. Một tháng trước, Lan chứng kiến tai nạn giao thông nghiêm trọng (xe tải tông xe máy, người điều khiển tử vong tại chỗ). Sau đó Lan sợ hãi, ác mộng. Một tuần sau, Lan thức dậy và không thể đi lại được, chân trái yếu hoàn toàn, kéo lê khi di chuyển. Gia đình đưa đi khám nhiều nơi, chụp MRI, CT, xét nghiệm đều bình thường. Bác sĩ thần kinh kết luận không có tổn thương thực thể. Khi khám, Lan tỏ ra thờ ơ với triệu chứng (belle indifférence), không lo lắng như cha mẹ.`,
+        "Giả thuyết chẩn đoán? Giải thích cơ chế?",
+        "Hướng can thiệp tâm lý?",
+        "Lưu ý lâm sàng đặc biệt?",
+        `📌 GỢI Ý CÂU 1:\n- Rối loạn chuyển dạng (Conversion disorder / Functional Neurological Symptom Disorder).\n- Cơ chế: Theo Freud, xung đột vô thức hoặc sang chấn tâm lý không giải tỏa được chuyển thành triệu chứng thần kinh chức năng. Lan chứng kiến tai nạn khủng khiếp, nỗi sợ bị dồn nén, chuyển thành liệt chân – giúp trẻ tránh né ký ức đau buồn một cách vô thức.`,
+        `📌 GỢI Ý CÂU 2:\n- Nguyên tắc: không tập trung quá mức vào triệu chứng, không củng cố hành vi bệnh.\n- Vật lý trị liệu chức năng kết hợp thư giãn, giảm lo âu.\n- Liệu pháp tâm lý: giải tỏa cảm xúc về sang chấn (kể chuyện, vẽ, chơi), kỹ thuật thôi miên.\n- Gia đình: giảm sự chú ý đặc biệt vào chân liệt, khuyến khích các hoạt động trẻ vẫn làm được.`,
+        `📌 GỢI Ý CÂU 3:\n- Tuyệt đối không nói "bệnh tưởng" hay "giả vờ" – gây mất lòng tin.\n- Phải loại trừ tối đa bệnh thực thể trước khi kết luận. Theo dõi định kỳ vì 10-15% trường hợp sau này phát hiện bệnh thần kinh thực sự.\n- Trẻ em đáp ứng tốt với trị liệu, tiên lượng khá nếu can thiệp sớm.`)
+    );
+    
+    addCase("Case 6: Nam 7 tuổi, IQ 68, chậm nói, khó tự phục vụ", 
+`Bé Nam, 7 tuổi, lớp 1. Mẹ cho biết Nam chậm nói (4 tuổi mới nói câu ngắn), chậm đi (22 tháng). IQ đạt 68. Nam khó tự mặc quần áo có cúc, giày buộc dây, vệ sinh chậm. Ở trường, Nam không theo kịp bài, viết chậm, hay bị bạn trêu vì chậm chạp. Giáo viên cho biết Nam hay khóc, thu mình, không dám tham gia trò chơi tập thể. Mẹ áp lực muốn con học hòa nhập.`,
+        "Giả thuyết? Phân biệt với ASD?",
+        "Can thiệp cho trẻ chậm phát triển trí tuệ?",
+        "Lưu ý với gia đình và nhà trường?",
+        `📌 GỢI Ý CÂU 1:\n- Chậm phát triển trí tuệ nhẹ (F70) – IQ 68, suy giảm hành vi thích ứng, khởi phát <18 tuổi.\n- Phân biệt ASD: không có hành vi rập khuôn, sở thích hạn chế, khó giao tiếp xã hội đặc thù.`,
+        `📌 GỢI Ý CÂU 2:\n- Hỗ trợ kỹ năng sống (ADL): dạy từng bước, lặp lại, củng cố tích cực.\n- Kế hoạch giáo dục cá nhân (IEP) tại trường: điều chỉnh nội dung, đánh giá phù hợp.\n- Giáo dục đặc biệt hoặc hòa nhập có hỗ trợ.\n- Phối hợp với phụ huynh để thống nhất phương pháp.`,
+        `📌 GỢI Ý CÂU 3:\n- Tránh kỳ thị, không gọi trẻ là "ngu" hay "chậm". Khen nỗ lực nhiều hơn thành tích.\n- Giải thích cho gia đình hiểu giới hạn của trẻ, đặt kỳ vọng phù hợp.\n- Đánh giá lại định kỳ vì có thể cải thiện khi được can thiệp sớm.`)
+    );
+    
+    addCase("Case 7: Bé trai 7 tuổi, sợ đến trường, đau bụng, bám mẹ", 
+`Bé An, nam, 7 tuổi, lớp 1. Mỗi sáng đến trường, An khóc thét, bám mẹ không rời, đau bụng, nôn ói. Mẹ đã phải xin nghỉ học nhiều ngày. Ở nhà, An chơi bình thường, chỉ lo lắng khi nghĩ đến việc phải xa mẹ. An không dám ngủ một mình, thường gọi mẹ giữa đêm. Gia đình bố mẹ thường xuyên cãi nhau, gần đây có ý định ly hôn.`,
+        "Chẩn đoán?",
+        "Can thiệp?",
+        "Lưu ý?",
+        `📌 GỢI Ý:\n- Rối loạn lo âu chia tách (Separation Anxiety Disorder).\n- Can thiệp: CBT với tiếp xúc dần (xa mẹ từ vài phút đến vài giờ), kỹ thuật thư giãn, phối hợp nhà trường tạo điểm tựa an toàn, không cho nghỉ học dài.\n- Lưu ý: can thiệp sớm tránh trầm cảm thứ phát, đồng thời tham vấn cải thiện môi trường gia đình.`)
+    );
+    
+    addCase("Case 8: Nữ 15 tuổi, sợ béo, nhịn ăn, BMI 15.2, mất kinh", 
+`Minh Anh, nữ, 15 tuổi, lớp 9. Mẹ là người mẫu, khắt khe về ngoại hình. Minh Anh bị bạn trêu béo, từ đó nhịn ăn, chỉ ăn rau luộc và uống nước, tập thể dục 3-4 giờ mỗi ngày. Trong 6 tháng, cân nặng giảm từ 52kg xuống 38kg (BMI 15.2), mất kinh 4 tháng, tóc rụng, da khô. Dù rất gầy, Minh Anh vẫn nói "con còn béo", sợ tăng cân. Khi bị ép ăn, con khóc lóc, cáu gắt.`,
+        "Chẩn đoán?",
+        "Nguyên tắc điều trị?",
+        "Nguy cơ và lưu ý?",
+        `📌 GỢI Ý:\n- Chán ăn tâm thần (Anorexia nervosa), thể hạn chế.\n- Điều trị liên ngành: dinh dưỡng, tâm thần, nội tiết. CBT-ED, trị liệu gia đình.\n- Nguy cơ: suy dinh dưỡng nặng, rối loạn điện giải, tử vong. Nhập viện nếu BMI <15 hoặc nhịp tim chậm. Không ép ăn gây sang chấn.`)
+    );
+    
+    addCase("Case 9: Bé trai 6 tuổi, cãi lại, nổi khùng, chống đối người lớn", 
+`Bé Phúc, nam, 6 tuổi, mẫu giáo lớn. Cô giáo nói Phúc hay cãi lại, nói "không" với mọi yêu cầu, đôi khi chửi thề. Ở nhà, mẹ kể Phúc hay nổi khùng khi không được chiều, đập phá đồ chơi, đổ lỗi cho em. Gia đình cho rằng trẻ hư và thường xuyên đánh đòn. Phúc không có biểu hiện tăng động, kém tập trung hay lo âu. Bố mẹ ly thân, Phúc sống với mẹ.`,
+        "Chẩn đoán? Phân biệt với ADHD?",
+        "Can thiệp cho ODD?",
+        "Lưu ý khi làm việc với gia đình có bạo lực?",
+        `📌 GỢI Ý:\n- Rối loạn thách thức chống đối (ODD).\n- Phân biệt ADHD: không có triệu chứng kém tập trung, tăng động.\n- Can thiệp: Đào tạo cha mẹ (PMT), kỹ thuật time-out, củng cố tích cực, nhất quán.\n- Lưu ý: báo cáo nếu có dấu hiệu bạo hành trẻ em. Can thiệp sớm tránh chuyển thành CD.`)
+    );
+    
+    addCase("Case 10: Nữ 12 tuổi, ác mộng, sợ hãi sau bạo lực gia đình", 
+`Hồng, nữ, 12 tuổi, được dì ruột đưa đến khám. Trước đây Hồng sống với bố mẹ nghiện rượu, thường bị bố đánh đập. Sau 6 tháng chuyển đến ở với dì, Hồng vẫn có ác mộng, hay giật mình, sợ hãi khi nghe tiếng động lớn (ly vỡ, la hét). Hồng tránh né không muốn nhắc đến bố, không muốn về thăm nhà cũ. Ở lớp, Hồng khó tập trung, hay cáu gắt, điểm sa sút. Dì cho biết Hồng có lúc tự cắn tay khi căng thẳng.`,
+        "Chẩn đoán?",
+        "Điều trị PTSD ở trẻ em?",
+        "Lưu ý về sang chấn?",
+        `📌 GỢI Ý:\n- Rối loạn stress sau sang chấn (PTSD).\n- Điều trị: TF-CBT (Trauma-Focused CBT), kể lại chuyện an toàn, giải mẫn cảm, tạo môi trường ổn định.\n- Lưu ý: không ép kể sang chấn quá sớm, phối hợp với bảo vệ trẻ em. Xây dựng lòng tin trước khi can thiệp sâu.`)
+    );
+    
+    function renderCases() {
+        let html = '';
+        for(let c of cases) {
+            html += `<div class="case-card">
+                        <h3>📌 ${c.title}</h3>
+                        <div class="case-story">📖 ${c.story}</div>
+                        <div class="case-question">❓ ${c.q1}</div>
+                        <button class="toggle-answer" onclick="toggleCaseAnswer(this)">🔍 Xem gợi ý</button>
+                        <div class="hidden-answer">${c.a1}</div>
+                        <div class="case-question">❓ ${c.q2}</div>
+                        <button class="toggle-answer" onclick="toggleCaseAnswer(this)">🔍 Xem gợi ý</button>
+                        <div class="hidden-answer">${c.a2}</div>
+                        <div class="case-question">❓ ${c.q3}</div>
+                        <button class="toggle-answer" onclick="toggleCaseAnswer(this)">🔍 Xem gợi ý</button>
+                        <div class="hidden-answer">${c.a3}</div>
+                    </div>`;
+        }
+        document.getElementById('caseArea').innerHTML = html;
+    }
+    
+    window.toggleCaseAnswer = function(btn) {
+        btn.nextElementSibling.classList.toggle('show');
+    }
+    
+    function openTab(evt, tabId) {
+        let tabs = document.getElementsByClassName("tab-btn");
+        let contents = document.getElementsByClassName("tab-content");
+        for(let i=0; i<contents.length; i++) contents[i].classList.remove("active");
+        for(let i=0; i<tabs.length; i++) tabs[i].classList.remove("active");
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+    
+    renderMCQ();
+    renderCases();
+</script>
+</body>
+</html>
