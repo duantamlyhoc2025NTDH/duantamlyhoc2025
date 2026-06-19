@@ -1,54 +1,66 @@
 <header>
   <div class="header-container">
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="logo.png" alt="Dự án Tâm lý học" class="logo">
     
-  <div class="menu-toggle" id="menuToggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
     <nav class="navbar">
       <ul>
         <li><a href="index.html">Trang Chủ</a></li>
-        <li><a href="about.html">Về Chúng Tôi</a></li>
-        <li><a href="test.html">Các Bài Test</a></li>
-
-        <!-- Gộp nhóm TLH vào menu xổ xuống -->
+        <li><a href="about.html">Giới Thiệu</a></li>
         <li class="dropdown">
-          <a href="#">Các Loại Hình TLH ▾</a>
+          <a href="#">Chuyên Mục ▼</a>
           <ul class="dropdown-content">
-            <li><a href="tamlyhocgioitinh.html">TLH Giới Tính</a></li>
-            <li><a href="tamlyhocnhanthuc.html">TLH Nhận Thức</a></li>
-            <li><a href="tamlyhocgiadinh.html">TLH Gia Đình</a></li>
-            <li><a href="tamlyhocxahoi.html">TLH Xã Hội</a></li>
-            <li><a href="tamlyhoccamxuc.html">TLH Cảm Xúc</a></li>
-            <li><a href="tamlyhocgiaotiepungdung.html">TLH Ứng Dụng</a></li>
+            <li><a href="tamlyhocgioitinh.html">Tâm lý Giới tính</a></li>
+            <li><a href="tamlyhocnhanthuc.html">Tâm lý Nhận thức</a></li>
+            <li><a href="tamlyhocgiadinh.html">Tâm lý Gia đình</a></li>
+            <li><a href="tamlyhocxahoi.html">Tâm lý Xã hội</a></li>
+            <li><a href="tamlyhoccamxuc.html">Tâm lý Cảm xúc</a></li>
+            <li><a href="tamlyhocgiaotiepungdung.html">Tâm lý Ứng dụng</a></li>
           </ul>
         </li>
-
+        <li><a href="test.html">Bài Test</a></li>
         <li><a href="contact.html">Liên Hệ</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- Banner riêng -->
+<!-- Banner -->
 <section class="banner">
+  <img src="0001.png" alt="Dự án Tâm lý học">
   <div class="banner-content">
-    <img src="0001.png" alt="Dự án Tâm lý học">
-    </div>
+    <h1>Dự Án Tâm Lý Học 2025</h1>
+    <p>Khám phá bản thân, thấu hiểu người khác - Hành trình phát triển nội tâm</p>
+    <a href="tamlyhocgioitinh.html" class="btn">Khám phá ngay</a>
+  </div>
 </section>
 
-
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggle = document.querySelector("#menuToggle");
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggle = document.getElementById("menuToggle");
     const menu = document.querySelector(".navbar ul");
+    const dropdowns = document.querySelectorAll(".dropdown");
 
-    toggle.addEventListener("click", () => {
-      toggle.classList.toggle("active");
+    // Toggle mobile menu
+    toggle.addEventListener("click", function() {
+      this.classList.toggle("active");
       menu.classList.toggle("show");
+    });
+
+    // Xử lý dropdown trên mobile
+    dropdowns.forEach(function(dropdown) {
+      const link = dropdown.querySelector("a");
+      link.addEventListener("click", function(e) {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle("active");
+        }
+      });
     });
   });
 </script>
-
