@@ -1,129 +1,106 @@
-<main>
-  <h2 style="color: #e65100; text-align: center;">🌱 Trắc nghiệm Tâm lý Tuổi Dậy thì</h2>
-  <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
-<section style="background-color: #fff3e0; padding: 15px; border-left: 5px solid #ff9800; margin-bottom: 20px; border-radius: 6px;">
-  <h2 style="color: #e65100;">Giới thiệu</h2>
-  <p>
-    Bài trắc nghiệm này được xây dựng dựa trên các nghiên cứu tâm lý học phát triển, đặc biệt là lý thuyết của <strong>Jean Piaget</strong> và <strong>Erik Erikson</strong> về giai đoạn vị thành niên. Tuổi dậy thì là thời điểm chuyển giao quan trọng về thể chất, cảm xúc và nhận thức, khi cá nhân bắt đầu hình thành bản sắc và khám phá bản thân.
-  </p>
-  <p>
-    Bài test giúp học sinh nhận diện những thay đổi tâm lý phổ biến trong giai đoạn này, từ đó hiểu rõ hơn về chính mình và biết cách chăm sóc sức khỏe tinh thần. Đây là công cụ giáo dục, không phải chẩn đoán y khoa.
-  </p>
-</section>
-
-  <form id="quizForm" style="margin-top: 30px;">
-    <fieldset style="border: 1px solid #ffcc80; padding: 20px; border-radius: 8px; background-color: #fff3e0;">
-      <legend style="font-weight: bold; color: #e65100;">Thông tin người làm bài</legend>
-      <label>👤 Họ tên: <input type="text" id="username" required style="margin-left: 10px; padding: 5px;"></label><br><br>
-      <label>🎂 Tuổi: <input type="number" id="age" min="12" required style="margin-left: 10px; padding: 5px;"></label>
-    </fieldset>
-
-    <div class="question" style="margin-top: 30px;">
-      <p><strong>1. Tuổi dậy thì thường bắt đầu từ khoảng bao nhiêu tuổi?</strong></p>
-      <label><input type="radio" name="q1" value="0"> 6–8 tuổi</label><br>
-      <label><input type="radio" name="q1" value="1"> 9–12 tuổi</label><br>
-      <label><input type="radio" name="q1" value="0"> 13–15 tuổi</label><br>
-      <label><input type="radio" name="q1" value="0"> Trên 16 tuổi</label>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Tâm Lý Tuổi Dậy Thì</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Copy style từ test01 - đổi màu chủ đạo #E65100 */
+    .test-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .test-header { background: linear-gradient(135deg, #BF360C, #E65100); color: #fff; padding: 32px; border-radius: 20px 20px 0 0; text-align: center; }
+    .test-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .test-header p { opacity: 0.9; font-size: 1rem; }
+    .test-body { background: #ffffff; padding: 32px; border-radius: 0 0 20px 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06); }
+    .theory-box { background: #F7F4F0; padding: 20px 24px; border-left: 4px solid #E65100; border-radius: 8px; margin-bottom: 28px; }
+    .theory-box h2 { font-family: 'Playfair Display', serif; color: #1E2A38; font-size: 1.3rem; margin-bottom: 8px; }
+    .theory-box p { color: #4A5A6A; font-size: 0.95rem; line-height: 1.7; }
+    .info-form { background: #F7F4F0; padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; }
+    .info-form label { font-weight: 500; color: #1E2A38; display: block; margin-bottom: 4px; }
+    .info-form input { width: 100%; padding: 10px 14px; border: 1px solid #e0d9d3; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; margin-bottom: 12px; }
+    .info-form input:focus { border-color: #E65100; outline: none; }
+    .question { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0ebe6; }
+    .question:last-child { border-bottom: none; }
+    .question p { font-weight: 600; color: #1E2A38; margin-bottom: 10px; }
+    .question label { display: block; padding: 6px 0 6px 28px; position: relative; cursor: pointer; color: #2C3E50; font-size: 0.95rem; }
+    .question label input[type="radio"] { position: absolute; left: 0; top: 50%; transform: translateY(-50%); accent-color: #E65100; }
+    .btn-test { background: #E65100; color: #fff; border: none; padding: 14px 36px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(230, 81, 0, 0.3); display: inline-block; }
+    .btn-test:hover { background: #BF360C; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(230, 81, 0, 0.4); }
+    .result-box { margin-top: 32px; padding: 24px; background: #F7F4F0; border-radius: 12px; border-left: 4px solid #E65100; display: none; }
+    .result-box.show { display: block; }
+    .result-box h3 { font-family: 'Playfair Display', serif; color: #1E2A38; margin-bottom: 12px; }
+    .result-box p { color: #2C3E50; margin-bottom: 6px; }
+    .disclaimer { margin-top: 32px; padding: 16px 20px; background: #fcfaf8; border-radius: 8px; border-left: 4px solid #bcc9d4; font-size: 0.85rem; color: #6A7A8A; }
+    .disclaimer strong { color: #1E2A38; }
+    @media (max-width: 768px) { .test-header h1 { font-size: 1.5rem; } .test-body { padding: 20px; } .theory-box { padding: 16px; } .info-form { padding: 16px; } .question label { font-size: 0.9rem; } }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main>
+    <div class="test-wrapper">
+      <div class="test-header">
+        <h1>🌱 Test Tâm Lý Tuổi Dậy Thì</h1>
+        <p>Hiểu về những thay đổi trong giai đoạn dậy thì</p>
+      </div>
+      <div class="test-body">
+        <div class="theory-box">
+          <h2>📖 Giới thiệu</h2>
+          <p>Bài trắc nghiệm dựa trên các nghiên cứu tâm lý học phát triển của <strong>Jean Piaget</strong> và <strong>Erik Erikson</strong>, giúp nhận diện những thay đổi tâm lý phổ biến trong giai đoạn dậy thì.</p>
+        </div>
+        <form id="infoForm" class="info-form">
+          <label>👤 Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ tên..." required>
+          <label>🎂 Tuổi</label>
+          <input type="number" id="age" placeholder="Nhập số tuổi..." required>
+        </form>
+        <form id="quizForm">
+          <div id="questions"></div>
+          <button type="button" class="btn-test" onclick="calculateResult(); notifyTestTaken();">🔍 Xem kết quả</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        <div class="disclaimer"><strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo, không thay thế cho tư vấn chuyên môn.</div>
+      </div>
     </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>2. Dấu hiệu nào sau đây là đặc trưng của dậy thì ở nam?</strong></p>
-      <label><input type="radio" name="q2" value="0"> Phát triển ngực</label><br>
-      <label><input type="radio" name="q2" value="1"> Vỡ giọng</label><br>
-      <label><input type="radio" name="q2" value="0"> Có kinh nguyệt</label><br>
-      <label><input type="radio" name="q2" value="0"> Tăng mỡ cơ thể</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>3. Tâm lý tuổi dậy thì thường có đặc điểm nào?</strong></p>
-      <label><input type="radio" name="q3" value="0"> Ổn định cảm xúc</label><br>
-      <label><input type="radio" name="q3" value="1"> Dễ cáu gắt và nhạy cảm</label><br>
-      <label><input type="radio" name="q3" value="0"> Không thay đổi gì</label><br>
-      <label><input type="radio" name="q3" value="0"> Luôn vui vẻ</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>4. Dậy thì sớm có thể gây ra điều gì ở học sinh?</strong></p>
-      <label><input type="radio" name="q4" value="0"> Tăng sự tự tin</label><br>
-      <label><input type="radio" name="q4" value="1"> Mặc cảm và lo âu</label><br>
-      <label><input type="radio" name="q4" value="0"> Không ảnh hưởng gì</label><br>
-      <label><input type="radio" name="q4" value="0"> Phát triển trí tuệ vượt trội</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>5. Cách tốt nhất để hỗ trợ học sinh tuổi dậy thì là gì?</strong></p>
-      <label><input type="radio" name="q5" value="0"> Phớt lờ cảm xúc</label><br>
-      <label><input type="radio" name="q5" value="1"> Lắng nghe và tôn trọng</label><br>
-      <label><input type="radio" name="q5" value="0"> So sánh với người khác</label><br>
-      <label><input type="radio" name="q5" value="0"> Ép buộc thay đổi</label>
-    </div>
-
-  <button type="button" onclick="calculateResult(); notifyTestTaken();" style="
-  margin-top: 30px;
-  padding: 14px 28px;
-  background: linear-gradient(to right, #ff9800, #f57c00);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: bold;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  cursor: pointer;
-">
-  🔍 Xem kết quả
-</button>
-
-  </form>
-<!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
-<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff3e0; padding: 15px; border-left: 4px solid #ff9800; border-radius: 6px;">
-  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn hoặc chẩn đoán từ chuyên gia tâm lý. Nếu bạn hoặc người thân gặp khó khăn trong giai đoạn dậy thì, hãy tìm đến sự hỗ trợ từ thầy cô, cha mẹ hoặc chuyên gia có chuyên môn.
-</section>
-
-  <div id="result" style="margin-top: 40px; font-size: 18px; color: #333; background-color: #fff3e0; padding: 20px; border-radius: 8px;"></div>
-
+  </main>
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    function calculateScore() {
-      const name = document.getElementById("username").value.trim();
-      const age = document.getElementById("age").value.trim();
-      if (!name || !age) {
-        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
-        return;
-      }
-
-      let score = 0;
-      for (let i = 1; i <= 5; i++) {
-        const answer = document.querySelector('input[name="q' + i + '"]:checked');
-        if (answer) score += parseInt(answer.value);
-      }
-
-      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi)</p>`;
-      if (score <= 1) {
-        resultText += "<p>📘 <strong>Nhận thức chưa đầy đủ:</strong> Bạn cần tìm hiểu thêm về những thay đổi thể chất và tâm lý trong tuổi dậy thì.</p>";
-      } else if (score <= 3) {
-        resultText += "<p>📗 <strong>Nhận thức cơ bản:</strong> Bạn đã có một số hiểu biết nhưng vẫn còn lúng túng. Hãy tiếp tục học hỏi và chia sẻ.</p>";
-      } else {
-        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn hiểu rõ về tuổi dậy thì và biết cách chăm sóc bản thân. Tiếp tục phát triển nhé!</p>";
-      }
-
-      document.getElementById("result").innerHTML = resultText;
-    }
-  </script>
-</main>
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
-
-  function notifyTestTaken() {
-    emailjs.send("service_mvaiail", "template_contact", {
-      message: "Có người vừa hoàn thành bài test BSRI.",
-      timestamp: new Date().toLocaleString()
-    }).then(function(response) {
-      console.log("Email đã gửi thành công!", response.status);
-    }, function(error) {
-      console.error("Gửi email thất bại", error);
+    const questions = [
+      { q: "Tuổi dậy thì thường bắt đầu từ khoảng bao nhiêu tuổi?", options: ["6–8 tuổi", "9–12 tuổi", "13–15 tuổi", "Trên 16 tuổi"], correct: 1 },
+      { q: "Dấu hiệu nào sau đây là đặc trưng của dậy thì ở nam?", options: ["Phát triển ngực", "Vỡ giọng", "Có kinh nguyệt", "Tăng mỡ cơ thể"], correct: 1 },
+      { q: "Tâm lý tuổi dậy thì thường có đặc điểm nào?", options: ["Ổn định cảm xúc", "Dễ cáu gắt và nhạy cảm", "Không thay đổi gì", "Luôn vui vẻ"], correct: 1 },
+      { q: "Dậy thì sớm có thể gây ra điều gì ở học sinh?", options: ["Tăng sự tự tin", "Mặc cảm và lo âu", "Không ảnh hưởng gì", "Phát triển trí tuệ vượt trội"], correct: 1 },
+      { q: "Cách tốt nhất để hỗ trợ học sinh tuổi dậy thì là gì?", options: ["Phớt lờ cảm xúc", "Lắng nghe và tôn trọng", "So sánh với người khác", "Ép buộc thay đổi"], correct: 1 }
+    ];
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      let html = `<p>Câu ${index + 1}: ${item.q}</p>`;
+      item.options.forEach((opt, i) => {
+        const val = i === item.correct ? 1 : 0;
+        html += `<label><input type="radio" name="q${index}" value="${val}"> ${opt}</label>`;
+      });
+      div.innerHTML = html;
+      container.appendChild(div);
     });
-  }
-</script>
-</body>
-</html>
+    function calculateResult() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      if (!name || !age) { alert("Vui lòng điền đầy đủ thông tin!"); return; }
+      let score = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected) score += parseInt(selected.value);
+      });
+      let resultText = "";
+      if (score <= 1) resultText = "📘 Nhận thức chưa đầy đủ – bạn cần tìm hiểu thêm về tuổi dậy thì.";
+      else if (score <= 3) resultText = "📗 Nhận thức cơ bản – bạn đã có một số hiểu biết nhưng còn lúng túng.";
+      else resultText = "📕 Nhận thức tốt – bạn hiểu rõ về tuổi dậy thì và biết cách chăm sóc bản thân.";
+      const resultDiv = document.getElementById("result");
+      resultDiv.className = "result-box show";
+      resultDiv.innerHTML = `
+        <h3>📊 Kết quả
