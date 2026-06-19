@@ -322,13 +322,12 @@ main {
   font-size: 14px;
 }
 
-/* Box đặc biệt (Tâm lý giới tính) */
+/* Box đặc biệt*/
 .content-box.special {
   background: linear-gradient(145deg, #1E2A38, #2A3A4A);
   border: none;
   color: #ffffff;
-  grid-column: 1 / -1;
-}
+  }
 
 .content-box.special h2 {
   color: #ffffff;
