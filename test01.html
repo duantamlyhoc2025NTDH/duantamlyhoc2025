@@ -2,246 +2,279 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Trắc nghiệm Giới tính - BSRI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Vai trò Giới (BSRI)</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #ffcccc, #ffffff);
-      margin: 0;
-      padding: 0;
+    /* Style chung cho tất cả các file test */
+    .test-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
     }
-    header {
-      background-color: #cc0000;
-      color: white;
-      padding: 20px;
+    .test-header {
+      background: linear-gradient(135deg, #2C3E50, #4A5A6A);
+      color: #fff;
+      padding: 32px;
+      border-radius: 20px 20px 0 0;
       text-align: center;
     }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      background-color: #fff5f5;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .test-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 8px;
     }
-    h2 {
-      color: #cc0000;
+    .test-header p {
+      opacity: 0.9;
+      font-size: 1rem;
     }
-    .question {
-      margin-bottom: 20px;
+    .test-body {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
     }
-    label {
+    .theory-box {
+      background: #F7F4F0;
+      padding: 20px 24px;
+      border-left: 4px solid #A67C52;
+      border-radius: 8px;
+      margin-bottom: 28px;
+    }
+    .theory-box h2 {
+      font-family: 'Playfair Display', serif;
+      color: #1E2A38;
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .theory-box p {
+      color: #4A5A6A;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .info-form {
+      background: #F7F4F0;
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 28px;
+    }
+    .info-form label {
+      font-weight: 500;
+      color: #1E2A38;
       display: block;
-      margin: 5px 0;
-    }
-    .result {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #ffe6e6;
-      border: 1px solid #cc0000;
-      border-radius: 5px;
+      margin-bottom: 4px;
     }
     .info-form input {
-      padding: 5px;
-      margin-bottom: 10px;
       width: 100%;
-      box-sizing: border-box;
+      padding: 10px 14px;
+      border: 1px solid #e0d9d3;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      transition: border-color 0.3s ease;
     }
-    button {
-      background-color: #cc0000;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
+    .info-form input:focus {
+      border-color: #A67C52;
+      outline: none;
+    }
+    .question {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #f0ebe6;
+    }
+    .question:last-child {
+      border-bottom: none;
+    }
+    .question p {
+      font-weight: 600;
+      color: #1E2A38;
+      margin-bottom: 10px;
+    }
+    .question label {
+      display: block;
+      padding: 6px 0 6px 28px;
+      position: relative;
       cursor: pointer;
-      border-radius: 5px;
+      color: #2C3E50;
+      font-size: 0.95rem;
     }
-    button:hover {
-      background-color: #990000;
+    .question label input[type="radio"] {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      accent-color: #A67C52;
+    }
+    .btn-test {
+      background: #A67C52;
+      color: #fff;
+      border: none;
+      padding: 14px 36px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(166, 124, 82, 0.3);
+      display: inline-block;
+    }
+    .btn-test:hover {
+      background: #8B653F;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(166, 124, 82, 0.4);
+    }
+    .result-box {
+      margin-top: 32px;
+      padding: 24px;
+      background: #F7F4F0;
+      border-radius: 12px;
+      border-left: 4px solid #A67C52;
+      display: none;
+    }
+    .result-box.show {
+      display: block;
+    }
+    .result-box h3 {
+      font-family: 'Playfair Display', serif;
+      color: #1E2A38;
+      margin-bottom: 12px;
+    }
+    .result-box p {
+      color: #2C3E50;
+      margin-bottom: 6px;
+    }
+    .disclaimer {
+      margin-top: 32px;
+      padding: 16px 20px;
+      background: #fcfaf8;
+      border-radius: 8px;
+      border-left: 4px solid #bcc9d4;
+      font-size: 0.85rem;
+      color: #6A7A8A;
+    }
+    .disclaimer strong {
+      color: #1E2A38;
+    }
+    @media (max-width: 768px) {
+      .test-header h1 { font-size: 1.5rem; }
+      .test-body { padding: 20px; }
+      .theory-box { padding: 16px; }
+      .info-form { padding: 16px; }
+      .question label { font-size: 0.9rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Trắc nghiệm Giới tính theo BSRI</h1>
-  </header>
+  <div id="header"></div>
+
   <main>
-    <main>
-  <!-- PHẦN GIỚI THIỆU LÝ THUYẾT -->
-  <section style="background-color: #ffeaea; padding: 15px; border-left: 5px solid #cc0000; margin-bottom: 20px; border-radius: 6px;">
-    <h2>Giới thiệu</h2>
-    <p>
-      Bài trắc nghiệm này dựa trên <strong>Thang đo Vai trò Giới tính Bem (Bem Sex Role Inventory – BSRI)</strong> do nhà tâm lý học <strong>Sandra Bem</strong> phát triển vào năm 1974. Thang đo này giúp đánh giá mức độ nam tính, nữ tính và tính trung tính (androgyny) trong vai trò giới của một cá nhân, từ đó hỗ trợ hiểu rõ hơn về bản dạng giới và cách cá nhân thể hiện bản thân trong xã hội.
-    </p>
-  </section>
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
-
-    <form id="quizForm">
-      <h2>Trả lời các câu hỏi sau:</h2>
-
-      <div class="question">
-        <p>1. Tôi thường được xem là người quyết đoán.</p>
-        <label><input type="radio" name="q1" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q1" value="4"> Đúng</label>
-        <label><input type="radio" name="q1" value="3"> Bình thường</label>
-        <label><input type="radio" name="q1" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q1" value="1"> Không đúng</label>
+    <div class="test-wrapper">
+      <div class="test-header">
+        <h1>🧠 Test Vai trò Giới (BSRI)</h1>
+        <p>Thang đo Bem – Khám phá xu hướng giới của bạn</p>
       </div>
 
-      <div class="question">
-        <p>2. Tôi thích chăm sóc người khác.</p>
-        <label><input type="radio" name="q2" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q2" value="4"> Đúng</label>
-        <label><input type="radio" name="q2" value="3"> Bình thường</label>
-        <label><input type="radio" name="q2" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q2" value="1"> Không đúng</label>
+      <div class="test-body">
+        <div class="theory-box">
+          <h2>📖 Giới thiệu</h2>
+          <p>Bài trắc nghiệm dựa trên <strong>Thang đo Vai trò Giới tính Bem (BSRI)</strong> do Sandra Bem phát triển năm 1974. Thang đo đánh giá mức độ nam tính, nữ tính và trung tính (androgyny), giúp bạn hiểu rõ hơn về cách thể hiện bản thân trong xã hội.</p>
+        </div>
+
+        <form id="infoForm" class="info-form">
+          <label>👤 Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ tên..." required>
+          <label>🎂 Tuổi</label>
+          <input type="number" id="age" placeholder="Nhập số tuổi..." required>
+          <label>⚧️ Giới tính hiện tại</label>
+          <input type="text" id="gender" placeholder="Nam / Nữ / Khác..." required>
+        </form>
+
+        <form id="quizForm">
+          <div id="questions"></div>
+          <button type="button" class="btn-test" onclick="calculateResult(); notifyTestTaken();">🔍 Xem kết quả</button>
+        </form>
+
+        <div id="result" class="result-box"></div>
+
+        <div class="disclaimer">
+          <strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo, không thay thế cho chẩn đoán chuyên môn.
+        </div>
       </div>
-
-      <div class="question">
-        <p>3. Tôi cảm thấy thoải mái khi thể hiện cảm xúc.</p>
-        <label><input type="radio" name="q3" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q3" value="4"> Đúng</label>
-        <label><input type="radio" name="q3" value="3"> Bình thường</label>
-        <label><input type="radio" name="q3" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q3" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>4. Tôi thích cạnh tranh và chiến thắng.</p>
-        <label><input type="radio" name="q4" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q4" value="4"> Đúng</label>
-        <label><input type="radio" name="q4" value="3"> Bình thường</label>
-        <label><input type="radio" name="q4" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q4" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>5. Tôi thường nhường nhịn trong các mối quan hệ.</p>
-        <label><input type="radio" name="q5" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q5" value="4"> Đúng</label>
-        <label><input type="radio" name="q5" value="3"> Bình thường</label>
-        <label><input type="radio" name="q5" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q5" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>6. Tôi thích đưa ra quyết định nhanh chóng.</p>
-        <label><input type="radio" name="q6" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q6" value="4"> Đúng</label>
-        <label><input type="radio" name="q6" value="3"> Bình thường</label>
-        <label><input type="radio" name="q6" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q6" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>7. Tôi thường lắng nghe và thấu hiểu người khác.</p>
-        <label><input type="radio" name="q7" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q7" value="4"> Đúng</label>
-        <label><input type="radio" name="q7" value="3"> Bình thường</label>
-        <label><input type="radio" name="q7" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q7" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>8. Tôi thích kiểm soát tình huống.</p>
-        <label><input type="radio" name="q8" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q8" value="4"> Đúng</label>
-        <label><input type="radio" name="q8" value="3"> Bình thường</label>
-        <label><input type="radio" name="q8" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q8" value="1"> Không đúng</label>
-      </div>
-
-      <div class="question">
-        <p>9. Tôi dễ xúc động trước hoàn cảnh của người khác.</p>
-        <label><input type="radio" name="q9" value="5"> Rất đúng</label>
-        <label><input type="radio" name="q9" value="4"> Đúng</label>
-        <label><input type="radio" name="q9" value="3"> Bình thường</label>
-        <label><input type="radio" name="q9" value="2"> Không đúng lắm</label>
-        <label><input type="radio" name="q9" value="1"> Không đúng</label>
-      </div>
-
-     <div class="question">
-  <p>10. Tôi thường chủ động trong các tình huống xã hội.</p>
-  <label><input type="radio" name="q10" value="5"> Rất đúng</label>
-  <label><input type="radio" name="q10" value="4"> Đúng</label>
-  <label><input type="radio" name="q10" value="3"> Bình thường</label>
-  <label><input type="radio" name="q10" value="2"> Không đúng lắm</label>
-  <label><input type="radio" name="q10" value="1"> Không đúng</label>
-</div>
-<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
-<div id="result" class="result" style="display:none;"></div>
-      <script>
-function calculateResult() {
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
-  const gender = document.getElementById("gender").value;
-
-  if (!name || !age || !gender) {
-    alert("Vui lòng điền đầy đủ thông tin trước khi làm bài test.");
-    return;
-  }
-
-  let masculine = 0;
-  let feminine = 0;
-
-  // Câu 1, 4, 6, 8, 10 → nhóm nam tính
-  ["q1", "q4", "q6", "q8", "q10"].forEach(q => {
-    const val = parseInt(document.querySelector(`input[name="${q}"]:checked`)?.value || 0);
-    masculine += val;
-  });
-
-  // Câu 2, 3, 5, 7, 9 → nhóm nữ tính
-  ["q2", "q3", "q5", "q7", "q9"].forEach(q => {
-    const val = parseInt(document.querySelector(`input[name="${q}"]:checked`)?.value || 0);
-    feminine += val;
-  });
-
-  let resultText = "";
-  if (masculine > feminine + 5) {
-    resultText = "Bạn có xu hướng vai trò giới NAM TÍNH.";
-  } else if (feminine > masculine + 5) {
-    resultText = "Bạn có xu hướng vai trò giới NỮ TÍNH.";
-  } else {
-    resultText = "Bạn có xu hướng vai trò giới TRUNG TÍNH (Androgynous).";
-  }
-
-  document.getElementById("result").style.display = "block";
-  document.getElementById("result").innerHTML = `
-    <h3>Kết quả dành cho ${name} (${gender}, ${age} tuổi):</h3>
-    <p><strong>Điểm nam tính:</strong> ${masculine}</p>
-    <p><strong>Điểm nữ tính:</strong> ${feminine}</p>
-    <p><strong>Kết luận:</strong> ${resultText}</p>
-  `;
-}
-</script>
-    </form>
-      <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #fff0f0; padding: 15px; border-left: 4px solid #cc0000; border-radius: 6px;">
-      <strong>Lưu ý:</strong> Kết quả bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho chẩn đoán chuyên môn từ các chuyên gia tâm lý. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới hoặc sức khỏe tâm lý, hãy tìm đến sự hỗ trợ từ chuyên gia có chuyên môn.
-    </section>
-  </form>
+    </div>
   </main>
-    
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
 
-  function notifyTestTaken() {
-    emailjs.send("service_mvaiail", "template_contact", {
-      message: "Có người vừa hoàn thành bài test BSRI.",
-      timestamp: new Date().toLocaleString()
-    }).then(function(response) {
-      console.log("Email đã gửi thành công!", response.status);
-    }, function(error) {
-      console.error("Gửi email thất bại", error);
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    const questions = [
+      { q: "Tôi thường được xem là người quyết đoán.", group: "M" },
+      { q: "Tôi thích chăm sóc người khác.", group: "F" },
+      { q: "Tôi cảm thấy thoải mái khi thể hiện cảm xúc.", group: "F" },
+      { q: "Tôi thích cạnh tranh và chiến thắng.", group: "M" },
+      { q: "Tôi thường nhường nhịn trong các mối quan hệ.", group: "F" },
+      { q: "Tôi thích đưa ra quyết định nhanh chóng.", group: "M" },
+      { q: "Tôi thường lắng nghe và thấu hiểu người khác.", group: "F" },
+      { q: "Tôi thích kiểm soát tình huống.", group: "M" },
+      { q: "Tôi dễ xúc động trước hoàn cảnh của người khác.", group: "F" },
+      { q: "Tôi thường chủ động trong các tình huống xã hội.", group: "M" }
+    ];
+
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      let html = `<p>Câu ${index + 1}: ${item.q}</p>`;
+      const options = ["Rất đúng (5)", "Đúng (4)", "Bình thường (3)", "Không đúng lắm (2)", "Không đúng (1)"];
+      options.forEach((opt, i) => {
+        const val = 5 - i;
+        html += `<label><input type="radio" name="q${index}" value="${val}"> ${opt}</label>`;
+      });
+      div.innerHTML = html;
+      container.appendChild(div);
     });
-  }
-</script>
 
+    function calculateResult() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) {
+        alert("Vui lòng điền đầy đủ thông tin!");
+        return;
+      }
+      let masculine = 0, feminine = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const val = selected ? parseInt(selected.value) : 0;
+        if (item.group === "M") masculine += val;
+        else feminine += val;
+      });
+      let resultText = "";
+      if (masculine > feminine + 5) resultText = "📘 Bạn có xu hướng <strong>NAM TÍNH</strong>.";
+      else if (feminine > masculine + 5) resultText = "📗 Bạn có xu hướng <strong>NỮ TÍNH</strong>.";
+      else resultText = "📕 Bạn có xu hướng <strong>TRUNG TÍNH (Androgynous)</strong>.";
 
+      const resultDiv = document.getElementById("result");
+      resultDiv.className = "result-box show";
+      resultDiv.innerHTML = `
+        <h3>📊 Kết quả dành cho ${name}</h3>
+        <p><strong>👤 Giới tính:</strong> ${gender} | <strong>🎂 Tuổi:</strong> ${age}</p>
+        <p><strong>🔵 Điểm nam tính:</strong> ${masculine}</p>
+        <p><strong>🔴 Điểm nữ tính:</strong> ${feminine}</p>
+        <p><strong>💡 Kết luận:</strong> ${resultText}</p>
+      `;
+    }
+
+    emailjs.init("4VgGpbhLt6pGYWnpB");
+    function notifyTestTaken() {
+      emailjs.send("service_mvaiail", "template_contact", {
+        message: "Có người vừa hoàn thành bài test BSRI.",
+        timestamp: new Date().toLocaleString()
+      }).then(response => console.log("Email đã gửi!", response.status))
+        .catch(error => console.error("Gửi email thất bại", error));
+    }
+  </script>
 </body>
 </html>
