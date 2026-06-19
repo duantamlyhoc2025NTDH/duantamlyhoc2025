@@ -2,220 +2,129 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Trắc nghiệm Đa dạng Giới</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Đa Dạng Giới</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #00acc1;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      background-color: #f0fcff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #007c91;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 5px 0;
-    }
-    .result {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #e0f7fa;
-      border: 1px solid #00acc1;
-      border-radius: 5px;
-    }
-    .info-form input {
-      padding: 5px;
-      margin-bottom: 10px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #00acc1;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #007c91;
-    }
+    /* Copy toàn bộ style từ test01.html - chỉ đổi màu chủ đạo thành #00838F */
+    .test-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .test-header { background: linear-gradient(135deg, #006064, #00838F); color: #fff; padding: 32px; border-radius: 20px 20px 0 0; text-align: center; }
+    .test-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .test-header p { opacity: 0.9; font-size: 1rem; }
+    .test-body { background: #ffffff; padding: 32px; border-radius: 0 0 20px 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06); }
+    .theory-box { background: #F7F4F0; padding: 20px 24px; border-left: 4px solid #00838F; border-radius: 8px; margin-bottom: 28px; }
+    .theory-box h2 { font-family: 'Playfair Display', serif; color: #1E2A38; font-size: 1.3rem; margin-bottom: 8px; }
+    .theory-box p { color: #4A5A6A; font-size: 0.95rem; line-height: 1.7; }
+    .info-form { background: #F7F4F0; padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; }
+    .info-form label { font-weight: 500; color: #1E2A38; display: block; margin-bottom: 4px; }
+    .info-form input { width: 100%; padding: 10px 14px; border: 1px solid #e0d9d3; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; margin-bottom: 12px; }
+    .info-form input:focus { border-color: #00838F; outline: none; }
+    .question { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0ebe6; }
+    .question:last-child { border-bottom: none; }
+    .question p { font-weight: 600; color: #1E2A38; margin-bottom: 10px; }
+    .question label { display: block; padding: 6px 0 6px 28px; position: relative; cursor: pointer; color: #2C3E50; font-size: 0.95rem; }
+    .question label input[type="radio"] { position: absolute; left: 0; top: 50%; transform: translateY(-50%); accent-color: #00838F; }
+    .btn-test { background: #00838F; color: #fff; border: none; padding: 14px 36px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(0, 131, 143, 0.3); display: inline-block; }
+    .btn-test:hover { background: #006064; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0, 131, 143, 0.4); }
+    .result-box { margin-top: 32px; padding: 24px; background: #F7F4F0; border-radius: 12px; border-left: 4px solid #00838F; display: none; }
+    .result-box.show { display: block; }
+    .result-box h3 { font-family: 'Playfair Display', serif; color: #1E2A38; margin-bottom: 12px; }
+    .result-box p { color: #2C3E50; margin-bottom: 6px; }
+    .disclaimer { margin-top: 32px; padding: 16px 20px; background: #fcfaf8; border-radius: 8px; border-left: 4px solid #bcc9d4; font-size: 0.85rem; color: #6A7A8A; }
+    .disclaimer strong { color: #1E2A38; }
+    @media (max-width: 768px) { .test-header h1 { font-size: 1.5rem; } .test-body { padding: 20px; } .theory-box { padding: 16px; } .info-form { padding: 16px; } .question label { font-size: 0.9rem; } }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Trắc nghiệm Đa dạng Giới</h1>
-  </header>
+  <div id="header"></div>
   <main>
-    <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
-<section style="background-color: #e0f7fa; padding: 15px; border-left: 5px solid #00acc1; margin-bottom: 20px; border-radius: 6px;">
-  <h2>Giới thiệu</h2>
-  <p>
-    Bài trắc nghiệm này được xây dựng nhằm đánh giá mức độ hiểu biết và nhận thức của cá nhân về <strong>đa dạng giới</strong> – bao gồm các khái niệm như <em>non-binary</em>, <em>genderfluid</em>, <em>transgender</em>, và các biểu hiện giới nằm ngoài hệ nhị phân truyền thống. 
-  </p>
-  <p>
-    Dựa trên các tài liệu giáo dục giới và nghiên cứu xã hội học hiện đại, bài test giúp người làm bài khám phá mức độ cởi mở, hiểu biết và khả năng phân biệt giữa các khái niệm liên quan đến bản dạng giới. Đây là công cụ hỗ trợ nhận thức, không nhằm phân loại hay gán nhãn giới tính cho bất kỳ ai.
-  </p>
-</section>
-
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
-
-    <form id="quizForm">
-      <h2>Trả lời các câu hỏi sau:</h2>
-
-      <!-- 10 câu hỏi -->
-      <div class="question">
-        <p>1. Bạn đã từng nghe đến khái niệm “non-binary” chưa?</p>
-        <label><input type="radio" name="q1" value="0"> Chưa từng</label>
-        <label><input type="radio" name="q1" value="1"> Có nghe qua</label>
-        <label><input type="radio" name="q1" value="3"> Hiểu rõ</label>
+    <div class="test-wrapper">
+      <div class="test-header">
+        <h1>🏳️‍⚧️ Test Đa Dạng Giới</h1>
+        <p>Đánh giá mức độ hiểu biết về đa dạng giới</p>
       </div>
-
-      <div class="question">
-        <p>2. Bạn có thể phân biệt giữa “giới tính sinh học” và “bản dạng giới”?</p>
-        <label><input type="radio" name="q2" value="0"> Không</label>
-        <label><input type="radio" name="q2" value="1"> Một chút</label>
-        <label><input type="radio" name="q2" value="3"> Rõ ràng</label>
+      <div class="test-body">
+        <div class="theory-box">
+          <h2>📖 Giới thiệu</h2>
+          <p>Bài trắc nghiệm đánh giá hiểu biết về <strong>đa dạng giới</strong> – bao gồm các khái niệm như non-binary, genderfluid, transgender và các biểu hiện giới ngoài hệ nhị phân truyền thống.</p>
+        </div>
+        <form id="infoForm" class="info-form">
+          <label>👤 Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ tên..." required>
+          <label>🎂 Tuổi</label>
+          <input type="number" id="age" placeholder="Nhập số tuổi..." required>
+          <label>⚧️ Giới tính hiện tại</label>
+          <input type="text" id="gender" placeholder="Nam / Nữ / Khác..." required>
+        </form>
+        <form id="quizForm">
+          <div id="questions"></div>
+          <button type="button" class="btn-test" onclick="calculateResult(); notifyTestTaken();">🔍 Xem kết quả</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        <div class="disclaimer"><strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo, không thay thế cho chẩn đoán chuyên môn.</div>
       </div>
-
-      <div class="question">
-        <p>3. Bạn biết rằng có người không xác định giới tính của mình là nam hay nữ?</p>
-        <label><input type="radio" name="q3" value="0"> Không biết</label>
-        <label><input type="radio" name="q3" value="1"> Có nghe qua</label>
-        <label><input type="radio" name="q3" value="3"> Biết rõ</label>
-      </div>
-
-      <div class="question">
-        <p>4. Bạn hiểu “genderfluid” nghĩa là gì?</p>
-        <label><input type="radio" name="q4" value="0"> Không</label>
-        <label><input type="radio" name="q4" value="1"> Có nghe qua</label>
-        <label><input type="radio" name="q4" value="3"> Hiểu rõ</label>
-      </div>
-
-      <div class="question">
-        <p>5. Bạn biết rằng có người sử dụng đại từ “họ” (they/them) thay vì “anh” hay “chị”?</p>
-        <label><input type="radio" name="q5" value="0"> Không biết</label>
-        <label><input type="radio" name="q5" value="1"> Có nghe qua</label>
-        <label><input type="radio" name="q5" value="3"> Biết rõ</label>
-      </div>
-
-      <div class="question">
-        <p>6. Bạn từng tiếp xúc hoặc trò chuyện với người thuộc phổ giới đa dạng?</p>
-        <label><input type="radio" name="q6" value="0"> Chưa từng</label>
-        <label><input type="radio" name="q6" value="1"> Có gặp</label>
-        <label><input type="radio" name="q6" value="3"> Thường xuyên</label>
-      </div>
-
-      <div class="question">
-        <p>7. Bạn cảm thấy thoải mái khi người khác thể hiện giới không giống truyền thống?</p>
-        <label><input type="radio" name="q7" value="0"> Không thoải mái</label>
-        <label><input type="radio" name="q7" value="1"> Tạm chấp nhận</label>
-        <label><input type="radio" name="q7" value="3"> Hoàn toàn thoải mái</label>
-      </div>
-
-      <div class="question">
-        <p>8. Bạn biết rằng giới có thể thay đổi theo thời gian?</p>
-        <label><input type="radio" name="q8" value="0"> Không biết</label>
-        <label><input type="radio" name="q8" value="1"> Có nghe qua</label>
-        <label><input type="radio" name="q8" value="3"> Biết rõ</label>
-      </div>
-
-      <div class="question">
-        <p>9. Bạn từng đọc tài liệu hoặc bài viết về đa dạng giới?</p>
-        <label><input type="radio" name="q9" value="0"> Chưa từng</label>
-        <label><input type="radio" name="q9" value="1"> Có đọc qua</label>
-        <label><input type="radio" name="q9" value="3"> Đọc nhiều</label>
-      </div>
-
-      <div class="question">
-        <p>10. Bạn có thể giải thích sự khác biệt giữa “transgender” và “non-binary”?</p>
-        <label><input type="radio" name="q10" value="0"> Không</label>
-        <label><input type="radio" name="q10" value="1"> Một chút</label>
-        <label><input type="radio" name="q10" value="3"> Rõ ràng</label>
-      </div>
-
-<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
-      <div id="result" class="result" style="display:none;"></div>
-    </form>
-    <!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
-<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e0f7fa; padding: 15px; border-left: 4px solid #00acc1; border-radius: 6px;">
-  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn hoặc chẩn đoán từ chuyên gia tâm lý hoặc chuyên gia về giới. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới hoặc cần hỗ trợ tâm lý, hãy tìm đến sự giúp đỡ từ các chuyên gia có chuyên môn trong lĩnh vực giới và sức khỏe tâm thần.
-</section>
-
+    </div>
   </main>
-
-  <script>
-    function calculateResult() {
-      const name = document.getElementById("name").value;
-      const age = document.getElementById("age").value;
-      const gender = document.getElementById("gender").value;
-
-      if (!name || !age || !gender) {
-        alert("Vui lòng điền đầy đủ thông tin trước khi làm bài test.");
-        return;
-      }
-
-      let total = 0;
-      for (let i = 1; i <= 10; i++) {
-        const val = parseInt(document.querySelector(`input[name="q${i}"]:checked`)?.value || 0);
-        total += val;
-      }
-
-      let resultText = "";
-      if (total <= 7) {
-        resultText = "📘 Nhận thức giới hạn – bạn đang bắt đầu khám phá về đa dạng giới.";
-      } else if (total <= 18) {
-        resultText = "📗 Nhận thức trung bình – bạn có hiểu biết cơ bản và cởi mở.";
-      } else {
-        resultText = "📕 Nhận thức cao – bạn có hiểu biết sâu sắc và tôn trọng sự đa dạng giới.";
-      }
-
-      document.getElementById("result").style.display = "block";
-  document.getElementById("result").innerHTML = `
-    <h3>Kết quả dành cho ${name} (${gender}, ${age} tuổi):</h3>
-    <p><strong>Tổng điểm:</strong> ${total} / 30</p>
-    <p><strong>Kết luận:</strong> ${resultText}</p>
-  `;
-}
-</script>
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
-
-  function notifyTestTaken() {
-    emailjs.send("service_mvaiail", "template_contact", {
-      message: "Có người vừa hoàn thành bài test.",
-      timestamp: new Date().toLocaleString()
-    }).then(function(response) {
-      console.log("Email đã gửi thành công!", response.status);
-    }, function(error) {
-      console.error("Gửi email thất bại", error);
+  <script>
+    const questions = [
+      { q: "Bạn đã từng nghe đến khái niệm 'non-binary' chưa?" },
+      { q: "Bạn có thể phân biệt giữa 'giới tính sinh học' và 'bản dạng giới'?" },
+      { q: "Bạn biết rằng có người không xác định giới tính của mình là nam hay nữ?" },
+      { q: "Bạn hiểu 'genderfluid' nghĩa là gì?" },
+      { q: "Bạn biết rằng có người sử dụng đại từ 'họ' (they/them) thay vì 'anh' hay 'chị'?" },
+      { q: "Bạn từng tiếp xúc hoặc trò chuyện với người thuộc phổ giới đa dạng?" },
+      { q: "Bạn cảm thấy thoải mái khi người khác thể hiện giới không giống truyền thống?" },
+      { q: "Bạn biết rằng giới có thể thay đổi theo thời gian?" },
+      { q: "Bạn từng đọc tài liệu hoặc bài viết về đa dạng giới?" },
+      { q: "Bạn có thể giải thích sự khác biệt giữa 'transgender' và 'non-binary'?" }
+    ];
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      let html = `<p>Câu ${index + 1}: ${item.q}</p>`;
+      const options = ["Hiểu rõ (3)", "Có nghe qua (1)", "Chưa từng (0)"];
+      options.forEach((opt, i) => {
+        const val = i === 0 ? 3 : (i === 1 ? 1 : 0);
+        html += `<label><input type="radio" name="q${index}" value="${val}"> ${opt}</label>`;
+      });
+      div.innerHTML = html;
+      container.appendChild(div);
     });
-  }
-</script>
+    function calculateResult() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) { alert("Vui lòng điền đầy đủ thông tin!"); return; }
+      let total = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        total += selected ? parseInt(selected.value) : 0;
+      });
+      let resultText = "";
+      if (total <= 7) resultText = "📘 Nhận thức giới hạn – bạn đang bắt đầu khám phá về đa dạng giới.";
+      else if (total <= 18) resultText = "📗 Nhận thức trung bình – bạn có hiểu biết cơ bản và cởi mở.";
+      else resultText = "📕 Nhận thức cao – bạn có hiểu biết sâu sắc và tôn trọng sự đa dạng giới.";
+      const resultDiv = document.getElementById("result");
+      resultDiv.className = "result-box show";
+      resultDiv.innerHTML = `
+        <h3>📊 Kết quả dành cho ${name}</h3>
+        <p><strong>👤 Giới tính:</strong> ${gender} | <strong>🎂 Tuổi:</strong> ${age}</p>
+        <p><strong>🔢 Tổng điểm:</strong> ${total} / 30</p>
+        <p><strong>💡 Kết luận:</strong> ${resultText}</p>
+      `;
+    }
+    emailjs.init("4VgGpbhLt6pGYWnpB");
+    function notifyTestTaken() {
+      emailjs.send("service_mvaiail", "template_contact", {
+        message: "Có người vừa hoàn thành bài test Đa dạng Giới.",
+        timestamp: new Date().toLocaleString()
+      }).then(response => console.log("Email đã gửi!", response.status)).catch(error => console.error("Gửi email thất bại", error));
+    }
+  </script>
 </body>
 </html>
