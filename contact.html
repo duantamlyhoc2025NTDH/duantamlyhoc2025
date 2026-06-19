@@ -3,34 +3,208 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
- <title>Liên hệ</title>
+  <title>Liên hệ - Dự án Tâm lý học</title>
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Style riêng cho trang liên hệ */
+    .contact-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .contact-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.6rem;
+      color: #1E2A38;
+      margin-bottom: 12px;
+    }
+
+    .contact-header p {
+      color: #4A5A6A;
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 40px 36px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-card .form-group {
+      margin-bottom: 20px;
+    }
+
+    .contact-card .form-group label {
+      display: block;
+      font-weight: 500;
+      color: #1E2A38;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .contact-card .form-group input,
+    .contact-card .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #e0d9d3;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s ease;
+      background: #fcfaf8;
+      box-sizing: border-box;
+    }
+
+    .contact-card .form-group input:focus,
+    .contact-card .form-group textarea:focus {
+      border-color: #A67C52;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .contact-card .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn-submit {
+      background: #A67C52;
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(166, 124, 82, 0.3);
+      display: inline-block;
+      width: 100%;
+    }
+
+    .btn-submit:hover {
+      background: #8B653F;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(166, 124, 82, 0.4);
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+      padding-top: 32px;
+      border-top: 1px solid #f0ebe6;
+    }
+
+    .contact-info .info-item {
+      text-align: center;
+    }
+
+    .contact-info .info-item .icon {
+      font-size: 1.8rem;
+      color: #A67C52;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .contact-info .info-item h4 {
+      font-size: 0.9rem;
+      color: #1E2A38;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .contact-info .info-item p {
+      font-size: 0.9rem;
+      color: #4A5A6A;
+      margin: 0;
+    }
+
+    .contact-info .info-item a {
+      color: #4A5A6A;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-info .info-item a:hover {
+      color: #A67C52;
+    }
+
+    @media (max-width: 768px) {
+      .contact-wrapper { padding: 24px 16px; }
+      .contact-header h1 { font-size: 2rem; }
+      .contact-card { padding: 24px 20px; }
+      .contact-info { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
 </head>
 <body>
-  
   <div id="header"></div>
- <main style="font-family: Arial, sans-serif; padding: 40px; max-width: 900px; margin: auto; background-color: #f3e5f5; border-radius: 10px;">
-  <h1>Liên hệ</h1>
-  <p>Bạn hãy gửi câu hỏi hoặc phản hồi cho chúng tôi qua biểu mẫu hoặc email nhé.</p>
 
-  <form class="contact-form">
-    <label for="name">Họ và tên:</label>
-    <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn" required>
+  <main>
+    <div class="contact-wrapper">
+      <div class="contact-header">
+        <h1>📬 Liên Hệ</h1>
+        <p>Chúng tôi luôn sẵn sàng lắng nghe và đồng hành cùng bạn.</p>
+      </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+      <div class="contact-card">
+        <form class="contact-form" action="#" method="POST">
+          <div class="form-group">
+            <label for="name">👤 Họ và tên</label>
+            <input type="text" id="name" name="name" placeholder="Nhập họ tên của bạn..." required>
+          </div>
 
-    <label for="message">Nội dung:</label>
-    <textarea id="message" name="message" rows="5" placeholder="Viết phản hồi hoặc câu hỏi của bạn..." required></textarea>
+          <div class="form-group">
+            <label for="email">📧 Email</label>
+            <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email..." required>
+          </div>
 
-    <button type="submit">Gửi</button>
-  </form>
-</main>
+          <div class="form-group">
+            <label for="message">✉️ Nội dung</label>
+            <textarea id="message" name="message" rows="5" placeholder="Viết câu hỏi hoặc phản hồi của bạn..." required></textarea>
+          </div>
 
-<div id="footer"></div>
-   <script src="loadLayout.js"></script>
+          <button type="submit" class="btn-submit">
+            <i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Gửi tin nhắn
+          </button>
+        </form>
 
+        <!-- Thông tin liên hệ bổ sung -->
+        <div class="contact-info">
+          <div class="info-item">
+            <span class="icon">📧</span>
+            <h4>Email</h4>
+            <p><a href="mailto:duantamlyhoc2025@gmail.com">duantamlyhoc2025@gmail.com</a></p>
+          </div>
+          <div class="info-item">
+            <span class="icon">📞</span>
+            <h4>Hotline</h4>
+            <p><a href="tel:0977092182">0977 092 182</a></p>
+          </div>
+          <div class="info-item">
+            <span class="icon">💬</span>
+            <h4>Phản hồi</h4>
+            <p>Chúng tôi sẽ trả lời trong vòng 24h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
 </body>
 </html>
