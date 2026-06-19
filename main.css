@@ -738,3 +738,135 @@ main {
     padding: 24px 16px;
   }
 }
+/* ===== THU GỌN HEADER & BANNER ===== */
+
+/* 1. Header gọn nhẹ */
+header {
+  background-color: #1E2A38;
+  padding: 8px 24px !important; /* Giảm padding từ 12px xuống 8px */
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  min-height: 60px; /* Đảm bảo chiều cao tối thiểu vừa phải */
+}
+
+.logo {
+  height: 50px !important; /* Giảm từ 70px xuống 50px */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.03);
+}
+
+/* 2. Menu thanh mảnh hơn */
+.navbar ul li a {
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px !important; /* Giảm từ 15px xuống 14px */
+  padding: 6px 4px !important; /* Giảm padding */
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+/* 3. BANNER THU GỌN - QUAN TRỌNG NHẤT */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 240px !important; /* Giảm mạnh từ 420px xuống 240px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  background-color: #1E2A38;
+}
+
+.banner img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4; /* Giảm độ đậm ảnh để chữ nổi hơn */
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  padding: 0 20px;
+}
+
+.banner-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem) !important; /* Giảm size chữ */
+  font-weight: 700;
+  margin-bottom: 6px !important; /* Giảm khoảng cách */
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.banner-content p {
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem) !important;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto 12px !important; /* Giảm margin */
+  opacity: 0.9;
+}
+
+.banner-content .btn {
+  padding: 10px 32px !important; /* Giảm size nút */
+  font-size: 14px !important;
+}
+
+/* 4. RESPONSIVE CHO BANNER THU GỌN */
+@media (max-width: 768px) {
+  .banner {
+    height: 180px !important; /* Mobile còn nhỏ hơn */
+  }
+  
+  .banner-content h1 {
+    font-size: 1.2rem !important;
+  }
+  
+  .banner-content p {
+    font-size: 0.8rem !important;
+    margin-bottom: 8px !important;
+  }
+  
+  .banner-content .btn {
+    padding: 6px 20px !important;
+    font-size: 12px !important;
+  }
+
+  .logo {
+    height: 40px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 150px !important;
+  }
+  
+  .banner-content h1 {
+    font-size: 1rem !important;
+  }
+  
+  .banner-content p {
+    display: none; /* Ẩn chữ phụ trên màn hình cực nhỏ */
+  }
+}
