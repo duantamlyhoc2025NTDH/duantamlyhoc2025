@@ -2,219 +2,129 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Trắc nghiệm Bản Dạng Giới</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Bản Dạng Giới (GIDYQ-AA)</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e6f7ff, #ffffff);
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #0099cc;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    main {
-      padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      background-color: #f0fcff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    h2 {
-      color: #0099cc;
-    }
-    .question {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin: 5px 0;
-    }
-    .result {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #e0f7ff;
-      border: 1px solid #0099cc;
-      border-radius: 5px;
-    }
-    .info-form input {
-      padding: 5px;
-      margin-bottom: 10px;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #0099cc;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-    button:hover {
-      background-color: #0077aa;
-    }
+    /* Copy toàn bộ style từ test01.html vào đây */
+    .test-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .test-header { background: linear-gradient(135deg, #1E2A38, #2C3E50); color: #fff; padding: 32px; border-radius: 20px 20px 0 0; text-align: center; }
+    .test-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .test-header p { opacity: 0.9; font-size: 1rem; }
+    .test-body { background: #ffffff; padding: 32px; border-radius: 0 0 20px 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06); }
+    .theory-box { background: #F7F4F0; padding: 20px 24px; border-left: 4px solid #A67C52; border-radius: 8px; margin-bottom: 28px; }
+    .theory-box h2 { font-family: 'Playfair Display', serif; color: #1E2A38; font-size: 1.3rem; margin-bottom: 8px; }
+    .theory-box p { color: #4A5A6A; font-size: 0.95rem; line-height: 1.7; }
+    .info-form { background: #F7F4F0; padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; }
+    .info-form label { font-weight: 500; color: #1E2A38; display: block; margin-bottom: 4px; }
+    .info-form input { width: 100%; padding: 10px 14px; border: 1px solid #e0d9d3; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; margin-bottom: 12px; }
+    .info-form input:focus { border-color: #A67C52; outline: none; }
+    .question { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0ebe6; }
+    .question:last-child { border-bottom: none; }
+    .question p { font-weight: 600; color: #1E2A38; margin-bottom: 10px; }
+    .question label { display: block; padding: 6px 0 6px 28px; position: relative; cursor: pointer; color: #2C3E50; font-size: 0.95rem; }
+    .question label input[type="radio"] { position: absolute; left: 0; top: 50%; transform: translateY(-50%); accent-color: #A67C52; }
+    .btn-test { background: #A67C52; color: #fff; border: none; padding: 14px 36px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(166, 124, 82, 0.3); display: inline-block; }
+    .btn-test:hover { background: #8B653F; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(166, 124, 82, 0.4); }
+    .result-box { margin-top: 32px; padding: 24px; background: #F7F4F0; border-radius: 12px; border-left: 4px solid #A67C52; display: none; }
+    .result-box.show { display: block; }
+    .result-box h3 { font-family: 'Playfair Display', serif; color: #1E2A38; margin-bottom: 12px; }
+    .result-box p { color: #2C3E50; margin-bottom: 6px; }
+    .disclaimer { margin-top: 32px; padding: 16px 20px; background: #fcfaf8; border-radius: 8px; border-left: 4px solid #bcc9d4; font-size: 0.85rem; color: #6A7A8A; }
+    .disclaimer strong { color: #1E2A38; }
+    @media (max-width: 768px) { .test-header h1 { font-size: 1.5rem; } .test-body { padding: 20px; } .theory-box { padding: 16px; } .info-form { padding: 16px; } .question label { font-size: 0.9rem; } }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Trắc nghiệm Bản Dạng Giới (GIDYQ-AA)</h1>
-  </header>
+  <div id="header"></div>
   <main>
-   
-  <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
-  <section style="background-color: #e6faff; padding: 15px; border-left: 5px solid #0099cc; margin-bottom: 20px; border-radius: 6px;">
-    <h2>Giới thiệu</h2>
-    <p>
-      Bài trắc nghiệm này dựa trên <strong>GIDYQ-AA (Gender Identity/Gender Dysphoria Questionnaire for Adolescents and Adults)</strong> – một công cụ đánh giá được phát triển bởi các nhà nghiên cứu tại Đại học Toronto nhằm hỗ trợ nhận diện mức độ không thoải mái với giới tính sinh học và bản dạng giới của cá nhân.
-    </p>
-    <p>
-      GIDYQ-AA được sử dụng trong các nghiên cứu lâm sàng và tâm lý học để sàng lọc các biểu hiện liên quan đến <em>gender dysphoria</em> (phiền muộn giới tính), đồng thời giúp cá nhân hiểu rõ hơn về cảm nhận giới của mình. Bài test không xác định giới tính, mà giúp người làm bài khám phá mức độ đồng nhất hoặc khác biệt giữa bản dạng giới và giới tính sinh học.
-    </p>
-  </section>
-    <form id="infoForm" class="info-form">
-      <h2>Thông tin người làm bài</h2>
-      <input type="text" id="name" placeholder="Họ và tên" required>
-      <input type="number" id="age" placeholder="Tuổi" required>
-      <input type="text" id="gender" placeholder="Giới tính hiện tại" required>
-    </form>
-
-    <form id="quizForm">
-      <h2>Trả lời các câu hỏi sau:</h2>
-
-      <!-- 10 câu hỏi -->
-      <div class="question">
-        <p>1. Bạn cảm thấy thoải mái với giới tính được gán khi sinh?</p>
-        <label><input type="radio" name="q1" value="0"> Không</label>
-        <label><input type="radio" name="q1" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q1" value="2"> Có</label>
+    <div class="test-wrapper">
+      <div class="test-header">
+        <h1>🏳️‍🌈 Test Bản Dạng Giới (GIDYQ-AA)</h1>
+        <p>Đánh giá mức độ phiền muộn giới tính</p>
       </div>
-
-      <div class="question">
-        <p>2. Bạn mong muốn được sống như một người thuộc giới tính khác?</p>
-        <label><input type="radio" name="q2" value="2"> Có</label>
-        <label><input type="radio" name="q2" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q2" value="0"> Không</label>
+      <div class="test-body">
+        <div class="theory-box">
+          <h2>📖 Giới thiệu</h2>
+          <p>Bài trắc nghiệm dựa trên <strong>GIDYQ-AA (Gender Identity/Gender Dysphoria Questionnaire for Adolescents and Adults)</strong> – công cụ sàng lọc do Đại học Toronto phát triển, giúp nhận diện mức độ không thoải mái với giới tính sinh học.</p>
+        </div>
+        <form id="infoForm" class="info-form">
+          <label>👤 Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ tên..." required>
+          <label>🎂 Tuổi</label>
+          <input type="number" id="age" placeholder="Nhập số tuổi..." required>
+          <label>⚧️ Giới tính hiện tại</label>
+          <input type="text" id="gender" placeholder="Nam / Nữ / Khác..." required>
+        </form>
+        <form id="quizForm">
+          <div id="questions"></div>
+          <button type="button" class="btn-test" onclick="calculateResult(); notifyTestTaken();">🔍 Xem kết quả</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        <div class="disclaimer"><strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo, không thay thế cho chẩn đoán chuyên môn.</div>
       </div>
-
-      <div class="question">
-        <p>3. Bạn thường tưởng tượng mình là người thuộc giới khác?</p>
-        <label><input type="radio" name="q3" value="2"> Có</label>
-        <label><input type="radio" name="q3" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q3" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>4. Bạn cảm thấy không hài lòng với cơ thể sinh học của mình?</p>
-        <label><input type="radio" name="q4" value="2"> Có</label>
-        <label><input type="radio" name="q4" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q4" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>5. Bạn muốn được người khác nhìn nhận theo giới mà bạn cảm thấy thuộc về?</p>
-        <label><input type="radio" name="q5" value="2"> Có</label>
-        <label><input type="radio" name="q5" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q5" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>6. Bạn cảm thấy khó chịu khi bị gọi bằng đại từ không đúng với bản dạng giới của mình?</p>
-        <label><input type="radio" name="q6" value="2"> Có</label>
-        <label><input type="radio" name="q6" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q6" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>7. Bạn từng mong muốn thay đổi ngoại hình để phù hợp với giới tính bạn cảm nhận?</p>
-        <label><input type="radio" name="q7" value="2"> Có</label>
-        <label><input type="radio" name="q7" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q7" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>8. Bạn cảm thấy bản thân không thuộc giới tính sinh học khi sinh ra?</p>
-        <label><input type="radio" name="q8" value="2"> Có</label>
-        <label><input type="radio" name="q8" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q8" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>9. Bạn từng cảm thấy lo lắng hoặc buồn vì không được sống đúng với bản dạng giới?</p>
-        <label><input type="radio" name="q9" value="2"> Có</label>
-        <label><input type="radio" name="q9" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q9" value="0"> Không</label>
-      </div>
-
-      <div class="question">
-        <p>10. Bạn có mong muốn được hỗ trợ tâm lý hoặc y tế để sống đúng với bản dạng giới?</p>
-        <label><input type="radio" name="q10" value="2"> Có</label>
-        <label><input type="radio" name="q10" value="1"> Thỉnh thoảng</label>
-        <label><input type="radio" name="q10" value="0"> Không</label>
-      </div>
-<button type="button" onclick="calculateResult(); notifyTestTaken();">Xem kết quả</button>
-
-      <div id="result" class="result" style="display:none;"></div>
-    </form>
-     <section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e6faff; padding: 15px; border-left: 4px solid #0099cc; border-radius: 6px;">
-    <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho chẩn đoán chuyên môn từ bác sĩ hoặc chuyên gia tâm lý. Nếu bạn có những băn khoăn sâu hơn về bản dạng giới, phiền muộn giới tính hoặc cần hỗ trợ tâm lý, hãy tìm đến sự giúp đỡ từ chuyên gia có chuyên môn trong lĩnh vực giới và sức khỏe tâm thần.
-  </section>
-</main>
- 
-
-  <script>
-   function calculateResult() {
-  const name = document.getElementById("name").value;
-  const age = document.getElementById("age").value;
-  const gender = document.getElementById("gender").value;
-
-  if (!name || !age || !gender) {
-    alert("Vui lòng điền đầy đủ thông tin trước khi làm bài test.");
-    return;
-  }
-
-  let total = 0;
-  for (let i = 1; i <= 10; i++) {
-    const val = parseInt(document.querySelector(`input[name="q${i}"]:checked`)?.value || 0);
-    total += val;
-  }
-
-  let resultText = "";
-  if (total >= 16) {
-    resultText = "🔎 Bạn có dấu hiệu bản dạng giới khác với giới tính sinh học (có thể là transgender hoặc non-binary).";
-  } else if (total >= 8) {
-    resultText = "🌀 Bạn có một số cảm nhận không trùng khớp với giới tính sinh học, có thể đang khám phá bản dạng giới.";
-  } else {
-    resultText = "✅ Bạn có xu hướng bản dạng giới trùng với giới tính sinh học (cisgender).";
-  }
-
-  document.getElementById("result").style.display = "block";
-  document.getElementById("result").innerHTML = `
-    <h3>Kết quả dành cho ${name} (${gender}, ${age} tuổi):</h3>
-    <p><strong>Tổng điểm:</strong> ${total} / 20</p>
-    <p><strong>Kết luận:</strong> ${resultText}</p>
-  `;
-}
-</script>
+    </div>
+  </main>
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
-
-  function notifyTestTaken() {
-    emailjs.send("service_mvaiail", "template_contact", {
-      message: "Có người vừa hoàn thành bài test BSRI.",
-      timestamp: new Date().toLocaleString()
-    }).then(function(response) {
-      console.log("Email đã gửi thành công!", response.status);
-    }, function(error) {
-      console.error("Gửi email thất bại", error);
+  <script>
+    const questions = [
+      { q: "Bạn cảm thấy thoải mái với giới tính được gán khi sinh?" },
+      { q: "Bạn mong muốn được sống như một người thuộc giới tính khác?" },
+      { q: "Bạn thường tưởng tượng mình là người thuộc giới khác?" },
+      { q: "Bạn cảm thấy không hài lòng với cơ thể sinh học của mình?" },
+      { q: "Bạn muốn được người khác nhìn nhận theo giới mà bạn cảm thấy thuộc về?" },
+      { q: "Bạn cảm thấy khó chịu khi bị gọi bằng đại từ không đúng với bản dạng giới của mình?" },
+      { q: "Bạn từng mong muốn thay đổi ngoại hình để phù hợp với giới tính bạn cảm nhận?" },
+      { q: "Bạn cảm thấy bản thân không thuộc giới tính sinh học khi sinh ra?" },
+      { q: "Bạn từng cảm thấy lo lắng hoặc buồn vì không được sống đúng với bản dạng giới?" },
+      { q: "Bạn có mong muốn được hỗ trợ tâm lý hoặc y tế để sống đúng với bản dạng giới?" }
+    ];
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      let html = `<p>Câu ${index + 1}: ${item.q}</p>`;
+      const options = ["Có (2)", "Thỉnh thoảng (1)", "Không (0)"];
+      options.forEach((opt, i) => {
+        const val = 2 - i;
+        html += `<label><input type="radio" name="q${index}" value="${val}"> ${opt}</label>`;
+      });
+      div.innerHTML = html;
+      container.appendChild(div);
     });
-  }
-</script>
+    function calculateResult() {
+      const name = document.getElementById("name").value.trim();
+      const age = document.getElementById("age").value.trim();
+      const gender = document.getElementById("gender").value.trim();
+      if (!name || !age || !gender) { alert("Vui lòng điền đầy đủ thông tin!"); return; }
+      let total = 0;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        total += selected ? parseInt(selected.value) : 0;
+      });
+      let resultText = "";
+      if (total >= 16) resultText = "🔎 Bạn có dấu hiệu bản dạng giới khác với giới tính sinh học (có thể là transgender hoặc non-binary).";
+      else if (total >= 8) resultText = "🌀 Bạn có một số cảm nhận không trùng khớp với giới tính sinh học, có thể đang khám phá bản dạng giới.";
+      else resultText = "✅ Bạn có xu hướng bản dạng giới trùng với giới tính sinh học (cisgender).";
+      const resultDiv = document.getElementById("result");
+      resultDiv.className = "result-box show";
+      resultDiv.innerHTML = `
+        <h3>📊 Kết quả dành cho ${name}</h3>
+        <p><strong>👤 Giới tính:</strong> ${gender} | <strong>🎂 Tuổi:</strong> ${age}</p>
+        <p><strong>🔢 Tổng điểm:</strong> ${total} / 20</p>
+        <p><strong>💡 Kết luận:</strong> ${resultText}</p>
+      `;
+    }
+    emailjs.init("4VgGpbhLt6pGYWnpB");
+    function notifyTestTaken() {
+      emailjs.send("service_mvaiail", "template_contact", {
+        message: "Có người vừa hoàn thành bài test GIDYQ-AA.",
+        timestamp: new Date().toLocaleString()
+      }).then(response => console.log("Email đã gửi!", response.status)).catch(error => console.error("Gửi email thất bại", error));
+    }
+  </script>
 </body>
 </html>
