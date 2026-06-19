@@ -869,3 +869,14 @@ header {
     display: none; /* Ẩn chữ phụ trên màn hình cực nhỏ */
   }
 }
+.logo {
+  height: 50px !important;
+  width: auto;
+  transition: all 0.3s ease;
+  filter: brightness(1.1); /* Làm logo sáng hơn 1 chút */
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
