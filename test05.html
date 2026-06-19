@@ -103,4 +103,19 @@
       const resultDiv = document.getElementById("result");
       resultDiv.className = "result-box show";
       resultDiv.innerHTML = `
-        <h3>📊 Kết quả
+        <h3>📊 Kết quả dành cho ${name}</h3>
+        <p><strong>🎂 Tuổi:</strong> ${age}</p>
+        <p><strong>🔢 Tổng điểm:</strong> ${score} / 5</p>
+        <p><strong>💡 Kết luận:</strong> ${resultText}</p>
+      `;
+    }
+    emailjs.init("4VgGpbhLt6pGYWnpB");
+    function notifyTestTaken() {
+      emailjs.send("service_mvaiail", "template_contact", {
+        message: "Có người vừa hoàn thành bài test Tuổi Dậy Thì.",
+        timestamp: new Date().toLocaleString()
+      }).then(response => console.log("Email đã gửi!", response.status)).catch(error => console.error("Gửi email thất bại", error));
+    }
+  </script>
+</body>
+</html>
