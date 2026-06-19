@@ -30,9 +30,8 @@
   </div>
 </header>
 
-<!-- Banner -->
-<section class="banner">
-  <img src="0001.png" alt="Dự án Tâm lý học">
+<!-- Banner sửa lại: bỏ ảnh, dùng gradient nền cho đẹp -->
+<section class="banner" style="background: linear-gradient(135deg, #1E2A38 0%, #2C3E50 100%);">
   <div class="banner-content">
     <h1>Dự Án Tâm Lý Học 2025</h1>
     <p>Khám phá bản thân, thấu hiểu người khác - Hành trình phát triển nội tâm</p>
@@ -46,13 +45,11 @@
     const menu = document.querySelector(".navbar ul");
     const dropdowns = document.querySelectorAll(".dropdown");
 
-    // Toggle mobile menu
     toggle.addEventListener("click", function() {
       this.classList.toggle("active");
       menu.classList.toggle("show");
     });
 
-    // Xử lý dropdown trên mobile
     dropdowns.forEach(function(dropdown) {
       const link = dropdown.querySelector("a");
       link.addEventListener("click", function(e) {
