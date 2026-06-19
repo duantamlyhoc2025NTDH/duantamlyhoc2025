@@ -3,108 +3,225 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Các bài test</title>
+  <title>Các bài test tâm lý</title>
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Style riêng cho trang test tổng hợp */
+    .test-page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
 
- </head>
+    .test-page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .test-page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #1E2A38;
+      margin-bottom: 12px;
+    }
+
+    .test-page-header p {
+      color: #4A5A6A;
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .test-category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    .test-category-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .test-category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+    }
+
+    .test-category-card .cat-icon {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .test-category-card h3 {
+      font-size: 1.2rem;
+      color: #1E2A38;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .test-category-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .test-category-card ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #f5f0eb;
+    }
+
+    .test-category-card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .test-category-card ul li a {
+      color: #2C3E50;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .test-category-card ul li a:hover {
+      color: #A67C52;
+    }
+
+    .test-category-card ul li a .arrow {
+      color: #A67C52;
+      font-size: 0.7rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .test-category-card ul li a:hover .arrow {
+      opacity: 1;
+      transform: translateX(4px);
+    }
+
+    .badge-coming {
+      font-size: 0.7rem;
+      background: #e8e3de;
+      color: #6A7A8A;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .test-page-header h1 { font-size: 2rem; }
+      .test-category-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
 <body>
   <div id="header"></div>
- <main class="test-grid">
-  <h2 class="section-title">Các bài test</h2>
-  <p class="section-desc">Khám phá các bài trắc nghiệm tâm lý giúp bạn hiểu rõ bản thân hơn.</p>
 
-  <div class="grid-container">
-    <!-- Box 1 -->
-    <div class="test-card">
-      <h3>Tâm Lý Học Giới Tính 1</h3>
-      <ul>
-        <li><a href="test01.html">Test Trắc Nghiệm Giới Tính</a></li>
-        <li><a href="test02.html">Test Trắc Nghiệm Bản Dạng Giới</a></li>
-        <li><a href="test03.html">Test Trắc Nghiệm Giới Tính Thật</a></li>
-        <li><a href="test04.html">Test Trắc Nghiệm Đa Dạng Giới</a></li>
-        <li><a href="test05.html">Test Tuổi Dậy Thì</a></li>
-        <li><a href="test06.html">Test Tình Yêu Học Trò</a></li>
-        <li><a href="test07.html">Test Định Kiến Giới</a></li>
-         </ul>
-    </div>
-    
-    <div class="test-card">
-      <h3>Tâm Lý Học Giới Tính 2</h3>
-      <ul>
-         <li><a href="test13.html">Test Nhận Diện Vai Trò Giới</a></li>
-        <li><a href="test14.html">Test Chấp nhận Sự Đa dạng Giới.</a></li>
-        <li><a href="test15.html">Test Tự nhận thức về Bản Dạng Giới.</a></li>
-        <li><a href="test16.html">Test Tư duy Giới trong Truyền thông</a></li>
-        <li><a href="test17.html">Test Giao tiếp Giới tính Lành mạnh</a></li>
-         <li><a href="test18.html">Test Áp lực Giới trong Học đường</a></li>
-        <li><a href="test19.html">Test Đồng Cảm Giới</a></li>
-              </ul>
-    </div>
+  <main>
+    <div class="test-page-wrapper">
+      <div class="test-page-header">
+        <h1>🧪 Các Bài Test Tâm Lý</h1>
+        <p>Khám phá bản thân qua các bài trắc nghiệm khoa học, được chọn lọc từ các thang đo tâm lý uy tín.</p>
+      </div>
 
-    <!-- Box 2 -->
-    <div class="test-card">
-      <h3>Tâm Lý Học Nhận Thức</h3>
-      <ul>
-        <li><a href="test08.html">Test Tư Duy Logic</a></li>
-        <li><a href="test09.html">Test Trí Nhớ (làm việc)</a></li>
-        <li><a href="test10.html">Test Tư Duy Phản Biện</a></li>
-        <li><a href="test11.html">Test Ra Quyết Định</a></li>
-        <li><a href="test12.html">Test Phong Cách Học</a></li>         
-        </ul>
-    </div>
+      <div class="test-category-grid">
+        <!-- 1. Tâm lý Giới tính -->
+        <div class="test-category-card">
+          <span class="cat-icon">🌈</span>
+          <h3>Tâm Lý Học Giới Tính</h3>
+          <ul>
+            <li><a href="test01.html">Test Vai trò Giới (BSRI) <span class="arrow">→</span></a></li>
+            <li><a href="test02.html">Test Bản Dạng Giới (GIDYQ-AA) <span class="arrow">→</span></a></li>
+            <li><a href="test03.html">Test Xu Hướng Tính Dục (Kinsey) <span class="arrow">→</span></a></li>
+            <li><a href="test04.html">Test Đa Dạng Giới <span class="arrow">→</span></a></li>
+            <li><a href="test05.html">Test Tuổi Dậy Thì <span class="arrow">→</span></a></li>
+            <li><a href="test06.html">Test Tình Yêu Học Trò <span class="arrow">→</span></a></li>
+            <li><a href="test07.html">Test Định Kiến Giới <span class="arrow">→</span></a></li>
+            <li><a href="test13.html">Test Nhận Diện Vai Trò Giới <span class="arrow">→</span></a></li>
+            <li><a href="test14.html">Test Chấp Nhận Đa Dạng Giới <span class="arrow">→</span></a></li>
+            <li><a href="test15.html">Test Tự Nhận Thức Bản Dạng Giới <span class="arrow">→</span></a></li>
+            <li><a href="test16.html">Test Tư Duy Giới Trong Truyền Thông <span class="arrow">→</span></a></li>
+            <li><a href="test17.html">Test Giao Tiếp Giới Lành Mạnh <span class="arrow">→</span></a></li>
+            <li><a href="test18.html">Test Áp Lực Giới Trong Học Đường <span class="arrow">→</span></a></li>
+            <li><a href="test19.html">Test Đồng Cảm Giới <span class="arrow">→</span></a></li>
+          </ul>
+        </div>
 
-    <!-- Box 3 -->
-    <div class="test-card">
-      <h3>Tâm Lý Học Gia Đình</h3>
-      <ul>
-        <li><a href="test20.html">Test Gắn Kết Gia Đình</a></li>
-        <li><a href="test21.html">Test Giao Tiếp Trong Gia Đình</a></li>
-      </ul>
-    </div>
+        <!-- 2. Tâm lý Nhận thức -->
+        <div class="test-category-card">
+          <span class="cat-icon">🧠</span>
+          <h3>Tâm Lý Học Nhận Thức</h3>
+          <ul>
+            <li><a href="test08.html">Test Tư Duy Logic <span class="arrow">→</span></a></li>
+            <li><a href="test09.html">Test Trí Nhớ Làm Việc <span class="arrow">→</span></a></li>
+            <li><a href="test10.html">Test Tư Duy Phản Biện <span class="arrow">→</span></a></li>
+            <li><a href="test11.html">Test Ra Quyết Định <span class="arrow">→</span></a></li>
+            <li><a href="test12.html">Test Phong Cách Học <span class="arrow">→</span></a></li>
+          </ul>
+        </div>
 
-    <!-- Box 4 -->
-    <div class="test-card">
-      <h3>Tâm Lý Học Xã Hội</h3>
-      <ul>
-        <li><a href="404.html">Test Hành Vi Nhóm</a></li>
-        <li><a href="404.html">Test Ảnh Hưởng Xã Hội</a></li>
-        <li><a href="404.html">Test Định Kiến Xã Hội</a></li>
-      </ul>
-    </div>
+        <!-- 3. Tâm lý Gia đình -->
+        <div class="test-category-card">
+          <span class="cat-icon">🏠</span>
+          <h3>Tâm Lý Học Gia Đình</h3>
+          <ul>
+            <li><a href="test20.html">Test Gắn Kết Gia Đình <span class="arrow">→</span></a></li>
+            <li><a href="test21.html">Test Giao Tiếp Trong Gia Đình <span class="arrow">→</span></a></li>
+          </ul>
+        </div>
 
-    <!-- Box 5 -->
-    <div class="test-card">
-      <h3>Cảm Xúc & Sức Khỏe Tinh Thần</h3>
-      <ul>
-        <li><a href="404.html">Test Quản Lý Cảm Xúc</a></li>
-        <li><a href="404.html">Test Tự Chữa Lành</a></li>
-        <li><a href="404.html">Test Mindfulness & Self-care</a></li>
-      </ul>
-    </div>
+        <!-- 4. Tâm lý Xã hội -->
+        <div class="test-category-card">
+          <span class="cat-icon">👥</span>
+          <h3>Tâm Lý Học Xã Hội</h3>
+          <ul>
+            <li><a href="404.html">Test Hành Vi Nhóm <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Ảnh Hưởng Xã Hội <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Định Kiến Xã Hội <span class="badge-coming">Sắp ra mắt</span></a></li>
+          </ul>
+        </div>
 
-    <!-- Box 6 -->
-    <div class="test-card">
-      <h3>Ứng Dụng / Phát Triển Bản Thân</h3>
-      <ul>
-        <li><a href="404.html">Test Tư Duy Tích Cực</a></li>
-        <li><a href="404.html">Test Kỹ Năng Sống</a></li>
-        <li><a href="404.html">Test Tâm Lý Trong Công Việc</a></li>
-      </ul>
-    </div>
-<div class="test-card">
-      <h3>Học Từ Vựng Tiếng Anh Chuyên Ngành Tâm Lý</h3>
-      <ul>
-        <li><a href="hoctienganh.html">Học Tiếng Anh Chuyên Ngành</a></li>
-    </ul>
-  
-</div>
-</main>
+        <!-- 5. Cảm xúc & Sức khỏe tinh thần -->
+        <div class="test-category-card">
+          <span class="cat-icon">💖</span>
+          <h3>Cảm Xúc & Sức Khỏe Tinh Thần</h3>
+          <ul>
+            <li><a href="404.html">Test Quản Lý Cảm Xúc <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Tự Chữa Lành <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Mindfulness & Self-care <span class="badge-coming">Sắp ra mắt</span></a></li>
+          </ul>
+        </div>
 
+        <!-- 6. Ứng dụng / Phát triển bản thân -->
+        <div class="test-category-card">
+          <span class="cat-icon">🚀</span>
+          <h3>Ứng Dụng & Phát Triển Bản Thân</h3>
+          <ul>
+            <li><a href="404.html">Test Tư Duy Tích Cực <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Kỹ Năng Sống <span class="badge-coming">Sắp ra mắt</span></a></li>
+            <li><a href="404.html">Test Tâm Lý Trong Công Việc <span class="badge-coming">Sắp ra mắt</span></a></li>
+          </ul>
+        </div>
+
+        <!-- 7. Học tiếng Anh chuyên ngành -->
+        <div class="test-category-card">
+          <span class="cat-icon">📖</span>
+          <h3>Học Từ Vựng Tiếng Anh</h3>
+          <ul>
+            <li><a href="hoctienganh.html">Học Tiếng Anh Chuyên Ngành Tâm Lý <span class="arrow">→</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <div id="footer"></div>
- <script src="loadLayout.js"></script>
-
+  <script src="loadLayout.js"></script>
 </body>
 </html>
