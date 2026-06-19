@@ -45,12 +45,12 @@ img {
 
 /* ===== HEADER ===== */
 header {
-  background-color: #1E2A38; /* Xanh rêu đen sang trọng */
-  padding: 12px 24px;
+  background-color: #2C3E50; /* Xanh than chì sáng hơn, vẫn sang */
+  padding: 8px 24px !important;
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 .header-container {
@@ -503,7 +503,7 @@ main {
 
 /* ===== FOOTER ===== */
 .site-footer {
-  background: #1E2A38;
+  background: #2C3E50; /* Đổi sang màu xanh than chì */
   color: #e0e6ed;
   padding: 40px 24px 20px;
   margin-top: 48px;
