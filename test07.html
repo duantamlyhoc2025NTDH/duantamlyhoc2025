@@ -1,112 +1,121 @@
-<main>
-  <h2 style="color: #2e7d32; text-align: center;">⚖️ Trắc nghiệm Định kiến Giới</h2>
-  <!-- PHẦN MỞ ĐẦU – CƠ SỞ LÝ THUYẾT -->
-<section style="background-color: #e8f5e9; padding: 15px; border-left: 5px solid #388e3c; margin-bottom: 20px; border-radius: 6px;">
-  <h3 style="color: #2e7d32;">Giới thiệu</h3>
-  <p>
-    Bài trắc nghiệm này được xây dựng dựa trên các nghiên cứu xã hội học và tâm lý học giới, đặc biệt là lý thuyết về <strong>vai trò giới</strong> và <strong>định kiến giới</strong> trong xã hội hiện đại. Định kiến giới là những suy nghĩ cố định, phiến diện về vai trò, hành vi hoặc năng lực của một giới nào đó.
-  </p>
-  <p>
-    Bài test giúp người làm bài nhận diện những tư duy định kiến phổ biến, hiểu được tác hại của chúng đối với cá nhân và cộng đồng, từ đó thúc đẩy tư duy bình đẳng và cởi mở hơn trong các mối quan hệ xã hội.
-  </p>
-</section>
-
-  <form id="quizForm" style="margin-top: 30px;">
-    <fieldset style="border: 1px solid #c8e6c9; padding: 20px; border-radius: 8px; background-color: #e8f5e9;">
-      <legend style="font-weight: bold; color: #2e7d32;">Thông tin người làm bài</legend>
-      <label>👤 Họ tên: <input type="text" id="username" required style="margin-left: 10px; padding: 5px;"></label><br><br>
-      <label>🎂 Tuổi: <input type="number" id="age" min="10" required style="margin-left: 10px; padding: 5px;"></label>
-    </fieldset>
-
-    <div class="question" style="margin-top: 30px;">
-      <p><strong>1. Định kiến giới là gì?</strong></p>
-      <label><input type="radio" name="q1" value="0"> Sự tôn trọng sự khác biệt giới</label><br>
-      <label><input type="radio" name="q1" value="1"> Suy nghĩ cố định về vai trò giới</label><br>
-      <label><input type="radio" name="q1" value="0"> Sự đa dạng trong biểu hiện giới</label><br>
-      <label><input type="radio" name="q1" value="0"> Quyền bình đẳng giữa các giới</label>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Định Kiến Giới</title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Copy style từ test01 - đổi màu chủ đạo #388E3C */
+    .test-wrapper { max-width: 800px; margin: 0 auto; padding: 40px 24px; }
+    .test-header { background: linear-gradient(135deg, #1B5E20, #388E3C); color: #fff; padding: 32px; border-radius: 20px 20px 0 0; text-align: center; }
+    .test-header h1 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 8px; }
+    .test-header p { opacity: 0.9; font-size: 1rem; }
+    .test-body { background: #ffffff; padding: 32px; border-radius: 0 0 20px 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06); }
+    .theory-box { background: #F7F4F0; padding: 20px 24px; border-left: 4px solid #388E3C; border-radius: 8px; margin-bottom: 28px; }
+    .theory-box h2 { font-family: 'Playfair Display', serif; color: #1E2A38; font-size: 1.3rem; margin-bottom: 8px; }
+    .theory-box p { color: #4A5A6A; font-size: 0.95rem; line-height: 1.7; }
+    .info-form { background: #F7F4F0; padding: 20px 24px; border-radius: 12px; margin-bottom: 28px; }
+    .info-form label { font-weight: 500; color: #1E2A38; display: block; margin-bottom: 4px; }
+    .info-form input { width: 100%; padding: 10px 14px; border: 1px solid #e0d9d3; border-radius: 8px; font-family: 'Poppins', sans-serif; font-size: 0.95rem; margin-bottom: 12px; }
+    .info-form input:focus { border-color: #388E3C; outline: none; }
+    .question { margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid #f0ebe6; }
+    .question:last-child { border-bottom: none; }
+    .question p { font-weight: 600; color: #1E2A38; margin-bottom: 10px; }
+    .question label { display: block; padding: 6px 0 6px 28px; position: relative; cursor: pointer; color: #2C3E50; font-size: 0.95rem; }
+    .question label input[type="radio"] { position: absolute; left: 0; top: 50%; transform: translateY(-50%); accent-color: #388E3C; }
+    .btn-test { background: #388E3C; color: #fff; border: none; padding: 14px 36px; font-size: 1rem; font-weight: 600; border-radius: 50px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 16px rgba(56, 142, 60, 0.3); display: inline-block; }
+    .btn-test:hover { background: #1B5E20; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(56, 142, 60, 0.4); }
+    .result-box { margin-top: 32px; padding: 24px; background: #F7F4F0; border-radius: 12px; border-left: 4px solid #388E3C; display: none; }
+    .result-box.show { display: block; }
+    .result-box h3 { font-family: 'Playfair Display', serif; color: #1E2A38; margin-bottom: 12px; }
+    .result-box p { color: #2C3E50; margin-bottom: 6px; }
+    .disclaimer { margin-top: 32px; padding: 16px 20px; background: #fcfaf8; border-radius: 8px; border-left: 4px solid #bcc9d4; font-size: 0.85rem; color: #6A7A8A; }
+    .disclaimer strong { color: #1E2A38; }
+    @media (max-width: 768px) { .test-header h1 { font-size: 1.5rem; } .test-body { padding: 20px; } .theory-box { padding: 16px; } .info-form { padding: 16px; } .question label { font-size: 0.9rem; } }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <main>
+    <div class="test-wrapper">
+      <div class="test-header">
+        <h1>⚖️ Test Định Kiến Giới</h1>
+        <p>Nhận diện và thay đổi tư duy định kiến</p>
+      </div>
+      <div class="test-body">
+        <div class="theory-box">
+          <h2>📖 Giới thiệu</h2>
+          <p>Bài trắc nghiệm dựa trên các nghiên cứu xã hội học và tâm lý học giới, giúp nhận diện các tư duy định kiến phổ biến về vai trò giới trong xã hội.</p>
+        </div>
+        <form id="infoForm" class="info-form">
+          <label>👤 Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ tên..." required>
+          <label>🎂 Tuổi</label>
+          <input type="number" id="age" placeholder="Nhập số tuổi..." required>
+        </form>
+        <form id="quizForm">
+          <div id="questions"></div>
+          <button type="button" class="btn-test" onclick="calculateResult(); notifyTestTaken();">🔍 Xem kết quả</button>
+        </form>
+        <div id="result" class="result-box"></div>
+        <div class="disclaimer"><strong>⚠️ Lưu ý:</strong> Kết quả chỉ mang tính tham khảo, không thay thế cho tư vấn chuyên môn.</div>
+      </div>
     </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>2. Ví dụ nào sau đây là định kiến giới?</strong></p>
-      <label><input type="radio" name="q2" value="0"> Con gái có thể làm kỹ sư</label><br>
-      <label><input type="radio" name="q2" value="1"> Nam giới không được khóc</label><br>
-      <label><input type="radio" name="q2" value="0"> Mọi người đều có quyền học tập</label><br>
-      <label><input type="radio" name="q2" value="0"> Nữ giới có thể lãnh đạo</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>3. Tác hại của định kiến giới là gì?</strong></p>
-      <label><input type="radio" name="q3" value="0"> Khuyến khích sự đa dạng</label><br>
-      <label><input type="radio" name="q3" value="0"> Tạo cơ hội bình đẳng</label><br>
-      <label><input type="radio" name="q3" value="1"> Gây cản trở phát triển cá nhân</label><br>
-      <label><input type="radio" name="q3" value="0"> Thúc đẩy sự sáng tạo</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>4. Cách nào giúp thay đổi tư duy định kiến giới?</strong></p>
-      <label><input type="radio" name="q4" value="0"> Phớt lờ sự khác biệt</label><br>
-      <label><input type="radio" name="q4" value="1"> Phân tích và phản biện định kiến</label><br>
-      <label><input type="radio" name="q4" value="0"> Giữ nguyên quan điểm truyền thống</label><br>
-      <label><input type="radio" name="q4" value="0"> Tránh nói về giới</label>
-    </div>
-
-    <div class="question" style="margin-top: 20px;">
-      <p><strong>5. Quốc gia nào nổi bật về bình đẳng giới trong chính trị?</strong></p>
-      <label><input type="radio" name="q5" value="1"> Rwanda</label><br>
-      <label><input type="radio" name="q5" value="0"> Brazil</label><br>
-      <label><input type="radio" name="q5" value="0"> Ấn Độ</label><br>
-      <label><input type="radio" name="q5" value="0"> Trung Quốc</label>
-    </div>
-
-    <button type="button" onclick="calculateScore()"; notifyTestTaken(); style="margin-top: 30px; padding: 12px 24px; background-color: #388e3c; color: white; border: none; border-radius: 6px; font-size: 16px;">🔍 Xem kết quả</button>
-  </form>
-<!-- PHẦN MIỄN TRỪ TRÁCH NHIỆM -->
-<section style="margin-top: 40px; font-size: 0.95rem; color: #555; background-color: #e8f5e9; padding: 15px; border-left: 4px solid #388e3c; border-radius: 6px;">
-  <strong>Lưu ý:</strong> Bài trắc nghiệm chỉ mang tính chất tham khảo, không thay thế cho tư vấn chuyên môn từ chuyên gia giáo dục, tâm lý hoặc xã hội học. Nếu bạn có những băn khoăn sâu hơn về giới, bình đẳng hoặc định kiến xã hội, hãy tìm đến sự hỗ trợ từ người có chuyên môn hoặc tổ chức uy tín.
-</section>
-
-  <div id="result" style="margin-top: 40px; font-size: 18px; color: #333; background-color: #e8f5e9; padding: 20px; border-radius: 8px;"></div>
+  </main>
+  <div id="footer"></div>
+  <script src="loadLayout.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    function calculateScore() {
-      const name = document.getElementById("username").value.trim();
+    const questions = [
+      { q: "Định kiến giới là gì?", options: ["Sự tôn trọng sự khác biệt giới", "Suy nghĩ cố định về vai trò giới", "Sự đa dạng trong biểu hiện giới", "Quyền bình đẳng giữa các giới"], correct: 1 },
+      { q: "Ví dụ nào sau đây là định kiến giới?", options: ["Con gái có thể làm kỹ sư", "Nam giới không được khóc", "Mọi người đều có quyền học tập", "Nữ giới có thể lãnh đạo"], correct: 1 },
+      { q: "Tác hại của định kiến giới là gì?", options: ["Khuyến khích sự đa dạng", "Tạo cơ hội bình đẳng", "Gây cản trở phát triển cá nhân", "Thúc đẩy sự sáng tạo"], correct: 2 },
+      { q: "Cách nào giúp thay đổi tư duy định kiến giới?", options: ["Phớt lờ sự khác biệt", "Phân tích và phản biện định kiến", "Giữ nguyên quan điểm truyền thống", "Tránh nói về giới"], correct: 1 },
+      { q: "Quốc gia nào nổi bật về bình đẳng giới trong chính trị?", options: ["Rwanda", "Brazil", "Ấn Độ", "Trung Quốc"], correct: 0 }
+    ];
+    const container = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      let html = `<p>Câu ${index + 1}: ${item.q}</p>`;
+      item.options.forEach((opt, i) => {
+        const val = i === item.correct ? 1 : 0;
+        html += `<label><input type="radio" name="q${index}" value="${val}"> ${opt}</label>`;
+      });
+      div.innerHTML = html;
+      container.appendChild(div);
+    });
+    function calculateResult() {
+      const name = document.getElementById("name").value.trim();
       const age = document.getElementById("age").value.trim();
-      if (!name || !age) {
-        alert("Vui lòng điền đầy đủ thông tin trước khi xem kết quả.");
-        return;
-      }
-
+      if (!name || !age) { alert("Vui lòng điền đầy đủ thông tin!"); return; }
       let score = 0;
-      for (let i = 1; i <= 5; i++) {
-        const answer = document.querySelector('input[name="q' + i + '"]:checked');
-        if (answer) score += parseInt(answer.value);
-      }
-
-      let resultText = `<p><strong>👤 Người làm bài:</strong> ${name} (${age} tuổi)</p>`;
-      if (score <= 1) {
-        resultText += "<p>📘 <strong>Nhận thức chưa đầy đủ:</strong> Bạn cần tìm hiểu thêm về định kiến giới và tác động của nó đến cuộc sống.</p>";
-      } else if (score <= 3) {
-        resultText += "<p>📗 <strong>Nhận thức cơ bản:</strong> Bạn đã có một số hiểu biết nhưng vẫn còn bị ảnh hưởng bởi định kiến. Hãy tiếp tục học hỏi và phản biện tư duy cũ.</p>";
-      } else {
-        resultText += "<p>📕 <strong>Nhận thức tốt:</strong> Bạn hiểu rõ về bình đẳng giới và có tư duy cởi mở. Hãy lan tỏa điều này đến cộng đồng nhé!</p>";
-      }
-
-      document.getElementById("result").innerHTML = resultText;
+      questions.forEach((item, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected) score += parseInt(selected.value);
+      });
+      let resultText = "";
+      if (score <= 1) resultText = "📘 Nhận thức chưa đầy đủ – bạn cần tìm hiểu thêm về định kiến giới.";
+      else if (score <= 3) resultText = "📗 Nhận thức cơ bản – bạn đã có hiểu biết nhưng vẫn còn bị ảnh hưởng bởi định kiến.";
+      else resultText = "📕 Nhận thức tốt – bạn hiểu rõ về bình đẳng giới và có tư duy cởi mở.";
+      const resultDiv = document.getElementById("result");
+      resultDiv.className = "result-box show";
+      resultDiv.innerHTML = `
+        <h3>📊 Kết quả dành cho ${name}</h3>
+        <p><strong>🎂 Tuổi:</strong> ${age}</p>
+        <p><strong>🔢 Tổng điểm:</strong> ${score} / 5</p>
+        <p><strong>💡 Kết luận:</strong> ${resultText}</p>
+      `;
+    }
+    emailjs.init("4VgGpbhLt6pGYWnpB");
+    function notifyTestTaken() {
+      emailjs.send("service_mvaiail", "template_contact", {
+        message: "Có người vừa hoàn thành bài test Định Kiến Giới.",
+        timestamp: new Date().toLocaleString()
+      }).then(response => console.log("Email đã gửi!", response.status)).catch(error => console.error("Gửi email thất bại", error));
     }
   </script>
-</main>
-<script>
-  emailjs.init("4VgGpbhLt6pGYWnpB"); // Public Key của chị
-
-  function notifyTestTaken() {
-    emailjs.send("service_mvaiail", "template_contact", {
-      message: "Có người vừa hoàn thành bài test BSRI.",
-      timestamp: new Date().toLocaleString()
-    }).then(function(response) {
-      console.log("Email đã gửi thành công!", response.status);
-    }, function(error) {
-      console.error("Gửi email thất bại", error);
-    });
-  }
-</script>
 </body>
-</hmtl>
+</html>
